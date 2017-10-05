@@ -32,7 +32,6 @@
           tacoordinatorResolve: newTaCoordinator
         },
         data: {
-          roles: ['user', 'admin'],
           pageTitle: 'Ta coordinators Create'
         }
       })

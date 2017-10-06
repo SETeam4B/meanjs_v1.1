@@ -9,8 +9,8 @@
   FormsService.$inject = ['$resource'];
 
   function FormsService($resource) {
-    return $resource('api/forms/:formId', {
-      formId: '@_id'
+    return $resource('api/forms/', {
+      username: '@username'
     }, {
       update: {
         method: 'PUT'

@@ -15,7 +15,7 @@ var path = require('path'),
 exports.create = function(req, res) {
   var form = new Form(req.body);
   form.user = req.user;
-
+  form.username = req.user.username; //Set unique username
   form.save(function(err) {
     if (err) {
       return res.status(400).send({
@@ -80,6 +80,7 @@ exports.delete = function(req, res) {
 /**
  * List of Forms
  */
+ /*
 exports.list = function(req, res) {
   Form.find().sort('-created').populate('user', 'displayName').exec(function(err, forms) {
     if (err) {
@@ -91,6 +92,19 @@ exports.list = function(req, res) {
     }
   });
 };
+*/
+exports.list = function(req, res) {
+  Form.findOne({'username' : req.user.username}).exec(function(err, forms) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.jsonp(forms);
+    }
+  });
+};
+
 
 /**
  * Form middleware

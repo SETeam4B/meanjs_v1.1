@@ -32,16 +32,19 @@
       }
 
       // TODO: move create/update logic to service
-      if (vm.form._id) {
+      if (vm.form.username) {
         vm.form.$update(successCallback, errorCallback);
       } else {
         vm.form.$save(successCallback, errorCallback);
       }
 
       function successCallback(res) {
-        $state.go('forms.view', {
+        $state.go('forms.undergrad');
+         /*
+        $state.go('forms.undergrad', {
           formId: res._id
         });
+        */
       }
 
       function errorCallback(res) {

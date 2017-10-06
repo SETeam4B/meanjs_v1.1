@@ -10,6 +10,11 @@ var mongoose = require('mongoose'),
  * Form Schema
  */
 var FormSchema = new Schema({
+    username: {
+        type: String,
+        unique: true,
+        default: ''
+    },
     name: {
         type: String,
         default: '',

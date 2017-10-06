@@ -29,9 +29,10 @@
                 controller: 'FormsController',
                 controllerAs: 'vm',
                 resolve: {
-                    formResolve: newForm
+                    formResolve: formHandler
                 },
                 data: {
+                    roles: ['user', 'admin'],
                     pageTitle: 'Forms Create'
                 }
             })
@@ -41,9 +42,10 @@
                 controller: 'FormsController',
                 controllerAs: 'vm',
                 resolve: {
-                    formResolve: newForm
+                    formResolve: formHandler
                 },
                 data: {
+                    roles: ['user', 'admin'],
                     pageTitle: 'Forms Create'
                 }
             })
@@ -53,9 +55,10 @@
                 controller: 'FormsController',
                 controllerAs: 'vm',
                 resolve: {
-                    formResolve: newForm
+                    formResolve: formHandler
                 },
                 data: {
+                    roles: ['user', 'admin'],
                     pageTitle: 'Forms Create'
                 }
             })
@@ -65,7 +68,7 @@
                 controller: 'FormsController',
                 controllerAs: 'vm',
                 resolve: {
-                    formResolve: getForm
+                    formResolve: formHandler
                 },
                 data: {
                     roles: ['user', 'admin'],
@@ -78,7 +81,7 @@
                 controller: 'FormsController',
                 controllerAs: 'vm',
                 resolve: {
-                    formResolve: getForm
+                    formResolve: formHandler
                 },
                 data: {
                     pageTitle: 'Form {{ formResolve.name }}'
@@ -86,11 +89,11 @@
             });
     }
 
-    getForm.$inject = ['$stateParams', 'FormsService'];
-
-    function getForm($stateParams, FormsService) {
+    //getForm.$inject = ['$stateParams', 'FormsService', 'Authentication'];
+    /*
+    function getForm($stateParams, FormsService, Authentication) {
         return FormsService.get({
-            formId: $stateParams.formId
+            username: Authentication.user.username
         }).$promise;
     }
 
@@ -99,4 +102,24 @@
     function newForm(FormsService) {
         return new FormsService();
     }
+    */
+    formHandler.$inject = ['$stateParams', 'FormsService', 'Authentication'];
+    function formHandler($stateParams, FormsService, Authentication){
+        /*
+        FormsService.get({
+            username: Authentication.user.username
+        }).$promise.then(function (result) {
+            console.log(result);
+            return result;
+        }, function(reason) {
+            return new FormsService();
+        });
+        */
+        return FormsService.get({
+            username: Authentication.user.username
+        }).$promise;
+    }
+
+
+
 }());

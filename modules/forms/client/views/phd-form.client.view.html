@@ -1,0 +1,65 @@
+<section>
+  <div class="page-header">
+    <h1>TA Application Form</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <!-- Add a ui-sref property to the anchor tags to allow navigation between different states -->
+      <ul class="nav nav-pills">
+        <li><a ui-sref="forms.undergrad">Undergraduate</a></li>
+        <li><a ui-sref="forms.master">Master</a></li>
+        <li><a ui-sref="forms.phd">Ph.D.</a></li>
+      </ul>
+
+    </div>
+
+  <form name="vm.form.formForm" class="form-horizontal" ng-submit="vm.save(vm.form.formForm.$valid)" novalidate>
+    <div class="row"><fieldset>
+      <div class="col-md-8">
+
+          <div class="form-group" show-errors>
+            <label class="control-label" for="name">Name</label>
+            <input name="name" type="text" ng-model="vm.form.name" id="name" class="form-control" placeholder="Name"
+                   required>
+            <div ng-messages="vm.form.formForm.name.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Name is required.</p>
+            </div>
+          </div>
+
+          <div class="form-group" show-errors>
+            <label class="control-label" for="ufid">UF-ID</label>
+            <input name="ufid" type="number" ng-model="vm.form.ufid" id="ufid" class="form-control" placeholder="UF-ID"
+                   required>
+            <div ng-messages="vm.form.formForm.id.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">UF-ID is required.</p>
+            </div>
+          </div>
+
+          <div class="form-group" show-errors>
+            <label class="control-label" for="adviser">Adviser</label>
+            <input name="adviser" type="text" ng-model="vm.form.adviser" id="adviser" class="form-control" placeholder="Adviser">
+          </div>
+
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-default">{{vm.form._id ? 'Update' : 'Submit'}}</button>
+          </div>
+          <div ng-show="vm.error" class="text-danger">
+            <strong ng-bind="vm.error"></strong>
+          </div>
+
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default panel-success class">
+          <div class="panel-heading">Application Status</div>
+          <div class="panel-body">
+            <input name="status" type="text" ng-model="vm.form.status" id="status" class="form-control" placeholder="Not Available" readonly>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+    </div>
+
+  </form>
+  </div>
+</section>

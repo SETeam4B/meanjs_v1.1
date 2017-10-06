@@ -14,7 +14,6 @@
     vm.authentication = Authentication;
     vm.form = form;
     vm.error = null;
-    vm.form = {};
     vm.remove = remove;
     vm.save = save;
 

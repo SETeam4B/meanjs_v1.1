@@ -11,11 +11,10 @@
     // Set top bar menu items
     menuService.addMenuItem('topbar', {
       title: 'Forms',
-      state: 'forms',
-      type: 'dropdown',
+      state: 'forms.undergrad',
       roles: ['*']
     });
-
+/*
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'forms', {
       title: 'List Forms',
@@ -26,7 +25,8 @@
     menuService.addSubMenuItem('topbar', 'forms', {
       title: 'Create Form',
       state: 'forms.create',
-      roles: ['user']
+        roles: ['*']
     });
+    */
   }
 }());

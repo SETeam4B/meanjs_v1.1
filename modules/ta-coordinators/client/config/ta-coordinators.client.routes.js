@@ -14,25 +14,37 @@
         url: '/ta-coordinators',
         template: '<ui-view/>'
       })
-      .state('ta-coordinators.list', {
+      .state('ta-coordinators.tacandidates', {
         url: '',
-        templateUrl: 'modules/ta-coordinators/client/views/list-ta-coordinators.client.view.html',
+        templateUrl: 'modules/ta-coordinators/client/views/tacandidates-ta-coordinators.client.view.html',
         controller: 'TaCoordinatorsListController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'Ta coordinators List'
+          pageTitle: 'TA Candidates'
         }
       })
-      .state('ta-coordinators.create', {
+      .state('ta-coordinators.courselist', {
         url: '/create',
-        templateUrl: 'modules/ta-coordinators/client/views/form-ta-coordinator.client.view.html',
+        templateUrl: 'modules/ta-coordinators/client/views/courselist-ta-coordinator.client.view.html',
         controller: 'TaCoordinatorsController',
         controllerAs: 'vm',
         resolve: {
           tacoordinatorResolve: newTaCoordinator
         },
         data: {
-          pageTitle: 'Ta coordinators Create'
+          pageTitle: 'Course List'
+        }
+      })
+      .state('ta-coordinators.status', {
+        url: '/ta-coordinators/status',
+        templateUrl: 'modules/ta-coordinators/client/views/status-ta-coordinator.client.view.html',
+        controller: 'TaCoordinatorsController',
+        controllerAs: 'vm',
+        resolve: {
+          tacoordinatorResolve: newTaCoordinator
+        },
+        data: {
+          pageTitle: 'Ta coordinators Status'
         }
       })
       .state('ta-coordinators.edit', {
@@ -48,16 +60,16 @@
           pageTitle: 'Edit Ta coordinator {{ ta-coordinatorResolve.name }}'
         }
       })
-      .state('ta-coordinators.view', {
+      .state('ta-coordinators.assignment', {
         url: '/:taCoordinatorId',
-        templateUrl: 'modules/ta-coordinators/client/views/view-ta-coordinator.client.view.html',
+        templateUrl: 'modules/ta-coordinators/client/views/assignment-ta-coordinator.client.view.html',
         controller: 'TaCoordinatorsController',
         controllerAs: 'vm',
         resolve: {
           tacoordinatorResolve: getTaCoordinator
         },
         data: {
-          pageTitle: 'Ta coordinator {{ ta-coordinatorResolve.name }}'
+          pageTitle: 'Assignments'
         }
       });
   }

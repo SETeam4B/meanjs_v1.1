@@ -10,6 +10,7 @@ module.exports = function(app) {
   // Forms Routes
   app.route('/api/forms').all(formsPolicy.isAllowed)
     .get(forms.list)
+    .put(forms.update)
     .post(forms.create);
 
   app.route('/api/forms/:formId').all(formsPolicy.isAllowed)

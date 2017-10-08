@@ -45,10 +45,38 @@ exports.read = function(req, res) {
  * Update a Form
  */
 exports.update = function(req, res) {
-  var form = req.form;
+  //var form = req.form;
+  //console.log(form);
+  //form = _.extend(form, req.body);
 
-  form = _.extend(form, req.body);
 
+
+  Form.findOne({'username' : req.user.username}).exec(function(err, form) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      //res.jsonp(forms);
+      //Update form 
+      form = _.extend(form, req.body);
+
+      //Save form to db
+      form.save(function(err) {
+      if (err) {
+        return res.status(400).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      } else {
+        res.jsonp(form);
+      }
+      });
+
+    }
+});
+
+};
+/*
   form.save(function(err) {
     if (err) {
       return res.status(400).send({
@@ -58,7 +86,9 @@ exports.update = function(req, res) {
       res.jsonp(form);
     }
   });
+
 };
+*/
 
 /**
  * Delete an Form

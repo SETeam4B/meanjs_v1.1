@@ -2,6 +2,23 @@
   <div class="page-header">
     <h1>Status</h1>
   </div>
+  <dialog open>
+  <div class="radio">
+    <b>Undergraduate Access:</b>
+    <label><input type="radio" name="UndergraduateAccess">yes</label>
+    <label class="radio-inline"><input type="radio" name="UndergraduateAccess">no</label>
+  </div>
+  <div class="radio">
+    <b>Graduate Access:</b>
+    <label><input type="radio" name="GraduateAccess">yes</label>
+    <label class="radio-inline"><input type="radio" name="GraduateAccess">no</label>  </div>
+  <div class="radio">
+    <b>Faculty Access to Recommend:</b>
+    <label><input type="radio" name="FacultyAccessToRecommend">yes</label>
+    <label class="radio-inline"><input type="radio" name="FacultyAccessToRecommend">no</label>
+  </div>
+</dialog>
+<!--
   <div class="list-group">
     <a ng-repeat="ta-coordinator in vm.taCoordinators"
        ui-sref="taCoordinators.view({ ta-coordinatorId: ta-coordinator._id })"
@@ -19,4 +36,5 @@
   <div class="alert alert-warning text-center" ng-if="vm.taCoordinators.$resolved && !vm.taCoordinators.length">
     No Ta coordinators yet, why don't you <a ui-sref="taCoordinators.create">create one</a>?
   </div>
+-->
 </section>

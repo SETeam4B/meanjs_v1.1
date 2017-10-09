@@ -1,4 +1,4 @@
-<section>
+<section ng-controller="TACandidates">
   <div class="page-header">
     <h1>TA Candidates</h1>
   </div>
@@ -17,7 +17,7 @@
 
   <accordion close-others="oneAtATime">
 
-    <accordion-group is-open="status.open">
+    <accordion-group ng-repeat="row in fakeData" is-open="status.open">
       <accordion-heading>
         <table>
           <thead>
@@ -30,17 +30,17 @@
           </thead>
           <tbody>
           <tr>
-            <td class="col-xs-2">Hello</td>
-            <td class="col-xs-9">World</td>
-            <td class="col-xs-1">lets see</td>
-            <td class="col-xs-1">if it works</td>
+            <td class="col-xs-2">{{row.id}}</td>
+            <td class="col-xs-9">{{row.name}}</td>
+            <td class="col-xs-1">{{row.type}}</td>
+            <td class="col-xs-1">{{row.yolo1}}</td>
           </tr>
           </tbody>
 
         </table>
       </accordion-heading>
 
-<!--TODO: change this-->
+      <!--TODO: change this-->
       <div class="row" ng-controller="ListingsController" ng-init="findOne()">
         <div class="col-md-offset-1 col-md-10 formWrapper">
           <div class="page-header">
@@ -83,45 +83,44 @@
     </accordion-group>
 
     <!--<accordion-group heading="Static Header, initially expanded" is-open="status.isFirstOpen"-->
-                     <!--is-disabled="status.isFirstDisabled">-->
-      <!--This content is straight in the template.-->
+    <!--is-disabled="status.isFirstDisabled">-->
+    <!--This content is straight in the template.-->
     <!--</accordion-group>-->
     <!--<accordion-group heading="{{group.title}}" ng-repeat="group in groups">-->
-      <!--{{group.content}}-->
+    <!--{{group.content}}-->
     <!--</accordion-group>-->
     <!--<accordion-group heading="Dynamic Body Content">-->
-      <!--<p>The body of the accordion group grows to fit the contents</p>-->
-      <!--<button type="button" class="btn btn-default btn-sm" ng-click="addItem()">Add Item</button>-->
-      <!--<div ng-repeat="item in items">{{item}}</div>-->
+    <!--<p>The body of the accordion group grows to fit the contents</p>-->
+    <!--<button type="button" class="btn btn-default btn-sm" ng-click="addItem()">Add Item</button>-->
+    <!--<div ng-repeat="item in items">{{item}}</div>-->
     <!--</accordion-group>-->
 
 
     <!--<accordion-group heading="Custom template" template-url="group-template.html">-->
-      <!--Hello-->
+    <!--Hello-->
     <!--</accordion-group>-->
     <!--<accordion-group heading="Delete account" panel-class="panel-danger">-->
-      <!--<p>Please, to delete your account, click the button below</p>-->
-      <!--<button class="btn btn-danger">Delete</button>-->
+    <!--<p>Please, to delete your account, click the button below</p>-->
+    <!--<button class="btn btn-danger">Delete</button>-->
     <!--</accordion-group>-->
   </accordion>
 
+  <!--<div class="list-group">-->
+  <!--<a ng-repeat="advisorhomepage in vm.advisorhomepages"-->
+  <!--ui-sref="advisorhomepages.view({ advisorhomepageId: advisorhomepage._id })"-->
+  <!--class="list-group-item">-->
+  <!--<small class="list-group-item-text">-->
+  <!--Posted on-->
+  <!--<span ng-bind="advisorhomepage.created | date:'mediumDate'"></span>-->
+  <!--by-->
+  <!--<span ng-if="advisorhomepage.user" ng-bind="advisorhomepage.user.displayName"></span>-->
+  <!--<span ng-if="!advisorhomepage.user">Deleted User</span>-->
+  <!--</small>-->
+  <!--<h4 class="list-group-item-heading" ng-bind="advisorhomepage.name"></h4>-->
+  <!--</a>-->
+  <!--</div>-->
+  <!--<div class="alert alert-warning text-center" ng-if="vm.advisorhomepages.$resolved && !vm.advisorhomepages.length">-->
+  <!--No Advisorhomepages yet, why don't you <a ui-sref="advisorhomepages.create">create one</a>?-->
+  <!--</div>-->
 
-
-  <div class="list-group">
-    <a ng-repeat="advisorhomepage in vm.advisorhomepages"
-       ui-sref="advisorhomepages.view({ advisorhomepageId: advisorhomepage._id })"
-       class="list-group-item">
-      <small class="list-group-item-text">
-        Posted on
-        <span ng-bind="advisorhomepage.created | date:'mediumDate'"></span>
-        by
-        <span ng-if="advisorhomepage.user" ng-bind="advisorhomepage.user.displayName"></span>
-        <span ng-if="!advisorhomepage.user">Deleted User</span>
-      </small>
-      <h4 class="list-group-item-heading" ng-bind="advisorhomepage.name"></h4>
-    </a>
-  </div>
-  <div class="alert alert-warning text-center" ng-if="vm.advisorhomepages.$resolved && !vm.advisorhomepages.length">
-    No Advisorhomepages yet, why don't you <a ui-sref="advisorhomepages.create">create one</a>?
-  </div>
 </section>

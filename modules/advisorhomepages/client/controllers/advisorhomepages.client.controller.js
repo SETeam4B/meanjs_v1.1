@@ -17,6 +17,7 @@
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
+    $scope.yolo = "hello World";
 
     // Remove existing Advisorhomepage
     function remove() {

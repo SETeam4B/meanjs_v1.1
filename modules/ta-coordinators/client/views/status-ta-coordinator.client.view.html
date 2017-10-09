@@ -2,20 +2,49 @@
   <div class="page-header">
     <h1>Status</h1>
   </div>
+
   <dialog open>
   <div class="radio">
-    <b>Undergraduate Access:</b>
+    <b>Undergraduate Access to Apply:</b>
     <label><input type="radio" name="UndergraduateAccess">yes</label>
     <label class="radio-inline"><input type="radio" name="UndergraduateAccess">no</label>
   </div>
   <div class="radio">
-    <b>Graduate Access:</b>
+    <b>Graduate Access to Apply:</b>
     <label><input type="radio" name="GraduateAccess">yes</label>
     <label class="radio-inline"><input type="radio" name="GraduateAccess">no</label>  </div>
   <div class="radio">
     <b>Faculty Access to Recommend:</b>
     <label><input type="radio" name="FacultyAccessToRecommend">yes</label>
     <label class="radio-inline"><input type="radio" name="FacultyAccessToRecommend">no</label>
+  </div>
+  <div class="radio">
+    <b>Display GPA, TSE etc. for student review:</b>
+    <label><input type="radio" name="displaygpa">yes</label>
+    <label class="radio-inline"><input type="radio" name="displaygpa">no</label>
+  </div>
+  <div class="radio">
+    <b>Display Final TA Assignments for Students:</b>
+    <label><input type="radio" name="displayfinalstudents">yes</label>
+    <label class="radio-inline"><input type="radio" name="displayfinalstudents">no</label>
+  </div>
+  <div class="radio">
+    <b>Display Final TA Assignments for Faculty:</b>
+    <label><input type="radio" name="displayfinalfaculty">yes</label>
+    <label class="radio-inline"><input type="radio" name="displayfinalfaculty">no</label>
+  </div>
+  <div class="radio">
+    <b>Update Semester:</b>
+    <select id="semester"
+        name="semester" />
+        <option>Fall 2017</option>
+        <option>Spring 2017</option>
+    </select>
+</dialog>
+<dialog open>
+  <div>
+    <b>Reset Applicant Status</b>
+
   </div>
 </dialog>
 <!--

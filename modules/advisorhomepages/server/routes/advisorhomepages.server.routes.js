@@ -10,6 +10,7 @@ module.exports = function(app) {
   // Advisorhomepages Routes
   app.route('/api/advisorhomepages').all(advisorhomepagesPolicy.isAllowed)
     .get(advisorhomepages.list)
+    //Todo:Implement "add" button on the client side to implement next function
     .post(advisorhomepages.create);
 
   app.route('/api/advisorhomepages/:advisorhomepageId').all(advisorhomepagesPolicy.isAllowed)

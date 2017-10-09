@@ -4,26 +4,44 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-  Schema = mongoose.Schema;
+    Schema = mongoose.Schema;
 
 /**
  * Advisorhomepage Schema
  */
-var AdvisorhomepageSchema = new Schema({
-  name: {
-    type: String,
-    default: '',
-    required: 'Please fill Advisorhomepage name',
-    trim: true
-  },
-  created: {
-    type: Date,
-    default: Date.now
-  },
-  user: {
-    type: Schema.ObjectId,
-    ref: 'User'
-  }
+var StudentInfoSchema = new Schema({
+    id: {
+        required: true
+    },
+    name: {
+        type: String,
+        default: '',
+        required: 'Student Name',
+        trim: true
+    },
+    type:{
+        type: String,
+        required:true
+    },
+    created: {
+        type: Date,
+        default: Date.now
+    },
+    user: {
+        type: Schema.ObjectId,
+        ref: 'User'
+    }
 });
 
-mongoose.model('Advisorhomepage', AdvisorhomepageSchema);
+StudentInfoSchema.pre('save', function () {
+   var currentTime = new Date;
+    if(!this.created_at) {
+       this.created_at = currentTime;
+   }
+   next();
+});
+
+
+var StudentInfo = mongoose.model('Advisorhomepage', AdvisorhomepageSchema);
+
+module.exports = StudentInfo;

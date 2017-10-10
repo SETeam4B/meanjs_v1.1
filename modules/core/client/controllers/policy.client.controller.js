@@ -5,4 +5,6 @@ angular.module('core').controller('PolicyController', ['$scope', 'Authentication
     // This provides Authentication context.
     $scope.authentication = Authentication;
   }
+
+  $scope.toPolicyPage = function() { $state.go('policy')}
 ]);

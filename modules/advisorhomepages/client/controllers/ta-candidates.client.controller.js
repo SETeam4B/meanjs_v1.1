@@ -9,25 +9,25 @@
             $scope.fakeData = [
                 {
                     "id": 0,
-                    "name": "jordi Hdez",
+                    "name": "Lionel Messi",
                     "type": 123,
                     "yolo1": "exra Parameter"
                 },
                 {
                     "id": 0,
-                    "name": "jordi Hdez",
+                    "name": "Ronaldinho",
                     "type": 123,
                     "yolo1": "exra Parameter"
                 },
                 {
                     "id": 0,
-                    "name": "jordi Hdez",
+                    "name": "Zinedine Zidan",
                     "type": 123,
                     "yolo1": "exra Parameter"
                 },
                 {
                     "id": 0,
-                    "name": "jordi Hdez",
+                    "name": "Luis Suarez",
                     "type": 123,
                     "yolo1": "exra Parameter"
                 },

@@ -10,8 +10,8 @@ var mongoose = require('mongoose'),
  * Advisorhomepage Schema
  */
 var StudentInfoSchema = new Schema({
-    id: {
-        required: true
+    studentId: {
+        required: false
     },
     name: {
         type: String,
@@ -34,14 +34,14 @@ var StudentInfoSchema = new Schema({
 });
 
 StudentInfoSchema.pre('save', function () {
-   var currentTime = new Date;
+    var currentTime = new Date;
     if(!this.created_at) {
-       this.created_at = currentTime;
-   }
-   next();
+        this.created_at = currentTime;
+    }
+    next();
 });
 
 
-var StudentInfo = mongoose.model('Advisorhomepage', AdvisorhomepageSchema);
+var StudentInfo = mongoose.model('Advisorhomepage', StudentInfoSchema);
 
 module.exports = StudentInfo;

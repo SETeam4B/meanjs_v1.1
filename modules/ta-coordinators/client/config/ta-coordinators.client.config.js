@@ -16,17 +16,38 @@
       roles: ['*']
     });
 
-    // Add the dropdown list item
+    // Add the dropdown status item
     menuService.addSubMenuItem('topbar', 'ta-coordinators', {
-      title: 'List Ta coordinators',
-      state: 'ta-coordinators.list'
+      title: 'Status',
+      state: 'ta-coordinators.status'
     });
 
-    // Add the dropdown create item
+    // Add the dropdown TA Candidates item
     menuService.addSubMenuItem('topbar', 'ta-coordinators', {
-      title: 'Create Ta coordinator',
-      state: 'ta-coordinators.create',
-      roles: ['user']
+      title: 'TA Candidates',
+      state: 'ta-coordinators.tacandidates'
     });
+
+    // Add the dropdown course list item
+    menuService.addSubMenuItem('topbar', 'ta-coordinators', {
+      title: 'Course List',
+      state: 'ta-coordinators.courselist',
+      roles: ['*']
+    });
+
+    // Add the dropdown TA Recommend item
+    menuService.addSubMenuItem('topbar', 'ta-coordinators', {
+      title: 'TA Recommendations',
+      state: 'ta-coordinators.tarecommendations',
+      roles: ['*']
+    });
+
+    // Add the dropdown Assignment item
+    menuService.addSubMenuItem('topbar', 'ta-coordinators', {
+      title: 'Assignment',
+      state: 'ta-coordinators.assignment',
+      roles: ['*']
+    });
+
   }
 }());

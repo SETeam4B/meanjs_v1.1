@@ -6,5 +6,4 @@ angular.module('core').controller('PolicyController', ['$scope', 'Authentication
     $scope.authentication = Authentication;
   }
 
-  $scope.toPolicyPage = function() { $state.go('policy')}
 ]);

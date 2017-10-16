@@ -10,12 +10,12 @@
 
   function CoursesController ($scope, $state, $window, Authentication, course) {
     var vm = this;
-
     vm.authentication = Authentication;
     vm.course = course;
     vm.error = null;
     vm.form = {};
     vm.remove = remove;
+
     vm.save = save;
 
     // Remove existing Course
@@ -24,14 +24,13 @@
         vm.course.$remove($state.go('courses.list'));
       }
     }
-
     // Save Course
     function save(isValid) {
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'vm.form.courseForm');
         return false;
       }
-
+      console.log("inside controller");
       // TODO: move create/update logic to service
       if (vm.course._id) {
         vm.course.$update(successCallback, errorCallback);

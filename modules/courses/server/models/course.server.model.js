@@ -10,10 +10,23 @@ var mongoose = require('mongoose'),
  * Course Schema
  */
 var CourseSchema = new Schema({
-  name: {
+  courseId:{
+    type:String,
+      default: ''
+  },
+    courseSection:{
+    type: String ,
+        default: ''
+    },
+  courseTitle: {
     type: String,
     default: ''
+  },
+  instructor:{
+    type: String,
+      default:''
   }
+
 });
 
 mongoose.model('Course', CourseSchema);

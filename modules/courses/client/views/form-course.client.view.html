@@ -7,8 +7,8 @@
       <fieldset>
         <div class="form-group" show-errors>
           <label class="control-label" for="name">Name</label>
-          <input name="name" type="text" ng-model="vm.course.name" id="name" class="form-control" placeholder="Name" required>
-          <div ng-messages="vm.form.courseForm.name.$error" role="alert">
+          <input name="name" type="text" ng-model="vm.course.courseTitle" id="name" class="form-control" placeholder="Name" required>
+          <div ng-messages="vm.form.courseForm.courseTitle.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Course name is required.</p>
           </div>
         </div>

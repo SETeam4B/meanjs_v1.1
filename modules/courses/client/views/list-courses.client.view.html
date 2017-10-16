@@ -13,7 +13,7 @@
         <span ng-if="course.user" ng-bind="course.user.displayName"></span>
         <span ng-if="!course.user">Deleted User</span>
       </small>
-      <h4 class="list-group-item-heading" ng-bind="course.name"></h4>
+      <h4 class="list-group-item-heading" ng-bind="course.courseTitle"></h4>
     </a>
   </div>
   <div class="alert alert-warning text-center" ng-if="vm.courses.$resolved && !vm.courses.length">

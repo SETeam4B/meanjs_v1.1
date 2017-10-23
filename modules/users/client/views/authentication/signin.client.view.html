@@ -4,7 +4,7 @@
     <form name="userForm" ng-submit="signin(userForm.$valid)" class="signin" novalidate autocomplete="off">
       <fieldset>
         <div class="form-group" show-errors>
-          <label for="username">Username</label>
+          <label for="username">CISE Username</label>
           <input type="text" id="username" name="username" class="form-control" ng-model="credentials.username" placeholder="Username" lowercase required>
           <div ng-messages="userForm.username.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Username is required.</p>
@@ -18,9 +18,7 @@
           </div>
         </div>
         <div class="text-center form-group">
-          <button type="submit" class="btn btn-primary">Sign in</button>
-          &nbsp; or&nbsp;
-          <a ui-sref="authentication.signup">Sign up</a>
+          <button type="submit" class="btn btn-primary">Login</button>
         </div>
         <div class="text-center forgot-password">
           <a ui-sref="password.forgot">Forgot your password?</a>

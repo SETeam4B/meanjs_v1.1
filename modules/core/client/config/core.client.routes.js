@@ -11,6 +11,13 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       });
     });
 
+    // policy view routing
+    $stateProvider
+    .state('policy', {
+      url: '/policy',
+      templateUrl: 'modules/core/client/views/policy.client.view.html'
+    });
+
     // Home state routing
     $stateProvider
     .state('home', {

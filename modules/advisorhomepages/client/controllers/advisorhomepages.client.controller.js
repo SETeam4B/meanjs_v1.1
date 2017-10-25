@@ -12,12 +12,11 @@
     var vm = this;
 
     vm.authentication = Authentication;
-    vm.advisorhomepage = advisorhomepage;
+    vm.advisorhomepage =  advisorhomepage;
     vm.error = null;
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
-    $scope.yolo = "hello World";
 
     // Remove existing Advisorhomepage
     function remove() {

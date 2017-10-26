@@ -14,6 +14,9 @@ module.exports = function (app) {
         .post(advisorhomepages.create)
         .put(advisorhomepages.updateStudent);
 
+    app.route('/api/advisorhomepages/consideringStudents')
+        .get(advisorhomepages.findAllConsideredApplicants);
+
     app.route('/api/advisorhomepages/:advisorhomepageId')//.all(advisorhomepagesPolicy.isAllowed)
         .get(advisorhomepages.findApplicantByID)
         .put(advisorhomepages.update)

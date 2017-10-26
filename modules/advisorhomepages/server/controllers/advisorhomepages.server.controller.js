@@ -141,13 +141,23 @@ exports.findApplicantByID = function (req, res) {
  * @param res
  */
 exports.updateStudent = function (req, res) {
-    console.log("ping in the updateStudent function");
     StudentInfoSchema.findOneAndUpdate({studentId: req.body.form.studentId}, req.body.form, function (err, data) {
         if (err) {
             return res.status(400).send("no student with id" + req.body.form.studentId);
         }
         res.status(200).send(req.body.form);
     })
+};
+
+exports.findAllConsideredApplicants = function(req, res){
+    console.log("ping all considered applicants");
+    StudentInfoSchema.find({},function (err, data) {
+        if (err) {
+            return res.status(400).send( {message: "error finding all students"});
+        }
+        console.log("get find all");
+        return res.status(200).send({data:data});
+    })  
 };
 
 

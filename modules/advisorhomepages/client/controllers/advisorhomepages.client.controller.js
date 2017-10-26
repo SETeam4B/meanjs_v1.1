@@ -98,5 +98,15 @@
                 });
             })
         }
+
+        $scope.pullAllStudents = function () {
+            return new Promise(function (resolve, reject) {
+                vm.advisorhomepage.$getAll().then(function (res) {
+                    return resolve(res);
+                }).catch(function (err) {
+                    return reject(err);
+                });
+            });
+        }
     }
 }());

@@ -88,6 +88,20 @@
                 alert(res.name + "' was added to the considering student list");
             });
         }
+
+        $scope.pullAllConsideredStudents = function () {
+            $scope.pullAllStudents().then(function (res) {
+
+                res.data.forEach(function (obj) {
+                    $scope.fakeData.push(obj);
+                });
+
+                console.log(res);
+            }).catch(function (err) {
+                console.log(err);
+            });
+        }
+
     };
 
 

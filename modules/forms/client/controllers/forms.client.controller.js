@@ -10,12 +10,14 @@
     function FormsController($scope, $state, $window, Authentication, form, CoursesService) {
         var vm = this;
         vm.courses = CoursesService.query();
+
         vm.authentication = Authentication;
         vm.form = form;
         vm.error = null;
         vm.remove = remove;
         vm.save = save;
 
+  
         // Remove existing Form
         function remove() {
             if ($window.confirm('Are you sure you want to delete?')) {

@@ -20,7 +20,7 @@
 
             <div class="form-group" show-errors>
               <label class="control-label" for="name">Name</label>
-              <input name="name" type="text" ng-model="vm.form.name" id="name" class="form-control" placeholder="Name"
+              <input name="name" type="text" ng-model="vm.form.firstName" id="name" class="form-control" placeholder="Name"
                      required>
               <div ng-messages="vm.form.formForm.name.$error" role="alert">
                 <p class="help-block error-text" ng-message="required">Name is required.</p>
@@ -42,16 +42,36 @@
               <input name="gpa" type="number" ng-model="vm.form.gpa" id="gpa" class="form-control" placeholder="GPA">
             </div>
 
+            <!--Semester Admitted -->
+            <div class="form-group">
+              <label class="control-label" for="semesterAdmitted">Semester Admitted</label>
+              <select name="semesterAdmitted" id="semesterAdmitted"
+                      class="form-control"
+                      ng-model="vm.form.semesterAdmitted">
+
+                <option ng-repeat="semester in vm.semesterOptions"
+                        ng-selected="semester === vm.form.semesterAdmitted"
+                        value="{{semester}}">{{semester}}
+                </option>
+              </select>
+
+            </div>
+  {{"asdasdas"+vm.semesterOptions}}
+
+
+
             <div class="form-group">
               <label class="control-label" for="preferencecourse1">Preference Course</label>
               <select name="preferencecourse1" id="preferencecourse1"
                       class="form-control"
-                      ng-selected="vm.form.preferencecourse1"
-                      ng-model="vm.form.preferencecourse1"
-                      ng-options="course.courseTitle for course in vm.courses">
+                      ng-model="vm.form.preferencecourse1">
+
+                <option ng-repeat="course in vm.courses"
+                        ng-selected="course._id === vm.form.preferencecourse1"
+                        value="{{course._id}}">{{course.courseId+" - "+course.courseTitle}}
+                </option>
               </select>
             </div>
-
 
             <div class="form-group">
               <button type="submit" class="btn btn-default">{{vm.form.username ? 'Update' : 'Submit'}}</button>

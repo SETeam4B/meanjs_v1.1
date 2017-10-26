@@ -46,8 +46,14 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
         // If successful we assign the response to the global user model
         $scope.authentication.user = response;
 
-        // And redirect to the previous or home page
-        $state.go($state.previous.state.name || 'home', $state.previous.params);
+        //console.log($scope.authentication.user.roles);
+        //We need to make it so that roles only contains one value
+        if($scope.authentication.user.roles[0] === "tacoordinator"){
+          $state.go('ta-coordinators.status', $state.previous.params);
+        }else{
+          // And redirect to the previous or home page
+          $state.go($state.previous.state.name || 'home', $state.previous.params);
+        }
       }).error(function (response) {
         $scope.error = response.message;
       });

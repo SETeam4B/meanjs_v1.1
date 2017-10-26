@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>TA Candidates</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="ta-coordinator in vm.taCoordinators"
+       ui-sref="taCoordinators.view({ ta-coordinatorId: ta-coordinator._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="taCoordinator.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="taCoordinator.user" ng-bind="taCoordinator.user.displayName"></span>
+        <span ng-if="!taCoordinator.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="ta-coordinator.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.taCoordinators.$resolved && !vm.taCoordinators.length">
+    No Ta coordinators yet, why don't you <a ui-sref="taCoordinators.create">create one</a>?
+  </div>
+</section>

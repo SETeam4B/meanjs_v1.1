@@ -121,15 +121,15 @@ exports.advisorhomepageByID = function (req, res, next, id) {
  */
 exports.findApplicantByID = function (req, res) {
     StudentInfoSchema.find({studentId: req.query.studentId}, function (err, studentInfo) {
-        if (err) {
+        if (err || studentInfo.length == 0) {
             return res.status(400).send({
                 message: 'No Student with id'
             });
         }
         ;
         console.log(studentInfo);
-        res.send({studentInfo: studentInfo});
-        console.log("did what i wanted");
+        console.log("Found the ID");
+        return res.send({studentInfo: studentInfo});
         // next();
     });
 };
@@ -141,10 +141,13 @@ exports.findApplicantByID = function (req, res) {
  * @param res
  */
 exports.updateStudent = function (req, res) {
+    console.log("ping in the updateStudent function");
     StudentInfoSchema.findOneAndUpdate({studentId: req.body.form.studentId}, req.body.form, function (err, data) {
         if (err) {
             return res.status(400).send("no student with id" + req.body.form.studentId);
         }
         res.status(200).send(req.body.form);
     })
-}
+};
+
+

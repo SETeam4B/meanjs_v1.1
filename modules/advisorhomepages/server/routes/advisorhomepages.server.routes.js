@@ -11,7 +11,7 @@ module.exports = function (app) {
     app.route('/api/advisorhomepages')//.all(advisorhomepagesPolicy.isAllowed)
         .get(advisorhomepages.findApplicantByID)
         //Todo:Implement "add" button on the client side to implement next function
-        .post(advisorhomepages.updateStudent)
+        .post(advisorhomepages.create)
         .put(advisorhomepages.updateStudent);
 
     app.route('/api/advisorhomepages/:advisorhomepageId')//.all(advisorhomepagesPolicy.isAllowed)

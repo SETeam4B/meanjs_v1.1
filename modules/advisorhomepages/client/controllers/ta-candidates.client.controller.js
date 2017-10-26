@@ -46,11 +46,17 @@
             }
         ];
 
+        $scope.tryingNew2 = function (index) {
+            update(index);
+        }
+
         $scope.tryingNew = function (index) {
             checkId(index).then(function (res) {
-                update(index);
+                alert("can't add a student with that id since it is already in the db");
+                console.log("can't add a student with that id since it is already in the db");
             }).catch(function (err) {
-                console.log("cant update because of error" + err);
+                addNewStudent(index);
+                alert("new student added");
             });
         }
 
@@ -66,11 +72,20 @@
         }
 
         function update(index) {
-            $scope.saveWithBody($scope.TACandidateForms[index]).then(function (res) {
+            $scope.updateStudent($scope.TACandidateForms[index]).then(function (res) {
                 if (index != undefined) {
                     $scope.fakeData[index].name = res.name;
                 }
                 alert(res.name + "'s information was updated");
+            });
+        }
+
+        function addNewStudent(index) {
+            $scope.saveWithBody($scope.TACandidateForms[index]).then(function (res) {
+                if (index != undefined) {
+                    $scope.fakeData[index].name = res.name;
+                }
+                alert(res.name + "' was added to the considering student list");
             });
         }
     };

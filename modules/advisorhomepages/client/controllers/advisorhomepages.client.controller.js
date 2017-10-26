@@ -59,7 +59,6 @@
          * @returns {*}
          */
         $scope.saveWithBody = function (body) {
-            console.log(body);
             vm.advisorhomepage.form = body;
             return new Promise(function (resolve, reject) {
                 vm.advisorhomepage.$save().then(function (res) {
@@ -81,6 +80,18 @@
             return new Promise(function (resolve, reject) {
                  vm.advisorhomepage.$get({studentId:studentId}).then(function (res) {
                      console.log(res);
+                    return resolve(res);
+                }).catch(function (err) {
+                    return reject(err);
+                });
+            })
+        }
+
+
+        $scope.updateStudent = function (body) {
+            vm.advisorhomepage.form = body;
+            return new Promise(function (resolve, reject) {
+                vm.advisorhomepage.$update().then(function (res) {
                     return resolve(res);
                 }).catch(function (err) {
                     return reject(err);

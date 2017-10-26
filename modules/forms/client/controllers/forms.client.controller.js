@@ -14,6 +14,7 @@
         vm.authentication = Authentication;
         vm.form = form;
         vm.error = null;
+        vm.phdExamDate = new Date(vm.form.phdExamDate);
         vm.remove = remove;
         vm.save = save;
 

@@ -117,8 +117,7 @@ var FormSchema = new Schema({
     //phd and undergrad TA
     isTeachingTA: {
         type: String,
-        defualt: '',
-        required: 'Please choose your option'
+        defualt: 'TA'
     },
 
 

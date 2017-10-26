@@ -11,7 +11,8 @@ var mongoose = require('mongoose'),
  */
 var StudentInfoSchema = new Schema({
     studentId: {
-        required: false
+        required: false,
+        type: String
     },
     name: {
         type: String,
@@ -27,21 +28,18 @@ var StudentInfoSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    gpa:{
+        type: String,
+        required:false
+    },
     user: {
         type: Schema.ObjectId,
         ref: 'User'
     }
 });
 
-StudentInfoSchema.pre('save', function () {
-    var currentTime = new Date;
-    if(!this.created_at) {
-        this.created_at = currentTime;
-    }
-    next();
-});
 
 
-var StudentInfo = mongoose.model('Advisorhomepage', StudentInfoSchema);
+var StudentInfo = mongoose.model('StudentInfoSchema', StudentInfoSchema);
 
 module.exports = StudentInfo;

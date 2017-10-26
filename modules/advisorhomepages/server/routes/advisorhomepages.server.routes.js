@@ -8,12 +8,13 @@ var advisorhomepagesPolicy = require('../policies/advisorhomepages.server.policy
 
 module.exports = function(app) {
   // Advisorhomepages Routes
-  app.route('/api/advisorhomepages').all(advisorhomepagesPolicy.isAllowed)
+  app.route('/api/advisorhomepages')//.all(advisorhomepagesPolicy.isAllowed)
     .get(advisorhomepages.list)
     //Todo:Implement "add" button on the client side to implement next function
-    .post(advisorhomepages.create);
+    .post(advisorhomepages.create)
+      .put(advisorhomepages.create);
 
-  app.route('/api/advisorhomepages/:advisorhomepageId').all(advisorhomepagesPolicy.isAllowed)
+  app.route('/api/advisorhomepages/:advisorhomepageId')//.all(advisorhomepagesPolicy.isAllowed)
     .get(advisorhomepages.read)
     .put(advisorhomepages.update)
     .delete(advisorhomepages.delete);

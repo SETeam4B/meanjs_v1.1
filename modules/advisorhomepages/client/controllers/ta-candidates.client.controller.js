@@ -8,9 +8,10 @@
     TACandidates.inject = ['$scope'];
 
     function TACandidates($scope) {
-        var vm = this;
 
         $scope.yolo = "hello World";
+
+        $scope.TACandidateForms = [{}];
 
         $scope.fakeData = [
             {
@@ -44,5 +45,16 @@
                 "yolo1": "exra Parameter"
             }
         ];
+
+        $scope.tryingNew = function (index) {
+            $scope.saveWithBody($scope.TACandidateForms[index]).then(function (res) {
+                if(index!=undefined) {
+                    $scope.fakeData[index].name = res.name;
+                }
+                alert(res.name + "'s information was updated");
+            });
+        }
     };
+
+
 }());

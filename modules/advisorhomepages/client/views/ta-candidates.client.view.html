@@ -3,6 +3,8 @@
     <h1>TA Candidates</h1>
   </div>
 
+  <button type="button" class="btn btn-default" ng-click="tryingNew()">reject</button>
+
   <table>
     <thead>
     <tr>
@@ -13,7 +15,6 @@
     </tr>
     </thead>
   </table>
-
 
   <accordion close-others="oneAtATime">
 
@@ -41,38 +42,44 @@
       </accordion-heading>
 
       <!--TODO: change this-->
-      <div class="row" ng-controller="ListingsController" ng-init="findOne()">
+      <div class="container row">
+      <!--<div class="container row" ng-controller="" ng-init="findOne()">-->
         <div class="col-md-offset-1 col-md-10 formWrapper">
           <div class="page-header">
-            <h3>Edit Listing</h3>
-            <form name="listingForm" class="form-horizontal" ng-submit="update(listingForm.$valid)">
+            <h3>Student Info</h3>
+            <form name="Student Info" class="form-horizontal" ng-submit="tryingNew(fakeData.indexOf(row))">
               <fieldset>
                 <div class="form-group" show-errors>
                   <label for="name">Name</label>
-                  <input name="name" type="text" ng-model="listing.name" id="name" class="form-control"
+                  <input name="name" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].name" id="name" class="form-control"
                          placeholder="Name" required>
-                  <div ng-messages="listingForm.name.$error" role="alert">
-                    <p class="help-block error-text" ng-message="required">Listing name is required</p>
-                  </div>
+                  <!--<div ng-messages="listingForm.name.$error" role="alert">-->
+                    <!--<p class="help-block error-text" ng-message="required">Listing name is required</p>-->
+                  <!--</div>-->
                 </div>
                 <div class="form-group" show-errors>
-                  <label for="code">Code</label>
-                  <input name="code" type="text" ng-model="listing.code" id="code" class="form-control"
-                         placeholder="Code" required>
-                  <div ng-messages="listingForm.code.$error" role="alert">
-                    <p class="help-block error-text" ng-message="required">Listing code is required</p>
-                  </div>
+                  <label for="type">Type</label>
+                  <input name="type" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].type" id="type" class="form-control"
+                         placeholder="Type" required>
+                  <!--<div ng-messages="listingForm.code.$error" role="alert">-->
+                    <!--<p class="help-block error-text" ng-message="required">Listing code is required</p>-->
+                  <!--</div>-->
                 </div>
                 <div class="form-group">
-                  <label for="address">Address</label>
-                  <input name="address" type="text" ng-model="listing.address" id="address" class="form-control"
-                         placeholder="Address">
+                  <label for="studentId">Student-Id</label>
+                  <input name="studentId" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].studentId" id="studentId" class="form-control"
+                         placeholder="Student-Id">
+                </div>
+                <div class="form-group">
+                  <label for="gpa">GPA</label>
+                  <input name="gpa" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].gpa" id="gpa" class="form-control"
+                         placeholder="GPA">
                 </div>
                 <div class="form-group">
                   <input type="submit" class="btn btn-default">
                 </div>
                 <div>
-                  <button type="button" class="btn btn-default">reject</button>
+                  <button type="button" class="btn btn-default" ng-click="tryingNew()">reject</button>
                 </div>
                 <div ng-show="error" class="text-danger">
                   <strong ng-bind="error"></strong>

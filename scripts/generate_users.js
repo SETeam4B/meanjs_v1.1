@@ -1,67 +1,73 @@
 'use strict';
 
-/**
- * Module dependencies.
- */
-var should = require('should'),
-  mongoose = require('mongoose'),
-  User = mongoose.model('User'),
-  TaCoordinator = mongoose.model('TaCoordinator');
+var mongoose = require('mongoose'),
+  chalk = require('chalk'),
+  config = require('../config/config'),
+  mg = require('../config/lib/mongoose');
 
-/**
- * Globals
- */
-var user,
-  taCoordinator;
+//Load all the models being used throughout app.
+mg.loadModels();
 
-/**
- * Unit tests
- */
-describe('Ta coordinator Model Unit Tests:', function() {
-  beforeEach(function(done) {
-    user = new User({
-      firstName: 'Full',
-      lastName: 'Name',
-      displayName: 'Full Name',
-      email: 'test@test.com',
-      username: 'username',
-      password: 'password'
+//Connect to db.
+mg.connect(function (db) {
+  var User = mongoose.model('User');
+
+  //Create faculty user
+  var faculty_user = new User({
+      firstName: 'Faculty',
+      lastName: 'User',
+      displayName: 'Faculty User',
+      email: 'faculty@test.com',
+      username: 'faculty',
+      password: 'faculty$4B$',
+      provider: 'local',
+      roles:['faculty']
     });
 
-    user.save(function() {
-      taCoordinator = new TaCoordinator({
-        name: 'Ta coordinator Name',
-        user: user
-      });
-
-      done();
-    });
+  //Save it
+  faculty_user.save(function(err){
+    if (err) {
+      console.log("Error saving faculty user.");
+      console.log(err);
+    }
   });
 
-  describe('Method Save', function() {
-    it('should be able to save without problems', function(done) {
-      this.timeout(0);
-      return taCoordinator.save(function(err) {
-        should.not.exist(err);
-        done();
-      });
+  //Create TA Coordinator
+  var tacoordinator_user = new User({
+      firstName: 'TaCoordinator',
+      lastName: 'User',
+      displayName: 'TaCoordinator User',
+      email: 'tacoordinator@test.com',
+      username: 'tacoordinator',
+      password: 'tacoordinator$4B$',
+      provider: 'local',
+      roles:['tacoordinator']
     });
 
-    it('should be able to show an error when try to save without name', function(done) {
-      taCoordinator.name = '';
-
-      return taCoordinator.save(function(err) {
-        should.exist(err);
-        done();
-      });
-    });
+  tacoordinator_user.save(function(err){
+    if (err) {
+      console.log("Error saving tacoordinator user.");
+      console.log(err);
+    }
   });
 
-  afterEach(function(done) {
-    TaCoordinator.remove().exec(function() {
-      User.remove().exec(function() {
-        done();
-      });
+  //Create Advisor
+  var advisor_user = new User({
+      firstName: 'Advisor',
+      lastName: 'User',
+      displayName: 'Advisor User',
+      email: 'advisor@test.com',
+      username: 'advisor',
+      password: 'advisor$4B$',
+      provider: 'local',
+      roles:['advisor']
     });
+
+  advisor_user.save(function(err){
+    if (err) {
+      console.log("Error saving advisor user.");
+      console.log(err);
+    }
   });
+
 });

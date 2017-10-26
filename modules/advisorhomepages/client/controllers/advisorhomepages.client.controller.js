@@ -19,13 +19,6 @@
         vm.save = save;
 
 
-        // function jordiSave() {
-        //   vm.advisorhomepage.name = "jordi";
-        //     vm.advisorhomepage.type = "kindaFigureditOut";
-        //     vm.advisorhomepage.$save();
-        // }
-        //
-
         // Remove existing Advisorhomepage
         function remove() {
             if ($window.confirm('Are you sure you want to delete?')) {
@@ -59,6 +52,12 @@
             }
         }
 
+        /**
+         * saves the student
+         * TODO: check that the ufId is not already there, if it is make it invalid
+         * @param body
+         * @returns {*}
+         */
         $scope.saveWithBody = function (body) {
             console.log(body);
             vm.advisorhomepage.form = body;
@@ -69,10 +68,24 @@
                     return reject(err);
                 });
             })
-            // vm.advisorhomepage.$save();.then(function (res) {
-            //     $scope.TACandidateForms= res;
-            //     alert(res.name + "'s information was updated");
-            // });
+        }
+
+        /**
+         * pass the student id and returns the student
+         * @param studentId
+         * @returns {*}
+         */
+        $scope.getWithStudentId = function (studentId) {
+            // vm.advisorhomepage.studentId = studentId;
+            // vm.advisorhomepage.$get({studentId:studentId});
+            return new Promise(function (resolve, reject) {
+                 vm.advisorhomepage.$get({studentId:studentId}).then(function (res) {
+                     console.log(res);
+                    return resolve(res);
+                }).catch(function (err) {
+                    return reject(err);
+                });
+            })
         }
     }
 }());

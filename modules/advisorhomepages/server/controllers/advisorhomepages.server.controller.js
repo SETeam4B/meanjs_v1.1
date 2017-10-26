@@ -46,10 +46,7 @@ exports.read = function (req, res) {
  */
 exports.update = function (req, res) {
     var advisorhomepage = req.advisorhomepage;
-    advisorhomepage = _.extend(advisorhomepage, req.body);
-    // console.log("body request_>>"+req.body)
-    // console.log(advisorhomepage);
-
+    advisorhomepage = _.extend(advisorhomepage, req.body.form);
     advisorhomepage.save(function (err) {
         if (err) {
             return res.status(400).send({
@@ -116,3 +113,38 @@ exports.advisorhomepageByID = function (req, res, next, id) {
         next();
     });
 };
+/**
+ * to use this function call $.get({studentId:ParameterToPss})
+ * finds the applicant that is needed by the studentId
+ * @param req
+ * @param res
+ */
+exports.findApplicantByID = function (req, res) {
+    StudentInfoSchema.find({studentId: req.query.studentId}, function (err, studentInfo) {
+        if (err) {
+            return res.status(400).send({
+                message: 'No Student with id'
+            });
+        }
+        ;
+        console.log(studentInfo);
+        res.send({studentInfo: studentInfo});
+        console.log("did what i wanted");
+        // next();
+    });
+};
+/**
+ * updates a student info,
+ * finds the student Id and updates the info of the student
+ * TODO: fix when it cannot find anything so that when it doesnt find anything it does not alert
+ * @param req
+ * @param res
+ */
+exports.updateStudent = function (req, res) {
+    StudentInfoSchema.findOneAndUpdate({studentId: req.body.form.studentId}, req.body.form, function (err, data) {
+        if (err) {
+            return res.status(400).send("no student with id" + req.body.form.studentId);
+        }
+        res.status(200).send(req.body.form);
+    })
+}

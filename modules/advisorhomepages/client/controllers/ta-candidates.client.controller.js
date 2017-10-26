@@ -47,8 +47,27 @@
         ];
 
         $scope.tryingNew = function (index) {
+            checkId(index).then(function (res) {
+                update(index);
+            }).catch(function (err) {
+                console.log("cant update because of error" + err);
+            });
+        }
+
+        function checkId(index) {
+            return new Promise(function (resolve, reject) {
+                $scope.getWithStudentId($scope.TACandidateForms[index].studentId).then(function (res) {
+                   return resolve(res);
+                }).catch(function (err) {
+                    console.log("Id passed is wrong not in db, so cant update");
+                    return reject(err);
+                });
+            });
+        }
+
+        function update(index) {
             $scope.saveWithBody($scope.TACandidateForms[index]).then(function (res) {
-                if(index!=undefined) {
+                if (index != undefined) {
                     $scope.fakeData[index].name = res.name;
                 }
                 alert(res.name + "'s information was updated");

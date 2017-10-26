@@ -10,14 +10,26 @@
     function FormsController($scope, $state, $window, Authentication, form, CoursesService) {
         var vm = this;
         vm.courses = CoursesService.query();
-
+        vm.semesterOptions = semesterOptions();
         vm.authentication = Authentication;
         vm.form = form;
         vm.error = null;
         vm.remove = remove;
         vm.save = save;
 
-  
+        function semesterOptions(){
+            var term = ['Spring', 'Summer', 'Fall'];
+            var semesters = [];
+            var date = new Date();
+            var year = date.getFullYear();
+            for (var i = year; i > year - 7; i--) {
+                term.forEach(function(item, index){
+                    semesters.push(i+" "+item);
+                });
+            }
+            return semesters;
+        }
+
         // Remove existing Form
         function remove() {
             if ($window.confirm('Are you sure you want to delete?')) {

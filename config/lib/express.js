@@ -129,8 +129,7 @@ module.exports.initSession = function (app, db) {
  */
 module.exports.initModulesConfiguration = function (app, db) {
   config.files.server.configs.forEach(function (configPath) {
-    //require(path.resolve(configPath))(app, db);
-    require(path.resolve(configPath));
+    require(path.resolve(configPath))(app, db);
   });
 };
 
@@ -234,7 +233,7 @@ module.exports.init = function (db) {
   this.initSession(app, db);
 
   // Initialize Modules configuration
-  this.initModulesConfiguration(app);
+  this.initModulesConfiguration(app, db);
 
   // Initialize Helmet security headers
   this.initHelmetHeaders(app);

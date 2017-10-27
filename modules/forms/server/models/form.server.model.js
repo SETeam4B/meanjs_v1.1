@@ -131,6 +131,10 @@ var FormSchema = new Schema({
     phdExamDate: {
         type:Date
     },
+    phdExamGrade:{
+        type:Number,
+        default: 0
+    },
 
     speakScore: {
         type: Number,

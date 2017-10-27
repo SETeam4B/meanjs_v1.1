@@ -117,7 +117,7 @@ var FormSchema = new Schema({
     //phd and undergrad TA
     isTeachingTA: {
         type: String,
-        defualt: 'Yes'
+        defualt: 'No'
     },
 
 

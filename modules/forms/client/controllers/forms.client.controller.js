@@ -5,18 +5,38 @@
         .module('forms')
         .controller('FormsController', FormsController);
 
-    FormsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'formResolve', 'CoursesService'];
+    FormsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'formResolve', 'CoursesService','CountriesService'];
 
-    function FormsController($scope, $state, $window, Authentication, form, CoursesService) {
+    function FormsController($scope, $state, $window, Authentication, form, CoursesService, CountriesService) {
         var vm = this;
         vm.courses = CoursesService.query();
         vm.semesterOptions = semesterOptions();
+        vm.statusOptions = statusOptions();
+        vm.countryOptions = CountriesService.allCountries();
         vm.authentication = Authentication;
+
         vm.form = form;
         vm.error = null;
-        vm.phdExamDate = new Date(vm.form.phdExamDate);
+        vm.phdExamDate = formatDate();
         vm.remove = remove;
         vm.save = save;
+
+        function statusOptions(){
+            var status = [];
+            status.push("N/A");
+            status.push("Pending");
+            status.push("Accepted");
+            status.push("Rejected");
+            return status;
+        }
+        function formatDate(){
+            var examDate = new Date(vm.form.phdExamDate);
+            var year = examDate.getFullYear();
+            var month = examDate.getMonth();
+            var day = examDate.getDate();
+
+            return year + '-' + month + '-' + day;
+        }
 
         function semesterOptions(){
             var term = ['Spring', 'Summer', 'Fall'];

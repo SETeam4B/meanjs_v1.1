@@ -13,6 +13,9 @@
         vm.semesterOptions = semesterOptions();
         vm.statusOptions = statusOptions();
         vm.countryOptions = CountriesService.allCountries();
+        vm.offerTypeOptions = offerTypeOptions();
+        vm.categoryOptions = categoryOptions();
+        vm.teachingTAOptions = teachingTAOptions();
         vm.authentication = Authentication;
 
         vm.form = form;
@@ -28,6 +31,25 @@
             status.push("Accepted");
             status.push("Rejected");
             return status;
+        }
+
+        function offerTypeOptions(){
+            var offerTypes =[];
+            offerTypes.push("TA");
+            offerTypes.push("RA");
+            return offerTypes;
+        }
+        function categoryOptions(){
+            var category = [];
+            category.push("TA");
+            category.push("Grader");
+            category.push("UTA");
+        }
+        function teachingTAOptions(){
+            var teachingTA = [];
+            teachingTA.push("Yes");
+            teachingTA.push("No");
+            return teachingTA;
         }
         function formatDate(){
             var examDate = new Date(vm.form.phdExamDate);

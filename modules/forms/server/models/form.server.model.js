@@ -117,7 +117,7 @@ var FormSchema = new Schema({
     //phd and undergrad TA
     isTeachingTA: {
         type: String,
-        defualt: 'TA'
+        defualt: 'Yes'
     },
 
 
@@ -125,7 +125,7 @@ var FormSchema = new Schema({
 
     offerType:{
         type: String,
-        default: ''
+        default: 'TA'
     },
 
     phdExamDate: {

@@ -103,15 +103,10 @@
 
             function updateSuccessCallback(res) {
                 $state.go('forms.update');
-                /*
-               $state.go('forms.undergrad', {
-                 formId: res._id
-               });
-               */
             }
 
             function successCallback(res) {
-                $state.go('forms.undergrad');
+                $state.go('forms.submit');
                 /*
                $state.go('forms.undergrad', {
                  formId: res._id

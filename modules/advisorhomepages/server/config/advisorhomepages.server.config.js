@@ -9,4 +9,8 @@ var path = require('path'),
 /**
  * Advisorhomepages module init function.
  */
-
+module.exports = function (app, db) {
+    db: {
+        uri: 'mongodb://yoyis:willis@ds115045.mlab.com:15045/testsoftwareproject' //place the URI of your mongo database here.
+    }
+};

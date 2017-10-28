@@ -3,17 +3,17 @@
     <h1>Course List</h1>
   </div>
   <div class="col-md-12">
-    <form name="vm.form.ta-coordinatorForm" class="form-horizontal" ng-submit="vm.save(vm.form.ta-coordinatorForm.$valid)" novalidate>
+    <form name="vm.form.taCoordinator" class="form-horizontal" ng-submit="vm.save(vm.form.taCoordinator.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
           <label class="control-label" for="name">Name</label>
-          <input name="name" type="text" ng-model="vm.ta-coordinator.name" id="name" class="form-control" placeholder="Name" required>
-          <div ng-messages="vm.form.ta-coordinatorForm.name.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Ta coordinator name is required.</p>
+          <input name="name" type="text" ng-model="vm.taCoordinator.name" id="name" class="form-control" placeholder="Name" required>
+          <div ng-messages="vm.form.taCoordinator.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">taCoordinator name is required.</p>
           </div>
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-default">List</button>
+          <button type="submit" class="btn btn-default">{{vm.ta-coordinator._id ? 'Update' : 'Create'}}</button>
         </div>
         <div ng-show="vm.error" class="text-danger">
           <strong ng-bind="vm.error"></strong>

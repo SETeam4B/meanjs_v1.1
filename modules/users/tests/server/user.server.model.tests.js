@@ -40,32 +40,6 @@ describe('User Model Unit Tests:', function () {
     };
   });
 
-  describe('User Authentication Tests', function(){
-    it('should have at least one TA Coordinator', function(done){
-      User.find({roles:['tacoordinator']}, function(err, users){
-        var exists = users.length >= 1;
-        exists.should.equal(true);
-        done();
-      });
-    });
-
-    it('should have at least one Advisor', function(done){
-      User.find({roles:['advisor']}, function(err, users){
-        var exists = users.length >= 1;
-        exists.should.equal(true);
-        done();
-      });
-    });
-
-    it('should have at least one Faculty', function(done){
-      User.find({roles:['faculty']}, function(err, users){
-        var exists = users.length >= 1;
-        exists.should.equal(true);
-        done();
-      });
-    });
-  });
-
   describe('Method Save', function () {
     it('should begin with no users', function (done) {
       User.find({}, function (err, users) {

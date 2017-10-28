@@ -86,6 +86,12 @@
                 data: {
                     pageTitle: 'Form {{ formResolve.name }}'
                 }
+            })
+            .state('forms.submit',{
+                url: '/form/submited',
+                templateUrl: 'modules/forms/client/views/submit.confirmation.view.html',
+                controller: 'FormsController',
+                controllerAs: 'vm'
             });
     }
 

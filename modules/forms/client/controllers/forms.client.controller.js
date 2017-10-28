@@ -96,7 +96,7 @@
 
             // TODO: move create/update logic to service
             if (vm.form.username) {
-                vm.form.$update(updateuccessCallback, errorCallback);
+                vm.form.$update(updateSuccessCallback, errorCallback);
             } else {
                 vm.form.$save(successCallback, errorCallback);
             }

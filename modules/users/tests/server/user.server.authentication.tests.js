@@ -58,7 +58,6 @@ describe('User Authentication Unit Tests:', function () {
 
   after(function (done) {
     done();
-    next(); //????
     //User.remove().exec(done);
   });
 });

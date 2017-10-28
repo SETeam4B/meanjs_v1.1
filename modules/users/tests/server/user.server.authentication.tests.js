@@ -10,8 +10,7 @@ var should = require('should'),
   mg = require('../../../../config/lib/mongoose');
 
 mg.loadModels();
-var db;
-var User;
+var db, User;
 //var User = mongoose.model('User');
 /**
  * Unit tests

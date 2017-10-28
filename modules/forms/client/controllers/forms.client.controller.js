@@ -55,9 +55,16 @@
             var examDate = new Date(vm.form.phdExamDate);
             var year = examDate.getFullYear();
             var month = examDate.getMonth();
-            var day = examDate.getDate();
 
-            return year + '-' + month + '-' + day;
+            var day = examDate.getDate();
+            if(month >= 10)
+            {
+                return year + '-' + month + '-' + day;
+            }
+            else
+            {
+                return year + '-0' + month + '-' + day;
+            }
         }
 
         function semesterOptions(){

@@ -48,8 +48,14 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
 
         //console.log($scope.authentication.user.roles);
         //We need to make it so that roles only contains one value
-        if($scope.authentication.user.roles[0] === "tacoordinator"){
+        if($scope.authentication.user.roles[0] === 'tacoordinator'){
           $state.go('ta-coordinators.status', $state.previous.params);
+        }else if($scope.authentication.user.roles[0] === 'advisor'){
+          $state.go('advisorhomepages.list', $state.previous.params);
+        }else if($scope.authentication.user.roles[0] === 'user'){
+          //Do some extra work here to route student based on whether
+          //or not they have created an account and submitted a form.
+          $state.go('policy');
         }else{
           // And redirect to the previous or home page
           $state.go($state.previous.state.name || 'home', $state.previous.params);

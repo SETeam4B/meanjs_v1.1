@@ -12,6 +12,8 @@ module.exports = function(app) {
     .get(forms.list)
     .put(forms.update)
     .post(forms.create);
+app.route('/api/countries')
+    .get(forms.countries);
 
   app.route('/api/forms/:formId').all(formsPolicy.isAllowed)
     .get(forms.read)

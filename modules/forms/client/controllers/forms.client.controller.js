@@ -5,18 +5,77 @@
         .module('forms')
         .controller('FormsController', FormsController);
 
-    FormsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'formResolve', 'CoursesService'];
+    FormsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'formResolve', 'CoursesService','CountriesService'];
 
-    function FormsController($scope, $state, $window, Authentication, form, CoursesService) {
+    function FormsController($scope, $state, $window, Authentication, form, CoursesService, CountriesService) {
         var vm = this;
         vm.courses = CoursesService.query();
         vm.semesterOptions = semesterOptions();
+        vm.statusOptions = statusOptions();
+        vm.countryOptions = CountriesService.allCountries();
+        vm.offerTypeOptions = offerTypeOptions();
+        vm.categoryOptions = categoryOptions();
+        vm.teachingTAOptions = teachingTAOptions();
         vm.authentication = Authentication;
+
         vm.form = form;
         vm.error = null;
-        vm.phdExamDate = new Date(vm.form.phdExamDate);
+        vm.phdExamDate = formatDate();
         vm.remove = remove;
         vm.save = save;
+
+        function statusOptions(){
+            var status = [];
+            status.push("N/A");
+            status.push("Pending");
+            status.push("Accepted");
+            status.push("Rejected");
+            return status;
+        }
+
+        function offerTypeOptions(){
+            var offerTypes =[];
+            offerTypes.push("TA");
+            offerTypes.push("RA");
+            return offerTypes;
+        }
+        function categoryOptions(){
+            var category = [];
+            category.push("TA");
+            category.push("Grader");
+            category.push("UTA");
+        }
+        function teachingTAOptions(){
+            var teachingTA = [];
+            teachingTA.push("Yes");
+            teachingTA.push("No");
+            return teachingTA;
+        }
+        function formatDate(){
+            var examDate = new Date(vm.form.phdExamDate);
+            var year = examDate.getFullYear();
+            var month = examDate.getMonth();
+            var monthstr;
+            var daystr;
+            var day = examDate.getDate();
+            if(month >= 10)
+            {
+                monthstr=month;
+            }
+            else
+            {
+                monthstr = '0'+month;
+            }
+            if(day < 10)
+            {
+                daystr = '0'+day;
+            }
+            else
+            {
+                daystr = day;
+            }
+            return year + '-' + monthstr + '-' + daystr;
+        }
 
         function semesterOptions(){
             var term = ['Spring', 'Summer', 'Fall'];
@@ -47,13 +106,17 @@
 
             // TODO: move create/update logic to service
             if (vm.form.username) {
-                vm.form.$update(successCallback, errorCallback);
+                vm.form.$update(updateSuccessCallback, errorCallback);
             } else {
                 vm.form.$save(successCallback, errorCallback);
             }
 
+            function updateSuccessCallback(res) {
+                $state.go('forms.update');
+            }
+
             function successCallback(res) {
-                $state.go('forms.undergrad');
+                $state.go('forms.submit');
                 /*
                $state.go('forms.undergrad', {
                  formId: res._id

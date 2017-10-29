@@ -15,13 +15,16 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     $stateProvider
     .state('policy', {
       url: '/policy',
-      templateUrl: 'modules/core/client/views/policy.client.view.html'
+      templateUrl: 'modules/core/client/views/policy.client.view.html',
+      data: {
+        roles : ['user']
+      }
     });
 
     // Home state routing
     $stateProvider
     .state('home', {
-      url: '/',
+      url: '/home',
       templateUrl: 'modules/core/client/views/home.client.view.html'
     })
     .state('not-found', {

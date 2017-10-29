@@ -55,7 +55,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
         }else if($scope.authentication.user.roles[0] === 'user'){
           //Do some extra work here to route student based on whether
           //or not they have created an account and submitted a form.
-          $state.go('forms.undergrad');
+          $state.go('policy');
         }else{
           // And redirect to the previous or home page
           $state.go($state.previous.state.name || 'home', $state.previous.params);

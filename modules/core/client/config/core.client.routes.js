@@ -15,7 +15,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     $stateProvider
     .state('policy', {
       url: '/policy',
-      templateUrl: 'modules/core/client/views/policy.client.view.html'
+      templateUrl: 'modules/core/client/views/policy.client.view.html',
+      data: {
+        roles : ['user']
+      }
     });
 
     // Home state routing

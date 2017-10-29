@@ -38,7 +38,7 @@ var StudentInfoSchema = new Schema({
     }
 });
 
-
+mongoose.model('Advisorhomepage', StudentInfoSchema); //Hack to make tests work?? Fix me
 
 var StudentInfo = mongoose.model('StudentInfoSchema', StudentInfoSchema);
 

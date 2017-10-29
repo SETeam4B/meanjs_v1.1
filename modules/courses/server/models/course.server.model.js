@@ -33,7 +33,8 @@ var CourseSchema = new Schema({
         type: Number
     },
     numberOfSection: {
-        type: Number
+        type: Number,
+        default: 1
     },
     taHours: {
         type: Number

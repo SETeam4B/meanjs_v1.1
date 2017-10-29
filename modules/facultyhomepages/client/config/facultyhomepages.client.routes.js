@@ -49,9 +49,9 @@
           pageTitle: 'Edit Facultyhomepage {{ facultyhomepageResolve.name }}'
         }
       })
-      .state('facultyhomepages.view', {
+      .state('facultyhomepages.viewHome', {
         url: '/:facultyhomepageId',
-        templateUrl: 'modules/facultyhomepages/client/views/view-facultyhomepage.client.view.html',
+        templateUrl: 'modules/facultyhomepages/client/views/facultypage.client.view.html',
         controller: 'FacultyhomepagesController',
         controllerAs: 'vm',
         resolve: {

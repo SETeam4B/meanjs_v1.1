@@ -12,11 +12,14 @@ module.exports = function(app) {
     .get(forms.list)
     .put(forms.update)
     .post(forms.create);
+app.route('/api/countries')
+    .get(forms.countries);
 
   app.route('/api/forms/:formId').all(formsPolicy.isAllowed)
     .get(forms.read)
     .put(forms.update)
     .delete(forms.delete);
+
 
   // Finish by binding the Form middleware
   app.param('formId', forms.formByID);

@@ -207,23 +207,7 @@
                 <p class="help-block error-text" ng-message="required">Tertiary Couse Preference is required.</p>
               </div>
             </div>
-
-            <div class="form-group" show-errors>
-              <label class="control-label" for="preferenceCourse3">Tertiary Course Preference</label>
-              <select name="preferenceCourse3" id="preferenceCourse3"
-                      class="form-control"
-                      ng-model="vm.form.preferenceCourse3"
-                      requried>
-                <option ng-repeat="course in vm.courses"
-                        ng-selected="course._id === vm.form.preferenceCourse3"
-                        value="{{course._id}}">{{course.courseId+" - "+course.courseTitle}}
-                </option>
-              </select>
-              <div ng-messages="vm.form.formForm.preferenceCourse3.$error" role="alert">
-                <p class="help-block error-text" ng-message="required">Tertiary Couse Preference is required.</p>
-              </div>
-            </div>
-
+            
 
             <div class="form-group">
               <label class="control-label" for="gpa">GPA</label>

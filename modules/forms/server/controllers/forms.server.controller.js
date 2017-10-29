@@ -7,15 +7,21 @@ var path = require('path'),
   mongoose = require('mongoose'),
   Form = mongoose.model('Form'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
-  _ = require('lodash');
+  _ = require('lodash'),
+  country = require('country-list')();
 
+
+exports.countries = function(req,res){
+
+    res.jsonp(country.getNames());
+}
 /**
  * Create a Form
  */
 exports.create = function(req, res) {
   var form = new Form(req.body);
   form.user = req.user;
-  form.username = req.user.username; //Set unique username
+  form.username = req.user.username; //Set username
   form.save(function(err) {
     if (err) {
       return res.status(400).send({

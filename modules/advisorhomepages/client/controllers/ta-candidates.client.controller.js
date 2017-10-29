@@ -5,9 +5,9 @@
         .module('advisorhomepages')
         .controller('TACandidatesController', TACandidates);
 
-    TACandidates.inject = ['$scope'];
+    TACandidates.inject = ['$scope', '$modal', '$state'];
 
-    function TACandidates($scope) {
+    function TACandidates($scope, $modal, $state) {
 
         $scope.yolo = "hello World";
 
@@ -45,6 +45,16 @@
                 "yolo1": "exra Parameter"
             }
         ];
+
+        $scope.openModal = function () {
+            $modal.open({
+                // template: '<div ng-show="$state.includes(forms.master)"/>'
+                templateUrl: "modules/advisorhomepages/client/views/newStudentModal.client.view.html"
+                // controller: ModalController
+            }).result.then(function (res) {
+                // when modal is closed then call a function
+            });
+        }
 
         $scope.tryingNew2 = function (index) {
             update(index);

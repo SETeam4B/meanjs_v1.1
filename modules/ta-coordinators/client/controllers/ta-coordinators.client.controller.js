@@ -6,9 +6,9 @@
     .module('ta-coordinators')
     .controller('TaCoordinatorsController', TaCoordinatorsController);
 
-  TaCoordinatorsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'taCoordinatorResolve'];
+  TaCoordinatorsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'taCoordinatorResolve', 'CoursesService'];
 
-  function TaCoordinatorsController ($scope, $state, $window, Authentication, taCoordinator) {
+  function TaCoordinatorsController ($scope, $state, $window, Authentication, taCoordinator, CoursesService) {
     var vm = this;
 
     vm.authentication = Authentication;
@@ -17,6 +17,7 @@
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
+    vm.courses=CoursesService.query();
 
     // Remove existing Ta coordinator
     function remove() {

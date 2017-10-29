@@ -20,6 +20,10 @@ var TaCoordinatorSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  preferenceCourse1: {
+      type: Schema.ObjectId,
+      ref: 'Course'
+  },
   user: {
     type: Schema.ObjectId,
     ref: 'User'

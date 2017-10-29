@@ -12,8 +12,24 @@
             <p class="help-block error-text" ng-message="required">taCoordinator name is required.</p>
           </div>
         </div>
+
+
         <div class="form-group">
-          <button type="submit" class="btn btn-default">{{vm.ta-coordinator._id ? 'Update' : 'Create'}}</button>
+          <label class="control-label" for="preferencecourse1">Preference Course</label>
+          <select name="preferencecourse1" id="preferencecourse1"
+                  class="form-control"
+                  ng-model="vm.form.preferencecourse1">
+
+            <option ng-repeat="course in vm.courses"
+                    ng-selected="course._id === vm.form.preferencecourse1"
+                    value="{{course._id}}">{{course.courseId+" - "+course.courseTitle}}
+            </option>
+          </select>
+        </div>
+
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.taCoordinator._id ? 'Update' : 'Create'}}</button>
         </div>
         <div ng-show="vm.error" class="text-danger">
           <strong ng-bind="vm.error"></strong>

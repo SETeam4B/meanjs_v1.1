@@ -14,7 +14,8 @@ var FormSchema = new Schema({
     ufid: {
         type: Number,
         default: 0,
-        required: 'Please fill in your UFID number without dash.'
+        required: 'Please fill in your UFID number without dash.',
+        unique: true
     },
 
     email: {
@@ -80,21 +81,20 @@ var FormSchema = new Schema({
         default: 'USA',
         required: 'Please choose your origin country.'
     },
-    countryName: {
-        type: String,
-        default: 'USA'
-    },
     preferenceCourse1: {
         type: Schema.ObjectId,
-        ref: 'Course'
+        ref: 'Course',
+        requried: "Please choose your primary course preference."
     },
     preferenceCourse2: {
         type: Schema.ObjectId,
-        ref: 'Course'
+        ref: 'Course',
+        requried: "Please choose your secondary course preference."
     },
     preferenceCourse3: {
         type: Schema.ObjectId,
-        ref: 'Course'
+        ref: 'Course',
+        requried: "Please choose your tertiary course preference."
     },
 
     interestExperience: {
@@ -117,7 +117,7 @@ var FormSchema = new Schema({
     //phd and undergrad TA
     isTeachingTA: {
         type: String,
-        defualt: 'TA'
+        defualt: 'No'
     },
 
 
@@ -125,11 +125,15 @@ var FormSchema = new Schema({
 
     offerType:{
         type: String,
-        default: ''
+        default: 'TA'
     },
 
     phdExamDate: {
         type:Date
+    },
+    phdExamGrade:{
+        type:Number,
+        default: 0
     },
 
     speakScore: {

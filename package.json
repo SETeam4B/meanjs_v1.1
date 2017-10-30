@@ -56,12 +56,9 @@
     "morgan": "^1.6.1",
     "multer": "^1.0.6",
     "nodemailer": "^1.11.0",
-<<<<<<< HEAD
     "nodemailer-smtp-transport": "^2.7.4",
     "nodemailer-wellknown": "^0.2.3",
-=======
     "nodemon": "^1.12.1",
->>>>>>> dev
     "owasp-password-strength-test": "^1.3.0",
     "passport": "^0.2.2",
     "passport-facebook": "^2.0.0",

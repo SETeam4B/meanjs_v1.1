@@ -30,7 +30,7 @@ exports.invokeRolesPolicies = function () {
       resources: '/api/forms/:formId',
       permissions: ['get', 'put']
     }]
-  }, {
+  }/*, {
     roles: ['guest'],
     allows: [{
       resources: '/api/forms',
@@ -39,7 +39,7 @@ exports.invokeRolesPolicies = function () {
       resources: '/api/forms/:formId',
       permissions: ['get']
     }]
-  }]);
+  }*/]);
 };
 
 /**

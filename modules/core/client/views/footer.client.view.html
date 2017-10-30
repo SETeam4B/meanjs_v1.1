@@ -19,18 +19,24 @@
         <a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
       </li>
     </ul>
-    <div class="pull-left">
-      <p>Phone: (352) 392-1090<br>
-        Fax: (352) 392-6889<br></p>
-    </div>
-    <div class="pull-right">
-      <p>University of Florida - P.O. Box 116120<br>
-        Gainesville, FL 32611-6120 USA<br></p>
-    </div>
-    <div class="pull-right">
+    <div class="row">
+      <div class="col-xs-4 col-md-2 pull-left">
+        <p>Phone: (352) 392-1090<br>
+          Fax: (352) 392-6889<br></p>
+      </div>
+
+    <div class="col-xs-4 col-md-2 pull-center">
+    <!-- of course, pull-center doesn't exist, it's here to illustrate intention -->
       <p>CISE Student Services Center<br>
-        CSE Building Room E405<br>
+          CSE Building Room E405<br>
       </p>
     </div>
+
+    <div class="col-xs-6 col-md-3"> 
+      <p>University of Florida - P.O. Box 116120<br>
+          Gainesville, FL 32611-6120 USA<br>
+      </p>
+    </div>
+  </div>
   </nav>
 </div>

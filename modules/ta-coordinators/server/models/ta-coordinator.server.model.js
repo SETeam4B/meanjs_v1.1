@@ -30,4 +30,35 @@ var TaCoordinatorSchema = new Schema({
   }
 });
 
+var AdminSettings = new Schema({
+  undergrad:{
+    type : Number,
+    default : 0
+  },
+  grad:{
+    type : Number,
+    default : 0
+  },
+  faculty:{
+     type : Number,
+    default : 0
+  },
+  gpa:{
+     type : Number,
+    default : 0
+  },
+  studentassignment:{
+     type : Number,
+    default : 0
+  },
+  facultyassignment:{
+     type : Number,
+    default : 0
+  },
+  updatesemester:{
+      type : String
+  }
+});
+
 mongoose.model('TaCoordinator', TaCoordinatorSchema);
+mongoose.model('AdminSettings', AdminSettings);

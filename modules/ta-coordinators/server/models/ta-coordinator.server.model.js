@@ -46,7 +46,7 @@ var AdminSettings = new Schema({
   gpa:{
      type : Number,
     default : 0
-  }.
+  },
   studentassignment:{
      type : Number,
     default : 0

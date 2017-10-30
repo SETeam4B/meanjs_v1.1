@@ -64,7 +64,7 @@ exports.update = function(req, res) {
       });
     } else {
       //res.jsonp(forms);
-      //Update form 
+      //Update form
       form = _.extend(form, req.body);
 
       //Save form to db
@@ -116,8 +116,8 @@ exports.delete = function(req, res) {
 /**
  * List of Forms
  */
- /*
-exports.list = function(req, res) {
+
+exports.listAll = function(req, res) {
   Form.find().sort('-created').populate('user', 'displayName').exec(function(err, forms) {
     if (err) {
       return res.status(400).send({
@@ -128,7 +128,7 @@ exports.list = function(req, res) {
     }
   });
 };
-*/
+
 exports.list = function(req, res) {
   Form.findOne({'username' : req.user.username}).exec(function(err, forms) {
     if (err) {

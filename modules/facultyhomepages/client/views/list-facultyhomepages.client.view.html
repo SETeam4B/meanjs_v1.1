@@ -2,7 +2,7 @@
   <div class="page-header">
     <h1>TA Candidates</h1>
   </div>
-    <div class="row" ng-controller="ListingsController">
+    <div class="row" ng-controller="FacultyhomepagesListController">
       <div class="col-md-6">
         <div class="input-group" id="searchBar">
           <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
@@ -17,20 +17,14 @@
               <th>Assignment</th>
               <th></th>
             </tr>
-            <!-- <tr ng-repeat="listing in listings | filter: query" ng-click="showDetails($index)">
-              <td>{{listing.code}}</td>
-              <td>{{listing.name}}</td>
-              <td ng-click="deleteListing($index)"><span style="color: red;" class="glyphicon glyphicon-remove"></span></td>
-            </tr> -->
+            <tr ng-repeat="student in vm.user">
+              <td>{{student.username}}</td>
+              <td>{{student.firstName}}</td>
+              <td>'COP3502'</td>
+              <td>'Grader'</td>
+            </tr>
           </table>
         </div>
-        <!-- <form novalidate class="simple-form">
-          <h2>Add New Listing</h2>
-          Code: <input type="text" ng-model="newListing.code" /><br />
-          Name: <input type="text" ng-model="newListing.name" /><br />
-          Address: <input type="text" ng-model="newListing.address" /><br />
-          <button class="btn btn-primary" ng-click="addListing()">Add Listing</button>
-        </form> -->
       </div>
   </div>
 </section>

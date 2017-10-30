@@ -50,6 +50,8 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
         //We need to make it so that roles only contains one value
         if($scope.authentication.user.roles[0] === 'tacoordinator'){
           $state.go('ta-coordinators.status', $state.previous.params);
+        }else if($scope.authentication.user.roles[0] === 'faculty'){
+          $state.go('facultyhomepages.list', $state.previous.params);
         }else if($scope.authentication.user.roles[0] === 'advisor'){
           $state.go('advisorhomepages.list', $state.previous.params);
         }else if($scope.authentication.user.roles[0] === 'user'){

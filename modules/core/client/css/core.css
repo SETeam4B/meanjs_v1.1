@@ -44,9 +44,13 @@ a:hover .header-profile-image {
 .taasHeader {
   background-color: #0c4f9b;
   color: white;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .taasFooter{
   background-color: #396699;
   color: white;
+  padding-left: 12px;
+  padding-right: 12px;
 }

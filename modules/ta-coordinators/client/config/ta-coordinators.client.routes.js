@@ -38,10 +38,8 @@
       .state('ta-coordinators.status', {
         url: '/ta-coordinators/status',
         templateUrl: 'modules/ta-coordinators/client/views/status-ta-coordinator.client.view.html',
-        controller: 'TaCoordinatorsController',
+        controller: 'TaCoordinatorsStatusController',
         controllerAs: 'vm',
-        resolve: {
-          tacoordinatorResolve: newTaCoordinator
         },
         data: {
           pageTitle: 'Ta coordinators Status'

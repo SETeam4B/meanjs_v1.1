@@ -7,22 +7,18 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 /**
- * Ta coordinator Schema
+ * Facultyhomepage Schema
  */
-var TaCoordinatorSchema = new Schema({
+var FacultyhomepageSchema = new Schema({
   name: {
     type: String,
     default: '',
-    required: 'Please fill Ta coordinator name',
+    required: 'Please fill Facultyhomepage name',
     trim: true
   },
   created: {
     type: Date,
     default: Date.now
-  },
-  preferenceCourse1: {
-      type: Schema.ObjectId,
-      ref: 'Course'
   },
   user: {
     type: Schema.ObjectId,
@@ -30,4 +26,4 @@ var TaCoordinatorSchema = new Schema({
   }
 });
 
-mongoose.model('TaCoordinator', TaCoordinatorSchema);
+mongoose.model('Facultyhomepage', FacultyhomepageSchema);

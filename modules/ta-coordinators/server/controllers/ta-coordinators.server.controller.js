@@ -115,3 +115,14 @@ exports.taCoordinatorByID = function(req, res, next, id) {
     next();
   });
 };
+
+exports.findAllConsideredApplicants = function(req, res){
+    console.log("ping all considered applicants");
+    StudentInfoSchema.find({},function (err, data) {
+        if (err) {
+            return res.status(400).send( {message: "error finding all students"});
+        }
+        console.log("get find all");
+        return res.status(200).send({data:data});
+    })
+}

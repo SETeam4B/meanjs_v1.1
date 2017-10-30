@@ -27,17 +27,20 @@ var CourseSchema = new Schema({
         default: ''
     },
     enrollmentAddDrop: {
-        type: Number
+        type: Number,
+        default: 0
     },
     enrollmentSemester: {
-        type: Number
+        type: Number,
+        default: 0
     },
     numberOfSection: {
         type: Number,
         default: 1
     },
     taHours: {
-        type: Number
+        type: Number,
+        default: 0
     }
 
 

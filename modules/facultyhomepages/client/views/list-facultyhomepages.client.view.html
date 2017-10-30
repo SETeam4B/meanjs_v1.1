@@ -33,8 +33,8 @@
             <tr>
               <th>Courses</th>
             </tr>
-            <tr ng-repeat="course in vm.courses">
-              <td>{{course.courseId+" - "+course.courseTitle}}</td>
+            <tr ng-repeat="course in vm.courses | filter: 'Dobra'">
+              <td>{{course.courseId+" - "+course.courseTitle+" - "+course.instructor}}</td>
             </tr>
           </table>
         </div>

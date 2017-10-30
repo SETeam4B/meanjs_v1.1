@@ -24,7 +24,7 @@
         }
       })
       .state('ta-coordinators.courselist', {
-        url: '/create',
+        url: '/courselist',
         templateUrl: 'modules/ta-coordinators/client/views/courselist-ta-coordinator.client.view.html',
         controller: 'TaCoordinatorsController',
         controllerAs: 'vm',

@@ -40,7 +40,6 @@
         templateUrl: 'modules/ta-coordinators/client/views/status-ta-coordinator.client.view.html',
         controller: 'TaCoordinatorsStatusController',
         controllerAs: 'vm',
-        },
         data: {
           pageTitle: 'Ta coordinators Status'
         }

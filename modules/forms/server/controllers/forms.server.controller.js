@@ -118,7 +118,7 @@ exports.delete = function(req, res) {
  */
 
 exports.listAll = function(req, res) {
-  Form.find().sort('-created').populate('user', 'displayName').exec(function(err, forms) {
+  Form.find().sort('-created').exec(function(err, forms) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)

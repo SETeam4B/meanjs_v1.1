@@ -5,11 +5,11 @@
     .module('facultyhomepages')
     .controller('FacultyhomepagesListController', FacultyhomepagesListController);
 
-  FacultyhomepagesListController.$inject = ['FacultyhomepagesService', 'Users', 'CoursesService'];
+  FacultyhomepagesListController.$inject = ['FacultyhomepagesService', 'ListFormsService', 'CoursesService'];
 
-  function FacultyhomepagesListController(FacultyhomepagesService, Users, CoursesService) {
+  function FacultyhomepagesListController(FacultyhomepagesService, ListFormsService, CoursesService) {
     var vm = this;
-    vm.user = Users.query();
+    vm.user = ListFormsService.query();
     vm.courses = CoursesService.query();
     vm.facultyhomepages = FacultyhomepagesService.query();
 

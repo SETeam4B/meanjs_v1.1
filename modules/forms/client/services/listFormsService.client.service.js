@@ -9,7 +9,7 @@
   ListFormsService.$inject = ['$resource'];
 
   function ListFormsService($resource) {
-    return $resource('api/forms/findAll', {
+    return $resource('api/listForm', {
       username: '@username'
     }, {
       update: {

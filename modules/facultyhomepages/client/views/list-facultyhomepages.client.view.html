@@ -18,10 +18,10 @@
               <th></th>
             </tr>
             <tr ng-repeat="student in vm.user">
-              <td>{{student.username}}</td>
-              <td>{{student.firstName}}</td>
-              <td>'COP3502'</td>
-              <td>'Grader'</td>
+              <td>{{student.ufid}}</td>
+              <td>{{student.firstName +' '+ student.lastName}}</td>
+              <td>CEN3031</td>
+              <td>{{student.category}}</td>
             </tr>
           </table>
         </div>

@@ -9,6 +9,7 @@
   TaCoordinatorsController.$inject = ['$scope', '$state', '$window', 'Authentication','CoursesService'];
 
   function TaCoordinatorsController ($scope, $state, $window, Authentication, CoursesService) {
+
     var vm = this;
 
     vm.authentication = Authentication;
@@ -16,6 +17,7 @@
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
+    vm.courses=CoursesService.query();
 
 vm.semester = currentSemester();
      $scope.coursesData = CoursesService.query();

@@ -20,6 +20,7 @@
         controller: 'FacultyhomepagesListController',
         controllerAs: 'vm',
         data: {
+          roles:['faculty'],
           pageTitle: 'Facultyhomepages List'
         }
       })
@@ -32,7 +33,7 @@
           facultyhomepageResolve: newFacultyhomepage
         },
         data: {
-          roles: ['user', 'admin'],
+          roles: ['user', 'admin','faculty'],
           pageTitle: 'Facultyhomepages Create'
         }
       })
@@ -45,7 +46,7 @@
           facultyhomepageResolve: getFacultyhomepage
         },
         data: {
-          roles: ['user', 'admin'],
+          roles: ['user', 'admin','faculty'],
           pageTitle: 'Edit Facultyhomepage {{ facultyhomepageResolve.name }}'
         }
       })
@@ -58,6 +59,7 @@
           facultyhomepageResolve: getFacultyhomepage
         },
         data: {
+          roles : ['faculty'],
           pageTitle: 'Facultyhomepage {{ facultyhomepageResolve.name }}'
         }
       });

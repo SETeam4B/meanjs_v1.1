@@ -1,24 +1,69 @@
 <section>
   <div class="page-header">
-    <h1>Course List</h1>
+    <h1>Course List  -  {{vm.semester}}</h1>
   </div>
-  <div class="col-md-12">
-    <form name="vm.form.ta-coordinatorForm" class="form-horizontal" ng-submit="vm.save(vm.form.ta-coordinatorForm.$valid)" novalidate>
-      <fieldset>
-        <div class="form-group" show-errors>
-          <label class="control-label" for="name">Name</label>
-          <input name="name" type="text" ng-model="vm.ta-coordinator.name" id="name" class="form-control" placeholder="Name" required>
-          <div ng-messages="vm.form.ta-coordinatorForm.name.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Ta coordinator name is required.</p>
-          </div>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-default">List</button>
-        </div>
-        <div ng-show="vm.error" class="text-danger">
-          <strong ng-bind="vm.error"></strong>
-        </div>
-      </fieldset>
-    </form>
+
+
+  <div class="row">
+    <div class="col-md-2">Course Number</div>
+    <div class="col-md-4">Course Name</div>
+    <div class="col-md-4">Instructor</div>
+    <div class="col-md-2">Number of Sections</div>
   </div>
+
+  <accordion close-others="oneAtATime">
+
+    <accordion-group ng-repeat="course in coursesData" is-open="status.open">
+      <accordion-heading>
+
+        <div class="row">
+          <div class="col-md-2">{{course.courseId}}</div>
+          <div class="col-md-4">{{course.courseTitle}}</div>
+          <div class="col-md-4">{{course.instructor}}</div>
+          <div class="col-md-2">{{course.numberOfSection}}</div>
+        </div>
+      </accordion-heading>
+
+      <!--TODO: change this-->
+      <div class="container row">
+        <!--<div class="container row" ng-controller="" ng-init="findOne()">-->
+        <div class="col-md-offset-1 col-md-10 formWrapper">
+          <div class="page-header">
+            <h3>Course Info</h3>
+
+            <form name="Course Info" class="form-horizontal" ng-submit="updatingCourse(course)">
+              <fieldset>
+                <div class="form-group" show-errors>
+                  <label for="drop_add">Enrollment end of Drop/Add:</label>
+                  <input name="drop_add" type="number" ng-model="course.enrollmentAddDrop" id="drop_add" class="form-control">
+                </div>
+
+                <div class="form-group" show-errors>
+                  <label for="endsemester">Enrollment end of semester:</label>
+                  <input name="endsemester" type="number" ng-model="course.enrollmentSemester" id="endsemester" class="form-control">
+                </div>
+
+                <div class="form-group">
+                  <label for="tahour">TA hours for course:</label>
+                  <input name="tahour" type="number" ng-model="course.taHours" id="tahour" class="form-control">
+                </div>
+
+                <div class="form-group">
+                  <input type="submit" class="btn btn-default">
+                </div>
+               </fieldset>
+            </form>
+        </div>
+        </div>
+      </div>
+
+    </accordion-group>
+
+
+    <!--</accordion-group>-->
+  </accordion>
+
+
+
 </section>
+

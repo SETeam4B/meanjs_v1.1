@@ -2,8 +2,6 @@
   <div class="page-header">
     <h1>TA Candidates</h1>
   </div>
-<<<<<<< HEAD
-
   <button type="button" class="btn btn-default" ng-click="pullAllConsideredStudents()">reject</button>
 
   <table>
@@ -135,7 +133,6 @@
   <!--</div>-->
 
 
-=======
   <div class="list-group">
     <a ng-repeat="ta-coordinator in vm.taCoordinators"
        ui-sref="taCoordinators.view({ ta-coordinatorId: ta-coordinator._id })"
@@ -153,7 +150,6 @@
   <div class="alert alert-warning text-center" ng-if="vm.taCoordinators.$resolved && !vm.taCoordinators.length">
     No Ta coordinator yet, why don't you <a ui-sref="taCoordinators.create">create one</a>?
   </div>
->>>>>>> 6dce496dedeea96ee7cb99fed91cac2744fbee27
 </section>
 
 

@@ -3,7 +3,7 @@
 
     angular
         .module('ta-coordinators')
-        .controller('TACandidatesController', TACandidates);
+        .controller('CoordinatorTACandidatesController', TACandidates);
 
     TACandidates.inject = ['$scope'];
 

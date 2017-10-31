@@ -5,7 +5,7 @@
  */
 var path = require('path'),
     mongoose = require('mongoose'),
-    Form = mongoose.model('Form'),
+       Form = mongoose.model('Form'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
     _ = require('lodash'),
     country = require('country-list')(),
@@ -178,7 +178,7 @@ exports.list = function(req, res) {
  });
 };
 */
-exports.allStudents = function () {
+exports.allStudents = function (req,res) {
 
     Form.find({}, function (err, data) {
         if (err) {
@@ -202,43 +202,44 @@ exports.list = function (req, res) {
             res.jsonp(forms);
         }
     });
+}
 
 
-        exports.listAll = function (req, res) {
-            Form.find().sort('-created').exec(function (err, forms) {
-                if (err) {
-                    return res.status(400).send({
-                        message: errorHandler.getErrorMessage(err)
-                    });
-                } else {
-                    res.jsonp(forms);
-                }
-            });
-        };
-
-    };
-
-
-    /**
-     * Form middleware
-     */
-    exports.formByID = function (req, res, next, id) {
-
-        if (!mongoose.Types.ObjectId.isValid(id)) {
+exports.listAll = function (req, res) {
+    Form.find().sort('-created').exec(function (err, forms) {
+        if (err) {
             return res.status(400).send({
-                message: 'Form is invalid'
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.jsonp(forms);
+        }
+    });
+}
+
+
+
+
+/**
+ * Form middleware
+ */
+exports.formByID = function (req, res, next, id) {
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).send({
+            message: 'Form is invalid'
+        });
+    }
+
+    Form.findById(id).populate('user', 'displayName').exec(function (err, form) {
+        if (err) {
+            return next(err);
+        } else if (!form) {
+            return res.status(404).send({
+                message: 'No Form with that identifier has been found'
             });
         }
-
-        Form.findById(id).populate('user', 'displayName').exec(function (err, form) {
-            if (err) {
-                return next(err);
-            } else if (!form) {
-                return res.status(404).send({
-                    message: 'No Form with that identifier has been found'
-                });
-            }
-            req.form = form;
-            next();
-        });
-    };
+        req.form = form;
+        next();
+    });
+};

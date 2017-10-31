@@ -73,8 +73,9 @@
             vm.form = {};
         }
 
-        $scope.tryingNew2 = function (index) {
+        $scope.tryingNew3 = function (index) {
             // update(index);
+            debugger;
             console.log($scope.allStudentForms);
             debugger;
         }

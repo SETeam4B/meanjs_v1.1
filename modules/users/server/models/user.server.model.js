@@ -79,7 +79,7 @@ var UserSchema = new Schema({
   roles: {
     type: [{
       type: String,
-      enum: ['user', 'admin']
+      enum: ['user', 'admin','faculty','advisor','tacoordinator']
     }],
     default: ['user'],
     required: 'Please provide at least one role'
@@ -132,7 +132,7 @@ UserSchema.pre('validate', function (next) {
  */
 UserSchema.methods.hashPassword = function (password) {
   if (this.salt && password) {
-    return crypto.pbkdf2Sync(password, new Buffer(this.salt, 'base64'), 10000, 64).toString('base64');
+    return crypto.pbkdf2Sync(password, new Buffer(this.salt, 'base64'), 10000, 64,'sha512').toString('base64');
   } else {
     return password;
   }

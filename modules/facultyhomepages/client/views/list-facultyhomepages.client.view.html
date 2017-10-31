@@ -1,0 +1,43 @@
+<section>
+  <div class="page-header">
+    <h1>TA Candidates</h1>
+  </div>
+    <div class="row" ng-controller="FacultyhomepagesListController">
+      <div class="col-md-6">
+        <div class="input-group" id="searchBar">
+          <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
+          <input type="text" class="form-control" placeholder="Search" ng-model="searchResult">
+        </div>
+        <div class="tableWrapper">
+          <table class="table table-striped table-hover">
+            <tr>
+              <th>UFID</th>
+              <th>Name</th>
+              <th>Preference</th>
+              <th>Assignment</th>
+              <th></th>
+            </tr>
+            <tr ng-repeat="student in vm.user | filter: searchResult">
+              <td>{{student.ufid}}</td>
+              <td>{{student.firstName +' '+ student.lastName}}</td>
+              <td>CEN3031</td>
+              <td>{{student.category}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="tableWrapper">
+          <table class="table table-striped table-hover">
+            <tr>
+              <th>Courses</th>
+            </tr>
+            <tr ng-repeat="course in vm.courses | filter: 'Dobra'">
+              <td>{{course.courseId+" - "+course.courseTitle+" - "+course.instructor}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+  </div>
+</section>

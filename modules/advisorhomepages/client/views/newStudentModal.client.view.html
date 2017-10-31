@@ -1,0 +1,30 @@
+<section ng-controller="NewStudentModalController">
+
+  <div class="modal-header">
+
+  </div>
+
+  <div class="modal-body">
+
+    <div class="btn-group" dropdown is-open="status.isopen">
+      <button id="single-button" type="button" class="btn btn-primary" dropdown-toggle ng-disabled="disabled">
+        Select Form <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" dropdown-menu role="menu" aria-labelledby="single-button">
+        <li role="menuitem" ng-repeat="form in modalForms" ng-click="setIndex(modalForms.indexOf(form))">
+          {{form.formName}}
+        </li>
+      </ul>
+    </div>
+
+    <div ng-include="modalForms[formIndex].url"></div>
+
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="$dismiss()">Cancel</button>
+    <button type="button" class="btn btn-primary" ng-click="$close()">Submit</button>
+  </div>
+
+
+</section>

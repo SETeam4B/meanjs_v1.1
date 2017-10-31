@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Forms</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="form in vm.forms"
+       ui-sref="forms.view({ formId: form._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="form.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="form.user" ng-bind="form.user.displayName"></span>
+        <span ng-if="!form.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="form.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.forms.$resolved && !vm.forms.length">
+    No Forms yet, why don't you <a ui-sref="forms.create">create one</a>?
+  </div>
+</section>

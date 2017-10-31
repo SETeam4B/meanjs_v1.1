@@ -1,0 +1,279 @@
+<section>
+  </br>
+  <div class="page-header">
+    <h1>TA Application Form</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <!-- Add a ui-sref property to the anchor tags to allow navigation between different states -->
+      <ul class="nav nav-pills">
+        <li><a ui-sref="forms.undergrad">Undergraduate</a></li>
+        <li><a ui-sref="forms.master" class="bg-info text-white" >Master</a></li>
+        <li><a ui-sref="forms.phd">Ph.D.</a></li>
+      </ul>
+
+    </div>
+
+    <form name="vm.form.formForm" class="form-horizontal" ng-submit="vm.save(vm.form.formForm.$valid)" novalidate>
+      <div class="row">
+        <fieldset>
+          <div class="col-md-8">
+
+            <div class="form-group" show-errors>
+              <label class="control-label" for="ufid">UFID# (no dashes)</label>
+              <input name="ufid" type="text" ng-model="vm.form.ufid" id="ufid" class="form-control" placeholder="UFID"
+                     required>
+              <div ng-messages="vm.form.formForm.ufid.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">UFID is required.</p>
+              </div>
+            </div>
+
+
+            <div class="form-group" show-errors>
+              <label class="control-label" for="email">Email</label>
+              <input name="email" type="email" ng-model="vm.form.email" id="email" class="form-control"
+                     placeholder="Email"
+                     required>
+              <div ng-messages="vm.form.formForm.email.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Email is required.</p>
+              </div>
+            </div>
+
+
+            <div class="form-group" show-errors>
+              <label class="control-label" for="firstName">First Name</label>
+              <input name="firstName" type="text" ng-model="vm.form.firstName" id="firstName" class="form-control"
+                     placeholder="First Name"
+                     required>
+              <div ng-messages="vm.form.formForm.firstName.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">First name is required.</p>
+              </div>
+            </div>
+
+
+            <div class="form-group" show-errors>
+              <label class="control-label" for="middleName">Middle Name</label>
+              <input name="middleName" type="text" ng-model="vm.form.middleName" id="middleName" class="form-control"
+                     placeholder="Middle Name">
+            </div>
+
+
+            <div class="form-group" show-errors>
+              <label class="control-label" for="lastName">Last Name</label>
+              <input name="lastName" type="text" ng-model="vm.form.lastName" id="lastName" class="form-control"
+                     placeholder="Last Name"
+                     required>
+              <div ng-messages="vm.form.formForm.lastName.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Last name is required.</p>
+              </div>
+            </div>
+
+
+            <div class="form-group" show-errors>
+              <label class="control-label" for="street">Street</label>
+              <input name="street" type="text" ng-model="vm.form.street" id="street" class="form-control"
+                     placeholder="Street"
+                     required>
+              <div ng-messages="vm.form.formForm.street.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Street is required.</p>
+              </div>
+            </div>
+
+
+            <div class="form-group" show-errors>
+              <label class="control-label" for="city">City</label>
+              <input name="city" type="text" ng-model="vm.form.city" id="city" class="form-control"
+                     placeholder="City"
+                     required>
+              <div ng-messages="vm.form.formForm.city.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">City is required.</p>
+              </div>
+            </div>
+
+
+            <div class="form-group" show-errors>
+              <label class="control-label" for="state">State or Province</label>
+              <input name="state" type="text" ng-model="vm.form.state" id="state" class="form-control"
+                     placeholder="State"
+                     required>
+              <div ng-messages="vm.form.formForm.state.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Street or Province is required.</p>
+              </div>
+            </div>
+
+
+            <div class="form-group" show-errors>
+              <label class="control-label" for="zipcode">ZIP Code</label>
+              <input name="zipcode" type="number" ng-model="vm.form.zipcode" id="zipcode" class="form-control"
+                     placeholder="ZIP Code"
+                     required>
+              <div ng-messages="vm.form.formForm.zipcode.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">ZIP code is required.</p>
+              </div>
+            </div>
+
+
+            <div class="form-group" show-errors>
+              <label class="control-label" for="phone">Phone Number</label>
+              <input name="phone" type="number" ng-model="vm.form.phone" id="phone" class="form-control"
+                     placeholder="Phone Number"
+                     required>
+              <div ng-messages="vm.form.formForm.phone.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Phone number is required.</p>
+              </div>
+            </div>
+
+
+            <div class="form-group" show-errors>
+              <label class="control-label" for="semesterAdmitted">Semester Admitted</label>
+              <select name="semesterAdmitted" id="semesterAdmitted"
+                      class="form-control"
+                      ng-model="vm.form.semesterAdmitted"
+                      required>
+                <option ng-repeat="semester in vm.semesterOptions"
+                        ng-selected="semester === vm.form.semesterAdmitted"
+                        value="{{semester}}"> {{semester}}
+                </option>
+              </select>
+              <div ng-messages="vm.form.formForm.semesterAdmitted.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Admitted semester is required.</p>
+              </div>
+            </div>
+
+
+            <div class="form-group" show-errors>
+              <label class="control-label" for="originCountry">Country of Origin</label>
+              <select name="originCountry" id="originCountry"
+                      class="form-control"
+                      ng-model="vm.form.originCountry"
+                      required>
+                <option ng-repeat="country in vm.countryOptions"
+                        ng-selected="country === vm.form.originCountry"
+                        value="{{country}}"> {{country}}
+                </option>
+              </select>
+              <div ng-messages="vm.form.formForm.originCountry.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Country of origin is required.</p>
+              </div>
+            </div>
+
+
+            <div class="form-group" show-errors>
+              <label class="control-label" for="preferenceCourse1">Primary Course Preference</label>
+              <select name="preferenceCourse1" id="preferenceCourse1"
+                      class="form-control"
+                      ng-model="vm.form.preferenceCourse1"
+                      requried>
+                <option ng-repeat="course in vm.courses"
+                        ng-selected="course._id === vm.form.preferenceCourse1"
+                        value="{{course._id}}">{{course.courseId+" - "+course.courseTitle}}
+                </option>
+              </select>
+              <div ng-messages="vm.form.formForm.preferenceCourse1.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Primary Course Preference is required.</p>
+              </div>
+            </div>
+
+
+            <div class="form-group" show-errors>
+              <label class="control-label" for="preferenceCourse2">Secondary Course Preference</label>
+              <select name="preferenceCourse2" id="preferenceCourse2"
+                      class="form-control"
+                      ng-model="vm.form.preferenceCourse2"
+                      requried>
+                <option ng-repeat="course in vm.courses"
+                        ng-selected="course._id === vm.form.preferenceCourse2"
+                        value="{{course._id}}">{{course.courseId+" - "+course.courseTitle}}
+                </option>
+              </select>
+              <div ng-messages="vm.form.formForm.preferenceCourse2.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Secondary Course Preference is required.</p>
+              </div>
+            </div>
+
+
+            <div class="form-group" show-errors>
+              <label class="control-label" for="preferenceCourse3">Tertiary Course Preference</label>
+              <select name="preferenceCourse3" id="preferenceCourse3"
+                      class="form-control"
+                      ng-model="vm.form.preferenceCourse3"
+                      requried>
+                <option ng-repeat="course in vm.courses"
+                        ng-selected="course._id === vm.form.preferenceCourse3"
+                        value="{{course._id}}">{{course.courseId+" - "+course.courseTitle}}
+                </option>
+              </select>
+              <div ng-messages="vm.form.formForm.preferenceCourse3.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Tertiary Couse Preference is required.</p>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="control-label" for="gpa">GPA</label>
+              <input name="gpa" type="number" ng-model="vm.form.gpa" id="gpa" class="form-control" placeholder="GPA">
+            </div>
+
+
+            <div class="form-group">
+              <label class="control-label" for="interestExperience">Interests and experience</label>
+              <textarea name="interestExperience" rows="4" ng-model="vm.form.interestExperience" id="interestExperience"
+                        class="form-control"></textarea>
+            </div>
+
+
+            <div class="form-group">
+              <label class="control-label" for="previousCourseTaken">Previous Courses Taken</label>
+              <textarea name="previousCourseTaken" rows="4" ng-model="vm.form.previousCourseTaken"
+                        id="previousCourseTaken" class="form-control"></textarea>
+            </div>
+
+
+            <div class="form-group">
+              <label class="control-label" for="plannedAbsences">Days/Periods of Planned Work Absences</label>
+              <textarea name="plannedAbsences" rows="4" ng-model="vm.form.plannedAbsences" id="plannedAbsences"
+                        class="form-control"></textarea>
+            </div>
+
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-default btn-primary">{{vm.form.username ? 'Update' : 'Submit'}}</button>
+            </div>
+            <div ng-show="vm.error" class="text-danger">
+              <strong ng-bind="vm.error"></strong>
+            </div>
+
+
+          </div>
+          <div class="col-md-4">
+            <div class="panel panel-default panel-success class">
+              <div class="panel-heading">Application Status</div>
+              <div class="panel-body">
+
+                <select name="status" id="status"
+                        class="form-control"
+                        ng-model="vm.form.status"
+                        disabled>
+
+                  <option ng-repeat="status in vm.statusOptions"
+                          ng-selected="status === vm.form.status"
+                          value="{{status}}"> {{status}}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+    </form>
+
+    </br>
+    </br>
+    </br>
+    </br>
+
+
+  </div>
+</section>

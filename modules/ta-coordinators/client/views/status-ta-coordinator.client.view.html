@@ -1,0 +1,103 @@
+<section>
+  <div class="page-header">
+    <h1>Status</h1>
+  </div>
+    <div class="row">
+      <!-- Add a ui-sref property to the anchor tags to allow navigation between different states -->
+      <ul class="nav nav-pills">
+        <li><a ui-sref="ta-coordinators.status" class="bg-info text-white">Status</a></li>
+        <li><a ui-sref="ta-coordinators.tacandidates">TA Candidates</a></li>
+        <li><a ui-sref="ta-coordinators.courselist">Course List</a></li>
+        <li><a ui-sref="ta-coordinators.status">TA Recommendations</a></li>
+        <li><a ui-sref="ta-coordinators.status">Assignments</a></li>
+      </ul>
+    </div>
+  <div class="container">
+    <div class="row">
+  <div class="radio">
+    <b class='col-sm-4'>Undergraduate Access to Apply:</b>
+    <label class='col-sm-2'><input type="radio" name="UndergraduateAccess" ng-model="undergrad" value="1">yes</label>
+    <label class="col-sm-2 radio-inline"><input type="radio" name="UndergraduateAccess" ng-model="undergrad" value="0">no</label>
+    </div>
+  </div>
+  <div class="row">
+  <div class="radio">
+    <b class='col-sm-4'>Graduate Access to Apply:</b>
+    <label class='col-sm-2'><input type="radio" name="GraduateAccess" ng-model="grad" value="1">yes</label>
+    <label class="col-sm-2 radio-inline"><input type="radio" name="GraduateAccess" ng-model="grad" value="0">no</label>
+    </div>
+    </div>
+    <div class="row">
+  <div class="radio">
+    <b class='col-sm-4'>Faculty Access to Recommend:</b>
+    <label class='col-sm-2'><input type="radio" name="FacultyAccessToRecommend" ng-model="faculty" value="1">yes</label>
+    <label class="col-sm-2 radio-inline"><input type="radio" name="FacultyAccessToRecommend" ng-model="faculty" value="0">no</label>
+  </div>
+  </div>
+  <div class="row">
+  <div class="radio">
+    <b class='col-sm-4'>Display GPA, TSE etc. for student review:</b>
+    <label class='col-sm-2'><input type="radio" name="displaygpa" ng-model="gpa" value="1">yes</label>
+    <label class="col-sm-2 radio-inline"><input type="radio" name="displaygpa" ng-model="gpa" value="0">no</label>
+  </div>
+  </div>
+  <div class="row">
+  <div class="radio">
+    <b class='col-sm-4'>Display Final TA Assignments for Students:</b>
+    <label class='col-sm-2'><input type="radio" name="displayfinalstudents" ng-model="studentassignment" value="1">yes</label>
+    <label class="col-sm-2 radio-inline"><input type="radio" name="displayfinalstudents" ng-model="studentassignment" value="0">no</label>
+  </div>
+  </div>
+  <div class="row">
+  <div class="radio">
+    <b class='col-sm-4'>Display Final TA Assignments for Faculty:</b>
+    <label class='col-sm-2'><input type="radio" name="displayfinalfaculty" ng-model="facultyassignment" value="1">yes</label>
+    <label class="col-sm-2 radio-inline"><input type="radio" name="displayfinalfaculty" ng-model="facultyassignment" value="0">no</label>
+    </div>
+    </div>
+    <div class="row" style="padding-top: 10px">
+    <div>
+      <label class="col-sm-4 control-label" for="update_semester">Update Semester</label>
+      <select class="col-sm-2 name="update_semester" id="update_semester"
+              ng-model="update_semester"
+              >
+        <option ng-repeat="semester in vm.semesterOptions"
+                ng-selected="semester === update_semester"
+                value="{{semester}}"> {{semester}}
+        </option>
+      </select>
+      </div>
+      </div>
+      <div class="row">
+      <div class='col-sm-4' style="padding-top: 10px">
+    <button class="btn btn-success" ng-click="submit()">Submit</button>
+    </div>
+    </div>
+    <div class="row">
+      <div class='col-sm-4' style="padding-top: 10px">
+        <button class="btn btn-danger">Reset TAAS?</button>
+      </div>
+    </div>
+</div>
+
+
+<!--
+  <div class="list-group">
+    <a ng-repeat="ta-coordinator in vm.taCoordinators"
+       ui-sref="taCoordinators.view({ ta-coordinatorId: ta-coordinator._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="taCoordinator.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="taCoordinator.user" ng-bind="taCoordinator.user.displayName"></span>
+        <span ng-if="!taCoordinator.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="ta-coordinator.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.taCoordinators.$resolved && !vm.taCoordinators.length">
+    No Ta coordinators yet, why don't you <a ui-sref="taCoordinators.create">create one</a>?
+  </div>
+-->
+</section>

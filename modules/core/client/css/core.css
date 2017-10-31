@@ -1,5 +1,6 @@
 .content {
   margin-top: 50px;
+  margin-bottom: 150px;
 }
 .undecorated-link:hover {
   text-decoration: none;
@@ -34,4 +35,25 @@ a:hover .header-profile-image {
 }
 .has-error .help-inline.error-text {
   display: inline;
+}
+
+.webbody {
+  background-color: #eff0f2;
+}
+
+.taasHeader {
+  background-color: #0c4f9b;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.taasFooter{
+  background-color: #0c4f9b;
+  color: white;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 12px;
+  font-weight: 101;
+  font-size: 12px;
 }

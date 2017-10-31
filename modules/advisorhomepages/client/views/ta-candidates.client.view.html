@@ -1,0 +1,97 @@
+<section ng-controller="TACandidatesController">
+  <div class="page-header">
+    <h1>TA Candidates</h1>
+  </div>
+
+  <!--<div ng-app="advisorhomepages">-->
+    <!--<button ui-sref="Modal.confirmAddToCart">stateful</button>-->
+    <!--<div ui-view="modal"></div>-->
+  <!--</div>-->
+  <!--<undergrad></undergrad>-->
+
+  <button type="button" class="btn btn-default" ng-click="openModal()">Add new student</button>
+
+  <table>
+    <thead>
+    <tr>
+      <th class="col-xs-2">Id</th>
+      <th class="col-xs-9">Name</th>
+      <th class="col-xs-1"> Type</th>
+      <th class="col-xs-1"> yolo1</th>
+    </tr>
+    </thead>
+  </table>
+
+  <accordion close-others="oneAtATime">
+
+    <accordion-group ng-repeat="row in fakeData" is-open="status.open">
+      <accordion-heading>
+        <table>
+          <thead>
+          <tr>
+            <th class="col-xs-2">Id</th>
+            <th class="col-xs-9">Name</th>
+            <th class="col-xs-1"> Type</th>
+            <th class="col-xs-1"> yolo1</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="col-xs-2">{{row.id}}</td>
+            <td class="col-xs-9">{{row.name}}</td>
+            <td class="col-xs-1">{{row.type}}</td>
+            <td class="col-xs-1">{{row.yolo1}}</td>
+          </tr>
+          </tbody>
+
+        </table>
+      </accordion-heading>
+
+      <!--TODO: change this-->
+      <div ng-include="'modules/advisorhomepages/client/views/advisorForm.html'"></div>
+
+    </accordion-group>
+
+    <!--<accordion-group heading="Static Header, initially expanded" is-open="status.isFirstOpen"-->
+    <!--is-disabled="status.isFirstDisabled">-->
+    <!--This content is straight in the template.-->
+    <!--</accordion-group>-->
+    <!--<accordion-group heading="{{group.title}}" ng-repeat="group in groups">-->
+    <!--{{group.content}}-->
+    <!--</accordion-group>-->
+    <!--<accordion-group heading="Dynamic Body Content">-->
+    <!--<p>The body of the accordion group grows to fit the contents</p>-->
+    <!--<button type="button" class="btn btn-default btn-sm" ng-click="addItem()">Add Item</button>-->
+    <!--<div ng-repeat="item in items">{{item}}</div>-->
+    <!--</accordion-group>-->
+
+
+    <!--<accordion-group heading="Custom template" template-url="group-template.html">-->
+    <!--Hello-->
+    <!--</accordion-group>-->
+    <!--<accordion-group heading="Delete account" panel-class="panel-danger">-->
+    <!--<p>Please, to delete your account, click the button below</p>-->
+    <!--<button class="btn btn-danger">Delete</button>-->
+    <!--</accordion-group>-->
+  </accordion>
+
+  <!--<div class="list-group">-->
+  <!--<a ng-repeat="advisorhomepage in vm.advisorhomepages"-->
+  <!--ui-sref="advisorhomepages.view({ advisorhomepageId: advisorhomepage._id })"-->
+  <!--class="list-group-item">-->
+  <!--<small class="list-group-item-text">-->
+  <!--Posted on-->
+  <!--<span ng-bind="advisorhomepage.created | date:'mediumDate'"></span>-->
+  <!--by-->
+  <!--<span ng-if="advisorhomepage.user" ng-bind="advisorhomepage.user.displayName"></span>-->
+  <!--<span ng-if="!advisorhomepage.user">Deleted User</span>-->
+  <!--</small>-->
+  <!--<h4 class="list-group-item-heading" ng-bind="advisorhomepage.name"></h4>-->
+  <!--</a>-->
+  <!--</div>-->
+  <!--<div class="alert alert-warning text-center" ng-if="vm.advisorhomepages.$resolved && !vm.advisorhomepages.length">-->
+  <!--No Advisorhomepages yet, why don't you <a ui-sref="advisorhomepages.create">create one</a>?-->
+  <!--</div>-->
+
+
+</section>

@@ -1,0 +1,188 @@
+<section ng-controller="CoordinatorTACandidatesController">
+  <div class="page-header">
+    <h1>TA Candidates</h1>
+  </div>
+  <div class="row">
+      <!-- Add a ui-sref property to the anchor tags to allow navigation between different states -->
+      <ul class="nav nav-pills">
+        <li><a ui-sref="ta-coordinators.status">Status</a></li>
+        <li><a ui-sref="ta-coordinators.tacandidates" class="bg-info text-white">TA Candidates</a></li>
+        <li><a ui-sref="ta-coordinators.courselist">Course List</a></li>
+        <li><a ui-sref="ta-coordinators.status">TA Recommendations</a></li>
+        <li><a ui-sref="ta-coordinators.status">Assignments</a></li>
+      </ul>
+    </div>
+  <button type="button" class="btn btn-default" ng-click="pullAllConsideredStudents()">reject</button>
+
+  <table>
+    <thead>
+    <tr>
+      <th class="col-xs-2">Id</th>
+      <th class="col-xs-9">Name</th>
+      <th class="col-xs-1"> Type</th>
+      <th class="col-xs-1"> yolo1</th>
+    </tr>
+    </thead>
+  </table>
+
+  <accordion close-others="oneAtATime">
+
+    <accordion-group ng-repeat="row in fakeData" is-open="status.open">
+      <accordion-heading>
+        <table>
+          <thead>
+          <tr>
+            <th class="col-xs-2">Id</th>
+            <th class="col-xs-9">Name</th>
+            <th class="col-xs-1"> Type</th>
+            <th class="col-xs-1"> yolo1</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="col-xs-2">{{row.id}}</td>
+            <td class="col-xs-9">{{row.name}}</td>
+            <td class="col-xs-1">{{row.type}}</td>
+            <td class="col-xs-1">{{row.yolo1}}</td>
+          </tr>
+          </tbody>
+
+        </table>
+      </accordion-heading>
+
+      <!--TODO: change this-->
+      <div class="container row">
+        <!--<div class="container row" ng-controller="" ng-init="findOne()">-->
+        <div class="col-md-offset-1 col-md-10 formWrapper">
+          <div class="page-header">
+            <h3>Student Info</h3>
+            <form name="Student Info" class="form-horizontal" ng-submit="tryingNew(fakeData.indexOf(row))">
+              <fieldset>
+                <div class="form-group" show-errors>
+                  <label for="name">Name</label>
+                  <input name="name" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].name" id="name" class="form-control"
+                         placeholder="Name" required>
+                  <!--<div ng-messages="listingForm.name.$error" role="alert">-->
+                  <!--<p class="help-block error-text" ng-message="required">Listing name is required</p>-->
+                  <!--</div>-->
+                </div>
+                <div class="form-group" show-errors>
+                  <label for="type">Type</label>
+                  <input name="type" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].type" id="type" class="form-control"
+                         placeholder="Type" required>
+                  <!--<div ng-messages="listingForm.code.$error" role="alert">-->
+                  <!--<p class="help-block error-text" ng-message="required">Listing code is required</p>-->
+                  <!--</div>-->
+                </div>
+                <div class="form-group">
+                  <label for="studentId">Student-Id</label>
+                  <input name="studentId" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].studentId" id="studentId" class="form-control"
+                         placeholder="Student-Id">
+                </div>
+                <div class="form-group">
+                  <label for="gpa">GPA</label>
+                  <input name="gpa" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].gpa" id="gpa" class="form-control"
+                         placeholder="GPA">
+                </div>
+                <div class="form-group">
+                  <input type="submit" class="btn btn-default">
+                </div>
+                <div>
+                  <button type="button" class="btn btn-default" ng-click="">reject</button>
+                </div>
+                <div ng-show="error" class="text-danger">
+                  <strong ng-bind="error"></strong>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </accordion-group>
+
+    <!--<accordion-group heading="Static Header, initially expanded" is-open="status.isFirstOpen"-->
+    <!--is-disabled="status.isFirstDisabled">-->
+    <!--This content is straight in the template.-->
+    <!--</accordion-group>-->
+    <!--<accordion-group heading="{{group.title}}" ng-repeat="group in groups">-->
+    <!--{{group.content}}-->
+    <!--</accordion-group>-->
+    <!--<accordion-group heading="Dynamic Body Content">-->
+    <!--<p>The body of the accordion group grows to fit the contents</p>-->
+    <!--<button type="button" class="btn btn-default btn-sm" ng-click="addItem()">Add Item</button>-->
+    <!--<div ng-repeat="item in items">{{item}}</div>-->
+    <!--</accordion-group>-->
+
+
+    <!--<accordion-group heading="Custom template" template-url="group-template.html">-->
+    <!--Hello-->
+    <!--</accordion-group>-->
+    <!--<accordion-group heading="Delete account" panel-class="panel-danger">-->
+    <!--<p>Please, to delete your account, click the button below</p>-->
+    <!--<button class="btn btn-danger">Delete</button>-->
+    <!--</accordion-group>-->
+  </accordion>
+
+  <!--<div class="list-group">-->
+  <!--<a ng-repeat="advisorhomepage in vm.advisorhomepages"-->
+  <!--ui-sref="advisorhomepages.view({ advisorhomepageId: advisorhomepage._id })"-->
+  <!--class="list-group-item">-->
+  <!--<small class="list-group-item-text">-->
+  <!--Posted on-->
+  <!--<span ng-bind="advisorhomepage.created | date:'mediumDate'"></span>-->
+  <!--by-->
+  <!--<span ng-if="advisorhomepage.user" ng-bind="advisorhomepage.user.displayName"></span>-->
+  <!--<span ng-if="!advisorhomepage.user">Deleted User</span>-->
+  <!--</small>-->
+  <!--<h4 class="list-group-item-heading" ng-bind="advisorhomepage.name"></h4>-->
+  <!--</a>-->
+  <!--</div>-->
+  <!--<div class="alert alert-warning text-center" ng-if="vm.advisorhomepages.$resolved && !vm.advisorhomepages.length">-->
+  <!--No Advisorhomepages yet, why don't you <a ui-sref="advisorhomepages.create">create one</a>?-->
+  <!--</div>-->
+
+
+  <div class="list-group">
+    <a ng-repeat="ta-coordinator in vm.taCoordinators"
+       ui-sref="taCoordinators.view({ ta-coordinatorId: ta-coordinator._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="taCoordinator.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="taCoordinator.user" ng-bind="taCoordinator.user.displayName"></span>
+        <span ng-if="!taCoordinator.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="ta-coordinator.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.taCoordinators.$resolved && !vm.taCoordinators.length">
+    No Ta coordinator yet, why don't you <a ui-sref="taCoordinators.create">create one</a>?
+  </div>
+</section>
+
+
+
+<!--<section>-->
+  <!--<div class="page-header">-->
+    <!--<h1>TA Candidates</h1>-->
+  <!--</div>-->
+  <!--<div class="list-group">-->
+    <!--<a ng-repeat="ta-coordinator in vm.taCoordinators"-->
+       <!--ui-sref="taCoordinators.view({ ta-coordinatorId: ta-coordinator._id })"-->
+       <!--class="list-group-item">-->
+      <!--<small class="list-group-item-text">-->
+        <!--Posted on-->
+        <!--<span ng-bind="taCoordinator.created | date:'mediumDate'"></span>-->
+        <!--by-->
+        <!--<span ng-if="taCoordinator.user" ng-bind="taCoordinator.user.displayName"></span>-->
+        <!--<span ng-if="!taCoordinator.user">Deleted User</span>-->
+      <!--</small>-->
+      <!--<h4 class="list-group-item-heading" ng-bind="ta-coordinator.name"></h4>-->
+    <!--</a>-->
+  <!--</div>-->
+  <!--<div class="alert alert-warning text-center" ng-if="vm.taCoordinators.$resolved && !vm.taCoordinators.length">-->
+    <!--No Ta candidates yet, why don't you <a ui-sref="taCoordinators.create">create one</a>?-->
+  <!--</div>-->
+<!--</section>-->

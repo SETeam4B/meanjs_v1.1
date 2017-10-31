@@ -1,0 +1,36 @@
+<section>
+  <div class="page-header">
+    <h1 ng-bind="vm.taCoordinator.name"></h1>
+  </div>
+  <div class="row">
+      <!-- Add a ui-sref property to the anchor tags to allow navigation between different states -->
+      <ul class="nav nav-pills">
+        <li><a ui-sref="ta-coordinators.status">Status</a></li>
+        <li><a ui-sref="ta-coordinators.tacandidates">TA Candidates</a></li>
+        <li><a ui-sref="ta-coordinators.courselist">Course List</a></li>
+        <li><a ui-sref="ta-coordinators.status">TA Recommendations</a></li>
+        <li><a ui-sref="ta-coordinators.status" class="bg-info text-white">Assignments</a></li>
+      </ul>
+    </div>
+  <div class="pull-right"
+       ng-show="vm.taCoordinator.isCurrentUserOwner">
+    <a class="btn btn-primary"
+       ui-sref="taCoordinators.edit({ taCoordinatorId: vm.taCoordinator._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="vm.taCoordinator.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="vm.taCoordinator.user"
+            ng-bind="vm.taCoordinator.user.displayName"></span>
+      <span ng-if="!vm.taCoordinator.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.taCoordinator.content"></p>
+</section>

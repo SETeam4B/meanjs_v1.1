@@ -1,4 +1,4 @@
-<div class="container" ng-controller="HeaderController">
+<div class="taasHeader" ng-controller="HeaderController">
   <div class="navbar-header">
     <button class="navbar-toggle" type="button" ng-click="toggleCollapsibleMenu()">
       <span class="sr-only">Toggle navigation</span>
@@ -7,7 +7,7 @@
       <span class="icon-bar"></span>
     </button>
     <a ui-sref="authentication.signin" class="navbar-brand">
-      UF | Computer and Information Science and Engineering</a>
+      <font color="white">UF | Computer and Information Science and Engineering</font></a>
   </div>
   <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
     <ul class="nav navbar-nav" ng-if="menu.shouldRender(authentication.user);">
@@ -21,38 +21,21 @@
         <a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
       </li>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <button ui-sref="policy" type="button" class="btn btn-default navbar-btn">Policy</button>
-    </ul>
     <ul class="nav navbar-nav navbar-right" ng-hide="authentication.user">
-      <li ui-sref-active="active">
-        <a ui-sref="authentication.signup">Sign Up</a>
-      </li>
+<!--       <li ui-sref-active="inactive">
+        <a ui-sref="authentication.signup"><font color="white">Sign up</font></a>
+      </li> -->
       <li class="divider-vertical"></li>
-      <li ui-sref-active="active">
-        <a ui-sref="authentication.signin">Sign In</a>
+      <li ui-sref-active="inactive">
+        <a ui-sref="authentication.signin"><font color="white">Sign in</font></a>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right" ng-show="authentication.user">
       <li class="dropdown" dropdown>
         <a class="dropdown-toggle user-header-dropdown-toggle" dropdown-toggle role="button">
-          <img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image" />
-          <span ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+          <font color="white"><span ng-bind="authentication.user.displayName"></span></font> <b class="caret"></b>
         </a>
         <ul class="dropdown-menu" role="menu">
-          <li ui-sref-active="active">
-            <a ui-sref="settings.profile">Edit Profile</a>
-          </li>
-          <li ui-sref-active="active">
-            <a ui-sref="settings.picture">Change Profile Picture</a>
-          </li>
-          <li ui-sref-active="active" ng-show="authentication.user.provider === 'local'">
-            <a ui-sref="settings.password">Change Password</a>
-          </li>
-          <li ui-sref-active="active">
-            <a ui-sref="settings.accounts">Manage Social Accounts</a>
-          </li>
-          <li class="divider"></li>
           <li>
             <a href="/api/auth/signout" target="_self">Signout</a>
           </li>

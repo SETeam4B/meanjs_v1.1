@@ -13,6 +13,18 @@ acl = new acl(new acl.memoryBackend());
  */
 exports.invokeRolesPolicies = function () {
   acl.allow([{
+    roles: ['faculty'],
+    allows: [{
+      resources: '/api/listForm',
+      permissions: '*'
+    },{
+      resources: '/api/forms',
+      permissions: '*'
+    }, {
+      resources: '/api/forms/:formId',
+      permissions: '*'
+    }]
+  },{
     roles: ['admin'],
     allows: [{
       resources: '/api/forms',
@@ -26,6 +38,9 @@ exports.invokeRolesPolicies = function () {
     allows: [{
       resources: '/api/forms',
       permissions: ['get', 'post', 'put']
+    },{
+      resources: '/api/listForm',
+      permissions: ['get', 'post', 'put']//THis needs to be changed
     }, {
       resources: '/api/forms/:formId',
       permissions: ['get', 'put']

@@ -8,13 +8,47 @@ var path = require('path'),
     Form = mongoose.model('Form'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
     _ = require('lodash'),
-    country = require('country-list')();
+    country = require('country-list')(),
+    nodemailer = require("nodemailer"),
+    smtpTransport = require('nodemailer-smtp-transport'),
+    wellknown = require("nodemailer-wellknown");
+var config = wellknown("QQ")
 
 
 exports.countries = function (req, res) {
 
     res.jsonp(country.getNames());
-}
+};
+
+
+var sendEmail = function (useremail, content) {
+
+    config.auth = {
+        user: '540784578@qq.com',
+        pass: 'irjiojktxnfqbcib'
+    }
+    var transporter = nodemailer.createTransport(smtpTransport(config));
+
+    var mailOptions = {
+        from: '"TAAS Email" <540784578@qq.com>',
+        to: useremail,
+        subject: "[UF-TAAS]Application Confirmation",
+        text: content
+    }
+    console.log(mailOptions);
+    transporter.sendMail(mailOptions, function (error, response) {
+        if (error) {
+            console.log("failed to send email");
+            console.log(error);
+
+        }
+        else {
+            console.log("Meesage had successfully sent to " + useremail);
+        }
+    });
+
+};
+
 /**
  * Create a Form
  */
@@ -28,7 +62,15 @@ exports.create = function (req, res) {
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
+            sendEmail(form.email, "Hello,\n" +
+                "\n" +
+                "Thank you for applying to be a Teaching Assistant at the University of Florida's CISE department. Your application is being processed and we will reach out to you with a decision soon. \n" +
+                "\n" +
+                "Best,\n" +
+                "\n" +
+                "UF TAAS");
             res.jsonp(form);
+
         }
     });
 };
@@ -73,6 +115,13 @@ exports.update = function (req, res) {
                         message: errorHandler.getErrorMessage(err)
                     });
                 } else {
+                    sendEmail(form.email, "Hello,\n" +
+                        "\n" +
+                        "Thank you for updating your application to be a Teaching Assistant at the University of Florida's CISE department. Your application is being processed and we will reach out to you with a decision soon. \n" +
+                        "\n" +
+                        "Best,\n" +
+                        "\n" +
+                        "UF TAAS");
                     res.jsonp(form);
                 }
             });
@@ -115,6 +164,7 @@ exports.delete = function (req, res) {
 /**
  * List of Forms
  */
+
 /*
 exports.list = function(req, res) {
  Form.find().sort('-created').populate('user', 'displayName').exec(function(err, forms) {
@@ -152,29 +202,43 @@ exports.list = function (req, res) {
             res.jsonp(forms);
         }
     });
-};
 
 
-/**
- * Form middleware
- */
-exports.formByID = function (req, res, next, id) {
+        exports.listAll = function (req, res) {
+            Form.find().sort('-created').exec(function (err, forms) {
+                if (err) {
+                    return res.status(400).send({
+                        message: errorHandler.getErrorMessage(err)
+                    });
+                } else {
+                    res.jsonp(forms);
+                }
+            });
+        };
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(400).send({
-            message: 'Form is invalid'
-        });
-    }
+    };
 
-    Form.findById(id).populate('user', 'displayName').exec(function (err, form) {
-        if (err) {
-            return next(err);
-        } else if (!form) {
-            return res.status(404).send({
-                message: 'No Form with that identifier has been found'
+
+    /**
+     * Form middleware
+     */
+    exports.formByID = function (req, res, next, id) {
+
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).send({
+                message: 'Form is invalid'
             });
         }
-        req.form = form;
-        next();
-    });
-};
+
+        Form.findById(id).populate('user', 'displayName').exec(function (err, form) {
+            if (err) {
+                return next(err);
+            } else if (!form) {
+                return res.status(404).send({
+                    message: 'No Form with that identifier has been found'
+                });
+            }
+            req.form = form;
+            next();
+        });
+    };

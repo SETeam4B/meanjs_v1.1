@@ -24,6 +24,9 @@ app.route('/api/forms/allForms')
     .put(forms.update)
     .delete(forms.delete);
 
+    app.route('/api/listForm').all(formsPolicy.isAllowed)
+      .get(forms.listAll);
+
   // Finish by binding the Form middleware
   app.param('formId', forms.formByID);
 };

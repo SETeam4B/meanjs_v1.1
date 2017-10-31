@@ -9,7 +9,6 @@
 
   function TaCoordinatorsListController(TaCoordinatorsService) {
     var vm = this;
-
     vm.taCoordinators = TaCoordinatorsService.query();
   }
 }());

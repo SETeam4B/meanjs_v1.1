@@ -1,15 +1,16 @@
-<section>
+<section class="row">
 
 
-
-  <form name="TACandidateForms[fakeData.indexOf(row)].formForm" class="form-horizontal" ng-submit="submitModifiedForm(TACandidateForms[fakeData.indexOf(row)],vm)" novalidate>
-    <div class="row">
+  <form name="TACandidateForms[fakeData.indexOf(row)].formForm" class="form-horizontal"
+        ng-submit="submitModifiedForm(TACandidateForms[fakeData.indexOf(row)],vm)" novalidate>
+    <div class="col-md-12">
       <fieldset>
         <div class="col-md-8">
 
           <div class="form-group" show-errors>
             <label class="control-label" for="ufid">UFID# (no dashes)</label>
-            <input name="ufid" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].ufid" id="ufid" class="form-control" placeholder="UFID"
+            <input name="ufid" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].ufid" id="ufid"
+                   class="form-control" placeholder="UFID"
                    required>
             <div ng-messages="vm.form.formForm.ufid.$error" role="alert">
               <p class="help-block error-text" ng-message="required">UFID is required.</p>
@@ -19,7 +20,8 @@
 
           <div class="form-group" show-errors>
             <label class="control-label" for="email">Email</label>
-            <input name="email" type="email" ng-model="TACandidateForms[fakeData.indexOf(row)].email" id="email" class="form-control"
+            <input name="email" type="email" ng-model="TACandidateForms[fakeData.indexOf(row)].email" id="email"
+                   class="form-control"
                    placeholder="Email"
                    required>
             <div ng-messages="vm.form.formForm.email.$error" role="alert">
@@ -30,7 +32,8 @@
 
           <div class="form-group" show-errors>
             <label class="control-label" for="firstName">First Name</label>
-            <input name="firstName" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].firstName" id="firstName" class="form-control"
+            <input name="firstName" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].firstName"
+                   id="firstName" class="form-control"
                    placeholder="First Name"
                    required>
             <div ng-messages="vm.form.formForm.firstName.$error" role="alert">
@@ -41,14 +44,16 @@
 
           <div class="form-group" show-errors>
             <label class="control-label" for="middleName">Middle Name</label>
-            <input name="middleName" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].middleName" id="middleName" class="form-control"
+            <input name="middleName" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].middleName"
+                   id="middleName" class="form-control"
                    placeholder="Middle Name">
           </div>
 
 
           <div class="form-group" show-errors>
             <label class="control-label" for="lastName">Last Name</label>
-            <input name="lastName" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].lastName" id="lastName" class="form-control"
+            <input name="lastName" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].lastName" id="lastName"
+                   class="form-control"
                    placeholder="Last Name"
                    required>
             <div ng-messages="vm.form.formForm.lastName.$error" role="alert">
@@ -59,7 +64,8 @@
 
           <div class="form-group" show-errors>
             <label class="control-label" for="street">Street</label>
-            <input name="street" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].street" id="street" class="form-control"
+            <input name="street" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].street" id="street"
+                   class="form-control"
                    placeholder="Street"
                    required>
             <div ng-messages="vm.form.formForm.street.$error" role="alert">
@@ -70,7 +76,8 @@
 
           <div class="form-group" show-errors>
             <label class="control-label" for="city">City</label>
-            <input name="city" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].city" id="city" class="form-control"
+            <input name="city" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].city" id="city"
+                   class="form-control"
                    placeholder="City"
                    required>
             <div ng-messages="vm.form.formForm.city.$error" role="alert">
@@ -81,7 +88,8 @@
 
           <div class="form-group" show-errors>
             <label class="control-label" for="state">State or Province</label>
-            <input name="state" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].state" id="state" class="form-control"
+            <input name="state" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].state" id="state"
+                   class="form-control"
                    placeholder="State"
                    required>
             <div ng-messages="vm.form.formForm.state.$error" role="alert">
@@ -92,7 +100,8 @@
 
           <div class="form-group" show-errors>
             <label class="control-label" for="zipcode">ZIP Code</label>
-            <input name="zipcode" type="number" ng-model="TACandidateForms[fakeData.indexOf(row)].zipcode" id="zipcode" class="form-control"
+            <input name="zipcode" type="number" ng-model="TACandidateForms[fakeData.indexOf(row)].zipcode" id="zipcode"
+                   class="form-control"
                    placeholder="ZIP Code"
                    required>
             <div ng-messages="vm.form.formForm.zipcode.$error" role="alert">
@@ -103,7 +112,8 @@
 
           <div class="form-group" show-errors>
             <label class="control-label" for="phone">Phone Number</label>
-            <input name="phone" type="number" ng-model="TACandidateForms[fakeData.indexOf(row)].phone" id="phone" class="form-control"
+            <input name="phone" type="number" ng-model="TACandidateForms[fakeData.indexOf(row)].phone" id="phone"
+                   class="form-control"
                    placeholder="Phone Number"
                    required>
             <div ng-messages="vm.form.formForm.phone.$error" role="alert">
@@ -243,52 +253,60 @@
 
           <div class="form-group" show-errors>
             <label class="control-label" for="phdExamDate">Date of Ph.D. Exam</label>
-            <input name="phdExamDate" type="date" ng-model="TACandidateForms[fakeData.indexOf(row)].phdExamDate" id="phdExamDate"
+            <input name="phdExamDate" type="date" ng-model="TACandidateForms[fakeData.indexOf(row)].phdExamDate"
+                   id="phdExamDate"
                    value="{{vm.phdExamDate}}" class="form-control">
           </div>
 
 
           <div class="form-group">
             <label class="control-label" for="phdExamGrade">Ph.D. Exam Grade</label>
-            <input name="phdExamGrade" type="number" ng-model="TACandidateForms[fakeData.indexOf(row)].phdExamGrade" id="phdExamGrade"
+            <input name="phdExamGrade" type="number" ng-model="TACandidateForms[fakeData.indexOf(row)].phdExamGrade"
+                   id="phdExamGrade"
                    class="form-control">
           </div>
 
 
           <div class="form-group">
             <label class="control-label" for="speakScore">TSE/SPEAK Score</label>
-            <input name="speakScore" type="number" ng-model="TACandidateForms[fakeData.indexOf(row)].speakScore" id="speakScore" class="form-control">
+            <input name="speakScore" type="number" ng-model="TACandidateForms[fakeData.indexOf(row)].speakScore"
+                   id="speakScore" class="form-control">
           </div>
 
 
           <div class="form-group">
             <label class="control-label" for="EAP5836">EAP5836</label>
-            <input name="EAP5836" type="number" ng-model="TACandidateForms[fakeData.indexOf(row)].EAP5836" id="EAP5836" class="form-control">
+            <input name="EAP5836" type="number" ng-model="TACandidateForms[fakeData.indexOf(row)].EAP5836" id="EAP5836"
+                   class="form-control">
           </div>
 
 
           <div class="form-group">
             <label class="control-label" for="EAP5837">EAP5837</label>
-            <input name="EAP5837" type="number" ng-model="TACandidateForms[fakeData.indexOf(row)].EAP5837" id="EAP5837" class="form-control">
+            <input name="EAP5837" type="number" ng-model="TACandidateForms[fakeData.indexOf(row)].EAP5837" id="EAP5837"
+                   class="form-control">
           </div>
 
 
           <div class="form-group">
             <label class="control-label" for="gpa">GPA</label>
-            <input name="gpa" type="number" ng-model="TACandidateForms[fakeData.indexOf(row)].gpa" id="gpa" class="form-control">
+            <input name="gpa" type="number" ng-model="TACandidateForms[fakeData.indexOf(row)].gpa" id="gpa"
+                   class="form-control">
           </div>
 
 
           <div class="form-group" show-errors>
             <label class="control-label" for="adviser">Name of Adviser</label>
-            <input name="adviser" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].adviser" id="adviser" class="form-control"
+            <input name="adviser" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].adviser" id="adviser"
+                   class="form-control"
                    placeholder="Adviser Name">
           </div>
 
 
           <div class="form-group" show-errors>
             <label class="control-label" for="researchArea">Area of Research</label>
-            <input name="researchArea" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].researchArea" id="researchArea"
+            <input name="researchArea" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].researchArea"
+                   id="researchArea"
                    class="form-control"
                    placeholder="Research Area">
           </div>
@@ -296,27 +314,31 @@
 
           <div class="form-group">
             <label class="control-label" for="interestExperience">Interests and experience</label>
-            <textarea name="interestExperience" rows="4" ng-model="TACandidateForms[fakeData.indexOf(row)].interestExperience" id="interestExperience"
+            <textarea name="interestExperience" rows="4"
+                      ng-model="TACandidateForms[fakeData.indexOf(row)].interestExperience" id="interestExperience"
                       class="form-control"></textarea>
           </div>
 
 
           <div class="form-group">
             <label class="control-label" for="previousCourseTaken">Previous Courses Taken</label>
-            <textarea name="previousCourseTaken" rows="4" ng-model="TACandidateForms[fakeData.indexOf(row)].previousCourseTaken"
+            <textarea name="previousCourseTaken" rows="4"
+                      ng-model="TACandidateForms[fakeData.indexOf(row)].previousCourseTaken"
                       id="previousCourseTaken" class="form-control"></textarea>
           </div>
 
 
           <div class="form-group">
             <label class="control-label" for="plannedAbsences">Days/Periods of Planned Work Absences</label>
-            <textarea name="plannedAbsences" rows="4" ng-model="TACandidateForms[fakeData.indexOf(row)].plannedAbsences" id="plannedAbsences"
+            <textarea name="plannedAbsences" rows="4" ng-model="TACandidateForms[fakeData.indexOf(row)].plannedAbsences"
+                      id="plannedAbsences"
                       class="form-control"></textarea>
           </div>
 
 
           <div class="form-group">
-            <button type="submit" class="btn btn-default btn-primary">{{TACandidateForms[fakeData.indexOf(row)].username ? 'Update' : 'Submit'}}
+            <button type="submit" class="btn btn-default btn-primary">{{TACandidateForms[fakeData.indexOf(row)].username
+              ? 'Update' : 'Submit'}}
             </button>
           </div>
           <div ng-show="vm.error" class="text-danger">
@@ -350,59 +372,52 @@
   </form>
 
 
-
-
-
-
-
-
-
   <!--<div class="container row">-->
-    <!--&lt;!&ndash;<div class="container row" ng-controller="" ng-init="findOne()">&ndash;&gt;-->
-    <!--<div class="col-md-offset-1 col-md-10 formWrapper">-->
-      <!--<div class="page-header">-->
-        <!--<h3>Student Info</h3>-->
-        <!--<form name="Student Info" class="form-horizontal" ng-submit="tryingNew(fakeData.indexOf(row))">-->
-          <!--<fieldset>-->
-            <!--<div class="form-group" show-errors>-->
-              <!--<label for="name">Name</label>-->
-              <!--<input name="name" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].name" id="name" class="form-control"-->
-                     <!--placeholder="Name" required>-->
-              <!--&lt;!&ndash;<div ng-messages="listingForm.name.$error" role="alert">&ndash;&gt;-->
-              <!--&lt;!&ndash;<p class="help-block error-text" ng-message="required">Listing name is required</p>&ndash;&gt;-->
-              <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--</div>-->
-            <!--<div class="form-group" show-errors>-->
-              <!--<label for="type">Type</label>-->
-              <!--<input name="type" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].type" id="type" class="form-control"-->
-                     <!--placeholder="Type" required>-->
-              <!--&lt;!&ndash;<div ng-messages="listingForm.code.$error" role="alert">&ndash;&gt;-->
-              <!--&lt;!&ndash;<p class="help-block error-text" ng-message="required">Listing code is required</p>&ndash;&gt;-->
-              <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--</div>-->
-            <!--<div class="form-group">-->
-              <!--<label for="studentId">Student-Id</label>-->
-              <!--<input name="studentId" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].studentId" id="studentId" class="form-control"-->
-                     <!--placeholder="Student-Id">-->
-            <!--</div>-->
-            <!--<div class="form-group">-->
-              <!--<label for="gpa">GPA</label>-->
-              <!--<input name="gpa" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].gpa" id="gpa" class="form-control"-->
-                     <!--placeholder="GPA">-->
-            <!--</div>-->
-            <!--<div class="form-group">-->
-              <!--<input type="submit" class="btn btn-default">-->
-            <!--</div>-->
-            <!--<div>-->
-              <!--<button type="button" class="btn btn-default" ng-click="">reject</button>-->
-            <!--</div>-->
-            <!--<div ng-show="error" class="text-danger">-->
-              <!--<strong ng-bind="error"></strong>-->
-            <!--</div>-->
-          <!--</fieldset>-->
-        <!--</form>-->
-      <!--</div>-->
-    <!--</div>-->
+  <!--&lt;!&ndash;<div class="container row" ng-controller="" ng-init="findOne()">&ndash;&gt;-->
+  <!--<div class="col-md-offset-1 col-md-10 formWrapper">-->
+  <!--<div class="page-header">-->
+  <!--<h3>Student Info</h3>-->
+  <!--<form name="Student Info" class="form-horizontal" ng-submit="tryingNew(fakeData.indexOf(row))">-->
+  <!--<fieldset>-->
+  <!--<div class="form-group" show-errors>-->
+  <!--<label for="name">Name</label>-->
+  <!--<input name="name" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].name" id="name" class="form-control"-->
+  <!--placeholder="Name" required>-->
+  <!--&lt;!&ndash;<div ng-messages="listingForm.name.$error" role="alert">&ndash;&gt;-->
+  <!--&lt;!&ndash;<p class="help-block error-text" ng-message="required">Listing name is required</p>&ndash;&gt;-->
+  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+  <!--</div>-->
+  <!--<div class="form-group" show-errors>-->
+  <!--<label for="type">Type</label>-->
+  <!--<input name="type" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].type" id="type" class="form-control"-->
+  <!--placeholder="Type" required>-->
+  <!--&lt;!&ndash;<div ng-messages="listingForm.code.$error" role="alert">&ndash;&gt;-->
+  <!--&lt;!&ndash;<p class="help-block error-text" ng-message="required">Listing code is required</p>&ndash;&gt;-->
+  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+  <!--</div>-->
+  <!--<div class="form-group">-->
+  <!--<label for="studentId">Student-Id</label>-->
+  <!--<input name="studentId" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].studentId" id="studentId" class="form-control"-->
+  <!--placeholder="Student-Id">-->
+  <!--</div>-->
+  <!--<div class="form-group">-->
+  <!--<label for="gpa">GPA</label>-->
+  <!--<input name="gpa" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].gpa" id="gpa" class="form-control"-->
+  <!--placeholder="GPA">-->
+  <!--</div>-->
+  <!--<div class="form-group">-->
+  <!--<input type="submit" class="btn btn-default">-->
+  <!--</div>-->
+  <!--<div>-->
+  <!--<button type="button" class="btn btn-default" ng-click="">reject</button>-->
+  <!--</div>-->
+  <!--<div ng-show="error" class="text-danger">-->
+  <!--<strong ng-bind="error"></strong>-->
+  <!--</div>-->
+  <!--</fieldset>-->
+  <!--</form>-->
+  <!--</div>-->
+  <!--</div>-->
   <!--</div>-->
 
 

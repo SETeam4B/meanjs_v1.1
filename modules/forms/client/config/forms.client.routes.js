@@ -25,16 +25,9 @@
             })
             .state('forms.undergrad', {
                 url: '/create/undergrad',
-                // templateUrl: 'modules/forms/client/views/undergrad-form.client.view.html',
+                templateUrl: 'modules/forms/client/views/undergrad-form.client.view.html',
                 controller: 'FormsController',
-                views:{
-                  "modelando":{
-                      template: '<div>YOOOOOOOOOOOOOOOOOOOOOOOOlo</div>'
-                  } ,
-                  "":{
-                      templateUrl:'modules/forms/client/views/undergrad-form.client.view.html'
-                  }
-                },
+
                 controllerAs: 'vm',
                 resolve: {
                     formResolve: formHandler

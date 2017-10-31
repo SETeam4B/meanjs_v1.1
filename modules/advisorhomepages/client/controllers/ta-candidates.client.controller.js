@@ -70,12 +70,12 @@
             });
         }
 
-        $scope.submitModifiedForm = function (form,vm) {
+        $scope.submitModifiedForm = function (form,vm, index) {
             debugger;
-            vm.form = form;
-            console.log("submittion");
+            form.username = $scope.fakeData[index].username;
+            var service = new FormsService(form);
+            vm.form = service;
             vm.save(true);
-            vm.form = {};
         }
 
         $scope.tryingNew3 = function (index) {

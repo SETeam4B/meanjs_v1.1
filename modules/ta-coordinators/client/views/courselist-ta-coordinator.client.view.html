@@ -2,8 +2,16 @@
   <div class="page-header">
     <h1>Course List  -  {{vm.semester}}</h1>
   </div>
-
-
+    <div class="row">
+      <!-- Add a ui-sref property to the anchor tags to allow navigation between different states -->
+      <ul class="nav nav-pills">
+        <li><a ui-sref="ta-coordinators.status">Status</a></li>
+        <li><a ui-sref="ta-coordinators.tacandidates">TA Candidates</a></li>
+        <li><a ui-sref="ta-coordinators.courselist" class="bg-info text-white">Course List</a></li>
+        <li><a ui-sref="ta-coordinators.status">TA Recommendations</a></li>
+        <li><a ui-sref="ta-coordinators.status">Assignments</a></li>
+      </ul>
+    </div>
   <div class="row">
     <div class="col-md-2">Course Number</div>
     <div class="col-md-4">Course Name</div>

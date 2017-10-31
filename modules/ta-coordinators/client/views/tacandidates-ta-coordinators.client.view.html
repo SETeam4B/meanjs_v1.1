@@ -2,10 +2,16 @@
   <div class="page-header">
     <h1>TA Candidates</h1>
   </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> dev
+  <div class="row">
+      <!-- Add a ui-sref property to the anchor tags to allow navigation between different states -->
+      <ul class="nav nav-pills">
+        <li><a ui-sref="ta-coordinators.status">Status</a></li>
+        <li><a ui-sref="ta-coordinators.tacandidates" class="bg-info text-white">TA Candidates</a></li>
+        <li><a ui-sref="ta-coordinators.courselist">Course List</a></li>
+        <li><a ui-sref="ta-coordinators.status">TA Recommendations</a></li>
+        <li><a ui-sref="ta-coordinators.status">Assignments</a></li>
+      </ul>
+    </div>
   <button type="button" class="btn btn-default" ng-click="pullAllConsideredStudents()">reject</button>
 
   <table>

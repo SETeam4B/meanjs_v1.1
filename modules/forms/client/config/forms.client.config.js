@@ -9,11 +9,11 @@
 
   function menuConfig(menuService) {
     // Set top bar menu items
-    menuService.addMenuItem('topbar', {
-      title: 'Forms',
-      state: 'forms.undergrad',
-      roles: ['*']
-    });
+    // menuService.addMenuItem('topbar', {
+    //   title: 'Forms',
+    //   state: 'forms.undergrad',
+    //   roles: ['*']
+    // });
 /*
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'forms', {

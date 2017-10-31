@@ -2,7 +2,8 @@
   'use strict';
 
   angular
-    .module('advisorhomepages')
+    // .module('advisorhomepages')
+    .module('forms')
     .run(menuConfig);
 
   menuConfig.$inject = ['Menus'];

@@ -2,16 +2,20 @@
     'use strict';
 
     angular
-        .module('advisorhomepages')
+        // .module('advisorhomepages')
+        .module('forms')
         .controller('TACandidatesController', TACandidates);
 
-    TACandidates.inject = ['$scope', '$modal', '$state'];
+    TACandidates.inject = ['$scope', '$modal', '$state','FormsService'];
 
-    function TACandidates($scope, $modal, $state) {
+    function TACandidates($scope, $modal, $state, FormsService) {
 
         $scope.yolo = "hello World";
 
+        $scope.isAdvisorForm = true;
         $scope.TACandidateForms = [{}];
+        var fs = new FormsService();
+        $scope.allStudentForms = FormsService.getAll();
 
         $scope.fakeData = [
             {
@@ -49,15 +53,30 @@
         $scope.openModal = function () {
             $modal.open({
                 // template: '<div ng-show="$state.includes(forms.master)"/>'
-                templateUrl: "modules/advisorhomepages/client/views/newStudentModal.client.view.html"
-                // controller: ModalController
+                templateUrl: "modules/advisorhomepages/client/views/newStudentModal.client.view.html",
+                controller: 'FormsController',
+                controllerAs: 'vm',
+                resolve: {
+                    formResolve: formHandler
+                }
+
             }).result.then(function (res) {
                 // when modal is closed then call a function
             });
         }
 
+        $scope.submitModifiedForm = function (form,vm) {
+            debugger;
+            vm.form = form;
+            console.log("submittion");
+            vm.save(true);
+            vm.form = {};
+        }
+
         $scope.tryingNew2 = function (index) {
-            update(index);
+            // update(index);
+            console.log($scope.allStudentForms);
+            debugger;
         }
 
         $scope.tryingNew = function (index) {
@@ -113,6 +132,26 @@
         }
 
     };
+
+    formHandler.$inject = ['$stateParams', 'FormsService', 'Authentication'];
+    function formHandler($stateParams, FormsService, Authentication){
+        /*
+        FormsService.get({
+            username: Authentication.user.username
+        }).$promise.then(function (result) {
+            console.log(result);
+            return result;
+        }, function(reason) {
+            return new FormsService();
+        });
+        */
+        console.log("WTF IS GOING ON HERE WTF IS THIS ");
+        console.log("username->" );
+        console.log(Authentication.user);
+        return FormsService.get({
+            username: Authentication.user.username
+        }).$promise;
+    }
 
 
 }());

@@ -3,7 +3,13 @@
     <h1>TA Candidates</h1>
   </div>
 
-  <button type="button" class="btn btn-default" ng-click="openModal()">reject</button>
+  <!--<div ng-app="advisorhomepages">-->
+    <!--<button ui-sref="Modal.confirmAddToCart">stateful</button>-->
+    <!--<div ui-view="modal"></div>-->
+  <!--</div>-->
+  <!--<undergrad></undergrad>-->
+
+  <button type="button" class="btn btn-default" ng-click="tryingNew2()">Add new student</button>
 
   <table>
     <thead>
@@ -42,53 +48,7 @@
       </accordion-heading>
 
       <!--TODO: change this-->
-      <div class="container row">
-      <!--<div class="container row" ng-controller="" ng-init="findOne()">-->
-        <div class="col-md-offset-1 col-md-10 formWrapper">
-          <div class="page-header">
-            <h3>Student Info</h3>
-            <form name="Student Info" class="form-horizontal" ng-submit="tryingNew(fakeData.indexOf(row))">
-              <fieldset>
-                <div class="form-group" show-errors>
-                  <label for="name">Name</label>
-                  <input name="name" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].name" id="name" class="form-control"
-                         placeholder="Name" required>
-                  <!--<div ng-messages="listingForm.name.$error" role="alert">-->
-                    <!--<p class="help-block error-text" ng-message="required">Listing name is required</p>-->
-                  <!--</div>-->
-                </div>
-                <div class="form-group" show-errors>
-                  <label for="type">Type</label>
-                  <input name="type" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].type" id="type" class="form-control"
-                         placeholder="Type" required>
-                  <!--<div ng-messages="listingForm.code.$error" role="alert">-->
-                    <!--<p class="help-block error-text" ng-message="required">Listing code is required</p>-->
-                  <!--</div>-->
-                </div>
-                <div class="form-group">
-                  <label for="studentId">Student-Id</label>
-                  <input name="studentId" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].studentId" id="studentId" class="form-control"
-                         placeholder="Student-Id">
-                </div>
-                <div class="form-group">
-                  <label for="gpa">GPA</label>
-                  <input name="gpa" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].gpa" id="gpa" class="form-control"
-                         placeholder="GPA">
-                </div>
-                <div class="form-group">
-                  <input type="submit" class="btn btn-default">
-                </div>
-                <div>
-                  <button type="button" class="btn btn-default" ng-click="">reject</button>
-                </div>
-                <div ng-show="error" class="text-danger">
-                  <strong ng-bind="error"></strong>
-                </div>
-              </fieldset>
-            </form>
-          </div>
-        </div>
-      </div>
+      <div ng-include="'modules/advisorhomepages/client/views/advisorForm.html'"></div>
 
     </accordion-group>
 

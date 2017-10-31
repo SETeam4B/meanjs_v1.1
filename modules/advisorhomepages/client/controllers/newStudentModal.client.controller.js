@@ -1,13 +1,15 @@
+
 (function () {
     'use strict';
 
     angular
-        .module('advisorhomepages')
+        .module('forms')
+        // .module('advisorhomepages')
         .controller('NewStudentModalController', NewStudentModalController);
 
-    NewStudentModalController.inject = ['$scope', '$modal', 'ui.router'];
+    NewStudentModalController.inject = ['$scope', '$state','$modal', 'ui.router'];
 
-    function NewStudentModalController($scope) {
+    function NewStudentModalController($scope,$state) {
         $scope.modalForms = [
             {
                 formName: "Master",
@@ -23,7 +25,6 @@
             }
         ];
         $scope.formIndex = 0;
-
         $scope.setIndex = function(index){
             $scope.formIndex = index;
         }

@@ -25,8 +25,16 @@
             })
             .state('forms.undergrad', {
                 url: '/create/undergrad',
-                templateUrl: 'modules/forms/client/views/undergrad-form.client.view.html',
+                // templateUrl: 'modules/forms/client/views/undergrad-form.client.view.html',
                 controller: 'FormsController',
+                views:{
+                  "modelando":{
+                      template: '<div>YOOOOOOOOOOOOOOOOOOOOOOOOlo</div>'
+                  } ,
+                  "":{
+                      templateUrl:'modules/forms/client/views/undergrad-form.client.view.html'
+                  }
+                },
                 controllerAs: 'vm',
                 resolve: {
                     formResolve: formHandler
@@ -117,16 +125,6 @@
     */
     formHandler.$inject = ['$stateParams', 'FormsService', 'Authentication'];
     function formHandler($stateParams, FormsService, Authentication){
-        /*
-        FormsService.get({
-            username: Authentication.user.username
-        }).$promise.then(function (result) {
-            console.log(result);
-            return result;
-        }, function(reason) {
-            return new FormsService();
-        });
-        */
         return FormsService.get({
             username: Authentication.user.username
         }).$promise;

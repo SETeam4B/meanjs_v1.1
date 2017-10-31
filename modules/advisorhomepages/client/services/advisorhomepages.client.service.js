@@ -3,7 +3,8 @@
     'use strict';
 
     angular
-        .module('advisorhomepages')
+        // .module('advisorhomepages')
+        .module('forms')
         .factory('AdvisorhomepagesService', AdvisorhomepagesService);
 
     AdvisorhomepagesService.$inject = ['$resource'];

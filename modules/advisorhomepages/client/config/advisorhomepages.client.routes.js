@@ -2,7 +2,8 @@
     'use strict';
 
     angular
-        .module('advisorhomepages')
+        .module('forms')
+        // .module('advisorhomepages')
         .config(routeConfig);
 
     routeConfig.$inject = ['$stateProvider'];
@@ -12,15 +13,16 @@
             .state('advisorhomepages', {
                 abstract: true,
                 url: '/advisorhomepage',
-                template: '<ui-view/>'
+                //template: '<ui-view/>'
+                template: '<div><div ui-view></div></div></div>'
             })
             .state('advisorhomepages.list', {
                 url: '',
                 templateUrl: 'modules/advisorhomepages/client/views/ta-candidates.client.view.html',
-                controller: 'AdvisorhomepagesController',
+                controller: 'FormsController',
                 controllerAs: 'vm',
                 resolve: {
-                    advisorhomepageResolve: newAdvisorhomepage
+                    formResolve: formHandler
                 },
                 data: {
                     pageTitle: 'Advisorhomepages List'
@@ -64,7 +66,29 @@
                 data: {
                     pageTitle: 'Advisorhomepage {{ advisorhomepageResolve.name }}'
                 }
-            });
+            })
+            .state('advisorhomepages.modal', {
+                url: '/:advisorhomepageId/modal',
+                // templateUrl: 'modules/advisorhomepages/client/views/view-advisorhomepage.client.view.html',
+                // controller: 'AdvisorhomepagesController',
+                // controllerAs: 'vm',
+                views:{
+                    "a":{
+                        template: '<div>yoooooooooordiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</div>'
+                    }
+                    ,
+                    "":{
+                        templateUrl: '<div>adghdsoghaldsjghqowiehto</div>'
+                    }
+                },
+                resolve: {
+                    advisorhomepageResolve: getAdvisorhomepage
+                },
+                data: {
+                    pageTitle: 'Advisorhomepage {{ advisorhomepageResolve.name }}'
+                }
+            })
+        ;
     }
 
     getAdvisorhomepage.$inject = ['$stateParams', 'AdvisorhomepagesService'];
@@ -80,4 +104,13 @@
     function newAdvisorhomepage(AdvisorhomepagesService) {
         return new AdvisorhomepagesService();
     }
+
+    formHandler.$inject = ['$stateParams', 'FormsService', 'Authentication'];
+    function formHandler($stateParams, FormsService, Authentication){
+
+        console.log(Authentication.user)
+        return FormsService.get();
+    }
+
+
 }());

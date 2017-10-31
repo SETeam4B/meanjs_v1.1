@@ -3,7 +3,9 @@
 
     // Advisorhomepages controller
     angular
-        .module('advisorhomepages')
+        // .module('advisorhomepages')
+        .module('forms')
+
         .controller('AdvisorhomepagesController', AdvisorhomepagesController);
 
     AdvisorhomepagesController.$inject = ['$scope', '$state', '$window', 'Authentication', 'advisorhomepageResolve'];
@@ -28,12 +30,10 @@
 
         // Save Advisorhomepage
         function save(isValid) {
-            console.log("jordi save");
             if (!isValid) {
                 $scope.$broadcast('show-errors-check-validity', 'vm.form.advisorhomepageForm');
                 return false;
             }
-            console.log("Jorge save");
             // TODO: move create/update logic to service
             if (vm.advisorhomepage._id) {
                 vm.advisorhomepage.$update(successCallback, errorCallback);

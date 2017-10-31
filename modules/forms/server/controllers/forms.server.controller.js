@@ -4,82 +4,81 @@
  * Module dependencies.
  */
 var path = require('path'),
-  mongoose = require('mongoose'),
-  Form = mongoose.model('Form'),
-  errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
-  _ = require('lodash'),
-  country = require('country-list')();
+    mongoose = require('mongoose'),
+    Form = mongoose.model('Form'),
+    errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
+    _ = require('lodash'),
+    country = require('country-list')();
 
 
-exports.countries = function(req,res){
+exports.countries = function (req, res) {
 
     res.jsonp(country.getNames());
 }
 /**
  * Create a Form
  */
-exports.create = function(req, res) {
-  var form = new Form(req.body);
-  form.user = req.user;
-  form.username = req.user.username; //Set username
-  form.save(function(err) {
-    if (err) {
-      return res.status(400).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.jsonp(form);
-    }
-  });
+exports.create = function (req, res) {
+    var form = new Form(req.body);
+    form.user = req.user;
+    form.username = req.user.username; //Set username
+    form.save(function (err) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.jsonp(form);
+        }
+    });
 };
 
 /**
  * Show the current Form
  */
-exports.read = function(req, res) {
-  // convert mongoose document to JSON
-  var form = req.form ? req.form.toJSON() : {};
+exports.read = function (req, res) {
+    // convert mongoose document to JSON
+    var form = req.form ? req.form.toJSON() : {};
 
-  // Add a custom field to the Article, for determining if the current User is the "owner".
-  // NOTE: This field is NOT persisted to the database, since it doesn't exist in the Article model.
-  form.isCurrentUserOwner = req.user && form.user && form.user._id.toString() === req.user._id.toString();
+    // Add a custom field to the Article, for determining if the current User is the "owner".
+    // NOTE: This field is NOT persisted to the database, since it doesn't exist in the Article model.
+    form.isCurrentUserOwner = req.user && form.user && form.user._id.toString() === req.user._id.toString();
 
-  res.jsonp(form);
+    res.jsonp(form);
 };
 
 /**
  * Update a Form
  */
-exports.update = function(req, res) {
-  //var form = req.form;
-  //console.log(form);
-  //form = _.extend(form, req.body);
+exports.update = function (req, res) {
+    //var form = req.form;
+    //console.log(form);
+    //form = _.extend(form, req.body);
 
 
+    Form.findOne({'username': req.user.username}).exec(function (err, form) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            //res.jsonp(forms);
+            //Update form
+            form = _.extend(form, req.body);
 
-  Form.findOne({'username' : req.user.username}).exec(function(err, form) {
-    if (err) {
-      return res.status(400).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      //res.jsonp(forms);
-      //Update form 
-      form = _.extend(form, req.body);
+            //Save form to db
+            form.save(function (err) {
+                if (err) {
+                    return res.status(400).send({
+                        message: errorHandler.getErrorMessage(err)
+                    });
+                } else {
+                    res.jsonp(form);
+                }
+            });
 
-      //Save form to db
-      form.save(function(err) {
-      if (err) {
-        return res.status(400).send({
-          message: errorHandler.getErrorMessage(err)
-        });
-      } else {
-        res.jsonp(form);
-      }
-      });
-
-    }
-});
+        }
+    });
 
 };
 /*
@@ -99,69 +98,83 @@ exports.update = function(req, res) {
 /**
  * Delete an Form
  */
-exports.delete = function(req, res) {
-  var form = req.form;
+exports.delete = function (req, res) {
+    var form = req.form;
 
-  form.remove(function(err) {
-    if (err) {
-      return res.status(400).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.jsonp(form);
-    }
-  });
+    form.remove(function (err) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.jsonp(form);
+        }
+    });
 };
 
 /**
  * List of Forms
  */
- /*
+/*
 exports.list = function(req, res) {
-  Form.find().sort('-created').populate('user', 'displayName').exec(function(err, forms) {
-    if (err) {
-      return res.status(400).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.jsonp(forms);
-    }
-  });
+ Form.find().sort('-created').populate('user', 'displayName').exec(function(err, forms) {
+   if (err) {
+     return res.status(400).send({
+       message: errorHandler.getErrorMessage(err)
+     });
+   } else {
+     res.jsonp(forms);
+   }
+ });
 };
 */
-exports.list = function(req, res) {
-  Form.findOne({'username' : req.user.username}).exec(function(err, forms) {
-    if (err) {
-      return res.status(400).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.jsonp(forms);
-    }
-  });
+exports.allStudents = function () {
+
+    Form.find({}, function (err, data) {
+        if (err) {
+            return res.status(400).send({message: "error finding all students"});
+        }
+        console.log("get find all");
+        return res.status(200).send({data: data});
+    })
+
+}
+
+
+exports.list = function (req, res) {
+
+    Form.findOne({'username': req.user.username}).exec(function (err, forms) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.jsonp(forms);
+        }
+    });
 };
 
 
 /**
  * Form middleware
  */
-exports.formByID = function(req, res, next, id) {
+exports.formByID = function (req, res, next, id) {
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).send({
-      message: 'Form is invalid'
-    });
-  }
-
-  Form.findById(id).populate('user', 'displayName').exec(function (err, form) {
-    if (err) {
-      return next(err);
-    } else if (!form) {
-      return res.status(404).send({
-        message: 'No Form with that identifier has been found'
-      });
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).send({
+            message: 'Form is invalid'
+        });
     }
-    req.form = form;
-    next();
-  });
+
+    Form.findById(id).populate('user', 'displayName').exec(function (err, form) {
+        if (err) {
+            return next(err);
+        } else if (!form) {
+            return res.status(404).send({
+                message: 'No Form with that identifier has been found'
+            });
+        }
+        req.form = form;
+        next();
+    });
 };

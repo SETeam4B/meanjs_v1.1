@@ -13,6 +13,15 @@ acl = new acl(new acl.memoryBackend());
  */
 exports.invokeRolesPolicies = function () {
   acl.allow([{
+    roles: ['advisor'],
+    allows: [{
+      resources: '/api/courses',
+      permissions: '*'
+    }, {
+      resources: '/api/courses/:courseId',
+      permissions: '*'
+    }]
+  },{
     roles: ['tacoordinator'],
     allows: [{
       resources: '/api/courses',

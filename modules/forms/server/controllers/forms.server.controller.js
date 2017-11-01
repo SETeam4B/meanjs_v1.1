@@ -5,7 +5,7 @@
  */
 var path = require('path'),
     mongoose = require('mongoose'),
-       Form = mongoose.model('Form'),
+    Form = mongoose.model('Form'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
     _ = require('lodash'),
     country = require('country-list')(),
@@ -178,7 +178,7 @@ exports.list = function(req, res) {
  });
 };
 */
-exports.allStudents = function (req,res) {
+exports.allStudents = function (req, res) {
 
     Form.find({}, function (err, data) {
         if (err) {
@@ -188,7 +188,7 @@ exports.allStudents = function (req,res) {
         return res.status(200).send({data: data});
     })
 
-}
+};
 
 
 exports.list = function (req, res) {
@@ -202,7 +202,7 @@ exports.list = function (req, res) {
             res.jsonp(forms);
         }
     });
-}
+};
 
 
 exports.listAll = function (req, res) {
@@ -215,9 +215,7 @@ exports.listAll = function (req, res) {
             res.jsonp(forms);
         }
     });
-}
-
-
+};
 
 
 /**
@@ -230,7 +228,6 @@ exports.formByID = function (req, res, next, id) {
             message: 'Form is invalid'
         });
     }
-
     Form.findById(id).populate('user', 'displayName').exec(function (err, form) {
         if (err) {
             return next(err);
@@ -243,3 +240,87 @@ exports.formByID = function (req, res, next, id) {
         next();
     });
 };
+
+/**
+ * updates a student already on the database
+ * @param req
+ * @param res
+ */
+exports.updateWithoutUsername = function (req, res) {
+
+    Form.findOneAndUpdate({_id: req.body._id}, req.body, function (err, data) {
+        if (err) {
+            return res.status(400).send({
+                message: "unsuccessfully update"
+            });
+        }
+
+        return res.status(200).send({message: "successfully updated student"});
+    });
+    // Form.findById(req.body._id, function (err, form) {
+    //     if (err || form == undefined) {
+    //         return res.status(400).send({
+    //             message: "error on the find"
+    //         });
+    //     }
+    //     form = _.extend(form, replacement);
+    //
+    //     form.save(function (err) {
+    //         if (err) {
+    //             return res.status(400).send({
+    //                 message: errorHandler.getErrorMessage(err)
+    //             });
+    //         } else {
+    //             return res.status(200).send({message:"successfully updated student "+ form.firstName})
+    //         }
+    //     });
+    // });
+    // Form.findById(req.body._id).exec(function (err, form) {
+    //     if (err || form == undefined) {
+    //         return res.status(400).send({
+    //             message: "error on the find"
+    //         });
+    //     }else{
+    //         return res.status(200).send({message:"it fournd it"});
+    //     }
+    // })
+
+};
+
+/**
+ * checks if the ufid is found
+ * if it is not found it creates new student
+ * @param req
+ * @param res
+ */
+exports.createWithoutUsername = function (req, res) {
+    Form.findOne({ufid: req.body.ufid}, function (err, form) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        }
+        if (form == undefined) {
+            return createStudentAdvisor(req, res);
+        }
+    });
+};
+
+/**
+ * creates a new student on the database, does not require a username
+ * @param req
+ * @param res
+ */
+function createStudentAdvisor(req, res) {
+    req.body.username = "jordi";
+    var form = new Form(req.body);
+    form.save(function (err) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            return res.status(200).send({message: "successfully added a student"});
+        }
+    });
+}

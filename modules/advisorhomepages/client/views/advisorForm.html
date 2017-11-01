@@ -10,7 +10,7 @@
           <div class="form-group" show-errors>
             <label class="control-label" for="ufid">UFID# (no dashes)</label>
             <input name="ufid" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].ufid" id="ufid"
-                   class="form-control" placeholder="{{fakeData[fakeData.indexOf(row)].ufid}}"
+                   class="form-control"
                    required>
             <div ng-messages="vm.form.formForm.ufid.$error" role="alert">
               <p class="help-block error-text" ng-message="required">UFID is required.</p>
@@ -21,9 +21,7 @@
           <div class="form-group" show-errors>
             <label class="control-label" for="email">Email</label>
             <input name="email" type="email" ng-model="TACandidateForms[fakeData.indexOf(row)].email" id="email"
-                   class="form-control"
-                   placeholder="{{fakeData[fakeData.indexOf(row)].email}}"
-                   required>
+                   class="form-control" required>
             <div ng-messages="vm.form.formForm.email.$error" role="alert">
               <p class="help-block error-text" ng-message="required">Email is required.</p>
             </div>
@@ -34,7 +32,6 @@
             <label class="control-label" for="firstName">First Name</label>
             <input name="firstName" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].firstName"
                    id="firstName" class="form-control"
-                   placeholder="{{fakeData[fakeData.indexOf(row)].firstName}}"
                    required>
             <div ng-messages="vm.form.formForm.firstName.$error" role="alert">
               <p class="help-block error-text" ng-message="required">First name is required.</p>
@@ -45,8 +42,7 @@
           <div class="form-group" show-errors>
             <label class="control-label" for="middleName">Middle Name</label>
             <input name="middleName" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].middleName"
-                   id="middleName" class="form-control"
-                   placeholder="{{fakeData[fakeData.indexOf(row)].middleName}}">
+                   id="middleName" class="form-control">
           </div>
 
 
@@ -54,7 +50,6 @@
             <label class="control-label" for="lastName">Last Name</label>
             <input name="lastName" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].lastName" id="lastName"
                    class="form-control"
-                   placeholder="{{fakeData[fakeData.indexOf(row)].lastName}}"
                    required>
             <div ng-messages="vm.form.formForm.lastName.$error" role="alert">
               <p class="help-block error-text" ng-message="required">Last name is required.</p>
@@ -66,7 +61,6 @@
             <label class="control-label" for="street">Street</label>
             <input name="street" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].street" id="street"
                    class="form-control"
-                   placeholder="{{fakeData[fakeData.indexOf(row)].street}}"
                    required>
             <div ng-messages="vm.form.formForm.street.$error" role="alert">
               <p class="help-block error-text" ng-message="required">Street is required.</p>
@@ -78,7 +72,6 @@
             <label class="control-label" for="city">City</label>
             <input name="city" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].city" id="city"
                    class="form-control"
-                   placeholder="{{fakeData[fakeData.indexOf(row)].city}}"
                    required>
             <div ng-messages="vm.form.formForm.city.$error" role="alert">
               <p class="help-block error-text" ng-message="required">City is required.</p>
@@ -90,7 +83,6 @@
             <label class="control-label" for="state">State or Province</label>
             <input name="state" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].state" id="state"
                    class="form-control"
-                   placeholder="{{fakeData[fakeData.indexOf(row)].state}}"
                    required>
             <div ng-messages="vm.form.formForm.state.$error" role="alert">
               <p class="help-block error-text" ng-message="required">Street or Province is required.</p>
@@ -102,7 +94,6 @@
             <label class="control-label" for="zipcode">ZIP Code</label>
             <input name="zipcode" type="number" ng-model="TACandidateForms[fakeData.indexOf(row)].zipcode" id="zipcode"
                    class="form-control"
-                   placeholder="{{fakeData[fakeData.indexOf(row)].zipcode}}"
                    required>
             <div ng-messages="vm.form.formForm.zipcode.$error" role="alert">
               <p class="help-block error-text" ng-message="required">ZIP code is required.</p>
@@ -114,7 +105,6 @@
             <label class="control-label" for="phone">Phone Number</label>
             <input name="phone" type="number" ng-model="TACandidateForms[fakeData.indexOf(row)].phone" id="phone"
                    class="form-control"
-                   placeholder="{{fakeData[fakeData.indexOf(row)].phone}}"
                    required>
             <div ng-messages="vm.form.formForm.phone.$error" role="alert">
               <p class="help-block error-text" ng-message="required">Phone number is required.</p>
@@ -298,8 +288,7 @@
           <div class="form-group" show-errors>
             <label class="control-label" for="adviser">Name of Adviser</label>
             <input name="adviser" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].adviser" id="adviser"
-                   class="form-control"
-                   placeholder="{{fakeData[fakeData.indexOf(row)].adviser}}">
+                   class="form-control">
           </div>
 
 
@@ -307,8 +296,7 @@
             <label class="control-label" for="researchArea">Area of Research</label>
             <input name="researchArea" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].researchArea"
                    id="researchArea"
-                   class="form-control"
-                   placeholder="{{fakeData[fakeData.indexOf(row)].researchArea}}">
+                   class="form-control">
           </div>
 
 

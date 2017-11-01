@@ -26,7 +26,7 @@
 
     <accordion-group ng-repeat="row in fakeData" is-open="status.open">
       <accordion-heading>
-        <table>
+        <table  ng-click="populateTACandidatesForm(fakeData.indexOf(row))">
           <thead>
           <tr>
             <th class="col-xs-3">UF ID</th>

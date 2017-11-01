@@ -12,37 +12,37 @@
 
         $scope.yolo = "hello World";
 
-        $scope.isAdvisorForm = true;
-        $scope.TACandidateForms = [{}];
+        $state.isAdvisorForm = true;
+        $scope.TACandidateForms = [];
         var fs = new FormsService();
 
         $scope.fakeData = [
             {
-                "id": 1,
+                "ufid": 1,
                 "name": "Lionel Messi",
                 "category": 123,
                 "hourTA": "exra Parameter"
             },
             {
-                "id": 2,
+                "ufid": 2,
                 "name": "Ronaldinho",
                 "category": 123,
                 "hourTA": "exra Parameter"
             },
             {
-                "id": 3,
+                "ufid": 3,
                 "name": "Zinedine Zidan",
                 "category": 123,
                 "hourTA": "exra Parameter"
             },
             {
-                "id": 4,
+                "ufid": 4,
                 "name": "Luis Suarez",
                 "category": 123,
                 "hourTA": "exra Parameter"
             },
             {
-                "id": 0,
+                "ufid": 0,
                 "name": "Maradona",
                 "category": 123,
                 "hourTA": "exra Parameter"
@@ -52,8 +52,16 @@
 
         fs.$getAll().then(function (res) {
             $scope.fakeData = res.data;
+            // $scope.TACandidateForms = res.data;
         });
 
+
+        $scope.populateTACandidatesForm = function(index){
+            debugger;
+            if ($scope.TACandidateForms[index] == undefined){
+                $scope.TACandidateForms[index] = Object.assign({},$scope.fakeData[index]) ;
+            }
+        }
 
         $scope.openModal = function () {
             $modal.open({
@@ -72,10 +80,12 @@
 
         $scope.submitModifiedForm = function (form,vm, index) {
             debugger;
-            form.username = $scope.fakeData[index].username;
+            // form.username = $scope.fakeData[index].username;
+
+
             var service = new FormsService(form);
             vm.form = service;
-            vm.save(true);
+            vm.updateWithAdvisor();
         }
 
         $scope.tryingNew3 = function (index) {
@@ -141,16 +151,7 @@
 
     formHandler.$inject = ['$stateParams', 'FormsService', 'Authentication'];
     function formHandler($stateParams, FormsService, Authentication){
-        /*
-        FormsService.get({
-            username: Authentication.user.username
-        }).$promise.then(function (result) {
-            console.log(result);
-            return result;
-        }, function(reason) {
-            return new FormsService();
-        });
-        */
+
         console.log("WTF IS GOING ON HERE WTF IS THIS ");
         console.log("username->" );
         console.log(Authentication.user);

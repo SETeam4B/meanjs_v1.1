@@ -57,7 +57,6 @@
 
 
         $scope.populateTACandidatesForm = function(index){
-            debugger;
             if ($scope.TACandidateForms[index] == undefined){
                 $scope.TACandidateForms[index] = Object.assign({},$scope.fakeData[index]) ;
             }
@@ -79,10 +78,7 @@
         }
 
         $scope.submitModifiedForm = function (form,vm, index) {
-            debugger;
             // form.username = $scope.fakeData[index].username;
-
-
             var service = new FormsService(form);
             vm.form = service;
             vm.updateWithAdvisor();

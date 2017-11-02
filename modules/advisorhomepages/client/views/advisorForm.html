@@ -26,7 +26,7 @@
           </div>
         </div>
 
-        <div class="col-sm-6 col-sm-offset-3">
+        <div class="col-sm-6 col-sm-offset-3" style="padding-top: 20px">
           <div class="panel panel-default panel-success class">
             <div class="panel-heading">Category</div>
             <div class="panel-body">
@@ -44,33 +44,50 @@
           </div>
         </div>
 
+        <div class="col-sm-6 col-sm-offset-3" style="padding-top: 20px">
+          <div class="panel panel-default panel-success class">
+            <div class="panel-heading">TA Hours</div>
+            <div class="panel-body">
+              <!--<label class="control-label" for="hourTA">TA Hours</label>-->
+              <input name="hourTA" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].hourTA" id="hourTA"
+                     class="form-control"
+                     required>
+              <div ng-messages="vm.form.formForm.hourTA.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Hours are required</p>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
         <div class="col-sm-12" ng-show="formBooleans[fakeData.indexOf(row)]">
 
-          <div class="form-group" show-errors>
-            <label class="control-label" for="hourTA">TA Hours</label>
-            <input name="hourTA" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].hourTA" id="hourTA"
-                   class="form-control"
-                   required>
-            <div ng-messages="vm.form.formForm.hourTA.$error" role="alert">
-              <p class="help-block error-text" ng-message="required">Hours are required</p>
-            </div>
-          </div>
+          <!--<div class="form-group" show-errors>-->
+            <!--<label class="control-label" for="hourTA">TA Hours</label>-->
+            <!--<input name="hourTA" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].hourTA" id="hourTA"-->
+                   <!--class="form-control"-->
+                   <!--required>-->
+            <!--<div ng-messages="vm.form.formForm.hourTA.$error" role="alert">-->
+              <!--<p class="help-block error-text" ng-message="required">Hours are required</p>-->
+            <!--</div>-->
+          <!--</div>-->
 
-          <div class="form-group" show-errors>
-            <label class="control-label" for="category">Category</label>
-            <select name="category" id="category"
-                    class="form-control"
-                    ng-model="TACandidateForms[fakeData.indexOf(row)].category"
-                    requried>
-              <option ng-repeat="category in vm.categoryOptions"
-                      ng-selected="category === TACandidateForms[fakeData.indexOf(row)].category"
-                      value="{{category}}">{{category}}
-              </option>
-            </select>
-            <div ng-messages="vm.form.formForm.category.$error" role="alert">
-              <p class="help-block error-text" ng-message="required">Category needs to be picked.</p>
-            </div>
-          </div>
+          <!--<div class="form-group" show-errors>-->
+          <!--<label class="control-label" for="category">Category</label>-->
+          <!--<select name="category" id="category"-->
+          <!--class="form-control"-->
+          <!--ng-model="TACandidateForms[fakeData.indexOf(row)].category"-->
+          <!--requried>-->
+          <!--<option ng-repeat="category in vm.categoryOptions"-->
+          <!--ng-selected="category === TACandidateForms[fakeData.indexOf(row)].category"-->
+          <!--value="{{category}}">{{category}}-->
+          <!--</option>-->
+          <!--</select>-->
+          <!--<div ng-messages="vm.form.formForm.category.$error" role="alert">-->
+          <!--<p class="help-block error-text" ng-message="required">Category needs to be picked.</p>-->
+          <!--</div>-->
+          <!--</div>-->
 
           <div class="form-group" show-errors>
             <label class="control-label" for="ufid">UFID# (no dashes)</label>
@@ -397,10 +414,12 @@
           <button type="button" class="btn btn-success" ng-click="updateTemporaryForm(fakeData.indexOf(row))">Reset
             form
           </button>
-          <button ng-show="formBooleans[fakeData.indexOf(row)]" type="button" class="btn btn-success" ng-click="toggleForm(fakeData.indexOf(row))">
+          <button ng-show="formBooleans[fakeData.indexOf(row)]" type="button" class="btn btn-success"
+                  ng-click="toggleForm(fakeData.indexOf(row))">
             Hide Form
           </button>
-          <button ng-hide="formBooleans[fakeData.indexOf(row)]" type="button" class="btn btn-success" ng-click="toggleForm(fakeData.indexOf(row))">
+          <button ng-hide="formBooleans[fakeData.indexOf(row)]" type="button" class="btn btn-success"
+                  ng-click="toggleForm(fakeData.indexOf(row))">
             Show Form
           </button>
           <!--<button type="button" class="btn btn-danger" ng-click="">Reject Student</button>-->

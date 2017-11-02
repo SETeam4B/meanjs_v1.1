@@ -161,13 +161,10 @@
 
     };
 
+    //
     formHandler.$inject = ['$stateParams', 'FormsService', 'Authentication'];
 
     function formHandler($stateParams, FormsService, Authentication) {
-
-        console.log("WTF IS GOING ON HERE WTF IS THIS ");
-        console.log("username->");
-        console.log(Authentication.user);
         return FormsService.get({
             username: Authentication.user.username
         }).$promise;

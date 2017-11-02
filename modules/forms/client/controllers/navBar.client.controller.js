@@ -8,11 +8,11 @@
     NavBarController.$inject = ['$scope'];
 
     function NavBarController($scope) {
-        $scope.previous;
+        $scope.previous = 0;
         $scope.stateOptions= [
             {
                 state: 'forms.undergrad',
-                selected: '',
+                selected: 'bg-info text-white',
                 name: "Undergraduate"
             },
             {
@@ -41,13 +41,3 @@
 
 }());
 
-(function() {
-    'use strict';
-
-    angular.module('navBarDemoBasicUsage', ['ngMaterial'])
-        .controller('AppCtrl', AppCtrl);
-
-    function AppCtrl($scope) {
-        $scope.currentNavItem = 'page1';
-    }
-})();

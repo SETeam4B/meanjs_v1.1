@@ -15,15 +15,13 @@ exports.invokeRolesPolicies = function () {
   acl.allow([{
     roles: ['tacoordinator'],
     allows: [{
-      resources: '/api/ta-coordinators/status',
-      permissions: '*'
-    },{
-    roles: ['tacoordinator'],
-    allows: [{
       resources: '/api/ta-coordinators',
       permissions: '*'
     }, {
       resources: '/api/ta-coordinators/:taCoordinatorId',
+      permissions: '*'
+    }, {
+      resources: '/api/ta-coordinators/status',
       permissions: '*'
     }]
   }, {
@@ -61,6 +59,11 @@ exports.invokeRolesPolicies = function () {
  */
 exports.isAllowed = function (req, res, next) {
   var roles = (req.user) ? req.user.roles : ['guest'];
+
+  //$scope.status.undergrad
+  //$scope.status.grad
+  //$scope.status.phd
+  //Need to ignore if $scope.status is undefined
 
   // If an Ta coordinator is being processed and the current user created it then allow any manipulation
   if (req.taCoordinator && req.user && req.taCoordinator.user && req.taCoordinator.user.id === req.user.id) {

@@ -12,6 +12,11 @@ module.exports = function(app) {
     .get(taCoordinators.list)
     .post(taCoordinators.create);
 
+
+  app.route('/api/ta-coordinators/status').all(taCoordinatorsPolicy.isAllowed)
+    .get(taCoordinatorsStatus.readStatus)
+    .put(taCoordinatorsStatus.updateStatus)
+
   app.route('/api/ta-coordinators/:taCoordinatorId').all(taCoordinatorsPolicy.isAllowed)
     .get(taCoordinators.read)
     .put(taCoordinators.update)

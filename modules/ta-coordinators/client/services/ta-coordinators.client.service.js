@@ -17,4 +17,12 @@
       }
     });
   }
+
+  function TaCoordinatorsStatusService($resource) {
+    return $resource('api/ta-coordinators/status', {
+      update: {
+        method: 'PUT'
+      }
+    });
+  }
 }());

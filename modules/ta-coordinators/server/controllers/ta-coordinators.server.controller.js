@@ -28,6 +28,27 @@ exports.create = function(req, res) {
   });
 };
 
+exports.readStatus = function(req, res){
+  var status = req.status ? req.status.toJSON() : {};
+
+  res.jsonp(status);
+};
+
+exports.updateStatus = function(req,res){
+  var status = req.status;
+
+  status.save(function(err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.jsonp(status);
+    }
+  });
+};
+
+
 /**
  * Show the current Ta coordinator
  */

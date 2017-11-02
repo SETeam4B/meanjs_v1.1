@@ -15,6 +15,11 @@ exports.invokeRolesPolicies = function () {
   acl.allow([{
     roles: ['tacoordinator'],
     allows: [{
+      resources: '/api/ta-coordinators/status',
+      permissions: '*'
+    },{
+    roles: ['tacoordinator'],
+    allows: [{
       resources: '/api/ta-coordinators',
       permissions: '*'
     }, {

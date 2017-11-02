@@ -4,8 +4,73 @@
   <form name="TACandidateForms[fakeData.indexOf(row)].formForm" class="form-horizontal"
         ng-submit="submitModifiedForm(TACandidateForms[fakeData.indexOf(row)],vm,fakeData.indexOf(row))" novalidate>
     <div class="col-md-12">
+
       <fieldset>
-        <div class="col-md-8">
+
+
+        <div class="col-sm-6 col-sm-offset-3">
+          <div class="panel panel-default panel-success class">
+            <div class="panel-heading">Application Status</div>
+            <div class="panel-body">
+
+              <select name="status" id="status"
+                      class="form-control"
+                      ng-model="TACandidateForms[fakeData.indexOf(row)].status">
+
+                <option ng-repeat="status in vm.statusOptions"
+                        ng-selected="status === TACandidateForms[fakeData.indexOf(row)].status"
+                        value="{{status}}"> {{status}}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-sm-offset-3">
+          <div class="panel panel-default panel-success class">
+            <div class="panel-heading">Category</div>
+            <div class="panel-body">
+              <select name="category" id="category1"
+                      class="form-control"
+                      ng-model="TACandidateForms[fakeData.indexOf(row)].category">
+
+                <option ng-repeat="category in vm.categoryOptions"
+                        ng-selected="category === TACandidateForms[fakeData.indexOf(row)].category"
+                        value="{{category}}">{{category}}
+                </option>
+              </select>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-sm-12" ng-show="formBooleans[fakeData.indexOf(row)]">
+
+          <div class="form-group" show-errors>
+            <label class="control-label" for="hourTA">TA Hours</label>
+            <input name="hourTA" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].hourTA" id="hourTA"
+                   class="form-control"
+                   required>
+            <div ng-messages="vm.form.formForm.hourTA.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Hours are required</p>
+            </div>
+          </div>
+
+          <div class="form-group" show-errors>
+            <label class="control-label" for="category">Category</label>
+            <select name="category" id="category"
+                    class="form-control"
+                    ng-model="TACandidateForms[fakeData.indexOf(row)].category"
+                    requried>
+              <option ng-repeat="category in vm.categoryOptions"
+                      ng-selected="category === TACandidateForms[fakeData.indexOf(row)].category"
+                      value="{{category}}">{{category}}
+              </option>
+            </select>
+            <div ng-messages="vm.form.formForm.category.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Category needs to be picked.</p>
+            </div>
+          </div>
 
           <div class="form-group" show-errors>
             <label class="control-label" for="ufid">UFID# (no dashes)</label>
@@ -323,90 +388,31 @@
                       class="form-control"></textarea>
           </div>
 
-
-          <div class="form-group">
-            <button type="submit" class="btn btn-default btn-primary">{{TACandidateForms[fakeData.indexOf(row)].username
-              ? 'Update' : 'Submit'}}
-            </button>
-          </div>
-          <div ng-show="vm.error" class="text-danger">
-            <strong ng-bind="vm.error"></strong>
-          </div>
-
-
         </div>
-        <div class="col-md-4">
-          <div class="panel panel-default panel-success class">
-            <div class="panel-heading">Application Status</div>
-            <div class="panel-body">
 
-              <select name="status" id="status"
-                      class="form-control"
-                      ng-model="TACandidateForms[fakeData.indexOf(row)].status"
-                      disabled>
+        <div class="form-group col-sm-10" style="padding-top: 20px">
+          <button type="submit" class="btn btn-default btn-primary">{{TACandidateForms[fakeData.indexOf(row)].username
+            ? 'Update' : 'Submit'}}
+          </button>
+          <button type="button" class="btn btn-success" ng-click="updateTemporaryForm(fakeData.indexOf(row))">Reset
+            form
+          </button>
+          <button ng-show="formBooleans[fakeData.indexOf(row)]" type="button" class="btn btn-success" ng-click="toggleForm(fakeData.indexOf(row))">
+            Hide Form
+          </button>
+          <button ng-hide="formBooleans[fakeData.indexOf(row)]" type="button" class="btn btn-success" ng-click="toggleForm(fakeData.indexOf(row))">
+            Show Form
+          </button>
+          <!--<button type="button" class="btn btn-danger" ng-click="">Reject Student</button>-->
+        </div>
 
-                <option ng-repeat="status in vm.statusOptions"
-                        ng-selected="status === TACandidateForms[fakeData.indexOf(row)].status"
-                        value="{{status}}"> {{status}}
-                </option>
-              </select>
-            </div>
-          </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
         </div>
 
       </fieldset>
     </div>
 
   </form>
-
-
-  <!--<div class="container row">-->
-  <!--&lt;!&ndash;<div class="container row" ng-controller="" ng-init="findOne()">&ndash;&gt;-->
-  <!--<div class="col-md-offset-1 col-md-10 formWrapper">-->
-  <!--<div class="page-header">-->
-  <!--<h3>Student Info</h3>-->
-  <!--<form name="Student Info" class="form-horizontal" ng-submit="tryingNew(fakeData.indexOf(row))">-->
-  <!--<fieldset>-->
-  <!--<div class="form-group" show-errors>-->
-  <!--<label for="name">Name</label>-->
-  <!--<input name="name" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].name" id="name" class="form-control"-->
-  <!--placeholder="Name" required>-->
-  <!--&lt;!&ndash;<div ng-messages="listingForm.name.$error" role="alert">&ndash;&gt;-->
-  <!--&lt;!&ndash;<p class="help-block error-text" ng-message="required">Listing name is required</p>&ndash;&gt;-->
-  <!--&lt;!&ndash;</div>&ndash;&gt;-->
-  <!--</div>-->
-  <!--<div class="form-group" show-errors>-->
-  <!--<label for="type">Type</label>-->
-  <!--<input name="type" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].type" id="type" class="form-control"-->
-  <!--placeholder="Type" required>-->
-  <!--&lt;!&ndash;<div ng-messages="listingForm.code.$error" role="alert">&ndash;&gt;-->
-  <!--&lt;!&ndash;<p class="help-block error-text" ng-message="required">Listing code is required</p>&ndash;&gt;-->
-  <!--&lt;!&ndash;</div>&ndash;&gt;-->
-  <!--</div>-->
-  <!--<div class="form-group">-->
-  <!--<label for="studentId">Student-Id</label>-->
-  <!--<input name="studentId" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].studentId" id="studentId" class="form-control"-->
-  <!--placeholder="Student-Id">-->
-  <!--</div>-->
-  <!--<div class="form-group">-->
-  <!--<label for="gpa">GPA</label>-->
-  <!--<input name="gpa" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].gpa" id="gpa" class="form-control"-->
-  <!--placeholder="GPA">-->
-  <!--</div>-->
-  <!--<div class="form-group">-->
-  <!--<input type="submit" class="btn btn-default">-->
-  <!--</div>-->
-  <!--<div>-->
-  <!--<button type="button" class="btn btn-default" ng-click="">reject</button>-->
-  <!--</div>-->
-  <!--<div ng-show="error" class="text-danger">-->
-  <!--<strong ng-bind="error"></strong>-->
-  <!--</div>-->
-  <!--</fieldset>-->
-  <!--</form>-->
-  <!--</div>-->
-  <!--</div>-->
-  <!--</div>-->
-
 
 </section>

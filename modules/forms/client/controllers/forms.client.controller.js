@@ -19,18 +19,7 @@
         vm.categoryOptions = categoryOptions();
         vm.teachingTAOptions = teachingTAOptions();
         vm.authentication = Authentication;
-
         vm.form = form;
-        console.log("courses->");
-        console.log(vm.courses);
-        // vm.form =  FormsService.get({
-        //     username: Authentication.user.username
-        // }).$promise;
-
-        // vm.form = FormsService.query((res) => {
-        //     console.log(res);
-        //     debugger;
-        // });
         vm.error = null;
         vm.phdExamDate = formatDate();
         vm.remove = remove;
@@ -58,6 +47,7 @@
             category.push("TA");
             category.push("Grader");
             category.push("UTA");
+            return category;
         }
 
         function teachingTAOptions() {

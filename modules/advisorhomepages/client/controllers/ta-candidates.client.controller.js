@@ -2,11 +2,11 @@
     'use strict';
 
     angular
-        // .module('advisorhomepages')
+    // .module('advisorhomepages')
         .module('forms')
         .controller('TACandidatesController', TACandidates);
 
-    TACandidates.inject = ['$scope', '$modal', '$state','FormsService'];
+    TACandidates.inject = ['$scope', '$modal', '$state', 'FormsService'];
 
     function TACandidates($scope, $modal, $state, FormsService) {
 
@@ -15,6 +15,7 @@
         $state.isAdvisorForm = true;
         $scope.TACandidateForms = [];
         var fs = new FormsService();
+        $scope.formBooleans = [];
 
         $scope.fakeData = [
             {
@@ -49,16 +50,13 @@
             }
         ];
 
-
-        fs.$getAll().then(function (res) {
-            $scope.fakeData = res.data;
-            // $scope.TACandidateForms = res.data;
-        });
+        updateAccordionInformation();
 
 
-        $scope.populateTACandidatesForm = function(index){
-            if ($scope.TACandidateForms[index] == undefined){
-                $scope.TACandidateForms[index] = Object.assign({},$scope.fakeData[index]) ;
+        $scope.populateTACandidatesForm = function (index) {
+            if ($scope.TACandidateForms[index] == undefined) {
+                $scope.updateTemporaryForm(index);
+                $scope.formBooleans[index] = false;
             }
         }
 
@@ -75,13 +73,24 @@
             }).result.then(function (res) {
                 // when modal is closed then call a function
             });
-        }
+        };
 
-        $scope.submitModifiedForm = function (form,vm, index) {
+        $scope.submitModifiedForm = function (form, vm, index) {
             // form.username = $scope.fakeData[index].username;
             var service = new FormsService(form);
             vm.form = service;
             vm.updateWithAdvisor();
+            $scope.fakeData[index] = Object.assign({}, form);
+            // updateAccordionInformation();
+        };
+
+        $scope.updateTemporaryForm = function (index) {
+            $scope.TACandidateForms[index] = Object.assign({}, $scope.fakeData[index]);
+        }
+
+        $scope.toggleForm = function (index) {
+            // debugger;
+            $scope.formBooleans[index] = !$scope.formBooleans[index];
         }
 
         $scope.tryingNew3 = function (index) {
@@ -89,7 +98,7 @@
             debugger;
             console.log($scope.allStudentForms);
             debugger;
-        }
+        };
 
         $scope.tryingNew = function (index) {
             checkId(index).then(function (res) {
@@ -99,12 +108,19 @@
                 addNewStudent(index);
                 alert("new student added");
             });
+        };
+
+        function updateAccordionInformation() {
+            fs.$getAll().then(function (res) {
+                $scope.fakeData = res.data;
+                // $scope.TACandidateForms = res.data;
+            });
         }
 
         function checkId(index) {
             return new Promise(function (resolve, reject) {
                 $scope.getWithStudentId($scope.TACandidateForms[index].studentId).then(function (res) {
-                   return resolve(res);
+                    return resolve(res);
                 }).catch(function (err) {
                     console.log("Id passed is wrong not in db, so cant update");
                     return reject(err);
@@ -146,10 +162,11 @@
     };
 
     formHandler.$inject = ['$stateParams', 'FormsService', 'Authentication'];
-    function formHandler($stateParams, FormsService, Authentication){
+
+    function formHandler($stateParams, FormsService, Authentication) {
 
         console.log("WTF IS GOING ON HERE WTF IS THIS ");
-        console.log("username->" );
+        console.log("username->");
         console.log(Authentication.user);
         return FormsService.get({
             username: Authentication.user.username

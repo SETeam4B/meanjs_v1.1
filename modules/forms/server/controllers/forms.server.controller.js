@@ -257,34 +257,6 @@ exports.updateWithoutUsername = function (req, res) {
 
         return res.status(200).send({message: "successfully updated student"});
     });
-    // Form.findById(req.body._id, function (err, form) {
-    //     if (err || form == undefined) {
-    //         return res.status(400).send({
-    //             message: "error on the find"
-    //         });
-    //     }
-    //     form = _.extend(form, replacement);
-    //
-    //     form.save(function (err) {
-    //         if (err) {
-    //             return res.status(400).send({
-    //                 message: errorHandler.getErrorMessage(err)
-    //             });
-    //         } else {
-    //             return res.status(200).send({message:"successfully updated student "+ form.firstName})
-    //         }
-    //     });
-    // });
-    // Form.findById(req.body._id).exec(function (err, form) {
-    //     if (err || form == undefined) {
-    //         return res.status(400).send({
-    //             message: "error on the find"
-    //         });
-    //     }else{
-    //         return res.status(200).send({message:"it fournd it"});
-    //     }
-    // })
-
 };
 
 /**

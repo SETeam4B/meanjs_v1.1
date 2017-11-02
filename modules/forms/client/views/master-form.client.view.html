@@ -1,23 +1,23 @@
 <section>
   </br>
-  <div class="page-header">
-    <h1>TA Application Form</h1>
-  </div>
-  <div class="container">
+  <!--<div class="page-header">-->
+    <!--<h1>TA Application Form</h1>-->
+  <!--</div>-->
+  <div >
     <div class="row">
       <!-- Add a ui-sref property to the anchor tags to allow navigation between different states -->
-      <ul class="nav nav-pills">
-        <li><a ui-sref="forms.undergrad">Undergraduate</a></li>
-        <li><a ui-sref="forms.master" class="bg-info text-white" >Master</a></li>
-        <li><a ui-sref="forms.phd">Ph.D.</a></li>
-      </ul>
+      <!--<ul class="nav nav-pills">-->
+        <!--<li><a ui-sref="forms.undergrad">Undergraduate</a></li>-->
+        <!--<li><a ui-sref="forms.master" class="bg-info text-white" >Master</a></li>-->
+        <!--<li><a ui-sref="forms.phd">Ph.D.</a></li>-->
+      <!--</ul>-->
 
     </div>
 
-    <form name="vm.form.formForm" class="form-horizontal" ng-submit="vm.save(vm.form.formForm.$valid)" novalidate>
+    <form name="vm.form.formForm" class="form-horizontal col-sm-12" ng-submit="vm.save(vm.form.formForm.$valid)" novalidate>
       <div class="row">
         <fieldset>
-          <div class="col-md-8">
+          <div class="col-sm-6">
 
             <div class="form-group" show-errors>
               <label class="control-label" for="ufid">UFID# (no dashes)</label>
@@ -245,7 +245,7 @@
 
 
           </div>
-          <div class="col-md-4">
+          <div class="col-sm-4 col-sm-offset-1">
             <div class="panel panel-default panel-success class">
               <div class="panel-heading">Application Status</div>
               <div class="panel-body">

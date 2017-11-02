@@ -12,7 +12,9 @@
             .state('forms', {
                 abstract: true,
                 url: '/forms',
-                template: '<ui-view/>'
+                controller:'NavBarController',
+                // template: '<ui-view/>'
+                templateUrl: 'modules/forms/client/views/nav-bar-forms.client.view.html'
             })
             .state('forms.list', {
                 url: '',

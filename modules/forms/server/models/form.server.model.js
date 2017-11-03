@@ -166,7 +166,7 @@ var FormSchema = new Schema({
     },
     category: {
         type: String,
-        default: 'TA'
+        default: 'N/A'
     },
     hourTA: {
         type: Number,

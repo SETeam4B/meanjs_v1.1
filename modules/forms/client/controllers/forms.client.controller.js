@@ -54,6 +54,7 @@
 
         function categoryOptions() {
             var category = [];
+            category.push("N/A");
             category.push("TA");
             category.push("Grader");
             category.push("UTA");

@@ -10,11 +10,9 @@ var mongoose = require('mongoose'),
  * Assignmentrecommendation Schema
  */
 var AssignmentrecommendationSchema = new Schema({
-  name: {
+  assigned :{
     type: String,
-    default: '',
-    required: 'Please fill Assignmentrecommendation name',
-    trim: true
+      default: "No"
   },
   created: {
     type: Date,
@@ -23,6 +21,10 @@ var AssignmentrecommendationSchema = new Schema({
   user: {
     type: Schema.ObjectId,
     ref: 'User'
+  },
+  course :{
+    type: Schema.ObjectId,
+      ref:'Course'
   }
 });
 

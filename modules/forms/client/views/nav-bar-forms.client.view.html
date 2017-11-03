@@ -1,0 +1,19 @@
+<section>
+
+  <div class="page-header">
+    <h1>TA Application Form</h1>
+  </div>
+  <div>
+
+    <ul class="nav nav-pills col-sm-12" >
+      <li class="" ng-repeat="row in stateOptions">
+        <option ui-sref="{{row.state}}" ng-click="changeColors(stateOptions.indexOf(row))" class="btn" ng-class="row.selected">
+          {{row.name}}
+        </option>
+      </li>
+    </ul>
+
+  </div>
+
+  <div ui-view style="padding-top: 30px"></div>
+</section>

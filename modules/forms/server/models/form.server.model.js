@@ -158,7 +158,7 @@ var FormSchema = new Schema({
         default: ''
     },
 
-    //adviser only
+    //TODO: add fields on adviser: adviser only
 
     status: {
         type: String,
@@ -182,11 +182,12 @@ var FormSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'User'
     },
+    //TODO: why not associate the user to the _id that is automatically generated and not the username
     //this username is used internally for associate form with user, it servers as a primary key for form document.
     username: {
         type: String,
-        unique: true,
-        default: ''
+        // unique: true,
+        // default: ''
     }
 });
 

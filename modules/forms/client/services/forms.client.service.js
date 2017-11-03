@@ -18,6 +18,14 @@
             getAll:{
                 method: 'GET',
                 url: '/api/forms/allForms'
+            },
+            updateFromAdvisor:{
+                method: 'PUT',
+                url: '/api/forms/updateStudentAdvisor'
+            },
+            addFromAdvisor:{
+                method: 'POST',
+                url: '/api/forms/updateStudentAdvisor'
             }
         });
     }

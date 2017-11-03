@@ -56,6 +56,8 @@ exports.create = function (req, res) {
     var form = new Form(req.body);
     form.user = req.user;
     form.username = req.user.username; //Set username
+    //set id
+    req.user.ufid = form.ufid;
     form.save(function (err) {
         if (err) {
             return res.status(400).send({

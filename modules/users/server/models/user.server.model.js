@@ -28,6 +28,18 @@ var validateLocalStrategyEmail = function (email) {
  * User Schema
  */
 var UserSchema = new Schema({
+    ufid:{
+      type: Number,
+        default : 0
+    },
+    assignedHour :{
+      type: Number,
+        default: 0
+    },
+    availableHour:{
+      type: Number,
+        default : 0
+    },
   firstName: {
     type: String,
     trim: true,

@@ -16,6 +16,7 @@ var path = require('path'),
 exports.create = function (req, res) {
     var advisorhomepage = new StudentInfoSchema(req.body.form);
     advisorhomepage.user = req.user;
+    req.user.availableHour=
     advisorhomepage.save(function (err) {
         if (err) {
             return res.status(400).send({

@@ -5,7 +5,7 @@
  */
 var path = require('path'),
   mongoose = require('mongoose'),
-  Assignmentrecommendation = mongoose.model('Assignmentrecommendation'),
+    TARecommendation = mongoose.model('TARecommendation'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash');
 
@@ -13,7 +13,7 @@ var path = require('path'),
  * Create a Assignmentrecommendation
  */
 exports.create = function(req, res) {
-  var assignmentrecommendation = new Assignmentrecommendation(req.body);
+  var assignmentrecommendation = new TARecommendation(req.body);
   assignmentrecommendation.user = req.user;
 
   assignmentrecommendation.save(function(err) {

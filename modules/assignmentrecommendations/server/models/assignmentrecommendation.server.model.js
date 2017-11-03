@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
 /**
  * Assignmentrecommendation Schema
  */
-var AssignmentrecommendationSchema = new Schema({
+var TARecommendation = new Schema({
   assigned :{
     type: String,
       default: "No"
@@ -28,4 +28,4 @@ var AssignmentrecommendationSchema = new Schema({
   }
 });
 
-mongoose.model('Assignmentrecommendation', AssignmentrecommendationSchema);
+mongoose.model('TARecommendation', TARecommendation);

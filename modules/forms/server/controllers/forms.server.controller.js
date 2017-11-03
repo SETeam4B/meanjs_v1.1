@@ -6,6 +6,7 @@
 var path = require('path'),
     mongoose = require('mongoose'),
     Form = mongoose.model('Form'),
+    User = mongoose.model('User'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
     _ = require('lodash'),
     country = require('country-list')(),
@@ -58,12 +59,14 @@ exports.create = function (req, res) {
     form.username = req.user.username; //Set username
     //set id
     req.user.ufid = form.ufid;
+
     form.save(function (err) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
+            updateUsers(req.user.username, form.ufid);
             sendEmail(form.email, "Hello,\n" +
                 "\n" +
                 "Thank you for applying to be a Teaching Assistant at the University of Florida's CISE department. Your application is being processed and we will reach out to you with a decision soon. \n" +
@@ -76,6 +79,26 @@ exports.create = function (req, res) {
         }
     });
 };
+
+/**
+ * updates the User model db schema
+ * @param user = username
+ */
+function updateUsers(user, ufid, availableHours) {
+    var updatingObject = {
+        ufid: ufid
+    };
+    if (availableHours != undefined){
+        updatingObject.availableHour = availableHours;
+    }
+    else {
+        updatingObject.availableHour = 0;
+    }
+    User.findOneAndUpdate({username:user}, updatingObject);
+}
+
+
+
 
 /**
  * Show the current Form
@@ -117,6 +140,7 @@ exports.update = function (req, res) {
                         message: errorHandler.getErrorMessage(err)
                     });
                 } else {
+                    updateUsers(req.user.user, req.user.ufid);
                     sendEmail(form.email, "Hello,\n" +
                         "\n" +
                         "Thank you for updating your application to be a Teaching Assistant at the University of Florida's CISE department. Your application is being processed and we will reach out to you with a decision soon. \n" +

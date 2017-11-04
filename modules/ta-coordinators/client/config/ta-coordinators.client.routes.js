@@ -40,6 +40,9 @@
         templateUrl: 'modules/ta-coordinators/client/views/status-ta-coordinator.client.view.html',
         controller: 'TaCoordinatorsStatusController',
         controllerAs: 'vm',
+        resolve: {
+          statusResolve : getStatus
+        },
         data: {
           pageTitle: 'Ta coordinators Status'
         }
@@ -76,6 +79,14 @@
   function getTaCoordinator($stateParams, TaCoordinatorsService) {
     return TaCoordinatorsService.get({
       taCoordinatorId: $stateParams.taCoordinatorId
+    }).$promise;
+  }
+
+  getStatus.$inject = ['TaCoordinatorsStatusService'];
+
+  function getStatus(TaCoordinatorsStatusService){
+    return TaCoordinatorsStatusService.get({
+      
     }).$promise;
   }
 

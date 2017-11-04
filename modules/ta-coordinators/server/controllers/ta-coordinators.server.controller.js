@@ -29,13 +29,46 @@ exports.create = function(req, res) {
 };
 
 exports.readStatus = function(req, res){
-  var status = req.status ? req.status.toJSON() : {};
-
-  res.jsonp(status);
+  //var status = req.status ? req.status.toJSON() : {};
+    AdminSettings.findById("59fe44ed6e413a94231257db").exec(function (err, status) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.jsonp(status);
+        }
+    });
 };
 
 exports.updateStatus = function(req,res){
-  var status = req.status;
+
+  AdminSettings.findById("59fe44ed6e413a94231257db").exec(function (err, status) {
+      if (err) {
+          return res.status(400).send({
+              message: errorHandler.getErrorMessage(err)
+          });
+      } else {
+
+          status = _.extend(status, req.body)
+
+          status.save(function (err) {
+              if (err) {
+                  return res.status(400).send({
+                      message: errorHandler.getErrorMessage(err)
+                  });
+              } else {
+                  res.jsonp(status);
+              }
+          });
+
+      }
+  });
+
+};
+
+exports.createStatus = function(req, res) {
+  var status = new AdminSettings(req.body);
 
   status.save(function(err) {
     if (err) {
@@ -47,6 +80,7 @@ exports.updateStatus = function(req,res){
     }
   });
 };
+
 
 
 /**

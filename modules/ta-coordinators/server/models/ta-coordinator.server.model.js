@@ -56,7 +56,6 @@ var AdminSettings = new Schema({
     default : 0
   },
   update_semester:{
-    unique: true,
       type : String
   }
 });

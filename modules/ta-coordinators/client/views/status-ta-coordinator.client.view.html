@@ -16,50 +16,50 @@
     <div class="row">
   <div class="radio">
     <b class='col-sm-4'>Undergraduate Access to Apply:</b>
-    <label class='col-sm-2'><input type="radio" name="UndergraduateAccess" ng-model="undergrad" value="1">yes</label>
-    <label class="col-sm-2 radio-inline"><input type="radio" name="UndergraduateAccess" ng-model="undergrad" value="0">no</label>
+    <label class='col-sm-2'><input type="radio" name="UndergraduateAccess" ng-model="vm.status.undergrad" value="1">yes</label>
+    <label class="col-sm-2 radio-inline"><input type="radio" name="UndergraduateAccess" ng-model="vm.status.undergrad" value="0">no</label>
     </div>
   </div>
   <div class="row">
   <div class="radio">
     <b class='col-sm-4'>Graduate Access to Apply:</b>
-    <label class='col-sm-2'><input type="radio" name="GraduateAccess" ng-model="grad" value="1">yes</label>
-    <label class="col-sm-2 radio-inline"><input type="radio" name="GraduateAccess" ng-model="grad" value="0">no</label>
+    <label class='col-sm-2'><input type="radio" name="GraduateAccess" ng-model="vm.status.grad" value="1">yes</label>
+    <label class="col-sm-2 radio-inline"><input type="radio" name="GraduateAccess" ng-model="vm.status.grad" value="0">no</label>
     </div>
     </div>
     <div class="row">
   <div class="radio">
     <b class='col-sm-4'>Faculty Access to Recommend:</b>
-    <label class='col-sm-2'><input type="radio" name="FacultyAccessToRecommend" ng-model="faculty" value="1">yes</label>
-    <label class="col-sm-2 radio-inline"><input type="radio" name="FacultyAccessToRecommend" ng-model="faculty" value="0">no</label>
+    <label class='col-sm-2'><input type="radio" name="FacultyAccessToRecommend" ng-model="vm.status.faculty" value="1">yes</label>
+    <label class="col-sm-2 radio-inline"><input type="radio" name="FacultyAccessToRecommend" ng-model="vm.status.faculty" value="0">no</label>
   </div>
   </div>
   <div class="row">
   <div class="radio">
     <b class='col-sm-4'>Display GPA, TSE etc. for student review:</b>
-    <label class='col-sm-2'><input type="radio" name="displaygpa" ng-model="gpa" value="1">yes</label>
-    <label class="col-sm-2 radio-inline"><input type="radio" name="displaygpa" ng-model="gpa" value="0">no</label>
+    <label class='col-sm-2'><input type="radio" name="displaygpa" ng-model="vm.status.gpa" value="1">yes</label>
+    <label class="col-sm-2 radio-inline"><input type="radio" name="displaygpa" ng-model="vm.status.gpa" value="0">no</label>
   </div>
   </div>
   <div class="row">
   <div class="radio">
     <b class='col-sm-4'>Display Final TA Assignments for Students:</b>
-    <label class='col-sm-2'><input type="radio" name="displayfinalstudents" ng-model="studentassignment" value="1">yes</label>
-    <label class="col-sm-2 radio-inline"><input type="radio" name="displayfinalstudents" ng-model="studentassignment" value="0">no</label>
+    <label class='col-sm-2'><input type="radio" name="displayfinalstudents" ng-model="vm.status.studentassignment" value="1">yes</label>
+    <label class="col-sm-2 radio-inline"><input type="radio" name="displayfinalstudents" ng-model="vm.status.studentassignment" value="0">no</label>
   </div>
   </div>
   <div class="row">
   <div class="radio">
     <b class='col-sm-4'>Display Final TA Assignments for Faculty:</b>
-    <label class='col-sm-2'><input type="radio" name="displayfinalfaculty" ng-model="facultyassignment" value="1">yes</label>
-    <label class="col-sm-2 radio-inline"><input type="radio" name="displayfinalfaculty" ng-model="facultyassignment" value="0">no</label>
+    <label class='col-sm-2'><input type="radio" name="displayfinalfaculty" ng-model="vm.status.facultyassignment" value="1">yes</label>
+    <label class="col-sm-2 radio-inline"><input type="radio" name="displayfinalfaculty" ng-model="vm.status.facultyassignment" value="0">no</label>
     </div>
     </div>
     <div class="row" style="padding-top: 10px">
     <div>
       <label class="col-sm-4 control-label" for="update_semester">Update Semester</label>
       <select class="col-sm-2 name="update_semester" id="update_semester"
-              ng-model="update_semester"
+              ng-model="vm.status.update_semester"
               >
         <option ng-repeat="semester in vm.semesterOptions"
                 ng-selected="semester === update_semester"
@@ -70,7 +70,7 @@
       </div>
       <div class="row">
       <div class='col-sm-4' style="padding-top: 10px">
-    <button class="btn btn-success" ng-click="submit()">Submit</button>
+    <button class="btn btn-success" ng-click="vm.save()">Submit</button>
     </div>
     </div>
     <div class="row">

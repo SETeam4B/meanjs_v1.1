@@ -10,9 +10,14 @@
 
   function TaCoordinatorsStatusService($resource) {
     return $resource('api/ta-coordinators/status', {
+      id: '@_id'
+    }, {
       update: {
         method: 'PUT'
       }
     });
   }
+
 }());
+
+

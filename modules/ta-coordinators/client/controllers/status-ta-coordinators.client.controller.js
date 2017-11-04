@@ -6,27 +6,18 @@
     .module('ta-coordinators')
     .controller('TaCoordinatorsStatusController', TaCoordinatorsStatusController);
 
-  TaCoordinatorsStatusController.$inject = ['$scope', '$state', '$window', 'Authentication', 'TaCoordinatorsStatusService'];
+  TaCoordinatorsStatusController.$inject = ['$scope', '$state', '$window', 'Authentication', 'TaCoordinatorsStatusService', 'statusResolve'];
 
-  function TaCoordinatorsStatusController ($scope, $state, $window, Authentication, TaCoordinatorsStatusService) {
+  function TaCoordinatorsStatusController ($scope, $state, $window, Authentication, TaCoordinatorsStatusService, status) {
     var vm = this;
     vm.authentication = Authentication;
     vm.semesterOptions = semesterOptions();
-    vm.status= TaCoordinatorsStatusService;
-
+    vm.status= status;
     vm.save = save;
 
-    $scope.submit = function(){
-      console.log($scope.undergrad);
-      console.log($scope.grad);
-      console.log($scope.faculty);
-      console.log($scope.gpa);
-      console.log($scope.studentassignment);
-      console.log($scope.facultyassignment);
-      console.log($scope.update_semester);
+    function save(){
 
-
-      if (vm.status) {
+      if (vm.status._id) {
         vm.status.$update(updateSuccessCallback, errorCallback);
         }
         else {
@@ -35,19 +26,19 @@
     }
 
     function updateSuccessCallback(res) {
+      alert("Successfully updated status.");
         // if($scope.isAdvisorForm){
         //     alert("updated advisor form");
         //     return;
         // }
-        $state.go('forms.update');
     }
 
     function successCallback(res) {
+      alert("Succesfully updated status.");
         // if($scope.isAdvisorForm){
         //     alert("submitted advisor form");
         //     return;
         // }
-        $state.go('forms.submit');
         /*
        $state.go('forms.undergrad', {
          formId: res._id
@@ -72,16 +63,6 @@
         return semesters;
     }
 
-    // Save status
-    function save(isValid) {
-
-        if (vm.status) {
-            vm.status.$update(updateSuccessCallback, errorCallback);
-        } else {
-            vm.status.$save(successCallback, errorCallback);
-        }
-
-    }
 
   }
 }());

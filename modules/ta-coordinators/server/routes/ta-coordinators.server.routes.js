@@ -16,6 +16,7 @@ module.exports = function(app) {
   app.route('/api/ta-coordinators/status').all(taCoordinatorsPolicy.isAllowed)
     .get(taCoordinators.readStatus)
     .put(taCoordinators.updateStatus)
+    .post(taCoordinators.createStatus)//reee
 
   app.route('/api/ta-coordinators/:taCoordinatorId').all(taCoordinatorsPolicy.isAllowed)
     .get(taCoordinators.read)

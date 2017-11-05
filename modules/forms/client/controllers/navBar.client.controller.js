@@ -28,7 +28,6 @@
         ];
 
         $scope.changeColors = function(index){
-            //TODO: previous and currently not working
             $scope.$evalAsync(function () {
                 if ($scope.previous!= undefined){
                     $scope.stateOptions[$scope.previous].selected = "";

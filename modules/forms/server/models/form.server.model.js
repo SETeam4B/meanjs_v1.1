@@ -20,7 +20,7 @@ var FormSchema = new Schema({
 
     email: {
         type: String,
-        defualt:'',
+        defualt: '',
         required: 'Please fill in your email address.'
     },
 
@@ -109,7 +109,7 @@ var FormSchema = new Schema({
         type: String,
         default: ''
     },
-    plannedAbsences : {
+    plannedAbsences: {
         type: String,
         default: ''
     },
@@ -123,16 +123,16 @@ var FormSchema = new Schema({
 
     //phd only
 
-    offerType:{
+    offerType: {
         type: String,
         default: 'TA'
     },
 
     phdExamDate: {
-        type:Date
+        type: Date
     },
-    phdExamGrade:{
-        type:Number,
+    phdExamGrade: {
+        type: Number,
         default: 0
     },
 
@@ -140,7 +140,7 @@ var FormSchema = new Schema({
         type: Number,
         default: 0
     },
-    EAP5836 :{
+    EAP5836: {
         type: Number,
         default: 0
     },
@@ -190,6 +190,68 @@ var FormSchema = new Schema({
         // default: ''
     }
 });
+
+FormSchema.pre('findOneAndUpdate', function (next, req, callback) {
+    // var User = mongoose.model('User');
+    // User.findOneAndUpdate({username: this._update.username}, {
+    //     availableHour: this._update.hourTA,
+    //     ufid: this._update.ufid
+    // }, function (err, data) {
+    //     if (err) {
+    //         console.log("was not able to update the username on the User table");
+    //     }
+    //     next();
+    // });
+    updateUser(next,this._update);
+});
+/**
+ * done so that when the advisor adds without a user it adds a random user,
+ * TODO: to be modified if this ever goes into production
+ */
+FormSchema.pre('save', function (next, req, callback) {
+    var User = mongoose.model('User');
+    var updateObject = this._doc;
+
+    if (this._doc.username == undefined) {
+        //TODO:check if username is on the db
+        updateObject.username = "FakeUsername" + Math.random();
+        var userData = {
+            firstName: updateObject.firstName,
+            lastName: updateObject.lastName,
+            email: updateObject.email,
+            username: updateObject.username,
+            ufid: updateObject.ufid,
+            provider:"local",
+            availableHour: updateObject.hourTA
+        };
+
+        var fakeUser = new User(userData);
+        fakeUser.save(function (err) {
+            if (err) {
+                console.log("was not able to save the fake user");
+            }
+            else {
+                next();
+            }
+        });
+    }
+    else {
+        updateUser(next, updateObject);
+    }
+});
+//TODO: the paramater passed has to be this._doc or this._update
+function updateUser(next, updatingRequirement) {
+    var User = mongoose.model('User');
+    User.findOneAndUpdate({username: updatingRequirement.username}, {
+        availableHour: updatingRequirement.hourTA,
+        ufid: updatingRequirement.ufid
+    }, function (err, data) {
+        if (err) {
+            console.log("was not able to update the ufid and hours availabe on the User table");
+        }
+        next();
+    });
+}
 
 
 mongoose.model('Form', FormSchema);

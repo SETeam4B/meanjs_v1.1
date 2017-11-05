@@ -13,7 +13,7 @@ var path = require('path'),
     nodemailer = require("nodemailer"),
     smtpTransport = require('nodemailer-smtp-transport'),
     wellknown = require("nodemailer-wellknown");
-var config = wellknown("QQ")
+var config = wellknown("QQ");
 
 
 exports.countries = function (req, res) {
@@ -273,6 +273,7 @@ exports.formByID = function (req, res, next, id) {
  * @param res
  */
 exports.updateWithoutUsername = function (req, res) {
+    //TODO: create an object that copies the body and only updates the body without the id
 
     Form.findOneAndUpdate({_id: req.body._id}, req.body, function (err, data) {
         if (err) {
@@ -310,7 +311,8 @@ exports.createWithoutUsername = function (req, res) {
  * @param res
  */
 function createStudentAdvisor(req, res) {
-    req.body.username = "jordi";
+    //TODO: change this, query the user, ask xiaoming for how is it that the user is gonna be assigned the ufId
+    // req.body.username = "yoyis";
     var form = new Form(req.body);
     form.save(function (err) {
         if (err) {
@@ -322,3 +324,8 @@ function createStudentAdvisor(req, res) {
         }
     });
 }
+
+
+//TODO: check if ufid is in the user table (user table)
+//TODO: check if hours available <10 || >20 (memory)
+//TODO: check if hours available < hours assigned (user table)

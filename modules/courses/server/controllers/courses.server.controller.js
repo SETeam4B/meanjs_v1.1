@@ -154,8 +154,7 @@ exports.list = function (req, res) {
                             }
 
                             if (result) {
-
-                                console.log("course already existed");
+                                // console.log("course already existed");
                             }
                             else {
 

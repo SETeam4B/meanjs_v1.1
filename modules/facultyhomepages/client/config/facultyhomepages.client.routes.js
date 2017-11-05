@@ -65,6 +65,13 @@
           pageTitle: 'Facultyhomepage {{ facultyhomepageResolve.name }}',
           roles : ['faculty']
         }
+      }).state('facultyhomepages.unavailable', {
+        url: '',
+        templateUrl: 'modules/facultyhomepages/client/views/unavailable-facultyhomepages.client.view.html',
+        data: {
+          pageTitle: 'Facultyhomepages unavailable',
+          roles : ['faculty']
+        }
       });
   }
 

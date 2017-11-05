@@ -192,17 +192,7 @@ var FormSchema = new Schema({
 });
 
 FormSchema.pre('findOneAndUpdate', function (next, req, callback) {
-    // var User = mongoose.model('User');
-    // User.findOneAndUpdate({username: this._update.username}, {
-    //     availableHour: this._update.hourTA,
-    //     ufid: this._update.ufid
-    // }, function (err, data) {
-    //     if (err) {
-    //         console.log("was not able to update the username on the User table");
-    //     }
-    //     next();
-    // });
-    updateUser(next,this._update);
+    updateUser(next, this._update);
 });
 /**
  * done so that when the advisor adds without a user it adds a random user,
@@ -221,7 +211,7 @@ FormSchema.pre('save', function (next, req, callback) {
             email: updateObject.email,
             username: updateObject.username,
             ufid: updateObject.ufid,
-            provider:"local",
+            provider: "local",
             availableHour: updateObject.hourTA
         };
 
@@ -239,18 +229,62 @@ FormSchema.pre('save', function (next, req, callback) {
         updateUser(next, updateObject);
     }
 });
-//TODO: the paramater passed has to be this._doc or this._update
+
+/**
+ * TODO: change the User.findOneAndUpdate to a post function not a pre
+ * This function analyze if the hours are between 10-20
+ * analyze if the hours available are more than the hours assigned
+ * if these 2 conditions are met it keeps trying to add the function
+ * @param next
+ * @param updatingRequirement
+ */
 function updateUser(next, updatingRequirement) {
     var User = mongoose.model('User');
-    User.findOneAndUpdate({username: updatingRequirement.username}, {
-        availableHour: updatingRequirement.hourTA,
-        ufid: updatingRequirement.ufid
-    }, function (err, data) {
-        if (err) {
-            console.log("was not able to update the ufid and hours availabe on the User table");
-        }
-        next();
-    });
+    updatingRequirement.username = updatingRequirement.username.toLowerCase();
+
+    if (isWithinAvailableHours(updatingRequirement.hourTA)) {
+        isHourGreaterThanAssignedHour(User, updatingRequirement.username, updatingRequirement.taHours)
+            .then(function () {
+                User.findOneAndUpdate({username: updatingRequirement.username}, {
+                    availableHour: updatingRequirement.hourTA,
+                    ufid: updatingRequirement.ufid
+                }, function (err, data) {
+                    if (err) {
+                        next(err);
+                        console.log("was not able to update the ufid and hours availabe on the User table");
+                    } else {
+                        next();
+                    }
+                });
+            })
+            .catch(function (err) {
+                next(err);
+            })
+    } else {
+        var myError = new Error("not within acceptable hours");
+        next(myError);
+    }
+
+
+}
+
+function isWithinAvailableHours(hour) {
+    return hour <= 20 && hour >= 10;
+}
+
+function isHourGreaterThanAssignedHour(User, username, availableHour) {
+    return new Promise(function (resolve, reject) {
+        User.findOne({username: username}, function (err, data) {
+            if (err) {
+                return reject(err);
+            }
+            if (data.assignedHour > availableHour) {
+                var myError = new Error("the student has more hours than it needs");
+                return reject(myError);
+            }
+            return resolve();
+        })
+    })
 }
 
 

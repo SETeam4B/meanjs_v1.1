@@ -76,7 +76,7 @@
         };
 
         $scope.submitModifiedForm = function (form, vm, index) {
-            // form.username = $scope.fakeData[index].username;
+            form.username = $scope.fakeData[index].username;
             var service = new FormsService(form);
             vm.form = service;
             vm.updateWithAdvisor();

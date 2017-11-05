@@ -19,9 +19,12 @@
         templateUrl: 'modules/facultyhomepages/client/views/list-facultyhomepages.client.view.html',
         controller: 'FacultyhomepagesListController',
         controllerAs: 'vm',
+        resolve : { 
+          status : checkAvailability
+        },
         data: {
-          roles:['faculty'],
-          pageTitle: 'Facultyhomepages List'
+          pageTitle: 'Facultyhomepages List',
+          roles : ['faculty']
         }
       })
       .state('facultyhomepages.create', {
@@ -33,8 +36,8 @@
           facultyhomepageResolve: newFacultyhomepage
         },
         data: {
-          roles: ['user', 'admin','faculty'],
-          pageTitle: 'Facultyhomepages Create'
+          pageTitle: 'Facultyhomepages Create',
+          roles : ['faculty']
         }
       })
       .state('facultyhomepages.edit', {
@@ -46,8 +49,8 @@
           facultyhomepageResolve: getFacultyhomepage
         },
         data: {
-          roles: ['user', 'admin','faculty'],
-          pageTitle: 'Edit Facultyhomepage {{ facultyhomepageResolve.name }}'
+          pageTitle: 'Edit Facultyhomepage {{ facultyhomepageResolve.name }}',
+          roles : ['faculty']
         }
       })
       .state('facultyhomepages.viewHome', {
@@ -59,10 +62,16 @@
           facultyhomepageResolve: getFacultyhomepage
         },
         data: {
-          roles : ['faculty'],
-          pageTitle: 'Facultyhomepage {{ facultyhomepageResolve.name }}'
+          pageTitle: 'Facultyhomepage {{ facultyhomepageResolve.name }}',
+          roles : ['faculty']
         }
       });
+  }
+
+  checkAvailability.$inject = ['TaCoordinatorsStatusService'];
+
+  function checkAvailability(TaCoordinatorsStatusService){
+    return TaCoordinatorsStatusService.get({}).$promise
   }
 
   getFacultyhomepage.$inject = ['$stateParams', 'FacultyhomepagesService'];

@@ -43,13 +43,28 @@ exports.invokeRolesPolicies = function () {
       permissions: ['get']
     }]
   }, {
-    roles: ['guest'],
+    roles: ['faculty'],
     allows: [{
       resources: '/api/ta-coordinators',
-      permissions: ['get']
+      permissions: '*'
     }, {
       resources: '/api/ta-coordinators/:taCoordinatorId',
-      permissions: ['get']
+      permissions: '*'
+    }, {
+      resources: '/api/ta-coordinators/status',
+      permissions: '*'
+    }]
+  }, {
+    roles: ['advisor'],
+    allows: [{
+      resources: '/api/ta-coordinators',
+      permissions: '*'
+    }, {
+      resources: '/api/ta-coordinators/:taCoordinatorId',
+      permissions: '*'
+    }, {
+      resources: '/api/ta-coordinators/status',
+      permissions: '*'
     }]
   }]);
 };

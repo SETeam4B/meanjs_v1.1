@@ -66,7 +66,7 @@ exports.create = function (req, res) {
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            updateUsers(req.user.username, form.ufid);
+            // updateUsers(req.user.username, form.ufid);
             sendEmail(form.email, "Hello,\n" +
                 "\n" +
                 "Thank you for applying to be a Teaching Assistant at the University of Florida's CISE department. Your application is being processed and we will reach out to you with a decision soon. \n" +
@@ -80,22 +80,22 @@ exports.create = function (req, res) {
     });
 };
 
-/**
- * updates the User model db schema
- * @param user = username
- */
-function updateUsers(user, ufid, availableHours) {
-    var updatingObject = {
-        ufid: ufid
-    };
-    if (availableHours != undefined){
-        updatingObject.availableHour = availableHours;
-    }
-    else {
-        updatingObject.availableHour = 0;
-    }
-    User.findOneAndUpdate({username:user}, updatingObject);
-}
+// /**
+//  * updates the User model db schema
+//  * @param user = username
+//  */
+// function updateUsers(user, ufid, availableHours) {
+//     var updatingObject = {
+//         ufid: ufid
+//     };
+//     if (availableHours != undefined){
+//         updatingObject.availableHour = availableHours;
+//     }
+//     else {
+//         updatingObject.availableHour = 0;
+//     }
+//     User.findOneAndUpdate({username:user}, updatingObject);
+// }
 
 
 

@@ -327,5 +327,3 @@ function createStudentAdvisor(req, res) {
 
 
 //TODO: check if ufid is in the user table (user table)
-//TODO: check if hours available <10 || >20 (memory)
-//TODO: check if hours available < hours assigned (user table)

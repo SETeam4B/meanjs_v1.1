@@ -101,7 +101,6 @@
         }
 
         function saveWithUsername() {
-            //todo:
             if(vm.authentication.user.roles[0] == "advisor"){
                 saveWithAdvisor();
                 return;
@@ -113,18 +112,10 @@
             }
 
             function updateSuccessCallback(res) {
-                // if($scope.isAdvisorForm){
-                //     alert("updated advisor form");
-                //     return;
-                // }
                 $state.go('forms.update');
             }
 
             function successCallback(res) {
-                // if($scope.isAdvisorForm){
-                //     alert("submitted advisor form");
-                //     return;
-                // }
                 $state.go('forms.submit');
                 /*
                $state.go('forms.undergrad', {
@@ -155,6 +146,7 @@
 
             function successCallback(res) {
                 alert(res.message);
+                $scope.$close();
             }
 
             function errorCallback(err) {

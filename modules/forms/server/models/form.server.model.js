@@ -272,6 +272,14 @@ function isWithinAvailableHours(hour) {
     return hour <= 20 && hour >= 10;
 }
 
+/**
+ * check if that the assigned hours are less or equal than the available hours
+ * if availabe hours are less than assigned hours it will return an error
+ * @param User
+ * @param username
+ * @param availableHour
+ * @returns {*}
+ */
 function isHourGreaterThanAssignedHour(User, username, availableHour) {
     return new Promise(function (resolve, reject) {
         User.findOne({username: username}, function (err, data) {

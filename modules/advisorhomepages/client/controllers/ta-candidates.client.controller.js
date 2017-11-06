@@ -50,8 +50,13 @@
             }
         ];
 
-        updateAccordionInformation();
+        function updateAccordionInformation () {
+            fs.$getAll().then(function (res) {
+                $scope.fakeData = res.data;
+            });
+        }
 
+        updateAccordionInformation();
 
         $scope.populateTACandidatesForm = function (index) {
             if ($scope.TACandidateForms[index] == undefined) {
@@ -71,7 +76,7 @@
                 }
 
             }).result.then(function (res) {
-                // when modal is closed then call a function
+                updateAccordionInformation();
             });
         };
 
@@ -110,12 +115,7 @@
             });
         };
 
-        function updateAccordionInformation() {
-            fs.$getAll().then(function (res) {
-                $scope.fakeData = res.data;
-                // $scope.TACandidateForms = res.data;
-            });
-        }
+
 
         function checkId(index) {
             return new Promise(function (resolve, reject) {

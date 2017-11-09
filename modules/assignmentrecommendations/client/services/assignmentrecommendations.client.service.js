@@ -1,20 +1,28 @@
 // Assignmentrecommendations service used to communicate Assignmentrecommendations REST endpoints
 (function () {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('assignmentrecommendations')
-    .factory('AssignmentrecommendationsService', AssignmentrecommendationsService);
+    angular
+        .module('assignmentrecommendations')
+        .factory('AssignmentrecommendationsService', AssignmentrecommendationsService);
 
-  AssignmentrecommendationsService.$inject = ['$resource'];
+    AssignmentrecommendationsService.$inject = ['$resource'];
 
-  function AssignmentrecommendationsService($resource) {
-    return $resource('api/assignmentrecommendations/:assignmentrecommendationId', {
-      assignmentrecommendationId: '@_id'
-    }, {
-      update: {
-        method: 'PUT'
-      }
-    });
-  }
+    function AssignmentrecommendationsService($resource) {
+        return $resource('api/assignmentrecommendations/:assignmentrecommendationId', {
+            assignmentrecommendationId: '@_id'
+        }, {
+            update: {
+                method: 'PUT'
+            },
+            getRejected: {
+                method: 'GET',
+                url: '/api/rejected'
+            },
+            getAccepted: {
+                method: 'GET',
+                url: '/api/accepted'
+            }
+        });
+    }
 }());

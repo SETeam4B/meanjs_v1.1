@@ -168,6 +168,7 @@ var FormSchema = new Schema({
         type: String,
         default: 'N/A'
     },
+    //TODO: check that this hour needs to be 10 and not 0 or the other way around
     hourTA: {
         type: Number,
         default: 10

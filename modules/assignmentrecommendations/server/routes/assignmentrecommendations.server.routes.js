@@ -19,4 +19,7 @@ module.exports = function(app) {
 
   // Finish by binding the Assignmentrecommendation middleware
   app.param('assignmentrecommendationId', assignmentrecommendations.assignmentrecommendationByID);
+
+  app.route('/api/rejected')
+      .get(assignmentrecommendations.getRejectedList)
 };

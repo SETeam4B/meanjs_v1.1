@@ -18,6 +18,10 @@
             getRejected: {
                 method: 'GET',
                 url: '/api/rejected'
+            },
+            getAccepted: {
+                method: 'GET',
+                url: '/api/accepted'
             }
         });
     }

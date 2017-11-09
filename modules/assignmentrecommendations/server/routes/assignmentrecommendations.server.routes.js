@@ -21,5 +21,8 @@ module.exports = function(app) {
   app.param('assignmentrecommendationId', assignmentrecommendations.assignmentrecommendationByID);
 
   app.route('/api/rejected')
-      .get(assignmentrecommendations.getRejectedList)
+      .get(assignmentrecommendations.getRejectedList);
+
+  app.route('/api/accepted')
+      .get(assignmentrecommendations.getAcceptedList);
 };

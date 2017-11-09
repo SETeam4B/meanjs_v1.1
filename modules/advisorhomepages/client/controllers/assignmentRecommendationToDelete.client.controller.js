@@ -11,7 +11,8 @@
     function DummyControllerRecommendations($scope,$state, AssignmentrecommendationsService) {
         $scope.testDummyController = function () {
             alert("Dummy controller");
-            AssignmentrecommendationsService.getRejected(successCallback, errorCallback);
+            // AssignmentrecommendationsService.getRejected(successCallback, errorCallback);
+            AssignmentrecommendationsService.getAccepted(successCallback, errorCallback);
             function successCallback(res) {
                 console.log("success");
                 debugger;

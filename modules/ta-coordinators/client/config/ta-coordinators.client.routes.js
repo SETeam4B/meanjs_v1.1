@@ -44,6 +44,24 @@
           pageTitle: 'Ta coordinators Status'
         }
       })
+        .state('ta-coordinators.recommendation',{
+          url: '/recommendation/:courseId',
+            templateUrl: 'modules/ta-coordinators/client/views/recommendation-ta-coordinator.client.view.html',
+            controller: 'RecommendationAssignmentController',
+            controllerAs: 'vm',
+            data: {
+                pageTitle: 'Recommendation'
+            }
+        })
+        .state('ta-coordinators.facultyCourseList',{
+            url: '/courseList',
+            templateUrl: 'modules/ta-coordinators/client/views/faculty-courselist.client.view.html',
+            controller: 'facultyCourseListController',
+            controllerAs: 'vm',
+            data: {
+                pageTitle: 'CourseList'
+            }
+        })
       .state('ta-coordinators.edit', {
         url: '/:taCoordinatorId/edit',
         templateUrl: 'modules/ta-coordinators/client/views/form-ta-coordinator.client.view.html',

@@ -27,11 +27,12 @@
             return selectedCourses;
         }
 
-        $scope.recommend =function (courseId)
+        $scope.recommend =function (courseTitle,courseId)
         {
 
             $state.go('ta-coordinators.recommendation',{
-                courseId: courseId
+                courseId: courseId,
+                courseTitle: courseTitle
         });
         };
 

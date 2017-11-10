@@ -45,7 +45,7 @@
         }
       })
         .state('ta-coordinators.recommendation',{
-          url: '/recommendation/:courseId',
+          url: '/recommendation/:courseId/:courseTitle',
             templateUrl: 'modules/ta-coordinators/client/views/recommendation-ta-coordinator.client.view.html',
             controller: 'RecommendationAssignmentController',
             controllerAs: 'vm',

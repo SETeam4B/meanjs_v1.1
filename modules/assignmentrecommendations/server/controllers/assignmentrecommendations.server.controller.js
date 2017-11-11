@@ -125,16 +125,17 @@ exports.assignmentrecommendationByID = function (req, res, next, id) {
  * this "data" will contain an array of elements of students who have been rejected
  */
 exports.getRejectedList = function (req, res) {
-    Form.find({status:"Rejected"}, function (err, data) {
-        if (err){
-            return res.status(400).send({message:"could not find the rejected list"});
+    Form.find({status: "Rejected"}, function (err, data) {
+        if (err) {
+            return res.status(400).send({message: "could not find the rejected list"});
         }
-        return res.status(200).send({data:data});
+        return res.status(200).send({data: data});
     })
 };
 
 /**
  * fetches all information of the students who have been rejected
+ * AssignmentrecommendationsService.getCourseRecommended({courseId:"59f654bf803fe1180996038d", courseNumber:2},successCallback, errorCallback);
  * @param req
  * @param res
  * returns an object that contains a parameter called "data"
@@ -142,19 +143,68 @@ exports.getRejectedList = function (req, res) {
  * each field contains an array of all the students that are considered for them
  */
 exports.getAcceptedList = function (req, res) {
-    Form.find({status:"Accepted"}, function (err, data) {
-        if (err){
-            return res.status(400).send({message:"could not find the accepted list"});
+    Form.find({status: "Accepted"}, function (err, data) {
+        if (err) {
+            return res.status(400).send({message: "could not find the accepted list"});
         }
-        var acceptedCategory ={
+        var acceptedCategory = {
             TA: [],
             UTA: [],
             Grader: []
         }
         data.forEach(function (element) {
-           acceptedCategory[element.category].push(element);
+            acceptedCategory[element.category].push(element);
         });
 
-        return res.status(200).send({data:acceptedCategory});
+        return res.status(200).send({data: acceptedCategory});
     })
 };
+
+
+exports.getCourseRecommendedList = function (req, res) {
+    var course = req.query.courseId;
+
+    if (course == undefined) {
+        return res.status(400).send({message: "courseId is undefined"});
+    }
+
+    if (req.query.courseNumber == undefined || req.query.courseNumber == 1) {
+        return findFirstCourse(res,course)
+    }
+    if (req.query.courseNumber == 2) {
+        return findSecondCourse(res, course);
+    }
+    if (req.query.courseNumber == 3) {
+        return findThirdCourse(res, course);
+    }
+
+    return res.status(400).send({message: "course number between 1 & 3 inclusive, the number sent was not between this range"});
+};
+
+
+function findFirstCourse(res, course) {
+    Form.find({status: "Accepted", preferenceCourse1: course}, function (err, data) {
+        if (err) {
+            return res.status(400).send({message: "could not find the Course recommended list for course 1"});
+        }
+        return res.status(200).send({data: data});
+    })
+}
+
+function findSecondCourse(res, course) {
+    Form.find({status: "Accepted", preferenceCourse2: course}, function (err, data) {
+        if (err) {
+            return res.status(400).send({message: "could not find the Course recommended list for course 1"});
+        }
+        return res.status(200).send({data: data});
+    })
+}
+
+function findThirdCourse(res, course) {
+    Form.find({status: "Accepted", preferenceCourse3: course}, function (err, data) {
+        if (err) {
+            return res.status(400).send({message: "could not find the Course recommended list for course 1"});
+        }
+        return res.status(200).send({data: data});
+    })
+}

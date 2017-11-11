@@ -22,6 +22,11 @@
             getAccepted: {
                 method: 'GET',
                 url: '/api/accepted'
+            },
+            getCourseRecommended: {
+                method: 'GET',
+                url: '/api/courseRecommendation',
+                params: {}
             }
         });
     }

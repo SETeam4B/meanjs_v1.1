@@ -5,7 +5,7 @@
  */
 var path = require('path'),
     mongoose = require('mongoose'),
-    TARecommendation = mongoose.model('TARecommendation'),
+    Assignmentrecommendation = mongoose.model('Assignmentrecommendation'),
     Form = mongoose.model('Form'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
     _ = require('lodash');
@@ -14,8 +14,19 @@ var path = require('path'),
  * Create a Assignmentrecommendation
  */
 exports.create = function (req, res) {
-    var assignmentrecommendation = new TARecommendation(req.body);
-    assignmentrecommendation.user = req.user;
+    var assignmentrecommendation = new Assignmentrecommendation(req.body);
+    console.log("inside assignmentrecommendation controller");
+
+    console.log(req.body);
+    console.log(req.body.user);
+    console.log(req.body.course);
+    console.log(req.body.form);
+
+
+    assignmentrecommendation.user = req.body.user;
+    assignmentrecommendation.course = req.body.course;
+    assignmentrecommendation.form = req.body.form;
+    assignmentrecommendation.assigned = req.body.assigned;
 
     assignmentrecommendation.save(function (err) {
         if (err) {
@@ -150,7 +161,9 @@ exports.getAcceptedList = function (req, res) {
         var acceptedCategory = {
             TA: [],
             UTA: [],
-            Grader: []
+            Grader: [],
+            "N/A" :[],
+
         }
         data.forEach(function (element) {
             acceptedCategory[element.category].push(element);

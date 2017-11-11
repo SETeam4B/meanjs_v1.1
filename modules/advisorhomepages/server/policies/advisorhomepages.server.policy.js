@@ -30,7 +30,17 @@ exports.invokeRolesPolicies = function () {
       resources: '/api/advisorhomepages/:advisorhomepageId',
       permissions: ['get']
     }]
-  }, {
+  },
+      {
+          roles: ['tacoordinator'],
+          allows: [{
+              resources: '/api/advisorhomepages',
+              permissions: ['get', 'post']
+          }, {
+              resources: '/api/advisorhomepages/:advisorhomepageId',
+              permissions: ['get']
+          }]
+      }, {
     roles: ['guest'],
     allows: [{
       resources: '/api/advisorhomepages',

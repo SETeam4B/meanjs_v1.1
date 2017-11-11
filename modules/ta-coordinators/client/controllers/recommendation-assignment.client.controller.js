@@ -10,21 +10,18 @@
     function RecommendationAssignmentController($scope, CoursesService,Authentication, $state,$rootScope, $stateParams,AssignmentrecommendationsService,Users) {
 
      $scope.courseId = $stateParams.courseId;
-        $scope.courseTitle = $stateParams.courseTitle;
+     $scope.courseTitle = $stateParams.courseTitle;
      $scope.TAlist = {};
      $scope.UTAlist = {};
      $scope.Graderlist = {};
      $scope.Rejectedlist= {};
-
      $scope.course = CoursesService.get($stateParams.courseId);
 
-     $scope.FacultyRecommendationList=[];
+     $scope.FacultyRecommendationList = []
 
      $scope.recommendTA =function (form)
         {
-
-            var recommendationObj = {course: $scope.course, user:form.ufid, form:form, assigned: "No"};
-
+            var recommendationObj = {course: $scope.courseId, user:form.user, form:form, assigned: "No"};
             $scope.FacultyRecommendationList.push(recommendationObj);
 
         };
@@ -38,6 +35,23 @@
      $scope.submitMyRecommendation = function()
      {
          //passing FacultyRecommendationList to backend services
+
+         for(var i = 0; i < $scope.FacultyRecommendationList.length; i++) {
+
+             var obj= new AssignmentrecommendationsService(
+                 {
+                     course: $scope.courseId ,
+                    user: $scope.FacultyRecommendationList[i].form.user,
+                     form: $scope.FacultyRecommendationList[i].form._id,
+                     assigned:"No"
+                 }
+             );
+
+             obj.$save();
+         }
+         $state.go('ta-coordinators.facultyCourseList');
+
+
      }
         AssignmentrecommendationsService.getAccepted(successCallback, errorCallback);
         function successCallback(res) {

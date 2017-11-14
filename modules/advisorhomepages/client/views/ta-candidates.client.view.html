@@ -1,6 +1,7 @@
 <section ng-controller="TACandidatesController">
   <div class="page-header">
     <h1>TA Candidates</h1>
+    <button type="button" class="btn btn-success pull-right" ng-click="openModal()">Add new student</button>
   </div>
 
   <!--<div ng-app="advisorhomepages">-->
@@ -8,9 +9,7 @@
     <!--<div ui-view="modal"></div>-->
   <!--</div>-->
   <!--<undergrad></undergrad>-->
-
-  <button type="button" class="btn btn-default" ng-click="openModal()">Add new student</button>
-
+ <p>
   <table>
     <thead>
     <tr>
@@ -21,7 +20,7 @@
     </tr>
     </thead>
   </table>
-
+</p>
   <accordion close-others="oneAtATime">
 
     <accordion-group ng-repeat="row in fakeData" is-open="status.open">

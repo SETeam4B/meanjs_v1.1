@@ -57,3 +57,10 @@ a:hover .header-profile-image {
   font-weight: 101;
   font-size: 12px;
 }
+
+.floating-box {
+    display: inline-block;
+    width: 300px;
+    height: 75px;
+    margin: 33px;
+}

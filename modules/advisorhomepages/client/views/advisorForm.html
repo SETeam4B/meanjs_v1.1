@@ -8,7 +8,8 @@
       <fieldset>
 
 
-        <div class="col-sm-6 col-sm-offset-3">
+        <!--<div class="col-sm-3 col-sm-offset-3">-->
+        <div class="floating-box">
           <div class="panel panel-default panel-success class">
             <div class="panel-heading">Application Status</div>
             <div class="panel-body">
@@ -26,7 +27,8 @@
           </div>
         </div>
 
-        <div class="col-sm-6 col-sm-offset-3" style="padding-top: 20px">
+        <!--<div class="col-sm-3 col-sm-offset-3" style="padding-top: 20px">-->
+        <div class="floating-box">
           <div class="panel panel-default panel-success class">
             <div class="panel-heading">Category</div>
             <div class="panel-body">
@@ -44,7 +46,9 @@
           </div>
         </div>
 
-        <div class="col-sm-6 col-sm-offset-3" style="padding-top: 20px">
+        <!--<div class="col-sm-3 col-sm-offset-3" style="padding-top: 20px">-->
+        <div class="floating-box">
+
           <div class="panel panel-default panel-success class">
             <div class="panel-heading">TA Hours</div>
             <div class="panel-body">
@@ -88,7 +92,7 @@
           <!--<p class="help-block error-text" ng-message="required">Category needs to be picked.</p>-->
           <!--</div>-->
           <!--</div>-->
-
+<!--
           <div class="form-group" show-errors>
             <label class="control-label" for="ufid">UFID# (no dashes)</label>
             <input name="ufid" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].ufid" id="ufid"
@@ -107,9 +111,9 @@
             <div ng-messages="vm.form.formForm.email.$error" role="alert">
               <p class="help-block error-text" ng-message="required">Email is required.</p>
             </div>
-          </div>
+          </div> -->
 
-
+<!--
           <div class="form-group" show-errors>
             <label class="control-label" for="firstName">First Name</label>
             <input name="firstName" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].firstName"
@@ -136,9 +140,9 @@
             <div ng-messages="vm.form.formForm.lastName.$error" role="alert">
               <p class="help-block error-text" ng-message="required">Last name is required.</p>
             </div>
-          </div>
+          </div> -->
 
-
+<!--
           <div class="form-group" show-errors>
             <label class="control-label" for="street">Street</label>
             <input name="street" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].street" id="street"
@@ -193,7 +197,7 @@
             </div>
           </div>
 
-
+-->
           <div class="form-group" show-errors>
             <label class="control-label" for="semesterAdmitted">Semester Admitted</label>
             <select name="semesterAdmitted" id="semesterAdmitted"
@@ -227,7 +231,7 @@
             </div>
           </div>
 
-
+<!--
           <div class="form-group" show-errors>
             <label class="control-label" for="preferenceCourse1">Primary Course Preference</label>
             <select name="preferenceCourse1" id="preferenceCourse1"
@@ -307,7 +311,7 @@
               </option>
             </select>
           </div>
-
+-->
 
           <div class="form-group" show-errors>
             <label class="control-label" for="offerType">Offer Type</label>
@@ -368,7 +372,7 @@
 
 
           <div class="form-group" show-errors>
-            <label class="control-label" for="adviser">Name of Adviser</label>
+            <label class="control-label" for="adviser">Name of Advisor</label>
             <input name="adviser" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].adviser" id="adviser"
                    class="form-control">
           </div>
@@ -382,12 +386,12 @@
           </div>
 
 
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label class="control-label" for="interestExperience">Interests and experience</label>
             <textarea name="interestExperience" rows="4"
                       ng-model="TACandidateForms[fakeData.indexOf(row)].interestExperience" id="interestExperience"
                       class="form-control"></textarea>
-          </div>
+          </div> -->
 
 
           <div class="form-group">

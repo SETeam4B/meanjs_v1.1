@@ -1,46 +1,47 @@
 <section ng-controller="TACandidatesController">
+<br>
   <div class="page-header">
     <h1>TA Candidates</h1>
-  </div>
 
+    <button type="button" class="btn btn-success pull-right" ng-click="openModal()">Add new student</button>
+  </div>
+</br>
   <!--<div ng-app="advisorhomepages">-->
     <!--<button ui-sref="Modal.confirmAddToCart">stateful</button>-->
     <!--<div ui-view="modal"></div>-->
   <!--</div>-->
   <!--<undergrad></undergrad>-->
-
-  <button type="button" class="btn btn-default" ng-click="openModal()">Add new student</button>
-
+ <p>
   <table>
     <thead>
     <tr>
-      <th class="col-xs-3">Id</th>
-      <th class="col-xs-5">Name</th>
-      <th class="col-xs-4"> Email</th>
-      <th class="col-xs-1"> Hours</th>
+      <th class="col-md-4">Id</th>
+      <th class="col-md-4">Name</th>
+      <th class="col-md-4"> Email</th>
+      <th class="col-md-2"> Hours</th>
     </tr>
     </thead>
   </table>
-
+</p>
   <accordion close-others="oneAtATime">
 
     <accordion-group ng-repeat="row in fakeData" is-open="status.open">
       <accordion-heading>
         <table  ng-click="populateTACandidatesForm(fakeData.indexOf(row))">
-          <thead>
+          <!-- <thead>
           <tr>
             <th class="col-xs-3">UF ID</th>
             <th class="col-xs-5">Name</th>
             <th class="col-xs-4"> Email</th>
             <th class="col-xs-1"> Hours</th>
           </tr>
-          </thead>
+          </thead> -->
           <tbody>
           <tr>
-            <td class="col-xs-3">{{row.ufid}}</td>
-            <td class="col-xs-5">{{row.firstName}} {{row.lastName}}</td>
-            <td class="col-xs-4">{{row.email}}</td>
-            <td class="col-xs-1">{{row.hourTA}}</td>
+            <td class="col-md-4">{{row.ufid}}</td>
+            <td class="col-md-4">{{row.firstName}} {{row.lastName}}</td>
+            <td class="col-md-4">{{row.email}}</td>
+            <td class="col-md-2">{{row.hourTA}}</td>
           </tr>
           </tbody>
 

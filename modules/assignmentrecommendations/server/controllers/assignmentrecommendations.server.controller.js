@@ -145,8 +145,7 @@ exports.getRejectedList = function (req, res) {
 };
 
 /**
- * fetches all information of the students who have been rejected
- * AssignmentrecommendationsService.getCourseRecommended({courseId:"59f654bf803fe1180996038d", courseNumber:2},successCallback, errorCallback);
+ * fetches all information of the students who have been accepted
  * @param req
  * @param res
  * returns an object that contains a parameter called "data"
@@ -173,7 +172,16 @@ exports.getAcceptedList = function (req, res) {
     })
 };
 
-
+/**
+ * Used to generate the system recommended courses
+ * Takes in a courseId and courseNumber
+ * The courseNumber retrieves pulls all of the students with the courseId in the preferred course number
+ * To perform the call to this function perform this call
+ * AssignmentrecommendationsService.getCourseRecommended({courseId:"59f654bf803fe1180996038d", courseNumber:2},successCallback, errorCallback);
+ *
+ * @param req
+ * @param res
+ */
 exports.getCourseRecommendedList = function (req, res) {
     var course = req.query.courseId;
 
@@ -221,3 +229,19 @@ function findThirdCourse(res, course) {
         return res.status(200).send({data: data});
     })
 }
+
+/**
+ * Assigns student to a class
+ * Todo: create a trigger for whenever the update is changing the assigned property
+ * TODO: create a trigger for whenever there is a save and the student is assaigned automatically
+ * @param req
+ * @param res
+ */
+exports.assignStudent = function (req, res) {
+    Assignmentrecommendation.findOneAndUpdate({_id: req.body._id}, {assigned: req.body.assigned}, function (err) {
+        if (err){
+            return res.status(400).send({message: "Could not change the assigned property of the student"});
+        }
+        return res.status(200).send({message: "Assigned student"});
+    })
+};

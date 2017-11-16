@@ -26,6 +26,12 @@ module.exports = function(app) {
   app.route('/api/accepted')
       .get(assignmentrecommendations.getAcceptedList);
 
+  app.route('/api/assignStudent')
+      .put(assignmentrecommendations.assignStudent)
+      .post(assignmentrecommendations.create );
+
+  // app.route()
+
   app.route('/api/courseRecommendation')
       .get(assignmentrecommendations.getCourseRecommendedList);
 

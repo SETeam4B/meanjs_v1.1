@@ -27,6 +27,10 @@
                 method: 'GET',
                 url: '/api/courseRecommendation',
                 params: {}
+            },
+            assignStudent:{
+                method: 'PUT',
+                url: '/api/assignStudent'
             }
         });
     }

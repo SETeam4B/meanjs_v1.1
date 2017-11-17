@@ -41,8 +41,8 @@ Assignmentrecommendation.pre('findOneAndUpdate', function (next, req, callback) 
             if (err) {
                 next(new Error("bad call"));
             }
-            findHours(next, data.user)
-        })
+            findHours(next, data.user);
+        });
     }
     // Form.findOne({_id: this._update._id})
 });

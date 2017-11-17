@@ -278,22 +278,6 @@
             </div>
           </div>
 
-          <div class="form-group" show-errors>
-            <label class="control-label" for="preferenceCourse3">Tertiary Course Preference</label>
-            <select name="preferenceCourse3" id="preferenceCourse3"
-                    class="form-control"
-                    ng-model="TACandidateForms[fakeData.indexOf(row)].preferenceCourse3"
-                    requried>
-              <option ng-repeat="course in vm.courses"
-                      ng-selected="course._id === TACandidateForms[fakeData.indexOf(row)].preferenceCourse3"
-                      value="{{course._id}}">{{course.courseId+" - "+course.courseTitle}}
-              </option>
-            </select>
-            <div ng-messages="vm.form.formForm.preferenceCourse3.$error" role="alert">
-              <p class="help-block error-text" ng-message="required">Tertiary Couse Preference is required.</p>
-            </div>
-          </div>
-
 
           <div class="form-group" show-errors>
             <label class="control-label" for="isTeachingTA">Would you like to be a teaching TA</label>

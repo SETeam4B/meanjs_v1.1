@@ -16,6 +16,53 @@
 
       <accordion close-others="oneAtATime">
 
+        <accordion-group ng-repeat="User in recommendedList" is-open="status.open">
+          <accordion-heading>
+
+            <div class="row">
+              <div class="col-md-3">{{User.ufid}}</div>
+              <div class="col-md-4">{{User.lastName}}</div>
+              <div class="col-md-4">{{User.firstName}}</div>
+              <div class="col-md-1">{{User.gpa}}</div>
+            </div>
+          </accordion-heading>
+
+          <!--TODO: change this-->
+          <div class="container row">
+            <!--<div class="container row" ng-controller="" ng-init="findOne()">-->
+            <div class="col-md-offset-1 col-md-10 formWrapper">
+              <div class="page-header">
+
+                <form name="Course Info" class="form-horizontal" 0>
+                  <fieldset>
+                    <div class="form-group">
+                      <label class="control-label" for="interestExperience">Interests and experience</label>
+                      <textarea readonly name="interestExperience" rows="4" cols="20" ng-model="User.interestExperience" id="interestExperience"
+                                class="form-control"></textarea>
+                    </div>
+
+
+                    <div class="form-group">
+                      <label class="control-label" for="previousCourseTaken">Previous Courses Taken</label>
+                      <textarea readonly name="previousCourseTaken" rows="4" cols="20"  ng-model="User.previousCourseTaken"
+                                id="previousCourseTaken" class="form-control"></textarea>
+                    </div>
+
+                  </fieldset>
+
+
+                  <button  ng-click="removeFromRecommendationDatabase(User)" class="btn btn-default btn-danger" >Remove</button>
+                </form>
+
+              </div>
+            </div>
+          </div>
+
+        </accordion-group>
+
+
+
+
         <accordion-group ng-repeat="User in FacultyRecommendationList" is-open="status.open">
           <accordion-heading>
 
@@ -67,7 +114,15 @@
       <button  ng-click="submitMyRecommendation()" class="btn btn-default btn-primary" >Submit Recommendation</button>
 
 
+
+
+
+
+
     </div>
+
+
+
 <div class="col-md-6" >
 
 
@@ -130,17 +185,6 @@
 
     <!--</accordion-group>-->
   </accordion>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -250,6 +294,71 @@
       </div>
 
     </accordion-group>
+
+
+
+    <h1>System Suggestion</h1>
+
+    <div class="row">
+      <div class="col-md-3">UF-ID</div>
+      <div class="col-md-4">Last Name</div>
+      <div class="col-md-4">First Name</div>
+      <div class="col-md-1">GPA</div>
+    </div>
+
+    <accordion close-others="oneAtATime">
+
+      <accordion-group ng-repeat="student in SystemRecommendedlist track by $index" is-open="status.open">
+        <accordion-heading>
+
+          <div class="row">
+            <div class="col-md-3">{{student.ufid}}</div>
+            <div class="col-md-4">{{student.lastName}}</div>
+            <div class="col-md-4">{{student.firstName}}</div>
+            <div class="col-md-1">{{student.gpa}}</div>
+          </div>
+        </accordion-heading>
+
+        <!--TODO: change this-->
+        <div class="container row">
+          <!--<div class="container row" ng-controller="" ng-init="findOne()">-->
+          <div class="col-md-offset-1 col-md-10 formWrapper">
+            <div class="page-header">
+
+              <form name="Course Info" class="form-horizontal" 0>
+                <fieldset>
+                  <div class="form-group">
+                    <label class="control-label" for="interestExperience">Interests and experience</label>
+                    <textarea readonly name="interestExperience" rows="4" cols="20" ng-model="student.interestExperience" id="interestExperience"
+                              class="form-control"></textarea>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label class="control-label" for="previousCourseTaken">Previous Courses Taken</label>
+                    <textarea readonly name="previousCourseTaken" rows="4" cols="20"  ng-model="student.previousCourseTaken"
+                              id="previousCourseTaken" class="form-control"></textarea>
+                  </div>
+
+                </fieldset>
+
+
+                <button  ng-click="recommendTA(student)" class="btn btn-default btn-primary" >Recommend</button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+      </accordion-group>
+
+
+      <!--</accordion-group>-->
+    </accordion>
+
+
+
+
 
 
     <h1>Rejected</h1>

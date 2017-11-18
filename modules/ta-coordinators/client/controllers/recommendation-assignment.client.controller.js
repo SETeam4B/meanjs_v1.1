@@ -14,8 +14,11 @@
      $scope.TAlist = {};
      $scope.UTAlist = {};
      $scope.Graderlist = {};
+     $scope.SystemRecommendedlist = [] ;
      $scope.Rejectedlist= {};
      $scope.course = CoursesService.get($stateParams.courseId);
+
+     $scope.recommendedList=[];
 
      $scope.FacultyRecommendationList = []
 
@@ -25,6 +28,12 @@
             $scope.FacultyRecommendationList.push(recommendationObj);
 
         };
+
+     $scope.removeFromRecommendationDatabase = function(User)
+     {
+         var index = $scope.recommendedList.indexOf(User);
+         $scope.recommendedList.splice(index,1);
+     };
 
      $scope.removeFromRecommendation= function(form)
      {
@@ -53,6 +62,7 @@
 
 
      }
+
         AssignmentrecommendationsService.getAccepted(successCallback, errorCallback);
         function successCallback(res) {
             console.log("success");
@@ -72,8 +82,51 @@
             console.log("failed");
         }
 
+        AssignmentrecommendationsService.getCourseRecommended({courseId:$stateParams.courseId, courseNumber:1},successCallback3, errorCallback3);
+
+        function successCallback3(res) {
+            console.log("success");
+
+            $scope.SystemRecommendedlist= $scope.SystemRecommendedlist.concat(res.data).unique();
+        }
+        function errorCallback3() {
+            console.log("failed");
+        }
+        AssignmentrecommendationsService.getCourseRecommended({courseId:$stateParams.courseId, courseNumber:2},successCallback4, errorCallback4);
+
+        function successCallback4(res) {
+            console.log("success");
+
+            $scope.SystemRecommendedlist = $scope.SystemRecommendedlist.concat(res.data).unique();
+        }
+        function errorCallback4() {
+            console.log("failed");
+        }
+        AssignmentrecommendationsService.getCourseRecommended({courseId:$stateParams.courseId, courseNumber:3},successCallback5, errorCallback5);
+
+        function successCallback5(res) {
+
+            console.log("success");
+
+            $scope.SystemRecommendedlist = $scope.SystemRecommendedlist.concat(res.data).unique();
 
 
+        }
+        function errorCallback5() {
+            console.log("failed");
+        }
+
+        Array.prototype.unique = function() {
+            var a = this.concat();
+            for(var i=0; i<a.length; ++i) {
+                for(var j=i+1; j<a.length; ++j) {
+                    if(a[i] === a[j])
+                        a.splice(j--, 1);
+                }
+            }
+
+            return a;
+        };
 
     }
 

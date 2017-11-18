@@ -72,7 +72,7 @@
             }
         })
         .state('ta-coordinators.facultyCourseList',{
-            url: '/courseList',
+            url: '/courseLists',
             templateUrl: 'modules/ta-coordinators/client/views/faculty-courselist.client.view.html',
             controller: 'facultyCourseListController',
             controllerAs: 'vm',

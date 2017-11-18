@@ -41,10 +41,10 @@
 
                 var obj= new AssignmentrecommendationsService(
                     {
-                        course: $scope.courseId ,
-                        user: $scope.FacultyRecommendationList[i].form.user,
-                        form: $scope.FacultyRecommendationList[i].form._id,
-                        assigned:"No"
+                        course: $scope.courseId + "",
+                        user: $scope.FacultyRecommendationList[i].form.user +"",
+                        form: $scope.FacultyRecommendationList[i].form._id + "",
+                        assigned: true
                     }
                 );
 

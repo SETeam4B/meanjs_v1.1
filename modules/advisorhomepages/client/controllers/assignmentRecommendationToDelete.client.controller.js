@@ -24,8 +24,8 @@
             // AssignmentrecommendationsService.getRejected(successCallback, errorCallback);
             // AssignmentrecommendationsService.getAccepted(successCallback, errorCallback);
             var assignment = new AssignmentrecommendationsService();
-            assignment._id = '5a0b16eb49a702e5176d6300';
-            assignment.assigned  = "Yes";
+            assignment._id = '5a0dd32b06d58d6833817365';
+            assignment.assigned  = false;
             assignment.$assignStudent(successCallback, errorCallback);
 
             function successCallback(res) {

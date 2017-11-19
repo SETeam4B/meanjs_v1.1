@@ -17,33 +17,38 @@
         $scope.Rejectedlist= {};
         $scope.course = CoursesService.get($stateParams.courseId);
 
+        //faculty recommendation list from database
         $scope.FacultyRecommendationList = [];
 
-        $scope.AssighmentList = [];
+        //fetched from database
+        $scope.AssignmentList = [];
+
+        //ta coordinators choice of assignment
+        $scope.TACoordinatorAssignmentList = [];
 
         $scope.assignTA =function (form)
         {
-            var recommendationObj = {course: $scope.courseId, user:form.user, form:form, assigned: "No"};
-            $scope.FacultyRecommendationList.push(recommendationObj);
+            var AssignmentObject = {course: $scope.courseId, user:form.user, form:form, assigned: "Yes"};
+            $scope.TACoordinatorAssignmentList.push(AssignmentObject);
         };
 
         $scope.removeFromAssignment= function(form)
         {
-            var index = $scope.FacultyRecommendationList.indexOf(form);
-            $scope.FacultyRecommendationList.splice(index,1);
+            var index = $scope.AssignmentList.indexOf(form);
+            $scope.AssignmentList.splice(index,1);
         }
 
         $scope.submitMyAssignment = function()
         {
             //passing FacultyRecommendationList to backend services
 
-            for(var i = 0; i < $scope.FacultyRecommendationList.length; i++) {
+            for(var i = 0; i < $scope.TACoordinatorAssignmentList.length; i++) {
 
                 var obj= new AssignmentrecommendationsService(
                     {
                         course: $scope.courseId ,
-                        user: $scope.FacultyRecommendationList[i].form.user,
-                        form: $scope.FacultyRecommendationList[i].form._id,
+                        user: $scope.TACoordinatorAssignmentList[i].form.user,
+                        form: $scope.TACoordinatorAssignmentList[i].form._id,
                         assigned:"No"
                     }
                 );

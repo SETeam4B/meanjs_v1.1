@@ -23,10 +23,14 @@
 
             // AssignmentrecommendationsService.getRejected(successCallback, errorCallback);
             // AssignmentrecommendationsService.getAccepted(successCallback, errorCallback);
-            var assignment = new AssignmentrecommendationsService();
-            assignment._id = '5a0dd32b06d58d6833817365';
-            assignment.assigned  = false;
-            assignment.$assignStudent(successCallback, errorCallback);
+
+
+            // var assignment = new AssignmentrecommendationsService();
+            // assignment._id = '5a0dd32b06d58d6833817365';
+            // assignment.assigned  = false;
+            // assignment.$assignStudent(successCallback, errorCallback);
+
+            AssignmentrecommendationsService.getProfessorRecommended({courseId:'59f654bf803fe11809960385'},successCallback, errorCallback);
 
             function successCallback(res) {
                 console.log("success");

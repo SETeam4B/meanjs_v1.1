@@ -161,7 +161,7 @@ exports.getAcceptedList = function (req, res) {
             TA: [],
             UTA: [],
             Grader: [],
-            "N/A" :[],
+            "N/A": [],
 
         }
         data.forEach(function (element) {
@@ -190,7 +190,7 @@ exports.getCourseRecommendedList = function (req, res) {
     }
 
     if (req.query.courseNumber == undefined || req.query.courseNumber == 1) {
-        return findFirstCourse(res,course)
+        return findFirstCourse(res, course)
     }
     if (req.query.courseNumber == 2) {
         return findSecondCourse(res, course);
@@ -232,16 +232,54 @@ function findThirdCourse(res, course) {
 
 /**
  * Assigns student to a class
- * Todo: create a trigger for whenever the update is changing the assigned property
  * TODO: create a trigger for whenever there is a save and the student is assaigned automatically
  * @param req
  * @param res
  */
 exports.assignStudent = function (req, res) {
     Assignmentrecommendation.findOneAndUpdate({_id: req.body._id}, {assigned: req.body.assigned}, function (err) {
-        if (err){
+        if (err) {
             return res.status(400).send({message: "Could not change the assigned property of the student"});
         }
         return res.status(200).send({message: "Assigned student"});
     })
 };
+
+exports.retrieveRecommendedStudents = function (req, res) {
+    var course = req.query.courseId;
+            Assignmentrecommendation.find({assigned: false, course: course}, async function (err, data) {
+                if (err) {
+            return res.status(400).send({message: "could not retrieve the recommended list"});
+        }
+        var recommendationArray = await watingForFindingTheOne(data);
+        return res.status(200).send({data: recommendationArray});
+    })
+};
+
+
+async function watingForFindingTheOne(data) {
+    var recommendationArray = [];
+    // console.log("1");
+    // await findForm()
+
+    for (var i = 0; i < data.length; i++) {
+        try {
+            var temp = await findForm(data[i].form);
+            recommendationArray.push(temp);
+        }catch(e){
+            console.log(e);
+        }
+    }
+    return recommendationArray;
+}
+
+function findForm(id) {
+    return new Promise(function (resolve, reject) {
+        Form.findOne({_id: id}, function (err, data) {
+            if (err) {
+                return reject(err);
+            }
+            return resolve(data);
+        })
+    })
+}

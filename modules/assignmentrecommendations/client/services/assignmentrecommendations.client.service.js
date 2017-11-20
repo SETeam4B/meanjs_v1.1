@@ -31,6 +31,10 @@
             assignStudent:{
                 method: 'PUT',
                 url: '/api/assignStudent'
+            },
+            getProfessorRecommended:{
+                method: 'GET',
+                url: 'api/professorRecommended'
             }
         });
     }

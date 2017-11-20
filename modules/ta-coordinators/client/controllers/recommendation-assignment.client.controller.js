@@ -18,6 +18,7 @@
      $scope.Rejectedlist= {};
      $scope.course = CoursesService.get($stateParams.courseId);
 
+     //fetched from database
      $scope.recommendedList=[];
 
      $scope.FacultyRecommendationList = []

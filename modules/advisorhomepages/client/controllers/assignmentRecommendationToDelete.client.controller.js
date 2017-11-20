@@ -22,7 +22,7 @@
             // AssignmentrecommendationsService.getCourseRecommended(successCallback, errorCallback);
 
             // AssignmentrecommendationsService.getRejected(successCallback, errorCallback);
-            // AssignmentrecommendationsService.getAccepted(successCallback, errorCallback);
+            AssignmentrecommendationsService.getAccepted(successCallback, errorCallback);
 
 
             // var assignment = new AssignmentrecommendationsService();
@@ -34,7 +34,7 @@
 
 
 
-            AssignmentrecommendationsService.getAssignedStudents({courseId:'59f654bf803fe11809960385'},successCallback, errorCallback);
+            // AssignmentrecommendationsService.getAssignedStudents({courseId:'59f654bf803fe11809960385'},successCallback, errorCallback);
 
             function successCallback(res) {
                 console.log("success");

@@ -7,7 +7,8 @@ var path = require('path'),
     mongoose = require('mongoose'),
     Assignmentrecommendation = mongoose.model('Assignmentrecommendation'),
     Form = mongoose.model('Form'),
-    errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
+    User = mongoose.model('User'),
+errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
     _ = require('lodash');
 
 /**
@@ -153,7 +154,7 @@ exports.getRejectedList = function (req, res) {
  * each field contains an array of all the students that are considered for them
  */
 exports.getAcceptedList = function (req, res) {
-    Form.find({status: "Accepted"}, function (err, data) {
+    Form.find({status: "Accepted"}, async function (err, data) {
         if (err) {
             return res.status(400).send({message: "could not find the accepted list"});
         }
@@ -164,13 +165,45 @@ exports.getAcceptedList = function (req, res) {
             "N/A": [],
 
         }
+        data = await filterCappedTAS(data);
+
         data.forEach(function (element) {
             acceptedCategory[element.category].push(element);
         });
 
         return res.status(200).send({data: acceptedCategory});
-    })
+    });
 };
+
+async function filterCappedTAS(data) {
+    var array = [];
+    for (var i = 0; i < data.length; i++) {
+        try {
+            var capped = await isCapped(data[i].username);
+            if (!capped) {
+                array.push(data[i])
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }
+    return array;
+}
+
+function isCapped(user) {
+    return new Promise(function (resolve, reject) {
+        User.findOne({username: user}, function (err, data) {
+            if (err) {
+                return reject(err);
+            }
+            if (data.availableHour > data.assignedHour) {
+                return resolve(false);
+            }
+            return resolve(true);
+        })
+    })
+}
+
 
 /**
  * Used to generate the system recommended courses
@@ -274,10 +307,11 @@ function retrieveStudentsFromAssignRecommendation(assigned, course, res) {
         if (err) {
             return res.status(400).send({message: "could not retrieve the recommended list"});
         }
-        var recommendationArray = await
-        findAllForms(data);
+        var recommendationArray = await findAllForms(data);
         return res.status(200).send({data: recommendationArray});
-    })
+    }
+
+)
 }
 
 async function findAllForms(data) {
@@ -287,7 +321,7 @@ async function findAllForms(data) {
         try {
             var temp = await findForm(data[i].form);
             recommendationArray.push(temp);
-        }catch(e){
+        } catch (e) {
             console.log(e);
         }
     }

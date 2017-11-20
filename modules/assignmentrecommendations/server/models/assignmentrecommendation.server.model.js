@@ -32,6 +32,22 @@ var Assignmentrecommendation = new Schema({
     }
 });
 
+
+//TODO: test this function later
+/**
+ * If the user is saved and assigned at the same time,
+ * It will detect it and automatically update the user table
+ */
+Assignmentrecommendation.pre('save', function (next, req, callback) {
+    var assigned = this._doc.assigned;
+    var user = this._doc.user;
+
+    if (assigned){
+        addHours(next, user);
+    }
+});
+
+
 /**
  * Before an update,
  * It checks if the hours are assigned
@@ -49,6 +65,7 @@ Assignmentrecommendation.pre('findOneAndUpdate', function (next, req, callback) 
             findUserToDeleteHours(next, condition, Ass);
         }
     }
+    next();
 });
 
 /**

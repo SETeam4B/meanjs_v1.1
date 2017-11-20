@@ -233,8 +233,8 @@ FormSchema.pre('save', function (next, req, callback) {
 
 /**
  * TODO: change the User.findOneAndUpdate to a post function not a pre
- * This function analyze if the hours are between 10-20
- * analyze if the hours available are more than the hours assigned
+ * This function analyzes if the hours are between 10-20
+ * analyzes if the hours available are more than the hours assigned
  * if these 2 conditions are met it keeps trying to add the function
  * @param next
  * @param updatingRequirement

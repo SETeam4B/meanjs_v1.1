@@ -245,22 +245,43 @@ exports.assignStudent = function (req, res) {
     })
 };
 
+/**
+ * Provided with a course id, returns a professor recommended list of students that haven't been assigned to the class
+ * To be called do the following:
+ * AssignmentrecommendationsService.getProfessorRecommended({courseId:'59f654bf803fe11809960385'}, successCallback, errorCallback);
+ * @param req
+ * @param res
+ */
 exports.retrieveRecommendedStudents = function (req, res) {
     var course = req.query.courseId;
-            Assignmentrecommendation.find({assigned: false, course: course}, async function (err, data) {
-                if (err) {
-            return res.status(400).send({message: "could not retrieve the recommended list"});
-        }
-        var recommendationArray = await watingForFindingTheOne(data);
-        return res.status(200).send({data: recommendationArray});
-    })
+    retrieveStudentsFromAssignRecommendation(false, course, res)
 };
 
+/**
+ * Provided with a course id, returns students assigned to a certain class
+ * To be called do the following:
+ * AssignmentrecommendationsService.getAssignedStudents({courseId:'59f654bf803fe11809960385'},successCallback, errorCallback);
+ * @param req
+ * @param res
+ */
+exports.retrieveAssignedStudents = function (req, res) {
+    var course = req.query.courseId;
+    retrieveStudentsFromAssignRecommendation(true, course, res);
+}
 
-async function watingForFindingTheOne(data) {
+function retrieveStudentsFromAssignRecommendation(assigned, course, res) {
+    Assignmentrecommendation.find({assigned: assigned, course: course}, async function (err, data) {
+        if (err) {
+            return res.status(400).send({message: "could not retrieve the recommended list"});
+        }
+        var recommendationArray = await
+        findAllForms(data);
+        return res.status(200).send({data: recommendationArray});
+    })
+}
+
+async function findAllForms(data) {
     var recommendationArray = [];
-    // console.log("1");
-    // await findForm()
 
     for (var i = 0; i < data.length; i++) {
         try {

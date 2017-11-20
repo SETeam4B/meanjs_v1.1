@@ -28,12 +28,12 @@
     <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
     <input type="text" class="form-control" placeholder="Search" ng-model="searchResult">
   </div>
-  
+
   <accordion close-others="oneAtATime">
 
-    <accordion-group ng-repeat="row in fakeData" is-open="status.open">
+    <accordion-group ng-repeat="row in fakeData | filter: searchResult" is-open="status.open">
       <accordion-heading>
-        <table  ng-click="populateTACandidatesForm(fakeData.indexOf(row))">
+        <table ng-click="populateTACandidatesForm(fakeData.indexOf(row))">
           <!-- <thead>
           <tr>
             <th class="col-xs-3">UF ID</th>
@@ -43,13 +43,13 @@
           </tr>
           </thead> -->
           <tbody>
-          <tr>
-            <td class="col-md-4">{{row.ufid}}</td>
-            <td class="col-md-4">{{row.firstName}} {{row.lastName}}</td>
-            <td class="col-md-4">{{row.email}}</td>
-            <!--<td class="col-md-2">{{row.hourTA}}</td>-->
-            <td class="col-md-2"><input type="text" value="{{row.hourTA}}" style="width:30px; text-align:right;"></td>
-          </tr>
+            <tr>
+              <td class="col-md-4">{{row.ufid}}</td>
+              <td class="col-md-4">{{row.firstName}} {{row.lastName}}</td>
+              <td class="col-md-4">{{row.email}}</td>
+              <!--<td class="col-md-2">{{row.hourTA}}</td>-->
+              <td class="col-md-2"><input type="text" value="{{row.hourTA}}" style="width:30px; text-align:right;"></td>
+            </tr>
           </tbody>
 
         </table>

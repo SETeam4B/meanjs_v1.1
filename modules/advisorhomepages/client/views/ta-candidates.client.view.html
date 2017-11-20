@@ -25,6 +25,11 @@
 </p>
   <accordion close-others="oneAtATime">
 
+    <div class="input-group" id="searchBar">
+      <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
+      <input type="text" class="form-control" placeholder="Search" ng-model="searchResult">
+    </div>
+
     <accordion-group ng-repeat="row in fakeData" is-open="status.open">
       <accordion-heading>
         <table  ng-click="populateTACandidatesForm(fakeData.indexOf(row))">
@@ -41,8 +46,8 @@
             <td class="col-md-4">{{row.ufid}}</td>
             <td class="col-md-4">{{row.firstName}} {{row.lastName}}</td>
             <td class="col-md-4">{{row.email}}</td>
-            <td class="col-md-2">{{row.hourTA}}</td>
-            <!--<td class="col-md-2"><input type="text" value="{{row.hourTA}}" style="width:35px; text-align:right;"></td>-->
+            <!--<td class="col-md-2">{{row.hourTA}}</td>-->
+            <td class="col-md-2"><input type="text" value="{{row.hourTA}}" style="width:30px; text-align:right;"></td>
           </tr>
           </tbody>
 

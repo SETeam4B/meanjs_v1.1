@@ -23,12 +23,13 @@
     </thead>
   </table>
 </p>
-  <accordion close-others="oneAtATime">
 
-    <div class="input-group" id="searchBar">
-      <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
-      <input type="text" class="form-control" placeholder="Search" ng-model="searchResult">
-    </div>
+  <div class="input-group" id="searchBar">
+    <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
+    <input type="text" class="form-control" placeholder="Search" ng-model="searchResult">
+  </div>
+  
+  <accordion close-others="oneAtATime">
 
     <accordion-group ng-repeat="row in fakeData" is-open="status.open">
       <accordion-heading>

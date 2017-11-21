@@ -25,7 +25,7 @@
 
      $scope.recommendTA =function (form)
         {
-            var recommendationObj = {course: $scope.courseId, user:form.user, form:form, assigned: "No"};
+            var recommendationObj = {course: $scope.courseId, user:form.user, form:form, assigned: 'false'};
             $scope.FacultyRecommendationList.push(recommendationObj);
 
         };
@@ -53,16 +53,18 @@
                      course: $scope.courseId + "",
                      user: $scope.FacultyRecommendationList[i].form.user +"",
                      form: $scope.FacultyRecommendationList[i].form._id + "",
-                     assigned: false
+                     assigned: "false"
                  }
-             );
 
+             );
              obj.$save();
          }
          $state.go('ta-coordinators.facultyCourseList');
 
 
      }
+
+
 
         AssignmentrecommendationsService.getAccepted(successCallback, errorCallback);
         function successCallback(res) {
@@ -114,6 +116,20 @@
 
         }
         function errorCallback5() {
+            console.log("failed");
+        }
+
+
+        AssignmentrecommendationsService.getProfessorRecommended({courseId:$stateParams.courseId},successCallback6, errorCallback6);
+        function successCallback6(res) {
+
+            console.log("success");
+
+
+            $scope.recommendedList = res.data.unique();
+
+        }
+        function errorCallback6() {
             console.log("failed");
         }
 

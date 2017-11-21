@@ -18,7 +18,7 @@
         $scope.course = CoursesService.get($stateParams.courseId);
 
         //faculty recommendation list from database
-        $scope.FacultyRecommendationList = [];
+        $scope.FacultyRecommendationLists = {};
 
         //fetched from database
         $scope.AssignmentList = [];
@@ -28,14 +28,14 @@
 
         $scope.assignTA =function (form)
         {
-            var AssignmentObject = {course: $scope.courseId, user:form.user, form:form, assigned: "Yes"};
+            var AssignmentObject = {course: $scope.courseId, user:form.user, form:form, assigned: "true"};
             $scope.TACoordinatorAssignmentList.push(AssignmentObject);
         };
 
         $scope.removeFromAssignment= function(form)
         {
-            var index = $scope.AssignmentList.indexOf(form);
-            $scope.AssignmentList.splice(index,1);
+            var index = $scope.TACoordinatorAssignmentList.indexOf(form);
+            $scope.TACoordinatorAssignmentList.splice(index,1);
         }
 
         $scope.submitMyAssignment = function()
@@ -48,19 +48,34 @@
                     {
 
                         course: $scope.courseId + "",
-                        user: $scope.FacultyRecommendationList[i].form.user +"",
-                        form: $scope.FacultyRecommendationList[i].form._id + "",
+                        user: $scope.TACoordinatorAssignmentList[i].form.user +"",
+                        form: $scope.TACoordinatorAssignmentList[i].form._id + "",
                         assigned: true
                     }
                 );
-
-                obj.$save();
+                obj.$assignStudent();
             }
-            $state.go('ta-coordinators.facultyCourseList');
+            $state.go('ta-coordinators.tacoordinatorCourseList');
 
 
         }
-        AssignmentrecommendationsService.getAccepted(successCallback, errorCallback);
+
+
+        AssignmentrecommendationsService.getProfessorRecommended({courseId:$stateParams.courseId},successCallback6, errorCallback6);
+        function successCallback6(res) {
+
+            console.log("success");
+
+            $scope.FacultyRecommendationLists = res.data;
+
+            console.log($scope.FacultyRecommendationLists);
+
+        }
+        function errorCallback6() {
+            console.log("failed");
+        }
+
+        AssignmentrecommendationsService.getAcceptedWithHour(successCallback, errorCallback);
         function successCallback(res) {
             console.log("success");
             $scope.TAlist = res.data.TA;
@@ -80,6 +95,19 @@
         }
 
 
+
+        AssignmentrecommendationsService.getAssignedStudents({courseId:$stateParams.courseId},successCallback7, errorCallback7);
+        function successCallback7(res) {
+
+            console.log("success");
+
+
+            $scope.AssignmentList = res.data;
+
+        }
+        function errorCallback7() {
+            console.log("failed");
+        }
 
 
     }

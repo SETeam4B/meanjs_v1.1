@@ -3,6 +3,16 @@
     Course Title :
     {{courseTitle}}
   </h1>
+  <div class="row">
+    <!-- Add a ui-sref property to the anchor tags to allow navigation between different states -->
+    <ul class="nav nav-pills">
+      <li><a ui-sref="ta-coordinators.status">Status</a></li>
+      <li><a ui-sref="ta-coordinators.tacandidates">TA Candidates</a></li>
+      <li><a ui-sref="ta-coordinators.courselist" class="bg-info text-white">Course List</a></li>
+      <li><a ui-sref="ta-coordinators.facultyCourseList">TA Recommendations</a></li>
+      <li><a ui-sref="ta-coordinators.tacoordinatorCourseList">Assignments</a></li>
+    </ul>
+  </div>
   <div class="rows">
     <div class="col-md-6">
       <h1>My Recommendation List</h1>
@@ -16,7 +26,7 @@
 
       <accordion close-others="oneAtATime">
 
-        <accordion-group ng-repeat="User in recommendedList" is-open="status.open">
+        <accordion-group ng-repeat="User in recommendedList track by $index" is-open="status.open">
           <accordion-heading>
 
             <div class="row">
@@ -51,7 +61,6 @@
                   </fieldset>
 
 
-                  <button  ng-click="removeFromRecommendationDatabase(User)" class="btn btn-default btn-danger" >Remove</button>
                 </form>
 
               </div>

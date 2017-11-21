@@ -23,11 +23,11 @@ var Assignmentrecommendation = new Schema({
         required: "user is required"
     },
     form: {
-        type: Schema.ObjectId,
+        type: String,
         required: "form is required"
     },
     course: {
-        type: Schema.ObjectId,
+        type: String,
         required: "course is required"
     }
 });

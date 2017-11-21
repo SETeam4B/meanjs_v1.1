@@ -23,6 +23,10 @@
                 method: 'GET',
                 url: '/api/accepted'
             },
+            getAcceptedWithHour: {
+                method: 'GET',
+                url: '/api/acceptedWithHour'
+            },
             getCourseRecommended: {
                 method: 'GET',
                 url: '/api/courseRecommendation',

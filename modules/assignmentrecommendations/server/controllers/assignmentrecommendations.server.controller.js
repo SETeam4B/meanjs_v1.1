@@ -29,14 +29,17 @@ exports.create = function (req, res) {
     assignmentrecommendation.form = req.body.form;
     assignmentrecommendation.assigned = req.body.assigned;
 
-    assignmentrecommendation.save(function (err) {
+
+    assignmentrecommendation.$__save({}, function(err){
+        // callback is called
         if (err) {
+            console.log("Failed! saving recommendation");
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            res.jsonp(assignmentrecommendation);
-        }
+            console.log("succeed! saving recommendation");
+    res.jsonp(assignmentrecommendation);}
     });
 };
 
@@ -154,6 +157,36 @@ exports.getRejectedList = function (req, res) {
  * each field contains an array of all the students that are considered for them
  */
 exports.getAcceptedList = function (req, res) {
+    Form.find({status: "Accepted"}, function (err, data) {
+        if (err) {
+            return res.status(400).send({message: "could not find the accepted list"});
+        }
+        var acceptedCategory = {
+            TA: [],
+            UTA: [],
+            Grader: [],
+            "N/A" :[],
+
+        }
+        data.forEach(function (element) {
+            acceptedCategory[element.category].push(element);
+        });
+
+        return res.status(200).send({data: acceptedCategory});
+    })
+};
+
+
+
+/**
+ * fetches all information of the students who have been accepted
+ * @param req
+ * @param res
+ * returns an object that contains a parameter called "data"
+ * this "data" will contain an object that has three fields TA, UTA, and Graders
+ * each field contains an array of all the students that are considered for them
+ */
+exports.getAcceptedListWithHour = function (req, res) {
     Form.find({status: "Accepted"}, async function (err, data) {
         if (err) {
             return res.status(400).send({message: "could not find the accepted list"});

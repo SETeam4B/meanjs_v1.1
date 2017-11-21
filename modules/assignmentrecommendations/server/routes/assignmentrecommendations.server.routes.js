@@ -25,7 +25,8 @@ module.exports = function(app) {
 
   app.route('/api/accepted')
       .get(assignmentrecommendations.getAcceptedList);
-
+    app.route('/api/acceptedWithHour')
+        .get(assignmentrecommendations.getAcceptedListWithHour);
   app.route('/api/assignStudent')
       .put(assignmentrecommendations.assignStudent)
       .post(assignmentrecommendations.create )

@@ -18,7 +18,7 @@ var db, User;
 describe('User Authentication Unit Tests:', function () {
 
   before(function (done) {
-    db = mongoose.createConnection('mongodb://cen_4b_username:cen_4b_password@ds161584.mlab.com:61584/cen_4b');
+    db = mongoose.createConnection('mongodb://cen_4b_username_test:cen_4b_password@ds115436.mlab.com:15436/mongomemedbofpower');
     db.on('error', console.error.bind(console, 'connection error'));
     db.once('open', function(){
       console.log('Connected to DB.');

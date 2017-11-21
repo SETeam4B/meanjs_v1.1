@@ -38,24 +38,6 @@ describe('Ta coordinator Model Unit Tests:', function() {
     });
   });
 
-  describe('Method Save', function() {
-    it('should be able to save without problems', function(done) {
-      this.timeout(0);
-      return taCoordinator.save(function(err) {
-        should.not.exist(err);
-        done();
-      });
-    });
-
-    it('should be able to show an error when try to save without name', function(done) {
-      taCoordinator.name = '';
-
-      return taCoordinator.save(function(err) {
-        should.exist(err);
-        done();
-      });
-    });
-  });
 
   afterEach(function(done) {
     TaCoordinator.remove().exec(function() {

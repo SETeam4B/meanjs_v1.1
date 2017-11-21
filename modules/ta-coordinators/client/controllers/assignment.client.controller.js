@@ -31,6 +31,17 @@
             var AssignmentObject = {course: $scope.courseId, user:form.user, form:form, assigned: "true"};
             $scope.TACoordinatorAssignmentList.push(AssignmentObject);
         };
+$scope.removeFromDatabase = function(form){
+    AssignmentrecommendationsService.removeStudent({user: form.user, course:$stateParams.courseId},successCallback8, errorCallback8);
+    AssignmentrecommendationsService.getAssignedStudents({courseId:$stateParams.courseId},successCallback7, errorCallback7);
+};
+        function successCallback8(res) {
+
+            console.log("success");
+        }
+        function errorCallback8() {
+            console.log("failed");
+        }
 
         $scope.removeFromAssignment= function(form)
         {

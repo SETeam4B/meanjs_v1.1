@@ -372,3 +372,17 @@ function findForm(id) {
         })
     })
 }
+
+exports.removeFromList = function (req, res) {
+    console.log("remove from list");
+    console.log(req.body);
+    console.log(req.body.user);
+    console.log(req.body.course);
+    Assignmentrecommendation.findOneAndRemove({user: req.body.user, course:req.body.course}, function (err) {
+        if (err) {
+            return res.status(400).send({message: "Could not remove this student"});
+        }
+        console.log("succeed remove ");
+        return res.status(200);
+    });
+};

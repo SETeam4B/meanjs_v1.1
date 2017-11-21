@@ -27,6 +27,10 @@
                 method: 'GET',
                 url: '/api/acceptedWithHour'
             },
+            removeStudent:{
+                method:'PUT',
+                url:'/api/removeStudent'
+            },
             getCourseRecommended: {
                 method: 'GET',
                 url: '/api/courseRecommendation',

@@ -30,12 +30,20 @@
 
         };
 
-     $scope.removeFromRecommendationDatabase = function(User)
-     {
-         var index = $scope.recommendedList.indexOf(User);
-         $scope.recommendedList.splice(index,1);
-     };
 
+        $scope.removeFromDatabase = function(form){
+            AssignmentrecommendationsService.removeStudent({user: form.user, course:$stateParams.courseId},successCallback8, errorCallback8);
+            AssignmentrecommendationsService.getProfessorRecommended({courseId:$stateParams.courseId},successCallback6, errorCallback6);
+        };
+
+        function successCallback8(res) {
+
+            console.log("success");
+
+        }
+        function errorCallback8() {
+            console.log("failed");
+        }
      $scope.removeFromRecommendation= function(form)
      {
          var index = $scope.FacultyRecommendationList.indexOf(form);

@@ -34,6 +34,9 @@ module.exports = function(app) {
 
   // app.route()
 
+    app.route('/api/removeStudent')
+        .put(assignmentrecommendations.removeFromList);
+
   app.route('/api/courseRecommendation')
       .get(assignmentrecommendations.getCourseRecommendedList);
 

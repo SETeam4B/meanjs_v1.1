@@ -57,7 +57,8 @@ Assignmentrecommendation.pre('save', function (next, req, callback) {
 Assignmentrecommendation.pre('findOneAndUpdate', function (next, req, callback) {
     var Ass = mongoose.model('Assignmentrecommendation');
     if (isAssigned(this._update.assigned)) {
-        var condition = this._conditions._id;
+        var condition = this._conditions.user;
+        console.log("condition"+condition);
         if (this._update.assigned) {
             findUserToAddHours(next, condition, Ass);
         }
@@ -76,11 +77,12 @@ Assignmentrecommendation.pre('findOneAndUpdate', function (next, req, callback) 
  * @param Ass
  */
 function findUserToAddHours(next, condition, Ass) {
+    console.log("condition：" +condition);
     Ass.findOne({_id: condition}, function (err, data) {
         if (err) {
             next(new Error("bad call"));
         }
-        addHours(next, data.user)
+        addHours(next, condition);
     });
 }
 
@@ -142,11 +144,12 @@ function removeHours(next, userId) {
  */
 function addHours(next, userId) {
     var User = mongoose.model('User');
+    console.log("user id " + userId);
     User.findOne({_id: userId}, function (err, data) {
         if (err) {
             next(new Error("bad call"));
         }
-
+console.log("data"+data);
         var futureAssignedHours = data.assignedHour + constantAssignedHour;
         if (futureAssignedHours > data.availableHour) {
             return next(new Error("assigned hours are greater than available hours"));

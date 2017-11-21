@@ -44,15 +44,12 @@
 
             for(var i = 0; i < $scope.TACoordinatorAssignmentList.length; i++) {
 
-                var obj= new AssignmentrecommendationsService(
-                    {
+                var obj= new AssignmentrecommendationsService();
+                obj.user = $scope.TACoordinatorAssignmentList[i].form.user;
+                obj.course = $scope.courseId;
+                obj.assigned =true;
+                obj.form = $scope.TACoordinatorAssignmentList[i].form._id;
 
-                        course: $scope.courseId + "",
-                        user: $scope.TACoordinatorAssignmentList[i].form.user +"",
-                        form: $scope.TACoordinatorAssignmentList[i].form._id + "",
-                        assigned: true
-                    }
-                );
                 obj.$assignStudent();
             }
             $state.go('ta-coordinators.tacoordinatorCourseList');
@@ -100,10 +97,9 @@
         function successCallback7(res) {
 
             console.log("success");
-
-
             $scope.AssignmentList = res.data;
 
+            console.log($scope.AssignmentList);
         }
         function errorCallback7() {
             console.log("failed");

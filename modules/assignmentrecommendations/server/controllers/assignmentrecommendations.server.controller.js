@@ -303,12 +303,12 @@ function findThirdCourse(res, course) {
  * @param res
  */
 exports.assignStudent = function (req, res) {
-    Assignmentrecommendation.findOneAndUpdate({_id: req.body._id}, {assigned: req.body.assigned}, function (err) {
+    Assignmentrecommendation.findOneAndUpdate({user: req.body.user, course:req.body.course}, {assigned: req.body.assigned, form:req.body.form},{upsert: true}, function (err) {
         if (err) {
             return res.status(400).send({message: "Could not change the assigned property of the student"});
         }
-        return res.status(200).send({message: "Assigned student"});
-    })
+        return res.status(200);
+    });
 };
 
 /**
@@ -341,6 +341,7 @@ function retrieveStudentsFromAssignRecommendation(assigned, course, res) {
             return res.status(400).send({message: "could not retrieve the recommended list"});
         }
         var recommendationArray = await findAllForms(data);
+        console.log(data);
         return res.status(200).send({data: recommendationArray});
     }
 

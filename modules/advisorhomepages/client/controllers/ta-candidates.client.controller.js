@@ -116,7 +116,6 @@
         };
 
 
-
         function checkId(index) {
             return new Promise(function (resolve, reject) {
                 $scope.getWithStudentId($scope.TACandidateForms[index].studentId).then(function (res) {
@@ -135,6 +134,10 @@
                 }
                 alert(res.name + "'s information was updated");
             });
+        }
+
+        $scope.updateAll = function() {
+            console.log("This dunnit work yet");
         }
 
         function addNewStudent(index) {

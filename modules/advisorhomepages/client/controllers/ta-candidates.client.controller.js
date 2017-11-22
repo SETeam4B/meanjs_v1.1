@@ -137,7 +137,7 @@
         }
 
         $scope.updateAll = function() {
-            console.log("This dunnit work yet");
+            console.log($scope.fakeData.length);
         }
 
         function addNewStudent(index) {

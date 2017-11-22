@@ -65,10 +65,6 @@
             }
         }
 
-        $scope.plzDontOpen = function (){
-            console.log("Fuck you");
-        }
-
         $scope.openModal = function () {
             $modal.open({
                 // template: '<div ng-show="$state.includes(forms.master)"/>'

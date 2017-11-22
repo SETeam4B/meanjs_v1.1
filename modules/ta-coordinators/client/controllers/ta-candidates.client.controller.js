@@ -73,7 +73,7 @@
 
         function update(index) {
             $scope.updateStudent($scope.TACandidateForms[index]).then(function (res) {
-                if (index != undefined) {
+                if (index !== undefined) {
                     $scope.fakeData[index].name = res.name;
                 }
                 alert(res.name + "'s information was updated");
@@ -82,7 +82,7 @@
 
         function addNewStudent(index) {
             $scope.saveWithBody($scope.TACandidateForms[index]).then(function (res) {
-                if (index != undefined) {
+                if (index !== undefined) {
                     $scope.fakeData[index].name = res.name;
                 }
                 alert(res.name + "' was added to the considering student list");
@@ -100,9 +100,9 @@
             }).catch(function (err) {
                 console.log(err);
             });
-        }
+        };
 
-    };
+    }
 
 
 }());

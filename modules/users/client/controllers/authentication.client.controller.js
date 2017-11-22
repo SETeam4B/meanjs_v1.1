@@ -51,7 +51,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
         if($scope.authentication.user.roles[0] === 'tacoordinator'){
           $state.go('ta-coordinators.status', $state.previous.params);
         }else if($scope.authentication.user.roles[0] === 'faculty'){
-          $state.go('facultyhomepages.list', $state.previous.params);
+          $state.go('ta-coordinators.recommendation', $state.previous.params);
         }else if($scope.authentication.user.roles[0] === 'advisor'){
           $state.go('advisorhomepages.list', $state.previous.params);
         }else if($scope.authentication.user.roles[0] === 'user'){

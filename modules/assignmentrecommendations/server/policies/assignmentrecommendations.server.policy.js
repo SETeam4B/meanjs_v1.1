@@ -28,16 +28,26 @@ exports.invokeRolesPolicies = function () {
       permissions: ['get', 'post']
     }, {
       resources: '/api/assignmentrecommendations/:assignmentrecommendationId',
-      permissions: ['get']
+      permissions: ['get','post']
     }]
-  }, {
+  },{
+      roles: ['tacoordinator'],
+      allows: [{
+          resources: '/api/assignmentrecommendations',
+          permissions: ['get', 'post']
+      }, {
+          resources: '/api/assignmentrecommendations/:assignmentrecommendationId',
+          permissions: ['get','post']
+      }]
+  },
+      {
     roles: ['guest'],
     allows: [{
       resources: '/api/assignmentrecommendations',
-      permissions: ['get']
+      permissions: ['get','post']
     }, {
       resources: '/api/assignmentrecommendations/:assignmentrecommendationId',
-      permissions: ['get']
+      permissions: ['get','post']
     }]
   }]);
 };

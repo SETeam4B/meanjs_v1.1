@@ -19,4 +19,27 @@ module.exports = function(app) {
 
   // Finish by binding the Assignmentrecommendation middleware
   app.param('assignmentrecommendationId', assignmentrecommendations.assignmentrecommendationByID);
+
+  app.route('/api/rejected')
+      .get(assignmentrecommendations.getRejectedList);
+
+  app.route('/api/accepted')
+      .get(assignmentrecommendations.getAcceptedList);
+    app.route('/api/acceptedWithHour')
+        .get(assignmentrecommendations.getAcceptedListWithHour);
+  app.route('/api/assignStudent')
+      .put(assignmentrecommendations.assignStudent)
+      .post(assignmentrecommendations.create )
+      .get(assignmentrecommendations.retrieveAssignedStudents);
+
+  // app.route()
+
+    app.route('/api/removeStudent')
+        .put(assignmentrecommendations.removeFromList);
+
+  app.route('/api/courseRecommendation')
+      .get(assignmentrecommendations.getCourseRecommendedList);
+
+  app.route('/api/professorRecommended')
+      .get(assignmentrecommendations.retrieveRecommendedStudents)
 };

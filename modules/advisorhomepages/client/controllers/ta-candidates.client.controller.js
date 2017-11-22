@@ -65,7 +65,7 @@
             }
         }
 
-        $scope.doSomeShit = function (){
+        $scope.plzDontOpen = function (){
             console.log("Fuck you");
         }
 

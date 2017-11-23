@@ -8,8 +8,8 @@ var should = require('should'),
   express = require(path.resolve('./config/lib/express'));
 
   
-var app, agent, usercredentials, advisorcredentials,tacoordinatorcredentials,
-  facultycredentials, user, advisor, faculty, tacoordinator,_user,_advisor,_faculty,_tacoordinator;
+var app, agent, guestcredentials, usercredentials, advisorcredentials,tacoordinatorcredentials,
+  facultycredentials, guest, user, advisor, faculty, tacoordinator,_guest, _user,_advisor,_faculty,_tacoordinator;
 
 describe('Authorized Routing Tests:', function(){
 
@@ -23,6 +23,11 @@ describe('Authorized Routing Tests:', function(){
 
   beforeEach(function (done) {
     // Create user credentials
+    guestcredentials = {
+      username: 'username041332',
+      password: 'M3@n.jsI$Aw3$0m3'
+    };
+
     usercredentials = {
       username: 'username0412',
       password: 'M3@n.jsI$Aw3$0m3'
@@ -42,6 +47,8 @@ describe('Authorized Routing Tests:', function(){
       username: 'username312341',
       password: 'M3@n.jsI$Aw3$0m3'
     };
+
+
 
     // Create test users
     _user = {
@@ -88,6 +95,19 @@ describe('Authorized Routing Tests:', function(){
       roles:['faculty']
     };
 
+
+    _guest = {
+      firstName: 'Full',
+      lastName: 'Name',
+      displayName: 'Full Name',
+      email: 'test463331235@test.com',
+      username: guestcredentials.username,
+      password: guestcredentials.password,
+      provider: 'local',
+      roles:['guest']
+    };
+
+    guest = new User(_guest);
     user = new User(_user);
     advisor = new User(_advisor);
     tacoordinator = new User(_tacoordinator);
@@ -111,7 +131,7 @@ describe('Authorized Routing Tests:', function(){
     });
   });
 
-  it('should not be able to access tacoordinator pages if not tacoordinator', function(done){
+  it('should not be able to access tacoordinator API if not tacoordinator', function(done){
     agent.post('/api/auth/signin')
       .send(usercredentials)
       .expect(200)
@@ -120,9 +140,7 @@ describe('Authorized Routing Tests:', function(){
         if (signinErr) {
           return done(signinErr);
         }
-
-        // Request list of users
-        agent.get('/api/users')
+        agent.post('/api/ta-coordinators')
           .expect(403)
           .end(function (usersGetErr, usersGetRes) {
             if (usersGetErr) {
@@ -134,8 +152,281 @@ describe('Authorized Routing Tests:', function(){
       });
   });
 
-  it('should not be able to access advisor pages if not advisor', function(done){
-    return done(); //Write me
+  describe('Advisor API Access: ', function(){
+
+      describe("As a user that hasn't logged in: ", function(){
+        describe("GET Requests: ", function(){
+          it('/api/advisorhomepages', function(done){
+            agent.post('/api/auth/signin')
+              .send(guestcredentials)
+              .expect(200)
+              .end(function (signinErr, signinRes) {
+                // Handle signin error
+                if (signinErr) {
+                  return done(signinErr);
+                }
+                agent.get('/api/advisorhomepages')
+                  .expect(403)
+                  .end(function (usersGetErr, usersGetRes) {
+                    if (usersGetErr) {
+                      return done(usersGetErr);
+                    }
+
+                    return done();
+                  });
+              });
+          });
+          it('/api/advisorhomepages/consideringStudents', function(done){
+            agent.post('/api/auth/signin')
+              .send(guestcredentials)
+              .expect(200)
+              .end(function (signinErr, signinRes) {
+                // Handle signin error
+                if (signinErr) {
+                  return done(signinErr);
+                }
+                agent.get('/api/advisorhomepages/consideringStudents')
+                  .expect(403)
+                  .end(function (usersGetErr, usersGetRes) {
+                    if (usersGetErr) {
+                      return done(usersGetErr);
+                    }
+
+                    return done();
+                  });
+              });
+          });     
+        });
+
+        describe("POST Requests: ", function(){
+          it('/api/advisorhomepages', function(done){
+            agent.post('/api/auth/signin')
+              .send(guestcredentials)
+              .expect(200)
+              .end(function (signinErr, signinRes) {
+                // Handle signin error
+                if (signinErr) {
+                  return done(signinErr);
+                }
+                agent.post('/api/advisorhomepages')
+                  .expect(403)
+                  .end(function (usersGetErr, usersGetRes) {
+                    if (usersGetErr) {
+                      return done(usersGetErr);
+                    }
+
+                    return done();
+                  });
+              });
+          });
+        });
+
+        describe("PUT Requests: ", function(){
+          it('/api/advisorhomepages', function(done){
+            agent.post('/api/auth/signin')
+              .send(guestcredentials)
+              .expect(200)
+              .end(function (signinErr, signinRes) {
+                // Handle signin error
+                if (signinErr) {
+                  return done(signinErr);
+                }
+                agent.put('/api/advisorhomepages')
+                  .expect(403)
+                  .end(function (usersGetErr, usersGetRes) {
+                    if (usersGetErr) {
+                      return done(usersGetErr);
+                    }
+
+                    return done();
+                  });
+              });
+          });  
+        });
+    });
+
+    describe("As a student: ", function(){
+        describe("GET Requests: ", function(){
+          it('/api/advisorhomepages', function(done){
+            agent.post('/api/auth/signin')
+              .send(usercredentials)
+              .expect(200)
+              .end(function (signinErr, signinRes) {
+                // Handle signin error
+                if (signinErr) {
+                  return done(signinErr);
+                }
+                agent.get('/api/advisorhomepages')
+                  .expect(403)
+                  .end(function (usersGetErr, usersGetRes) {
+                    if (usersGetErr) {
+                      return done(usersGetErr);
+                    }
+
+                    return done();
+                  });
+              });
+          });
+          it('/api/advisorhomepages/consideringStudents', function(done){
+            agent.post('/api/auth/signin')
+              .send(usercredentials)
+              .expect(200)
+              .end(function (signinErr, signinRes) {
+                // Handle signin error
+                if (signinErr) {
+                  return done(signinErr);
+                }
+                agent.get('/api/advisorhomepages/consideringStudents')
+                  .expect(403)
+                  .end(function (usersGetErr, usersGetRes) {
+                    if (usersGetErr) {
+                      return done(usersGetErr);
+                    }
+
+                    return done();
+                  });
+              });
+          });     
+        });
+
+        describe("POST Requests: ", function(){
+          it('/api/advisorhomepages', function(done){
+            agent.post('/api/auth/signin')
+              .send(usercredentials)
+              .expect(200)
+              .end(function (signinErr, signinRes) {
+                // Handle signin error
+                if (signinErr) {
+                  return done(signinErr);
+                }
+                agent.post('/api/advisorhomepages')
+                  .expect(403)
+                  .end(function (usersGetErr, usersGetRes) {
+                    if (usersGetErr) {
+                      return done(usersGetErr);
+                    }
+
+                    return done();
+                  });
+              });
+          });
+        });
+
+        describe("PUT Requests: ", function(){
+          it('/api/advisorhomepages', function(done){
+            agent.post('/api/auth/signin')
+              .send(usercredentials)
+              .expect(200)
+              .end(function (signinErr, signinRes) {
+                // Handle signin error
+                if (signinErr) {
+                  return done(signinErr);
+                }
+                agent.put('/api/advisorhomepages')
+                  .expect(403)
+                  .end(function (usersGetErr, usersGetRes) {
+                    if (usersGetErr) {
+                      return done(usersGetErr);
+                    }
+
+                    return done();
+                  });
+              });
+          });  
+        });
+    });
+
+    describe("As a faculty: ", function(){
+        describe("GET Requests: ", function(){
+          it('/api/advisorhomepages', function(done){
+            agent.post('/api/auth/signin')
+              .send(facultycredentials)
+              .expect(200)
+              .end(function (signinErr, signinRes) {
+                // Handle signin error
+                if (signinErr) {
+                  return done(signinErr);
+                }
+                agent.get('/api/advisorhomepages')
+                  .expect(403)
+                  .end(function (usersGetErr, usersGetRes) {
+                    if (usersGetErr) {
+                      return done(usersGetErr);
+                    }
+
+                    return done();
+                  });
+              });
+          });
+          it('/api/advisorhomepages/consideringStudents', function(done){
+            agent.post('/api/auth/signin')
+              .send(facultycredentials)
+              .expect(200)
+              .end(function (signinErr, signinRes) {
+                // Handle signin error
+                if (signinErr) {
+                  return done(signinErr);
+                }
+                agent.get('/api/advisorhomepages/consideringStudents')
+                  .expect(403)
+                  .end(function (usersGetErr, usersGetRes) {
+                    if (usersGetErr) {
+                      return done(usersGetErr);
+                    }
+
+                    return done();
+                  });
+              });
+          });     
+        });
+
+        describe("POST Requests: ", function(){
+          it('/api/advisorhomepages', function(done){
+            agent.post('/api/auth/signin')
+              .send(facultycredentials)
+              .expect(200)
+              .end(function (signinErr, signinRes) {
+                // Handle signin error
+                if (signinErr) {
+                  return done(signinErr);
+                }
+                agent.post('/api/advisorhomepages')
+                  .expect(403)
+                  .end(function (usersGetErr, usersGetRes) {
+                    if (usersGetErr) {
+                      return done(usersGetErr);
+                    }
+
+                    return done();
+                  });
+              });
+          });
+        });
+
+        describe("PUT Requests: ", function(){
+          it('/api/advisorhomepages', function(done){
+            agent.post('/api/auth/signin')
+              .send(facultycredentials)
+              .expect(200)
+              .end(function (signinErr, signinRes) {
+                // Handle signin error
+                if (signinErr) {
+                  return done(signinErr);
+                }
+                agent.put('/api/advisorhomepages')
+                  .expect(403)
+                  .end(function (usersGetErr, usersGetRes) {
+                    if (usersGetErr) {
+                      return done(usersGetErr);
+                    }
+
+                    return done();
+                  });
+              });
+          });  
+        });
+    });
+
   });
 
   it('should not be able to access faculty pages if not faculty', function(done){

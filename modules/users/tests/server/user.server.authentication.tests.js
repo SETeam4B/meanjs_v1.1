@@ -27,7 +27,7 @@ describe('User Authentication Unit Tests:', function () {
     });
   });
 
-  describe('Admin Count Tests', function(){
+  describe('Admin Count Verification', function(){
 
       it('should have at least one TA Coordinator', function(done){
         User.find({roles:['tacoordinator']}, function(err, users){

@@ -116,7 +116,6 @@
         };
 
 
-
         function checkId(index) {
             return new Promise(function (resolve, reject) {
                 $scope.getWithStudentId($scope.TACandidateForms[index].studentId).then(function (res) {

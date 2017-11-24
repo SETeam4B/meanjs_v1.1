@@ -140,7 +140,7 @@ exports.update = function (req, res) {
                         message: errorHandler.getErrorMessage(err)
                     });
                 } else {
-                    updateUsers(req.user.user, req.user.ufid);
+
                     sendEmail(form.email, "Hello,\n" +
                         "\n" +
                         "Thank you for updating your application to be a Teaching Assistant at the University of Florida's CISE department. Your application is being processed and we will reach out to you with a decision soon. \n" +

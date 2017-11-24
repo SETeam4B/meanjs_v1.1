@@ -1,35 +1,31 @@
 <section ng-controller="TACandidatesController">
-<br>
-  <div class="page-header">
+
+  <br>
     <h1>TA Candidates</h1>
 
-    <button type="button" class="btn btn-success pull-right" ng-click="openModal()">Add new student</button>
-  </div>
-</br>
+    <!--<button type="button" class="btn btn-success pull-right" ng-click="openModal()">Add new student</button>-->
+  </br>
+
   <!--<div ng-app="advisorhomepages">-->
     <!--<button ui-sref="Modal.confirmAddToCart">stateful</button>-->
     <!--<div ui-view="modal"></div>-->
   <!--</div>-->
   <!--<undergrad></undergrad>-->
- <p>
+  <p>
 
-  <button type="button" class="btn btn-default" ng-click="openModal()">Add new student</button>
- <!-- <div ng-controller="DummyControllerRecommendations">
-    <button type="button" ng-click="testDummyController()">jordi's button</button>
-  </div>
--->
+    <button type="button" class="btn btn-success" ng-click="openModal()">Add new student</button>
 
-  <table>
-    <thead>
-    <tr>
-      <th class="col-md-4">Id</th>
-      <th class="col-md-4">Name</th>
-      <th class="col-md-4"> Email</th>
-      <th class="col-md-2"> Hours</th>
-    </tr>
-    </thead>
-  </table>
-</p>
+    <table>
+      <thead>
+      <tr>
+        <th class="col-md-4">Id</th>
+        <th class="col-md-4">Name</th>
+        <th class="col-md-4"> Email</th>
+        <th class="col-md-2"> Hours</th>
+      </tr>
+      </thead>
+    </table>
+  </p>
 
   <div class="input-group" id="searchBar">
     <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>

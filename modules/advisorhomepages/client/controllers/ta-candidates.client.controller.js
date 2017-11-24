@@ -136,10 +136,6 @@
             });
         }
 
-        $scope.updateAll = function() {
-            console.log($scope.fakeData.length);
-        }
-
         function addNewStudent(index) {
             $scope.saveWithBody($scope.TACandidateForms[index]).then(function (res) {
                 if (index != undefined) {

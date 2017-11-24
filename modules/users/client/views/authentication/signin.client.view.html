@@ -27,12 +27,14 @@
             <div ng-messages="userForm.password.$error" role="alert">
               <p class="help-block error-text" ng-message="required">Password is required.</p>
             </div>
-            <div class="text-center form-group">
-              <button type="submit" class="btn btn-primary">Login</button>
-            </div>
+            <br>
+              <div class="text-center form-group">
+                <button type="submit" class="btn btn-warning">Login</button>
+              </div>
             <div class="text-center forgot-password">
               <a href="https://register.cise.ufl.edu/" style="color:orange;">Forgot your password?</a>
             </div>
+          </br>
             <alert type="danger" ng-show="error" class="text-center text-danger">
               <span ng-bind="error"></span>
             </alert>

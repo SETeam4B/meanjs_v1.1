@@ -34,7 +34,7 @@
 
   <accordion close-others="oneAtATime">
 
-    <accordion-group ng-repeat="row in fakeData | filter: searchResult" is-open="status.open">
+    <accordion-group ng-repeat="row in fakeData | filter: searchResult" is-open="status.open" panel-class="panel-primary">
       <accordion-heading>
         <table ng-click="populateTACandidatesForm(fakeData.indexOf(row))">
           <!-- <thead>
@@ -51,7 +51,7 @@
               <td class="col-md-4">{{row.firstName}} {{row.lastName}}</td>
               <td class="col-md-4">{{row.email}}</td>
               <!--<td class="col-md-2">{{row.hourTA}}</td>-->
-              <td ng-click="$event.stopPropagation(); $event.preventDefault();" class="col-md-2"><input type="text" value="{{row.hourTA}}" style="width:24px; text-align:right;"></td>
+              <td ng-click="$event.stopPropagation(); $event.preventDefault();" class="col-md-2"><input type="text" value="{{row.hourTA}}" style="width:24px; text-align:right; color:black"></td>
             </tr>
           </tbody>
 

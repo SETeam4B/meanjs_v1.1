@@ -3,7 +3,7 @@
   <br>
     <h1>TA Candidates</h1>
 
-    <!--<button type="button" class="btn btn-success pull-right" ng-click="openModal()">Add new student</button>-->
+    <button type="button" class="btn btn-success pull-right" ng-click="openModal()">Add new student</button>
   </br>
 
   <!--<div ng-app="advisorhomepages">-->
@@ -11,26 +11,30 @@
     <!--<div ui-view="modal"></div>-->
   <!--</div>-->
   <!--<undergrad></undergrad>-->
-  <p>
 
-    <button type="button" class="btn btn-success" ng-click="openModal()">Add new student</button>
+    <!-- <button type="button" class="btn btn-success" ng-click="openModal()">Add new student</button> -->
+    <!-- <div class="navbar-form" > -->
+    <div class="col-md-8 col-md-offset-2">
+      <div class="input-group" id="searchBar">
+        <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
+        <input type="text" class="form-control" placeholder="Search" ng-model="searchResult">
+      </div>
+    </div>
+    
+    <div class="table-headers">
+      <table>
+        <thead>
+          <tr>
+            <th class="col-md-4">Id</th>
+            <th class="col-md-4">Name</th>
+            <th class="col-md-4"> Email</th>
+            <th class="col-md-2"> Hours</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
 
-    <table>
-      <thead>
-      <tr>
-        <th class="col-md-4">Id</th>
-        <th class="col-md-4">Name</th>
-        <th class="col-md-4"> Email</th>
-        <th class="col-md-2"> Hours</th>
-      </tr>
-      </thead>
-    </table>
-  </p>
 
-  <div class="input-group" id="searchBar">
-    <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
-    <input type="text" class="form-control" placeholder="Search" ng-model="searchResult">
-  </div>
 
   <accordion close-others="oneAtATime">
 

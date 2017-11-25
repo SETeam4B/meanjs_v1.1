@@ -1,6 +1,6 @@
 .content {
   margin-top: 50px;
-  margin-bottom: 150px;
+/*  margin-bottom: 150px;*/
 }
 .undecorated-link:hover {
   text-decoration: none;
@@ -48,7 +48,7 @@ a:hover .header-profile-image {
   padding-right: 10px;
 }
 
-.taasFooter{
+/*.taasFooter{
   background-color: #0c4f9b;
   color: white;
   padding-left: 12px;
@@ -56,6 +56,9 @@ a:hover .header-profile-image {
   padding-top: 12px;
   font-weight: 101;
   font-size: 12px;
+<<<<<<< HEAD
+}*/
+=======
 }
 
 .floating-box {
@@ -72,3 +75,4 @@ a:hover .header-profile-image {
   margin-top: 33px;
   margin-left: 400px;
 }
+>>>>>>> 5a345a9c96ad0c6861123ab5f8d3136eca7847ed

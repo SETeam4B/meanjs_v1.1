@@ -1,5 +1,6 @@
 .table-headers{
-  padding-top: 60px;
+  display:inline-block;
+  padding-top: 30px;
   padding-bottom: 5px;
 }
 

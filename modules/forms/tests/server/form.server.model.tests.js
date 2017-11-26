@@ -46,7 +46,7 @@ describe('Form Model Unit Tests:', function() {
     it("Should not be able to save without ufid", function(done){
       delete form_properties.ufid;
       form = new Form(form_properties);
-      console.log(form);
+
       form.save(function(err){
         should.exist(err);
         done();

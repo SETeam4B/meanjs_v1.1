@@ -1,20 +1,22 @@
-<style>
-  section{
-    background-color: ;
-  }
-</style>
-
+<link>
+  <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet" type="text/css"></link>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"></link>
+  <link href="modules/forms/client/css/undergrad-form.css" rel="stylesheet"></link>
+</head>
 
 <section>
   </br>
+
   <div>
     <form name="vm.form.formForm" class="form-horizontal col-sm-12" ng-submit="vm.save(vm.form.formForm.$valid)" novalidate>
       <div class="row">
+
         <fieldset>
-          <div class="col-sm-6">
+
+          <div class="col-sm-6 test">
 
             <div class="form-group" show-errors>
-              <label class="control-label" for="ufid">UFID# (no dashes)</label>
+              <label class="control-label" for="ufid" style="font-family:'questrial'">UFID# (no dashes)</label>
               <input name="ufid" type="text" ng-model="vm.form.ufid" id="ufid" class="form-control" placeholder="UFID"
                      required>
               <div ng-messages="vm.form.formForm.ufid.$error" role="alert">
@@ -24,7 +26,7 @@
 
 
             <div class="form-group" show-errors>
-              <label class="control-label" for="email">Email</label>
+              <label class="control-label" for="email" >Email</label>
               <input name="email" type="email" ng-model="vm.form.email" id="email" class="form-control"
                      placeholder="Email"
                      required>

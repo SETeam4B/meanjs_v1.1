@@ -16,16 +16,12 @@
     background-color: orange;
 }
 
-<<<<<<< HEAD
-.tableClass {
-=======
-.headings{
+.headings {
     font-family:"questrial";
 }
 
 .tableClass{
     font-family: "ubuntu";
->>>>>>> 49290ea28c40c6152f94cd363a3917428f0d0d07
     color: white;
 }
 /*.panel-default {*/

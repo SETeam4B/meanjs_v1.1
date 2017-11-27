@@ -16,7 +16,12 @@
     background-color:orange;
 }
 
+.headings{
+    font-family:"questrial";
+}
+
 .tableClass{
+    font-family: "ubuntu";
     color: white;
 }
 /*.panel-default {*/

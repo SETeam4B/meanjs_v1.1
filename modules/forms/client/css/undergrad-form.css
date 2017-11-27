@@ -2,4 +2,13 @@
     padding-right: 1.5em;
     padding-left: 1.5em;
     background-color: white;
+    font-family:'questrial';
+}
+
+.acceptance{
+    font-family:'questrial';
+}
+
+.banner{
+    font-family:'ubuntu';
 }

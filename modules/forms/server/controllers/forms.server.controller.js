@@ -121,7 +121,7 @@ exports.update = function (req, res) {
     //var form = req.form;
     //console.log(form);
     //form = _.extend(form, req.body);
-
+    console.log("req.user->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + req.user);
 
     Form.findOne({'username': req.user.username}).exec(function (err, form) {
         if (err) {

@@ -49,10 +49,47 @@
                 "hourTA": "exra Parameter"
             }
         ];
+        $scope.hoursArray = [];
+
+        $scope.updateHours = function(){
+            for (var i = 0; i < $scope.fakeData.length; i++){
+                var temp= Object.assign({}, $scope.fakeData[i]);
+                // $scope.TACandidateForms[i] = {hourTA: temp};
+                $scope.hoursArray[i] = temp.hourTA;
+            }
+
+        };
+
+        $scope.clickUpdateHour = function (index) {
+            debugger;
+            alert('jordi');
+            var form = {
+                username: $scope.fakeData[index].username,
+                hourTA: $scope.hoursArray[index]
+            };
+
+            var service = new FormsService(form);
+            service.$update(success, reject);
+            // var service = new FormsService(form);
+            // FormsService.update(user, success, reject);
+
+            function success() {
+                $scope.TACandidateForms[index].hourTA = $scope.hoursArray[index];
+                // $scope.fakeData[index].hourTA =
+                alert("hours are updated");
+            }
+
+            function reject() {
+                alert("hours were not updated");
+            }
+
+            // FormsService.update()
+        }
 
         function updateAccordionInformation () {
             fs.$getAll().then(function (res) {
                 $scope.fakeData = res.data;
+                $scope.updateHours();
             });
         }
 
@@ -64,6 +101,7 @@
                 $scope.formBooleans[index] = false;
             }
         }
+
 
         $scope.openModal = function () {
             $modal.open({
@@ -89,8 +127,13 @@
             // updateAccordionInformation();
         };
 
+
+
         $scope.updateTemporaryForm = function (index) {
             $scope.TACandidateForms[index] = Object.assign({}, $scope.fakeData[index]);
+            // debugger;
+            // $scope.TACandidateForms[index].hourTA = $scope.hoursArray[index];
+
         }
 
         $scope.toggleForm = function (index) {

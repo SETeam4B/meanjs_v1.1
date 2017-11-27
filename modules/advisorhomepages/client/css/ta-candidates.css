@@ -22,7 +22,7 @@
 
 .tableClass{
     font-family: "ubuntu";
-    color: white;
+    color: black;
 }
 /*.panel-default {*/
     /*background-image: -webkit-linear-gradient(top, #ea0423 0%, #d1364b 100%);*/
@@ -34,10 +34,10 @@
 /*}*/
 
 .panel > .panel-heading{
-    background-image: -webkit-linear-gradient(top, #245ed1 0%, #0c4f9b 100%);
-    background-image:      -o-linear-gradient(top, #245ed1 0%, #0c4f9b 100%);
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#245ed1), to(#0c4f9b));
-    background-image:         linear-gradient(to bottom, #245ed1 0%, #0c4f9b 100%);
+    background-image: -webkit-linear-gradient(top, #ffffff 0%, blue 100%);
+    background-image:      -o-linear-gradient(top, #ffffff 0%, #ffffff 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff));
+    background-image:         linear-gradient(to bottom, #ffffff 0%, #ffffff 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#ffe8e8e8', GradientType=0);
     background-repeat: repeat-x;
 }

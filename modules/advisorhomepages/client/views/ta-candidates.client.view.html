@@ -58,7 +58,7 @@
 
   <accordion close-others="oneAtATime">
 
-    <accordion-group id="hello" ng-repeat="row in fakeData | filter: searchResult" is-open="status.open" panel-class="panel-info">
+    <accordion-group id="hello" ng-repeat="row in fakeData | filter: searchResult" is-open="status.open" >
       <accordion-heading>
         <table ng-click="populateTACandidatesForm(fakeData.indexOf(row))">
           <!-- <thead>

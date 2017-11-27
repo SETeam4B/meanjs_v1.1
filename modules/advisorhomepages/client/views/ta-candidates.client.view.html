@@ -1,9 +1,3 @@
-<!--<style>-->
-  <!--section{-->
-    <!--background-color: #2077ad;-->
-  <!--}-->
-<!--</style>-->
-
 <section ng-controller="TACandidatesController">
 
   <br>
@@ -71,13 +65,13 @@
           </tr>
           </thead> -->
           <tbody>
-            <tr>
+            <tr class="tableClass">
               <td class="col-md-4">{{row.ufid}}</td>
               <td class="col-md-4">{{row.firstName}} {{row.lastName}}</td>
               <td class="col-md-4">{{row.email}}</td>
               <!--<td class="col-md-2">{{row.hourTA}}</td>-->
               <td ng-click="$event.stopPropagation(); $event.preventDefault(); populateTACandidatesForm(fakeData.indexOf(row))" class="col-md-2"><input type="text" ng-model="hoursArray[fakeData.indexOf(row)]" style="width:40px; text-align:right; color:black"></td>
-              <td><button type="button" class="btn btn-success" ng-click="$event.stopPropagation(); $event.preventDefault(); clickUpdateHour(fakeData.indexOf(row))">Update Hours</button></td>
+              <td><button type="button" class="btn" ng-click="$event.stopPropagation(); $event.preventDefault(); clickUpdateHour(fakeData.indexOf(row))">Update Hours</button></td>
             </tr>
           </tbody>
 

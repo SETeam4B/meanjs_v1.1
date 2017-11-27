@@ -1,9 +1,9 @@
-.well-sm{
-  background: #4ca64c;
-  width:75%;
-  margin:0 auto;
-  margin-top:13%;
+.box{
+  background-color: #dff0d8;
+  padding-bottom: 1.5em;
+  padding-top: 0.001em;
 }
+
 .confirmationPage{
   margin-top:13%;
 }

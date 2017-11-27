@@ -1,15 +1,16 @@
 <style>
-  body{
-    background-image: url("modules/users/client/img/french-fries.png");
+  body {
+    text-align: center;
+    background: url("modules/users/client/img/french-fries.png");
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    background-position: center center;
   }
 </style>
 
 <body>
   <div ng-controller="AuthenticationController">
-    <div style="padding:0px 0px 0px 190px;"><img src="modules/users/client/img/splash.png"></div>
+    <div style="padding:0px 0px 0px 0px;"><img src="modules/users/client/img/splash.png"></div>
     <div class="col-xs-offset-2 col-xs-8 col-md-offset-4 col-md-4">
       <form name="userForm" ng-submit="signin(userForm.$valid)" class="signin" novalidate autocomplete="off">
         <fieldset>
@@ -27,12 +28,14 @@
             <div ng-messages="userForm.password.$error" role="alert">
               <p class="help-block error-text" ng-message="required">Password is required.</p>
             </div>
-            <div class="text-center form-group">
-              <button type="submit" class="btn btn-primary">Login</button>
-            </div>
-            <div class="text-center forgot-password">
-              <a href="https://register.cise.ufl.edu/" style="color:orange;">Forgot your password?</a>
-            </div>
+            <br>
+              <div class="text-center form-group">
+                <button type="submit" class="btn btn-warning">Login</button>
+              </div>
+              <div class="text-center forgot-password">
+                <a href="https://register.cise.ufl.edu/" style="color:orange;">Forgot your password?</a>
+              </div>
+            </br>
             <alert type="danger" ng-show="error" class="text-center text-danger">
               <span ng-bind="error"></span>
             </alert>

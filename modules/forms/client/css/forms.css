@@ -1,8 +1,8 @@
-.well{
-background: #A5FFA0;
-width:75%;
-margin:0 auto;
-margin-top:13%;
+.well-sm{
+  background: #4ca64c;
+  width:75%;
+  margin:0 auto;
+  margin-top:13%;
 }
 .confirmationPage{
   margin-top:13%;

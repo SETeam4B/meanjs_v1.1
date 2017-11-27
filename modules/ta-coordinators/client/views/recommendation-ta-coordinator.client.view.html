@@ -13,8 +13,9 @@
       <li><a ui-sref="ta-coordinators.tacoordinatorCourseList">Assignments</a></li>
     </ul-->
   </div>
-  <div class="rows">
-    <div class="col-md-6">
+  <div class="row">
+
+    <div class="col-md-6 pull-left">
       <h1>My Recommendation List</h1>
 
       <div class="row">
@@ -38,33 +39,33 @@
           </accordion-heading>
 
           <!--TODO: change this-->
-          <div class="container row">
+          <div class="container">
             <!--<div class="container row" ng-controller="" ng-init="findOne()">-->
-            <div class="col-md-offset-1 col-md-10 formWrapper">
+
               <div class="page-header">
 
                 <form name="Course Info" class="form-horizontal" 0>
                   <fieldset>
                     <div class="form-group">
                       <label class="control-label" for="interestExperience">Interests and experience</label>
-                      <textarea readonly name="interestExperience" rows="4" cols="20" ng-model="User.interestExperience" id="interestExperience"
+                      <textarea readonly name="interestExperience" rows="5" cols="4" ng-model="User.interestExperience" id="interestExperience"
                                 class="form-control"></textarea>
                     </div>
 
 
                     <div class="form-group">
                       <label class="control-label" for="previousCourseTaken">Previous Courses Taken</label>
-                      <textarea readonly name="previousCourseTaken" rows="4" cols="20"  ng-model="User.previousCourseTaken"
+                      <textarea readonly name="previousCourseTaken" rows="5" cols="4"  ng-model="User.previousCourseTaken"
                                 id="previousCourseTaken" class="form-control"></textarea>
                     </div>
 
                   </fieldset>
-                  <button  ng-click="removeFromDatabase(User)" class="btn btn-default btn-danger" >Remove</button>
+                  <button  ng-click="removeFromDatabase(User)" class="btn btn-default btn-danger" >
+                    <span class="glyphicon glyphicon-trash"></span> Remove</button>
 
                 </form>
 
               </div>
-            </div>
           </div>
 
         </accordion-group>
@@ -84,33 +85,34 @@
           </accordion-heading>
 
           <!--TODO: change this-->
-          <div class="container row">
+          <div class="container">
             <!--<div class="container row" ng-controller="" ng-init="findOne()">-->
-            <div class="col-md-offset-1 col-md-10 formWrapper">
+
               <div class="page-header">
 
                 <form name="Course Info" class="form-horizontal" 0>
                   <fieldset>
                     <div class="form-group">
                       <label class="control-label" for="interestExperience">Interests and experience</label>
-                      <textarea readonly name="interestExperience" rows="4" cols="20" ng-model="User.form.interestExperience" id="interestExperience"
+                      <textarea readonly name="interestExperience" rows="4" cols="4" ng-model="User.form.interestExperience" id="interestExperience"
                                 class="form-control"></textarea>
                     </div>
 
 
                     <div class="form-group">
                       <label class="control-label" for="previousCourseTaken">Previous Courses Taken</label>
-                      <textarea readonly name="previousCourseTaken" rows="4" cols="20"  ng-model="User.form.previousCourseTaken"
+                      <textarea readonly name="previousCourseTaken" rows="4" cols="4"  ng-model="User.form.previousCourseTaken"
                                 id="previousCourseTaken" class="form-control"></textarea>
                     </div>
 
                   </fieldset>
 
 
-                  <button  ng-click="removeFromRecommendation(User)" class="btn btn-default btn-danger" >Remove</button>
+                  <button  ng-click="removeFromRecommendation(User)" class="btn btn-default btn-danger">
+                    <span class="glyphicon glyphicon-trash"></span> Remove</button>
                 </form>
 
-              </div>
+
             </div>
           </div>
 
@@ -120,7 +122,8 @@
         <!--</accordion-group>-->
       </accordion>
 
-      <button  ng-click="submitMyRecommendation()" class="btn btn-default btn-primary" >Submit Recommendation</button>
+      <button  ng-click="submitMyRecommendation()" class="btn btn-default btn-primary" >
+        <span class="glyphicon glyphicon-ok"></span> Submit Recommendation</button>
 
 
 
@@ -132,7 +135,7 @@
 
 
 
-<div class="col-md-6" >
+    <div class="col-md-6 pull-right" >
 
 
 
@@ -159,33 +162,33 @@
       </accordion-heading>
 
       <!--TODO: change this-->
-      <div class="container row">
+      <div class="container">
         <!--<div class="container row" ng-controller="" ng-init="findOne()">-->
-        <div class="col-md-offset-1 col-md-10 formWrapper">
+
           <div class="page-header">
 
-            <form name="Course Info" class="form-horizontal" 0>
+            <form name="Course Info" class="form-horizontal">
+
               <fieldset>
                 <div class="form-group">
                   <label class="control-label" for="interestExperience">Interests and experience</label>
-                  <textarea readonly name="interestExperience" rows="4" cols="20" ng-model="TA.interestExperience" id="interestExperience"
+                  <textarea readonly name="interestExperience" rows="4" cols="5" ng-model="TA.interestExperience" id="interestExperience"
                             class="form-control"></textarea>
                 </div>
 
 
                 <div class="form-group">
                   <label class="control-label" for="previousCourseTaken">Previous Courses Taken</label>
-                  <textarea readonly name="previousCourseTaken" rows="4" cols="20"  ng-model="TA.previousCourseTaken"
+                  <textarea readonly name="previousCourseTaken" rows="4" cols="5"  ng-model="TA.previousCourseTaken"
                             id="previousCourseTaken" class="form-control"></textarea>
                 </div>
 
               </fieldset>
 
 
-              <button  ng-click="recommendTA(TA)" class="btn btn-default btn-primary" >Recommend</button>
+              <button  ng-click="recommendTA(TA)" class="btn btn-default btn-primary" ><span class="glyphicon glyphicon-ok"></span> Recommend</button>
             </form>
 
-          </div>
         </div>
       </div>
 
@@ -219,9 +222,9 @@
       </accordion-heading>
 
       <!--TODO: change this-->
-      <div class="container row">
+      <div class="container">
         <!--<div class="container row" ng-controller="" ng-init="findOne()">-->
-        <div class="col-md-offset-1 col-md-10 formWrapper">
+
           <div class="page-header">
 
             <form name="Course Info" class="form-horizontal" 0>
@@ -240,10 +243,11 @@
                 </div>
 
               </fieldset>
-              <button  ng-click="recommendTA(grader)" class="btn btn-default btn-primary"  >Recommend</button>
+              <button  ng-click="recommendTA(grader)" class="btn btn-default btn-primary"  >
+                <span class="glyphicon glyphicon-ok"></span> Recommend</button>
             </form>
 
-          </div>
+
         </div>
       </div>
 
@@ -252,6 +256,8 @@
 
     <!--</accordion-group>-->
   </accordion>
+
+
   <h1>UTA</h1>
   <div class="row">
     <div class="col-md-3">UF-ID</div>
@@ -274,9 +280,9 @@
       </accordion-heading>
 
       <!--TODO: change this-->
-      <div class="container row">
+      <div class="container ">
         <!--<div class="container row" ng-controller="" ng-init="findOne()">-->
-        <div class="col-md-offset-1 col-md-10 formWrapper">
+
           <div class="page-header">
 
             <form name="Course Info" class="form-horizontal" 0>
@@ -295,15 +301,14 @@
                 </div>
 
               </fieldset>
-              <button  ng-click="recommendTA(UTA)" class="btn btn-default btn-primary" >Recommend</button>
+              <button  ng-click="recommendTA(UTA)" class="btn btn-default btn-primary" ><span class="glyphicon glyphicon-ok"></span> Recommend</button>
             </form>
 
           </div>
-        </div>
       </div>
 
     </accordion-group>
-
+  </accordion>
 
 
     <h1>System Suggestion</h1>
@@ -329,9 +334,9 @@
         </accordion-heading>
 
         <!--TODO: change this-->
-        <div class="container row">
+        <div class="container">
           <!--<div class="container row" ng-controller="" ng-init="findOne()">-->
-          <div class="col-md-offset-1 col-md-10 formWrapper">
+
             <div class="page-header">
 
               <form name="Course Info" class="form-horizontal" 0>
@@ -352,10 +357,9 @@
                 </fieldset>
 
 
-                <button  ng-click="recommendTA(student)" class="btn btn-default btn-primary" >Recommend</button>
+                <button  ng-click="recommendTA(student)" class="btn btn-default btn-primary" ><span class="glyphicon glyphicon-ok"></span> Recommend</button>
               </form>
 
-            </div>
           </div>
         </div>
 
@@ -392,9 +396,9 @@
         </accordion-heading>
 
         <!--TODO: change this-->
-        <div class="container row">
+        <div class="container">
           <!--<div class="container row" ng-controller="" ng-init="findOne()">-->
-          <div class="col-md-offset-1 col-md-10 formWrapper">
+
             <div class="page-header">
 
               <form name="Course Info" class="form-horizontal" 0>
@@ -417,9 +421,10 @@
 
             </div>
           </div>
-        </div>
+
 
       </accordion-group>
+    </accordion>
 
 </div>
 

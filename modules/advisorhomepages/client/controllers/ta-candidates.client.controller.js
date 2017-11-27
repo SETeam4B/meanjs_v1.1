@@ -61,19 +61,16 @@
         };
 
         $scope.clickUpdateHour = function (index) {
-            debugger;
-            alert('jordi');
-            var form = {
-                username: $scope.fakeData[index].username,
-                hourTA: $scope.hoursArray[index]
-            };
+            var form = Object.assign({}, $scope.fakeData[index]);
+            form.hourTA = $scope.hoursArray[index];
 
             var service = new FormsService(form);
-            service.$update(success, reject);
+            service.$updateFromAdvisor(success, reject);
             // var service = new FormsService(form);
             // FormsService.update(user, success, reject);
 
             function success() {
+                debugger;
                 $scope.TACandidateForms[index].hourTA = $scope.hoursArray[index];
                 // $scope.fakeData[index].hourTA =
                 alert("hours are updated");

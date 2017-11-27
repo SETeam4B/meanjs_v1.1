@@ -31,6 +31,15 @@ exports.invokeRolesPolicies = function () {
       permissions: ['get','post']
     }]
   },{
+    roles: ['faculty'],
+    allows: [{
+      resources: '/api/assignmentrecommendations',
+      permissions: ['get', 'post']
+    }, {
+      resources: '/api/assignmentrecommendations/:assignmentrecommendationId',
+      permissions: ['get','post']
+    }]
+  },{
       roles: ['tacoordinator'],
       allows: [{
           resources: '/api/assignmentrecommendations',

@@ -70,7 +70,6 @@
             // FormsService.update(user, success, reject);
 
             function success() {
-                debugger;
                 $scope.TACandidateForms[index].hourTA = $scope.hoursArray[index];
                 // $scope.fakeData[index].hourTA =
                 alert("hours are updated");

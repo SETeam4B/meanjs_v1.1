@@ -9,14 +9,17 @@
     <h1>Course List</h1>
   </div>
 
+<div class="center-align">
 <div class="row headings">
   <div class="col-md-2"><font size="+1"><strong>Course Number</strong></font></div>
   <div class="col-md-4"><font size="+1"><strong>Course Name</strong></font></div>
   <div class="col-md-2"><font size="+1"><strong>Number of Sections</strong></font></div>
 </div>
+</div>
 
-  <button ng-repeat="course in courses " class ="btn btn-default btn-block" ng-click="recommend(course.courseTitle,course._id)">
+  <button ng-repeat="course in courses " class ="btn btn-block" ng-click="recommend(course.courseTitle,course._id)" style="background-color: white">
 
+  <div class="center-align">
   <div class="row">
   	<div class="col-md-2">{{course.courseId}}</div>
     <div class="col-md-4">{{course.courseTitle}}</div>

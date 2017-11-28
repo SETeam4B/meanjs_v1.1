@@ -9,7 +9,7 @@
 
     function facultyCourseListController($scope, CoursesService,Authentication, $state,$rootScope) {
         var vm = this;
-
+        $scope.authentication = Authentication;
         $scope.courses = filteredCourse();
 
         function filteredCourse() {

@@ -41,6 +41,18 @@ exports.invokeRolesPolicies = function () {
             permissions: '*'
         }]
     }, {
+        roles: ['tacoordinator'],
+        allows: [{
+            resources: '/api/listForm',
+            permissions: '*'
+        }, {
+            resources: '/api/forms',
+            permissions: '*'
+        }, {
+            resources: '/api/forms/:formId',
+            permissions: '*'
+        }]
+    },{
         roles: ['admin'],
         allows: [{
             resources: '/api/forms',

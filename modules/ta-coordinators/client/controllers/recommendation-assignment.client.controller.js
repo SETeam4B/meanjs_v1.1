@@ -17,7 +17,7 @@
      $scope.SystemRecommendedlist = [] ;
      $scope.Rejectedlist= {};
      $scope.course = CoursesService.get($stateParams.courseId);
-
+     $scope.authentication = Authentication;
      //fetched from database
      $scope.recommendedList=[];
 

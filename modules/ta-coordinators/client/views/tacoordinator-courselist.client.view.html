@@ -1,5 +1,12 @@
 <section>
 
+      <ul class="nav nav-pills">
+      <li><a ui-sref="ta-coordinators.status">Status</a></li>
+      <li><a ui-sref="advisorhomepages.list">TA Candidates</a></li>
+      <li><a ui-sref="ta-coordinators.courselist">Course List</a></li>
+      <li><a ui-sref="ta-coordinators.facultyCourseList">TA Recommendations</a></li>
+      <li><a ui-sref="ta-coordinators.tacoordinatorCourseList"  class="bg-info text-white">Assignments</a></li>
+    </ul>
 
   <button ng-repeat="course in courses " class ="btn btn-default btn-block" ng-click="assign(course.courseTitle,course._id)">
 

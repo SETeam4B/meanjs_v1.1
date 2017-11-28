@@ -6,12 +6,12 @@
         .module('forms')
         .controller('TACandidatesController', TACandidates);
 
-    TACandidates.inject = ['$scope', '$modal', '$state', 'FormsService'];
+    TACandidates.inject = ['$scope', '$modal', '$state', 'FormsService', 'Authentication'];
 
-    function TACandidates($scope, $modal, $state, FormsService) {
+    function TACandidates($scope, $modal, $state, FormsService, Authentication) {
 
         $scope.yolo = "hello World";
-
+        $scope.authentication = Authentication;
         $state.isAdvisorForm = true;
         $scope.TACandidateForms = [];
         var fs = new FormsService();
@@ -116,17 +116,26 @@
 
         $scope.submitModifiedForm = function (form, vm, index) {
             form.username = $scope.fakeData[index].username;
+            var tempForm = form;
             var service = new FormsService(form);
             vm.form = service;
-            vm.updateWithAdvisor();
-            $scope.fakeData[index] = Object.assign({}, form);
-            // updateAccordionInformation();
+            debugger;
+            vm.updateWithAdvisor(index, tempForm,assignValues);
         };
+
+        function assignValues(index, form, isValid) {
+            debugger;
+            if(isValid){
+                $scope.fakeData[index] = Object.assign({}, form);
+                $scope.hoursArray[index] = $scope.fakeData[index].hourTA;
+            }
+        }
 
 
 
         $scope.updateTemporaryForm = function (index) {
             $scope.TACandidateForms[index] = Object.assign({}, $scope.fakeData[index]);
+
             // debugger;
             // $scope.TACandidateForms[index].hourTA = $scope.hoursArray[index];
 

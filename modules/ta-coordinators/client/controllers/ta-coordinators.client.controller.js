@@ -11,7 +11,7 @@
   function TaCoordinatorsController ($scope, $state, $window, Authentication, CoursesService) {
 
     var vm = this;
-
+    $scope.authentication = Authentication;
     vm.authentication = Authentication;
     vm.error = null;
     vm.form = {};

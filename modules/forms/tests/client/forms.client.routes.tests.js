@@ -1,4 +1,4 @@
-/*(function () {
+(function () {
   'use strict';
 
   describe('Forms Route Tests', function () {
@@ -34,7 +34,7 @@
         });
 
         it('Should have template', function () {
-          expect(mainstate.template).toBe('<ui-view/>');
+          expect(mainstate.templateUrl).toBe('modules/forms/client/views/nav-bar-forms.client.view.html');
         });
       });
 
@@ -94,7 +94,7 @@
           mockForm;
 
         beforeEach(inject(function ($controller, $state, $templateCache) {
-          createstate = $state.get('forms.create');
+          createstate = $state.get('forms.phd');
           $templateCache.put('modules/forms/client/views/form-form.client.view.html', '');
 
           // create mock Form
@@ -107,8 +107,8 @@
           });
         }));
 
-        it('Should have the correct URL', function () {
-          expect(createstate.url).toEqual('/create');
+        it('Should have the correct PhD URL', function () {
+          expect(createstate.url).toEqual('/create/phd');
         });
 
         it('Should have a resolve function', function () {
@@ -117,7 +117,7 @@
         });
 
         it('should respond to URL', inject(function ($state) {
-          expect($state.href(createstate)).toEqual('/forms/create');
+          expect($state.href(createstate)).toEqual('/forms/create/phd');
         }));
 
         it('should attach an Form to the controller scope', function () {
@@ -130,8 +130,9 @@
         });
 
         it('Should have templateUrl', function () {
-          expect(createstate.templateUrl).toBe('modules/forms/client/views/form-form.client.view.html');
+          expect(createstate.templateUrl).toBe('modules/forms/client/views/phd-form.client.view.html');
         });
+
       });
 
       describe('Edit Route', function () {
@@ -180,7 +181,7 @@
         });
 
         it('Should have templateUrl', function () {
-          expect(editstate.templateUrl).toBe('modules/forms/client/views/form-form.client.view.html');
+          expect(editstate.templateUrl).toBe('modules/forms/client/views/undergrad-form.client.view.html');
         });
 
         xit('Should go to unauthorized route', function () {
@@ -191,4 +192,3 @@
     });
   });
 }());
-*/

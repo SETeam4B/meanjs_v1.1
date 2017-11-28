@@ -13,7 +13,7 @@
                 abstract: true,
                 url: '/forms',
                 controller:'NavBarController',
-                // template: '<ui-view/>'
+                template: '<ui-view/>',
                 templateUrl: 'modules/forms/client/views/nav-bar-forms.client.view.html'
             })
             .state('forms.list', {

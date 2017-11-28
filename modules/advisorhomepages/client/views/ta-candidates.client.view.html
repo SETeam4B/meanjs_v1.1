@@ -10,7 +10,7 @@
   <br>
     <h1 style="font-family:'ubuntu'">TA Candidates</h1>
 
-    <button type="button" class="btn btn-ta pull-right" ng-click="openModal()">Add new student</button>
+    <button type="button" class="btn btn-ta pull-right" ng-click="openModal()" ng-if="authentication.user.roles[0] === 'advisor'">Add new student</button>
   </br>
 
     <ul class="nav nav-pills">

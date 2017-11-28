@@ -12,7 +12,7 @@
     margin: 33px;
 }
 
-.btn {
+.btn-ta {
     background-color: orange;
 }
 
@@ -32,6 +32,7 @@
     /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#ffe8e8e8', GradientType=0);*/
     /*background-repeat: repeat-x;*/
 /*}*/
+
 
 .panel > .panel-heading{
     background-image: -webkit-linear-gradient(top, #ffffff 0%, blue 100%);

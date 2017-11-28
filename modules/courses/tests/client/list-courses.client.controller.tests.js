@@ -1,4 +1,4 @@
-(function () {
+/*(function () {
   'use strict';
 
   describe('Courses List Controller Tests', function () {
@@ -89,3 +89,4 @@
     });
   });
 }());
+*/

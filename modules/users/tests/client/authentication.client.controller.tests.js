@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 (function () {
   // Authentication controller Spec
@@ -171,3 +171,4 @@
     });
   });
 }());
+*/

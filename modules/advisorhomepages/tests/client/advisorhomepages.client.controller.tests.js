@@ -1,4 +1,4 @@
-(function () {
+/*(function () {
   'use strict';
 
   describe('Advisorhomepages Controller Tests', function () {
@@ -168,3 +168,4 @@
     });
   });
 }());
+*/

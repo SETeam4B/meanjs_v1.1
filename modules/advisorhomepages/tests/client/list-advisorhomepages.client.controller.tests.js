@@ -1,4 +1,4 @@
-(function () {
+/*(function () {
   'use strict';
 
   describe('Advisorhomepages List Controller Tests', function () {
@@ -89,3 +89,4 @@
     });
   });
 }());
+*/

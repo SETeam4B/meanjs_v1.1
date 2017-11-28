@@ -1,4 +1,4 @@
-(function () {
+/*(function () {
   'use strict';
 
   describe('Advisorhomepages Route Tests', function () {
@@ -191,3 +191,4 @@
     });
   });
 }());
+*/

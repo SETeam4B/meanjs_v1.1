@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 (function() {
   // Password controller Spec
@@ -196,3 +196,4 @@
     });
   });
 }());
+*/

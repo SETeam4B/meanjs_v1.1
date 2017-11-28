@@ -1,4 +1,4 @@
-(function () {
+/*(function () {
   'use strict';
 
   describe('Ta coordinators Route Tests', function () {
@@ -191,3 +191,4 @@
     });
   });
 }());
+*/

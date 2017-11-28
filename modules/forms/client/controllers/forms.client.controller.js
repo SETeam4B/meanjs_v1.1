@@ -161,7 +161,6 @@
 
             function successCallback(res) {
                 alert(res.message);
-                debugger;
                 callback(index, tempForm, true);
             }
 

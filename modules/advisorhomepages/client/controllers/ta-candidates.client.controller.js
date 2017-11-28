@@ -119,12 +119,10 @@
             var tempForm = form;
             var service = new FormsService(form);
             vm.form = service;
-            debugger;
             vm.updateWithAdvisor(index, tempForm,assignValues);
         };
 
         function assignValues(index, form, isValid) {
-            debugger;
             if(isValid){
                 $scope.fakeData[index] = Object.assign({}, form);
                 $scope.hoursArray[index] = $scope.fakeData[index].hourTA;

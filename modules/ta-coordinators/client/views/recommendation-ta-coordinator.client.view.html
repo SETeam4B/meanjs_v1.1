@@ -24,9 +24,10 @@
 
       <div class="row">
         <div class="col-md-3">UF-ID</div>
-        <div class="col-md-4">Last Name</div>
-        <div class="col-md-4">First Name</div>
+        <div class="col-md-3">Last Name</div>
+        <div class="col-md-3">First Name</div>
         <div class="col-md-1">GPA</div>
+        <div class="col-md-2">   </div>
       </div>
 
       <accordion close-others="oneAtATime">
@@ -36,9 +37,11 @@
 
             <div class="row">
               <div class="col-md-3">{{User.ufid}}</div>
-              <div class="col-md-4">{{User.lastName}}</div>
-              <div class="col-md-4">{{User.firstName}}</div>
+              <div class="col-md-3">{{User.lastName}}</div>
+              <div class="col-md-3">{{User.firstName}}</div>
               <div class="col-md-1">{{User.gpa}}</div>
+              <div class="col-md-2 pull-right">
+                <span ng-click="$event.preventDefault(); removeFromDatabase(User)" class="glyphicon glyphicon-remove"></span></div>
             </div>
           </accordion-heading>
 
@@ -64,8 +67,7 @@
                     </div>
 
                   </fieldset>
-                  <button  ng-click="removeFromDatabase(User)" class="btn btn-default btn-danger" >
-                    <span class="glyphicon glyphicon-trash"></span> Remove</button>
+
 
                 </form>
 
@@ -82,9 +84,11 @@
 
             <div class="row">
               <div class="col-md-3">{{User.form.ufid}}</div>
-              <div class="col-md-4">{{User.form.lastName}}</div>
-              <div class="col-md-4">{{User.form.firstName}}</div>
+              <div class="col-md-3">{{User.form.lastName}}</div>
+              <div class="col-md-3">{{User.form.firstName}}</div>
               <div class="col-md-1">{{User.form.gpa}}</div>
+              <div class="col-md-2 pull-right">
+                <span ng-click="$event.preventDefault(); removeFromRecommendation(User)" class="glyphicon glyphicon-remove"></span></div>
             </div>
           </accordion-heading>
 
@@ -112,8 +116,7 @@
                   </fieldset>
 
 
-                  <button  ng-click="removeFromRecommendation(User)" class="btn btn-default btn-danger">
-                    <span class="glyphicon glyphicon-trash"></span> Remove</button>
+
                 </form>
 
 
@@ -129,28 +132,19 @@
       <button  ng-click="submitMyRecommendation()" class="btn btn-default btn-primary" >
         <span class="glyphicon glyphicon-ok"></span> Submit Recommendation</button>
 
-
-
-
-
-
-
     </div>
-
-
 
     <div class="col-md-6 pull-right" >
 
-
-
   <h1>TA</h1>
 
-  <div class="row">
-    <div class="col-md-3">UF-ID</div>
-    <div class="col-md-4">Last Name</div>
-    <div class="col-md-4">First Name</div>
-    <div>GPA</div>
-  </div>
+      <div class="row">
+        <div class="col-md-3">UF-ID</div>
+        <div class="col-md-3">Last Name</div>
+        <div class="col-md-3">First Name</div>
+        <div class="col-md-1">GPA</div>
+        <div class="col-md-2">   </div>
+      </div>
 
   <accordion close-others="oneAtATime">
 
@@ -159,10 +153,13 @@
 
         <div class="row">
           <div class="col-md-3">{{TA.ufid}}</div>
-          <div class="col-md-4">{{TA.lastName}}</div>
-          <div class="col-md-4">{{TA.firstName}}</div>
+          <div class="col-md-3">{{TA.lastName}}</div>
+          <div class="col-md-3">{{TA.firstName}}</div>
           <div class="col-md-1">{{TA.gpa}}</div>
-        </div>
+          <div class="col-md-2 pull-right">
+        <span ng-click="$event.preventDefault(); recommendTA(TA)" class="glyphicon glyphicon-plus"></span></div>
+    </div>
+
       </accordion-heading>
 
       <!--TODO: change this-->
@@ -188,9 +185,6 @@
                 </div>
 
               </fieldset>
-
-
-              <button  ng-click="recommendTA(TA)" class="btn btn-default btn-primary" ><span class="glyphicon glyphicon-ok"></span> Recommend</button>
             </form>
 
         </div>
@@ -205,12 +199,13 @@
 
 
   <h1>Grader</h1>
-  <div class="row">
-    <div class="col-md-3">UF-ID</div>
-    <div class="col-md-4">Last Name</div>
-    <div class="col-md-4">First Name</div>
-    <div>GPA</div>
-  </div>
+      <div class="row">
+        <div class="col-md-3">UF-ID</div>
+        <div class="col-md-3">Last Name</div>
+        <div class="col-md-3">First Name</div>
+        <div class="col-md-1">GPA</div>
+        <div class="col-md-2">   </div>
+      </div>
 
   <accordion close-others="oneAtATime">
 
@@ -219,9 +214,11 @@
 
         <div class="row">
           <div class="col-md-3">{{grader.ufid}}</div>
-          <div class="col-md-4">{{grader.lastName}}</div>
-          <div class="col-md-4">{{grader.firstName}}</div>
+          <div class="col-md-3">{{grader.lastName}}</div>
+          <div class="col-md-3">{{grader.firstName}}</div>
           <div class="col-md-1">{{grader.gpa}}</div>
+          <div class="col-md-2 pull-right">
+            <span ng-click="$event.preventDefault(); recommendTA(grader)" class="glyphicon glyphicon-plus"></span></div>
         </div>
       </accordion-heading>
 
@@ -247,8 +244,6 @@
                 </div>
 
               </fieldset>
-              <button  ng-click="recommendTA(grader)" class="btn btn-default btn-primary"  >
-                <span class="glyphicon glyphicon-ok"></span> Recommend</button>
             </form>
 
 
@@ -263,12 +258,13 @@
 
 
   <h1>UTA</h1>
-  <div class="row">
-    <div class="col-md-3">UF-ID</div>
-    <div class="col-md-4">Last Name</div>
-    <div class="col-md-4">First Name</div>
-    <div>GPA</div>
-  </div>
+      <div class="row">
+        <div class="col-md-3">UF-ID</div>
+        <div class="col-md-3">Last Name</div>
+        <div class="col-md-3">First Name</div>
+        <div class="col-md-1">GPA</div>
+        <div class="col-md-2">   </div>
+      </div>
 
   <accordion close-others="oneAtATime">
 
@@ -277,9 +273,11 @@
 
         <div class="row">
           <div class="col-md-3">{{UTA.ufid}}</div>
-          <div class="col-md-4">{{UTA.lastName}}</div>
-          <div class="col-md-4">{{UTA.firstName}}</div>
+          <div class="col-md-3">{{UTA.lastName}}</div>
+          <div class="col-md-3">{{UTA.firstName}}</div>
           <div class="col-md-1">{{UTA.gpa}}</div>
+          <div class="col-md-2 pull-right">
+            <span ng-click="$event.preventDefault(); recommendTA(UTA)" class="glyphicon glyphicon-plus"></span></div>
         </div>
       </accordion-heading>
 
@@ -305,8 +303,7 @@
                 </div>
 
               </fieldset>
-              <button  ng-click="recommendTA(UTA)" class="btn btn-default btn-primary" ><span class="glyphicon glyphicon-ok"></span> Recommend</button>
-            </form>
+               </form>
 
           </div>
       </div>
@@ -317,12 +314,13 @@
 
     <h1>System Suggestion</h1>
 
-    <div class="row">
-      <div class="col-md-3">UF-ID</div>
-      <div class="col-md-4">Last Name</div>
-      <div class="col-md-4">First Name</div>
-      <div>GPA</div>
-    </div>
+      <div class="row">
+        <div class="col-md-3">UF-ID</div>
+        <div class="col-md-3">Last Name</div>
+        <div class="col-md-3">First Name</div>
+        <div class="col-md-1">GPA</div>
+        <div class="col-md-2">   </div>
+      </div>
 
     <accordion close-others="oneAtATime">
 
@@ -331,9 +329,11 @@
 
           <div class="row">
             <div class="col-md-3">{{student.ufid}}</div>
-            <div class="col-md-4">{{student.lastName}}</div>
-            <div class="col-md-4">{{student.firstName}}</div>
+            <div class="col-md-3">{{student.lastName}}</div>
+            <div class="col-md-3">{{student.firstName}}</div>
             <div class="col-md-1">{{student.gpa}}</div>
+            <div class="col-md-2 pull-right">
+              <span ng-click="$event.preventDefault(); recommendTA(student)" class="glyphicon glyphicon-plus"></span></div>
           </div>
         </accordion-heading>
 
@@ -360,9 +360,7 @@
 
                 </fieldset>
 
-
-                <button  ng-click="recommendTA(student)" class="btn btn-default btn-primary" ><span class="glyphicon glyphicon-ok"></span> Recommend</button>
-              </form>
+          </form>
 
           </div>
         </div>
@@ -379,12 +377,13 @@
 
 
     <h1>Rejected</h1>
-    <div class="row">
-      <div class="col-md-3">UF-ID</div>
-      <div class="col-md-4">Last Name</div>
-      <div class="col-md-4">First Name</div>
-      <div>GPA</div>
-    </div>
+      <div class="row">
+        <div class="col-md-3">UF-ID</div>
+        <div class="col-md-3">Last Name</div>
+        <div class="col-md-3">First Name</div>
+        <div class="col-md-1">GPA</div>
+        <div class="col-md-2">   </div>
+      </div>
 
     <accordion close-others="oneAtATime">
 
@@ -393,9 +392,10 @@
 
           <div class="row">
             <div class="col-md-3">{{Rejected.ufid}}</div>
-            <div class="col-md-4">{{Rejected.lastName}}</div>
-            <div class="col-md-4">{{Rejected.firstName}}</div>
+            <div class="col-md-3">{{Rejected.lastName}}</div>
+            <div class="col-md-3">{{Rejected.firstName}}</div>
             <div class="col-md-1">{{Rejected.gpa}}</div>
+            <div class="col-md-2"></div>
           </div>
         </accordion-heading>
 

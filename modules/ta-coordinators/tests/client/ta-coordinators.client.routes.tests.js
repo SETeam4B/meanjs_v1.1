@@ -44,7 +44,7 @@
           mockTaCoordinator;
 
         beforeEach(inject(function ($controller, $state, $templateCache) {
-          viewstate = $state.get('ta-coordinators.view');
+          viewstate = $state.get('ta-coordinators.tacandidates');
           $templateCache.put('modules/ta-coordinators/client/views/view-ta-coordinator.client.view.html', '');
 
           // create mock Ta coordinator
@@ -61,22 +61,22 @@
         }));
 
         it('Should have the correct URL', function () {
-          expect(viewstate.url).toEqual('/:taCoordinatorId');
+          expect(viewstate.url).toEqual('');
         });
 
         it('Should have a resolve function', function () {
-          expect(typeof viewstate.resolve).toEqual('object');
-          expect(typeof viewstate.resolve.taCoordinatorResolve).toEqual('function');
+          expect(typeof viewstate.resolve).toEqual('undefined');
         });
 
         it('should respond to URL', inject(function ($state) {
           expect($state.href(viewstate, {
             taCoordinatorId: 1
-          })).toEqual('/ta-coordinators/1');
+          })).toEqual('/ta-coordinators');
         }));
 
         it('should attach an Ta coordinator to the controller scope', function () {
           expect($scope.vm.taCoordinator._id).toBe(mockTaCoordinator._id);
+          expect($scope.vm.form._id).toBe(undefined);
         });
 
         it('Should not be abstract', function () {

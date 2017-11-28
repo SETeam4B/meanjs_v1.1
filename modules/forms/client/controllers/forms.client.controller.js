@@ -156,15 +156,17 @@
 
         }
 
-        function updateWithAdvisor() {
+        function updateWithAdvisor(index, tempForm,callback) {
             vm.form.$updateFromAdvisor(successCallback, errorCallback);
 
             function successCallback(res) {
                 alert(res.message);
+                callback(index, tempForm, true);
             }
 
             function errorCallback(err) {
                 alert(err.message);
+                callback(index, tempForm, false)
             }
 
         }

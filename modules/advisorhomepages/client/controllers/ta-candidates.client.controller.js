@@ -116,17 +116,24 @@
 
         $scope.submitModifiedForm = function (form, vm, index) {
             form.username = $scope.fakeData[index].username;
+            var tempForm = form;
             var service = new FormsService(form);
             vm.form = service;
-            vm.updateWithAdvisor();
-            $scope.fakeData[index] = Object.assign({}, form);
-            // updateAccordionInformation();
+            vm.updateWithAdvisor(index, tempForm,assignValues);
         };
+
+        function assignValues(index, form, isValid) {
+            if(isValid){
+                $scope.fakeData[index] = Object.assign({}, form);
+                $scope.hoursArray[index] = $scope.fakeData[index].hourTA;
+            }
+        }
 
 
 
         $scope.updateTemporaryForm = function (index) {
             $scope.TACandidateForms[index] = Object.assign({}, $scope.fakeData[index]);
+
             // debugger;
             // $scope.TACandidateForms[index].hourTA = $scope.hoursArray[index];
 

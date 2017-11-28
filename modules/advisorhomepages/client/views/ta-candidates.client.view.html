@@ -10,8 +10,8 @@
   <br>
     <h1 style="font-family:'ubuntu'">TA Candidates</h1>
 
-    <button type="button" class="btn btn-ta pull-right" ng-click="openModal()">Add new student</button>
   </br>
+
     <ul class="nav nav-pills">
       <li><a ui-sref="ta-coordinators.status"  ng-if="authentication.user.roles[0] === 'tacoordinator'">Status</a></li>
       <li><a ui-sref="advisorhomepages.list">TA Candidates</a></li>
@@ -28,7 +28,7 @@
     <!-- <button type="button" class="btn btn-success" ng-click="openModal()">Add new student</button> -->
     <!-- <div class="navbar-form" > -->
 
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-sm-8 col-sm-offset-1">
       <div class="input-group" id="searchBar">
         <span class="input-group-addon" id="sizing-addon1">
           <span class="glyphicon glyphicon-search"></span>
@@ -36,6 +36,8 @@
         <input type="text" class="form-control" placeholder="Search" ng-model="searchResult">
       </div>
     </div>
+    <button type="button" class="btn customOrange col-sm-2" ng-click="openModal()"  ng-if="authentication.user.roles[0] === 'advisor'" style="margin-bottom:20px">Add new student</button>
+
 
     <br>
     <div class="table-headers">
@@ -63,9 +65,8 @@
               <td class="col-md-4">{{row.ufid}}</td>
               <td class="col-md-4">{{row.firstName}} {{row.lastName}}</td>
               <td class="col-md-4">{{row.email}}</td>
-              <!--<td class="col-md-2">{{row.hourTA}}</td>-->
-              <td ng-click="$event.stopPropagation(); $event.preventDefault(); populateTACandidatesForm(fakeData.indexOf(row))" class="col-md-2"><input type="text" ng-model="hoursArray[fakeData.indexOf(row)]" style="width:40px; text-align:right; color:black"></td>
-              <td><button type="button" class="btn-ta" ng-click="$event.stopPropagation(); $event.preventDefault(); clickUpdateHour(fakeData.indexOf(row))">Update Hours</button></td>
+              <td ng-click="$event.stopPropagation(); $event.preventDefault(); populateTACandidatesForm(fakeData.indexOf(row))" class="col-md-2"><input type="text" ng-model="hoursArray[fakeData.indexOf(row)]" style="width:40px; text-align:right; color:black; border:1px solid #ccc; border-radius:3px;"></td>
+              <td><button type="button" class="btn customOrange" ng-click="$event.stopPropagation(); $event.preventDefault(); clickUpdateHour(fakeData.indexOf(row))">Update Hours</button></td>
             </tr>
           </tbody>
 

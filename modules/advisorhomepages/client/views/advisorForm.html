@@ -10,8 +10,8 @@
 
         <!--<div class="col-sm-3 col-sm-offset-3">-->
         <div class="floating-box">
-          <div class="panel panel-default panel-success class">
-            <div class="panel-heading"><font color="black">Application Status</font></div>
+          <div class="panel panel-default class">
+            <div class="panel panel-heading customPanel"><font color="black">Application Status</font></div>
             <div class="panel-body">
 
               <select name="status" id="status"
@@ -30,7 +30,7 @@
         <!--<div class="col-sm-3 col-sm-offset-3" style="padding-top: 20px">-->
         <div class="floating-box">
           <div class="panel panel-default panel-success class">
-            <div class="panel-heading"><font color="black">Category</font></div>
+            <div class="panel panel-heading customPanel"><font color="black">Category</font></div>
             <div class="panel-body">
               <select name="category" id="category1"
                       class="form-control"
@@ -50,7 +50,7 @@
         <div class="floating-box">
 
           <div class="panel panel-default panel-success class">
-            <div class="panel-heading"><font color="black">TA Hours</font></div>
+            <div class="panel panel-heading customPanel"><font color="black">TA Hours</font></div>
             <div class="panel-body">
               <!--<label class="control-label" for="hourTA">TA Hours</label>-->
               <input name="hourTA" type="text" ng-model="TACandidateForms[fakeData.indexOf(row)].hourTA" id="hourTA"
@@ -394,25 +394,36 @@
           </div> -->
 
         </div>
-        <div class="buttonbox">
+        <center style="margin-top: 20px">
+
         <!-- <div class="form-group col-sm-10" style="padding-top: 20px"> -->
-          <button type="submit" class="btn btn-success btn-primary">{{TACandidateForms[fakeData.indexOf(row)].username
+          <button type="submit" class="btn customBlue col-offset-sm-1"><font color = "white"> <span class="glyphicon glyphicon-upload"></span>  {{TACandidateForms[fakeData.indexOf(row)].username
             ? 'Update' : 'Submit'}}
+          </font>
           </button>
-          <button type="button" class="btn btn-danger" ng-click="updateTemporaryForm(fakeData.indexOf(row))">Reset
-            form
+          <button type="button" class="btn customBlue col-offset-sm-1" ng-click="updateTemporaryForm(fakeData.indexOf(row))">
+            <font color = "white">
+             <span class="glyphicon glyphicon-repeat"></span>
+             Reset form
+           </font>
           </button>
-          <button ng-show="formBooleans[fakeData.indexOf(row)]" type="button" class="btn btn-primary"
+          <button ng-show="formBooleans[fakeData.indexOf(row)]" type="button" class="btn customBlue  col-offset-sm-1 "
                   ng-click="toggleForm(fakeData.indexOf(row))">
-            Hide Form
+                  <font color = "white">
+                  <span class="glyphicon glyphicon-eye-close"></span>
+                  Hide Form
+                  </font>
           </button>
-          <button ng-hide="formBooleans[fakeData.indexOf(row)]" type="button" class="btn btn-primary"
+          <button ng-hide="formBooleans[fakeData.indexOf(row)]" type="button" class="btn customBlue col-offset-sm-1"
                   ng-click="toggleForm(fakeData.indexOf(row))">
-            Show Form
+                  <font color = "white">
+                  <span class="glyphicon glyphicon-eye-open"></span>
+                  Show Form
+                </font>
           </button>
           <!--<button type="button" class="btn btn-danger" ng-click="">Reject Student</button>-->
         <!-- </div> -->
-      </div>
+      </center>
         <div ng-show="vm.error" class="text-danger">
           <strong ng-bind="vm.error"></strong>
         </div>

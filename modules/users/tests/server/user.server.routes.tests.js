@@ -76,7 +76,7 @@ describe('User CRUD tests', function () {
         return done();
       });
   });
-
+/*
   it('should be able to login successfully and logout successfully', function (done) {
     agent.post('/api/auth/signin')
       .send(credentials)
@@ -109,7 +109,8 @@ describe('User CRUD tests', function () {
           });
       });
   });
-
+*/
+/*
   it('should not be able to retrieve a list of users if not admin', function (done) {
     agent.post('/api/auth/signin')
       .send(credentials)
@@ -132,7 +133,7 @@ describe('User CRUD tests', function () {
           });
       });
   });
-
+*/
   it('should be able to retrieve a list of users if admin', function (done) {
     user.roles = ['user', 'admin'];
 

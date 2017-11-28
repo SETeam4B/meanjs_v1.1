@@ -13,88 +13,76 @@ var mongoose = require('mongoose'),
 var FormSchema = new Schema({
     ufid: {
         type: Number,
-        default: 0,
         required: 'Please fill in your UFID number without dash.',
         unique: true
     },
 
     email: {
         type: String,
-        defualt: '',
         required: 'Please fill in your email address.'
     },
 
     firstName: {
         type: String,
-        default: '',
         required: 'Please fill in your first name.',
         trim: true
     },
     middleName: {
         type: String,
-        default: '',
         trim: true
     },
     lastName: {
         type: String,
-        default: '',
         required: 'Please fill in your last name.',
         trim: true
     },
     street: {
         type: String,
-        default: '',
         required: 'Please fill in your address.',
         trim: true
     },
     city: {
         type: String,
-        default: '',
         required: 'Please fill in your city.',
         trim: true
     },
     state: {
         type: String,
-        default: '',
         required: 'Please fill in your state or province.',
         trim: true
     },
     zipcode: {
         type: Number,
-        default: 0,
         required: 'Please fill in your zipcode.'
     },
 
     phone: {
         type: Number,
-        default: 0,
         required: 'Please fill in your phone number.'
     },
 
     semesterAdmitted: {
         type: String,
-        default: '',
         required: 'Please choose your admitted semeter.'
     },
     originCountry: {
         type: String,
-        default: 'USA',
         required: 'Please choose your origin country.'
     },
     preferenceCourse1: {
         type: Schema.ObjectId,
         ref: 'Course',
-        requried: "Please choose your primary course preference."
+        required: "Please choose your primary course preference."
     },
     preferenceCourse2: {
         type: Schema.ObjectId,
         ref: 'Course',
-        requried: "Please choose your secondary course preference."
+        required: "Please choose your secondary course preference."
     },
     preferenceCourse3: {
         type: Schema.ObjectId,
         ref: 'Course',
-        requried: "Please choose your tertiary course preference."
+        required: "Please choose your tertiary course preference."
     },
 
     interestExperience: {

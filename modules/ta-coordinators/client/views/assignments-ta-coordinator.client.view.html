@@ -1,9 +1,15 @@
-<section ng-controller='RecommendationAssignmentController'>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet" type="text/css"></link>
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css"></link>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"></link>
+</head>
+
+<section ng-controller='RecommendationAssignmentController' style="font-family: 'ubuntu'">
   <h1>
     Assignment Course Title :
     {{courseTitle}}
   </h1>
-  <div class="row">
+  <div class="row headings">
     <!-- Add a ui-sref property to the anchor tags to allow navigation between different states -->
     <ul class="nav nav-pills">
       <li><a ui-sref="ta-coordinators.status">Status</a></li>
@@ -14,7 +20,7 @@
     </ul>
   </div>
 
-  <div class="rows">
+  <div class="rows headings">
     <div class="col-md-6">
 
       <h1>My Assignment List</h1>
@@ -23,7 +29,7 @@
         <div class="col-md-3">UF-ID</div>
         <div class="col-md-4">Last Name</div>
         <div class="col-md-4">First Name</div>
-        <div class="col-md-1">GPA</div>
+        <div>GPA</div>
       </div>
 
       <accordion close-others="oneAtATime">
@@ -147,7 +153,7 @@
         <div class="col-md-3">UF-ID</div>
         <div class="col-md-4">Last Name</div>
         <div class="col-md-4">First Name</div>
-        <div class="col-md-1">GPA</div>
+        <div>GPA</div>
       </div>
 
       <accordion close-others="oneAtATime">
@@ -208,7 +214,7 @@
         <div class="col-md-3">UF-ID</div>
         <div class="col-md-4">Last Name</div>
         <div class="col-md-4">First Name</div>
-        <div class="col-md-1">GPA</div>
+        <div>GPA</div>
       </div>
 
       <accordion close-others="oneAtATime">
@@ -266,7 +272,7 @@
         <div class="col-md-3">UF-ID</div>
         <div class="col-md-4">Last Name</div>
         <div class="col-md-4">First Name</div>
-        <div class="col-md-1">GPA</div>
+        <div>GPA</div>
       </div>
 
       <accordion close-others="oneAtATime">
@@ -376,7 +382,7 @@
           <div class="col-md-3">UF-ID</div>
           <div class="col-md-4">Last Name</div>
           <div class="col-md-4">First Name</div>
-          <div class="col-md-1">GPA</div>
+          <div>GPA</div>
         </div>
 
         <accordion close-others="oneAtATime">

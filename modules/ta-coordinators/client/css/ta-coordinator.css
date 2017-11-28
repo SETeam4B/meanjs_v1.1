@@ -1,3 +1,12 @@
 .form-control{
     width: 40% !important;
 }
+
+.headings {
+    font-family:"questrial";
+}
+
+.tableClass{
+    font-family: "ubuntu";
+    color: black;
+}

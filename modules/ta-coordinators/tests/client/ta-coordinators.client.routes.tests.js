@@ -120,7 +120,6 @@
 
         it('should attach an Ta coordinator to the controller scope', function () {
           expect($scope.vm.taCoordinator._id).toBe(mockTaCoordinator._id);
-          expect($scope.vm.taCoordinator._id).toBe(undefined);
         });
 
         it('Should not be abstract', function () {

@@ -2,11 +2,7 @@
     width: 40% !important;
 }
 
-.headings {
-    font-family:"questrial";
-}
-
-.tableClass{
-    font-family: "ubuntu";
-    color: black;
+.statusbox {
+	border: 1px solid white;
+	background-color: white;
 }

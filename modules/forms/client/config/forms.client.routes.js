@@ -12,7 +12,9 @@
             .state('forms', {
                 abstract: true,
                 url: '/forms',
-                template: '<ui-view/>'
+                controller:'NavBarController',
+                // template: '<ui-view/>'
+                templateUrl: 'modules/forms/client/views/nav-bar-forms.client.view.html'
             })
             .state('forms.list', {
                 url: '',
@@ -88,18 +90,18 @@
                     pageTitle: 'Form {{ formResolve.name }}'
                 }
             })
-            .state('forms.submit',{
-                url: '/form/submited',
-                templateUrl: 'modules/forms/client/views/submit.confirmation.view.html',
-                controller: 'FormsController',
-                controllerAs: 'vm'
-            })
-            .state('forms.update',{
-            url: '/form/updated',
-            templateUrl: 'modules/forms/client/views/update.confirmation.view.html',
-            controller: 'FormsController',
-            controllerAs: 'vm'
-        });
+        //     .state('forms.submit',{
+        //         url: '/form/submited',
+        //         templateUrl: 'modules/forms/client/views/submit.confirmation.view.html',
+        //         // controller: 'FormsController',
+        //         // controllerAs: 'vm'
+        //     })
+        //     .state('forms.update',{
+        //     url: '/form/updated',
+        //     templateUrl: 'modules/forms/client/views/update.confirmation.view.html',
+        //     // controller: 'FormsController',
+        //     // controllerAs: 'vm'
+        // });
     }
 
     //getForm.$inject = ['$stateParams', 'FormsService', 'Authentication'];

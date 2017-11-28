@@ -19,22 +19,12 @@
         vm.categoryOptions = categoryOptions();
         vm.teachingTAOptions = teachingTAOptions();
         vm.authentication = Authentication;
-
         vm.form = form;
-        console.log("courses->");
-        console.log(vm.courses);
-        // vm.form =  FormsService.get({
-        //     username: Authentication.user.username
-        // }).$promise;
-
-        // vm.form = FormsService.query((res) => {
-        //     console.log(res);
-        //     debugger;
-        // });
         vm.error = null;
         vm.phdExamDate = formatDate();
         vm.remove = remove;
         vm.save = save;
+        vm.updateWithAdvisor = updateWithAdvisor;
 
         function statusOptions() {
             var status = [];
@@ -54,9 +44,11 @@
 
         function categoryOptions() {
             var category = [];
+            category.push("N/A");
             category.push("TA");
             category.push("Grader");
             category.push("UTA");
+            return category;
         }
 
         function teachingTAOptions() {
@@ -108,14 +100,11 @@
             }
         }
 
-        // Save Form
-        function save(isValid) {
-            if (!isValid) {
-                $scope.$broadcast('show-errors-check-validity', 'vm.form.formForm');
-                return false;
+        function saveWithUsername() {
+            if(vm.authentication.user.roles[0] == "advisor"){
+                saveWithAdvisor();
+                return;
             }
-
-            // TODO: move create/update logic to service
             if (vm.form.username) {
                 vm.form.$update(updateSuccessCallback, errorCallback);
             } else {
@@ -123,19 +112,11 @@
             }
 
             function updateSuccessCallback(res) {
-                if($scope.isAdvisorForm){
-                    alert("updated advisor form");
-                    return;
-                }
-                $state.go('forms.update');
+                $state.go('forms-update');
             }
 
             function successCallback(res) {
-                if($scope.isAdvisorForm){
-                    alert("submitted advisor form");
-                    return;
-                }
-                $state.go('forms.submit');
+                $state.go('forms-submit');
                 /*
                $state.go('forms.undergrad', {
                  formId: res._id
@@ -144,12 +125,50 @@
             }
 
             function errorCallback(res) {
-                vm.error = res.data.message;
-            }
 
-            function alerta(){
-                alert("alerta roja");
             }
         }
+
+        // Save Form
+        function save(isValid) {
+            if (!isValid) {
+                $scope.$broadcast('show-errors-check-validity', 'vm.form.formForm');
+                return false;
+            }
+
+            saveWithUsername();
+            // saveWithAdvisor();
+
+        }
+
+        function saveWithAdvisor() {
+            vm.form.$addFromAdvisor(successCallback, errorCallback);
+
+            function successCallback(res) {
+                alert(res.message);
+                $scope.$close();
+            }
+
+            function errorCallback(err) {
+                alert(err.message);
+            }
+
+
+        }
+
+        function updateWithAdvisor() {
+            vm.form.$updateFromAdvisor(successCallback, errorCallback);
+
+            function successCallback(res) {
+                alert(res.message);
+            }
+
+            function errorCallback(err) {
+                alert(err.message);
+            }
+
+        }
+
+
     }
 }());

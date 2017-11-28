@@ -47,6 +47,14 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       data: {
         ignoreState: true
       }
-    });
+    })
+    .state('forms-submit',{
+        url: '/submit',
+        templateUrl: 'modules/forms/client/views/submit.confirmation.view.html'
+    })
+    .state('forms-update',{
+      url: '/updated',
+      templateUrl: 'modules/forms/client/views/update.confirmation.view.html'
+});
   }
 ]);

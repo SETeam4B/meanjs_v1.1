@@ -1,0 +1,436 @@
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet" type="text/css"></link>
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css"></link>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"></link>
+</head>
+
+<section ng-controller='RecommendationAssignmentController'>
+  <h1>
+    Course Title :
+    {{courseTitle}}
+  </h1>
+
+    <ul class="nav nav-pills">
+      <li><a ui-sref="ta-coordinators.status" ng-if="authentication.user.roles[0] === 'tacoordinator'">Status</a></li>
+      <li><a ui-sref="advisorhomepages.list" ng-if="authentication.user.roles[0] === 'tacoordinator'">TA Candidates</a></li>
+      <li><a ui-sref="ta-coordinators.courselist" ng-if="authentication.user.roles[0] === 'tacoordinator'">Course List</a></li>
+      <li><a ui-sref="ta-coordinators.facultyCourseList">TA Recommendations</a></li>
+      <li><a ui-sref="ta-coordinators.tacoordinatorCourseList"  class="bg-info text-white" ng-if="authentication.user.roles[0] === 'tacoordinator'">Assignments</a></li>
+    </ul>
+  <div class="row headings">
+
+    <div class="col-md-6 pull-left">
+      <h1>My Recommendation List</h1>
+
+      <div class="row">
+        <div class="col-md-3">UF-ID</div>
+        <div class="col-md-3">Last Name</div>
+        <div class="col-md-3">First Name</div>
+        <div class="col-md-1">GPA</div>
+        <div class="col-md-2">   </div>
+      </div>
+
+      <accordion close-others="oneAtATime">
+
+        <accordion-group ng-repeat="User in recommendedList track by $index" is-open="status.open">
+          <accordion-heading>
+
+            <div class="row">
+              <div class="col-md-3">{{User.ufid}}</div>
+              <div class="col-md-3">{{User.lastName}}</div>
+              <div class="col-md-3">{{User.firstName}}</div>
+              <div class="col-md-1">{{User.gpa}}</div>
+              <div class="col-md-2 pull-right">
+                <span ng-click="$event.preventDefault(); removeFromDatabase(User)" class="glyphicon glyphicon-remove"></span></div>
+            </div>
+          </accordion-heading>
+
+          <!--TODO: change this-->
+          <div>
+            <!--<div class="container row" ng-controller="" ng-init="findOne()">-->
+
+              <div class="page-header">
+
+                <form name="Course Info" class="form-horizontal" 0>
+                  <fieldset>
+                    <div class="col-sm-12 form-group">
+                      <label class="control-label" for="interestExperience">Interests and experience</label>
+                      <textarea readonly name="interestExperience" rows="5" cols="4" ng-model="User.interestExperience" id="interestExperience"
+                                class="form-control col-sm-12"></textarea>
+                    </div>
+
+
+                    <div class="form-group">
+                      <label class="control-label" for="previousCourseTaken">Previous Courses Taken</label>
+                      <textarea readonly name="previousCourseTaken" rows="5" cols="4"  ng-model="User.previousCourseTaken"
+                                id="previousCourseTaken" class="form-control"></textarea>
+                    </div>
+
+                  </fieldset>
+
+
+                </form>
+
+              </div>
+          </div>
+
+        </accordion-group>
+
+
+
+
+        <accordion-group ng-repeat="User in FacultyRecommendationList" is-open="status.open">
+          <accordion-heading>
+
+            <div class="row">
+              <div class="col-md-3">{{User.form.ufid}}</div>
+              <div class="col-md-3">{{User.form.lastName}}</div>
+              <div class="col-md-3">{{User.form.firstName}}</div>
+              <div class="col-md-1">{{User.form.gpa}}</div>
+              <div class="col-md-2 pull-right">
+                <span ng-click="$event.preventDefault(); removeFromRecommendation(User)" class="glyphicon glyphicon-remove"></span></div>
+            </div>
+          </accordion-heading>
+
+          <!--TODO: change this-->
+          <div>
+            <!--<div class="container row" ng-controller="" ng-init="findOne()">-->
+
+              <div class="page-header">
+
+                <form name="Course Info" class="form-horizontal" 0>
+                  <fieldset>
+                    <div class="form-group col-sm-12">
+                      <label class="control-label" for="interestExperience">Interests and experience</label>
+                      <textarea readonly name="interestExperience" rows="4" cols="4" ng-model="User.form.interestExperience" id="interestExperience"
+                                class="form-control"></textarea>
+                    </div>
+
+
+                    <div class="form-group col-sm-12">
+                      <label class="control-label" for="previousCourseTaken">Previous Courses Taken</label>
+                      <textarea readonly name="previousCourseTaken" rows="4" cols="4"  ng-model="User.form.previousCourseTaken"
+                                id="previousCourseTaken" class="form-control"></textarea>
+                    </div>
+
+                  </fieldset>
+
+
+
+                </form>
+
+
+            </div>
+          </div>
+
+        </accordion-group>
+
+
+        <!--</accordion-group>-->
+      </accordion>
+
+      <button  ng-click="submitMyRecommendation()" class="btn btn-default btn-primary" >
+        <span class="glyphicon glyphicon-ok"></span> Submit Recommendation</button>
+
+    </div>
+
+    <div class="col-md-6 pull-right" >
+
+  <h1>TA</h1>
+
+      <div class="row">
+        <div class="col-md-3">UF-ID</div>
+        <div class="col-md-3">Last Name</div>
+        <div class="col-md-3">First Name</div>
+        <div class="col-md-1">GPA</div>
+        <div class="col-md-2">   </div>
+      </div>
+
+  <accordion close-others="oneAtATime">
+
+    <accordion-group ng-repeat="TA in TAlist" is-open="status.open">
+      <accordion-heading>
+
+        <div class="row">
+          <div class="col-md-3">{{TA.ufid}}</div>
+          <div class="col-md-3">{{TA.lastName}}</div>
+          <div class="col-md-3">{{TA.firstName}}</div>
+          <div class="col-md-1">{{TA.gpa}}</div>
+          <div class="col-md-2 pull-right">
+        <span ng-click="$event.preventDefault(); recommendTA(TA)" class="glyphicon glyphicon-plus"></span></div>
+    </div>
+
+      </accordion-heading>
+
+      <!--TODO: change this-->
+      <div>
+        <!--<div class="container row" ng-controller="" ng-init="findOne()">-->
+
+          <div class="page-header">
+
+            <form name="Course Info" class="form-horizontal">
+
+              <fieldset>
+                <div class="form-group  col-sm-12">
+                  <label class="control-label" for="interestExperience">Interests and experience</label>
+                  <textarea readonly name="interestExperience" rows="4" cols="5" ng-model="TA.interestExperience" id="interestExperience"
+                            class="form-control"></textarea>
+                </div>
+
+
+                <div class="form-group col-sm-12">
+                  <label class="control-label" for="previousCourseTaken">Previous Courses Taken</label>
+                  <textarea readonly name="previousCourseTaken" rows="4" cols="5"  ng-model="TA.previousCourseTaken"
+                            id="previousCourseTaken" class="form-control"></textarea>
+                </div>
+
+              </fieldset>
+            </form>
+
+        </div>
+      </div>
+
+    </accordion-group>
+
+
+    <!--</accordion-group>-->
+  </accordion>
+
+
+
+  <h1>Grader</h1>
+      <div class="row">
+        <div class="col-md-3">UF-ID</div>
+        <div class="col-md-3">Last Name</div>
+        <div class="col-md-3">First Name</div>
+        <div class="col-md-1">GPA</div>
+        <div class="col-md-2">   </div>
+      </div>
+
+  <accordion close-others="oneAtATime">
+
+    <accordion-group ng-repeat="grader in Graderlist" is-open="status.open">
+      <accordion-heading>
+
+        <div class="row">
+          <div class="col-md-3">{{grader.ufid}}</div>
+          <div class="col-md-3">{{grader.lastName}}</div>
+          <div class="col-md-3">{{grader.firstName}}</div>
+          <div class="col-md-1">{{grader.gpa}}</div>
+          <div class="col-md-2 pull-right">
+            <span ng-click="$event.preventDefault(); recommendTA(grader)" class="glyphicon glyphicon-plus"></span></div>
+        </div>
+      </accordion-heading>
+
+      <!--TODO: change this-->
+      <div>
+        <!--<div class="container row" ng-controller="" ng-init="findOne()">-->
+
+          <div class="page-header">
+
+            <form name="Course Info" class="form-horizontal" 0>
+              <fieldset>
+                <div class="form-group col-sm-12">
+                  <label class="control-label" for="interestExperience">Interests and experience</label>
+                  <textarea readonly name="interestExperience" rows="4" cols="20" ng-model="grader.interestExperience" id="interestExperience"
+                            class="form-control"></textarea>
+                </div>
+
+
+                <div class="form-group col-sm-12">
+                  <label class="control-label" for="previousCourseTaken">Previous Courses Taken</label>
+                  <textarea readonly name="previousCourseTaken" rows="4" cols="20" ng-model="grader.previousCourseTaken"
+                            id="previousCourseTaken" class="form-control"></textarea>
+                </div>
+
+              </fieldset>
+            </form>
+
+
+        </div>
+      </div>
+
+    </accordion-group>
+
+
+    <!--</accordion-group>-->
+  </accordion>
+
+
+  <h1>UTA</h1>
+      <div class="row">
+        <div class="col-md-3">UF-ID</div>
+        <div class="col-md-3">Last Name</div>
+        <div class="col-md-3">First Name</div>
+        <div class="col-md-1">GPA</div>
+        <div class="col-md-2">   </div>
+      </div>
+
+  <accordion close-others="oneAtATime">
+
+    <accordion-group ng-repeat="UTA in UTAlist" is-open="status.open">
+      <accordion-heading>
+
+        <div class="row">
+          <div class="col-md-3">{{UTA.ufid}}</div>
+          <div class="col-md-3">{{UTA.lastName}}</div>
+          <div class="col-md-3">{{UTA.firstName}}</div>
+          <div class="col-md-1">{{UTA.gpa}}</div>
+          <div class="col-md-2 pull-right">
+            <span ng-click="$event.preventDefault(); recommendTA(UTA)" class="glyphicon glyphicon-plus"></span></div>
+        </div>
+      </accordion-heading>
+
+      <!--TODO: change this-->
+      <div>
+        <!--<div class="container row" ng-controller="" ng-init="findOne()">-->
+
+          <div class="page-header">
+
+            <form name="Course Info" class="form-horizontal" 0>
+              <fieldset>
+                <div class="form-group col-sm-12">
+                  <label class="control-label" for="interestExperience">Interests and experience</label>
+                  <textarea name="interestExperience" rows="4" cols="20"  ng-model="UTA.interestExperience" id="interestExperience"
+                            class="form-control" readonly></textarea>
+                </div>
+
+
+                <div class="form-group col-sm-12">
+                  <label class="control-label" for="previousCourseTaken">Previous Courses Taken</label>
+                  <textarea readonly name="previousCourseTaken" rows="4"  cols="20" ng-model="UTA.previousCourseTaken"
+                            id="previousCourseTaken" class="form-control" ></textarea>
+                </div>
+
+              </fieldset>
+               </form>
+
+          </div>
+      </div>
+
+    </accordion-group>
+  </accordion>
+
+
+    <h1>System Suggestion</h1>
+
+      <div class="row">
+        <div class="col-md-3">UF-ID</div>
+        <div class="col-md-3">Last Name</div>
+        <div class="col-md-3">First Name</div>
+        <div class="col-md-1">GPA</div>
+        <div class="col-md-2">   </div>
+      </div>
+
+    <accordion close-others="oneAtATime">
+
+      <accordion-group ng-repeat="student in SystemRecommendedlist track by $index" is-open="status.open">
+        <accordion-heading>
+
+          <div class="row">
+            <div class="col-md-3">{{student.ufid}}</div>
+            <div class="col-md-3">{{student.lastName}}</div>
+            <div class="col-md-3">{{student.firstName}}</div>
+            <div class="col-md-1">{{student.gpa}}</div>
+            <div class="col-md-2 pull-right">
+              <span ng-click="$event.preventDefault(); recommendTA(student)" class="glyphicon glyphicon-plus"></span></div>
+          </div>
+        </accordion-heading>
+
+        <!--TODO: change this-->
+        <div>
+          <!--<div class="container row" ng-controller="" ng-init="findOne()">-->
+
+            <div class="page-header">
+
+              <form name="Course Info" class="form-horizontal" 0>
+                <fieldset>
+                  <div class="form-group col-sm-12">
+                    <label class="control-label" for="interestExperience">Interests and experience</label>
+                    <textarea readonly name="interestExperience" rows="4" cols="20" ng-model="student.interestExperience" id="interestExperience"
+                              class="form-control"></textarea>
+                  </div>
+
+
+                  <div class="form-group col-sm-12">
+                    <label class="control-label" for="previousCourseTaken">Previous Courses Taken</label>
+                    <textarea readonly name="previousCourseTaken" rows="4" cols="20"  ng-model="student.previousCourseTaken"
+                              id="previousCourseTaken" class="form-control"></textarea>
+                  </div>
+
+                </fieldset>
+
+          </form>
+
+          </div>
+        </div>
+
+      </accordion-group>
+
+
+      <!--</accordion-group>-->
+    </accordion>
+
+
+
+
+
+
+    <h1>Rejected</h1>
+      <div class="row">
+        <div class="col-md-3">UF-ID</div>
+        <div class="col-md-3">Last Name</div>
+        <div class="col-md-3">First Name</div>
+        <div class="col-md-1">GPA</div>
+        <div class="col-md-2">   </div>
+      </div>
+
+    <accordion close-others="oneAtATime">
+
+      <accordion-group ng-repeat="Rejected in Rejectedlist" is-open="status.open">
+        <accordion-heading>
+
+          <div class="row">
+            <div class="col-md-3">{{Rejected.ufid}}</div>
+            <div class="col-md-3">{{Rejected.lastName}}</div>
+            <div class="col-md-3">{{Rejected.firstName}}</div>
+            <div class="col-md-1">{{Rejected.gpa}}</div>
+            <div class="col-md-2"></div>
+          </div>
+        </accordion-heading>
+
+        <!--TODO: change this-->
+        <div>
+          <!--<div class="container row" ng-controller="" ng-init="findOne()">-->
+
+            <div class="page-header">
+
+              <form name="Course Info" class="form-horizontal" 0>
+                <fieldset>
+                  <div class="form-group col-sm-12">
+                    <label class="control-label" for="interestExperience">Interests and experience</label>
+                    <textarea name="interestExperience" rows="4" ng-model="Rejected.interestExperience" id="interestExperience"
+                              class="form-control" readonly></textarea>
+                  </div>
+
+
+                  <div class="form-group col-sm-12">
+                    <label class="control-label" for="previousCourseTaken">Previous Courses Taken</label>
+                    <textarea readonly name="previousCourseTaken" rows="4" ng-model="Rejected.previousCourseTaken"
+                              id="previousCourseTaken" class="form-control" ></textarea>
+                  </div>
+
+                </fieldset>
+              </form>
+
+            </div>
+          </div>
+
+
+      </accordion-group>
+    </accordion>
+
+</div>
+
+  </div>
+</section>

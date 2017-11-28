@@ -24,6 +24,8 @@
                 url:'modules/forms/client/views/phd-form.client.view.html',
             }
         ];
+
+        $scope.isAdvisorForm = true;
         $scope.formIndex = 0;
         $scope.setIndex = function(index){
             $scope.formIndex = index;

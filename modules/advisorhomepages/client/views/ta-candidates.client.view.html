@@ -1,97 +1,80 @@
-<section ng-controller="TACandidatesController">
-  <div class="page-header">
-    <h1>TA Candidates</h1>
-  </div>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet" type="text/css"></link>
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css"></link>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"></link>
+  <link href="modules/forms/client/css/undergrad-form.css" rel="stylesheet"></link>
+</head>
 
+<section ng-controller="TACandidatesController">
+
+  <br>
+    <h1 style="font-family:'ubuntu'">TA Candidates</h1>
+
+    <button type="button" class="btn btn-ta pull-right" ng-click="openModal()">Add new student</button>
+  </br>
+    <ul class="nav nav-pills">
+      <li><a ui-sref="ta-coordinators.status"  ng-if="authentication.user.roles[0] === 'tacoordinator'">Status</a></li>
+      <li><a ui-sref="advisorhomepages.list">TA Candidates</a></li>
+      <li><a ui-sref="ta-coordinators.courselist">Course List</a></li>
+      <li><a ui-sref="ta-coordinators.facultyCourseList"  ng-if="authentication.user.roles[0] === 'tacoordinator'">TA Recommendations</a></li>
+      <li><a ui-sref="ta-coordinators.tacoordinatorCourseList"  class="bg-info text-white"  ng-if="authentication.user.roles[0] === 'tacoordinator'">Assignments</a></li>
+    </ul>
   <!--<div ng-app="advisorhomepages">-->
     <!--<button ui-sref="Modal.confirmAddToCart">stateful</button>-->
     <!--<div ui-view="modal"></div>-->
   <!--</div>-->
   <!--<undergrad></undergrad>-->
 
-  <button type="button" class="btn btn-default" ng-click="openModal()">Add new student</button>
+    <!-- <button type="button" class="btn btn-success" ng-click="openModal()">Add new student</button> -->
+    <!-- <div class="navbar-form" > -->
 
-  <table>
-    <thead>
-    <tr>
-      <th class="col-xs-2">Id</th>
-      <th class="col-xs-9">Name</th>
-      <th class="col-xs-1"> Type</th>
-      <th class="col-xs-1"> yolo1</th>
-    </tr>
-    </thead>
-  </table>
+    <div class="col-md-8 col-md-offset-2">
+      <div class="input-group" id="searchBar">
+        <span class="input-group-addon" id="sizing-addon1">
+          <span class="glyphicon glyphicon-search"></span>
+        </span>
+        <input type="text" class="form-control" placeholder="Search" ng-model="searchResult">
+      </div>
+    </div>
+
+    <br>
+    <div class="table-headers">
+      <table>
+        <thead>
+          <tr>
+            <th class="col-sm-4 headings"><font size="+2">UFID</font></th>
+            <th class="col-sm-4 headings"><font size="+2">Name</font></th>
+            <th class="col-sm-4 headings"><font size="+2">Email</font></th>
+            <th class="col-sm-4 headings"><font size="+2">Hours</font></th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+
 
   <accordion close-others="oneAtATime">
 
-    <accordion-group ng-repeat="row in fakeData" is-open="status.open">
+    <accordion-group id="hello" ng-repeat="row in fakeData | filter: searchResult" is-open="status.open" >
       <accordion-heading>
-        <table>
-          <thead>
-          <tr>
-            <th class="col-xs-2">Id</th>
-            <th class="col-xs-9">Name</th>
-            <th class="col-xs-1"> Type</th>
-            <th class="col-xs-1"> yolo1</th>
-          </tr>
-          </thead>
+        <table ng-click="populateTACandidatesForm(fakeData.indexOf(row))">
+
           <tbody>
-          <tr>
-            <td class="col-xs-2">{{row.id}}</td>
-            <td class="col-xs-9">{{row.name}}</td>
-            <td class="col-xs-1">{{row.type}}</td>
-            <td class="col-xs-1">{{row.yolo1}}</td>
-          </tr>
+            <tr class="tableClass">
+              <td class="col-md-4">{{row.ufid}}</td>
+              <td class="col-md-4">{{row.firstName}} {{row.lastName}}</td>
+              <td class="col-md-4">{{row.email}}</td>
+              <!--<td class="col-md-2">{{row.hourTA}}</td>-->
+              <td ng-click="$event.stopPropagation(); $event.preventDefault(); populateTACandidatesForm(fakeData.indexOf(row))" class="col-md-2"><input type="text" ng-model="hoursArray[fakeData.indexOf(row)]" style="width:40px; text-align:right; color:black"></td>
+              <td><button type="button" class="btn-ta" ng-click="$event.stopPropagation(); $event.preventDefault(); clickUpdateHour(fakeData.indexOf(row))">Update Hours</button></td>
+            </tr>
           </tbody>
 
         </table>
       </accordion-heading>
-
       <!--TODO: change this-->
       <div ng-include="'modules/advisorhomepages/client/views/advisorForm.html'"></div>
 
     </accordion-group>
-
-    <!--<accordion-group heading="Static Header, initially expanded" is-open="status.isFirstOpen"-->
-    <!--is-disabled="status.isFirstDisabled">-->
-    <!--This content is straight in the template.-->
-    <!--</accordion-group>-->
-    <!--<accordion-group heading="{{group.title}}" ng-repeat="group in groups">-->
-    <!--{{group.content}}-->
-    <!--</accordion-group>-->
-    <!--<accordion-group heading="Dynamic Body Content">-->
-    <!--<p>The body of the accordion group grows to fit the contents</p>-->
-    <!--<button type="button" class="btn btn-default btn-sm" ng-click="addItem()">Add Item</button>-->
-    <!--<div ng-repeat="item in items">{{item}}</div>-->
-    <!--</accordion-group>-->
-
-
-    <!--<accordion-group heading="Custom template" template-url="group-template.html">-->
-    <!--Hello-->
-    <!--</accordion-group>-->
-    <!--<accordion-group heading="Delete account" panel-class="panel-danger">-->
-    <!--<p>Please, to delete your account, click the button below</p>-->
-    <!--<button class="btn btn-danger">Delete</button>-->
-    <!--</accordion-group>-->
   </accordion>
-
-  <!--<div class="list-group">-->
-  <!--<a ng-repeat="advisorhomepage in vm.advisorhomepages"-->
-  <!--ui-sref="advisorhomepages.view({ advisorhomepageId: advisorhomepage._id })"-->
-  <!--class="list-group-item">-->
-  <!--<small class="list-group-item-text">-->
-  <!--Posted on-->
-  <!--<span ng-bind="advisorhomepage.created | date:'mediumDate'"></span>-->
-  <!--by-->
-  <!--<span ng-if="advisorhomepage.user" ng-bind="advisorhomepage.user.displayName"></span>-->
-  <!--<span ng-if="!advisorhomepage.user">Deleted User</span>-->
-  <!--</small>-->
-  <!--<h4 class="list-group-item-heading" ng-bind="advisorhomepage.name"></h4>-->
-  <!--</a>-->
-  <!--</div>-->
-  <!--<div class="alert alert-warning text-center" ng-if="vm.advisorhomepages.$resolved && !vm.advisorhomepages.length">-->
-  <!--No Advisorhomepages yet, why don't you <a ui-sref="advisorhomepages.create">create one</a>?-->
-  <!--</div>-->
-
 
 </section>

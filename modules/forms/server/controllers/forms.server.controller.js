@@ -5,14 +5,15 @@
  */
 var path = require('path'),
     mongoose = require('mongoose'),
-       Form = mongoose.model('Form'),
+    Form = mongoose.model('Form'),
+    User = mongoose.model('User'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
     _ = require('lodash'),
     country = require('country-list')(),
     nodemailer = require("nodemailer"),
     smtpTransport = require('nodemailer-smtp-transport'),
     wellknown = require("nodemailer-wellknown");
-var config = wellknown("QQ")
+var config = wellknown("QQ");
 
 
 exports.countries = function (req, res) {
@@ -56,12 +57,16 @@ exports.create = function (req, res) {
     var form = new Form(req.body);
     form.user = req.user;
     form.username = req.user.username; //Set username
+    //set id
+    req.user.ufid = form.ufid;
+
     form.save(function (err) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
+            // updateUsers(req.user.username, form.ufid);
             sendEmail(form.email, "Hello,\n" +
                 "\n" +
                 "Thank you for applying to be a Teaching Assistant at the University of Florida's CISE department. Your application is being processed and we will reach out to you with a decision soon. \n" +
@@ -74,6 +79,26 @@ exports.create = function (req, res) {
         }
     });
 };
+
+// /**
+//  * updates the User model db schema
+//  * @param user = username
+//  */
+// function updateUsers(user, ufid, availableHours) {
+//     var updatingObject = {
+//         ufid: ufid
+//     };
+//     if (availableHours != undefined){
+//         updatingObject.availableHour = availableHours;
+//     }
+//     else {
+//         updatingObject.availableHour = 0;
+//     }
+//     User.findOneAndUpdate({username:user}, updatingObject);
+// }
+
+
+
 
 /**
  * Show the current Form
@@ -97,7 +122,6 @@ exports.update = function (req, res) {
     //console.log(form);
     //form = _.extend(form, req.body);
 
-
     Form.findOne({'username': req.user.username}).exec(function (err, form) {
         if (err) {
             return res.status(400).send({
@@ -115,6 +139,7 @@ exports.update = function (req, res) {
                         message: errorHandler.getErrorMessage(err)
                     });
                 } else {
+
                     sendEmail(form.email, "Hello,\n" +
                         "\n" +
                         "Thank you for updating your application to be a Teaching Assistant at the University of Florida's CISE department. Your application is being processed and we will reach out to you with a decision soon. \n" +
@@ -178,7 +203,7 @@ exports.list = function(req, res) {
  });
 };
 */
-exports.allStudents = function (req,res) {
+exports.allStudents = function (req, res) {
 
     Form.find({}, function (err, data) {
         if (err) {
@@ -188,7 +213,7 @@ exports.allStudents = function (req,res) {
         return res.status(200).send({data: data});
     })
 
-}
+};
 
 
 exports.list = function (req, res) {
@@ -202,7 +227,7 @@ exports.list = function (req, res) {
             res.jsonp(forms);
         }
     });
-}
+};
 
 
 exports.listAll = function (req, res) {
@@ -215,9 +240,7 @@ exports.listAll = function (req, res) {
             res.jsonp(forms);
         }
     });
-}
-
-
+};
 
 
 /**
@@ -230,7 +253,6 @@ exports.formByID = function (req, res, next, id) {
             message: 'Form is invalid'
         });
     }
-
     Form.findById(id).populate('user', 'displayName').exec(function (err, form) {
         if (err) {
             return next(err);
@@ -243,3 +265,64 @@ exports.formByID = function (req, res, next, id) {
         next();
     });
 };
+
+/**
+ * updates a student already on the database
+ * @param req
+ * @param res
+ */
+exports.updateWithoutUsername = function (req, res) {
+    //TODO: create an object that copies the body and only updates the body without the id
+
+    Form.findOneAndUpdate({_id: req.body._id}, req.body, function (err, data) {
+        if (err) {
+            return res.status(400).send({
+                message: "unsuccessfully update"
+            });
+        }
+
+        return res.status(200).send({message: "successfully updated student"});
+    });
+};
+
+/**
+ * checks if the ufid is found
+ * if it is not found it creates new student
+ * @param req
+ * @param res
+ */
+exports.createWithoutUsername = function (req, res) {
+    Form.findOne({ufid: req.body.ufid}, function (err, form) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        }
+        if (form == undefined) {
+            return createStudentAdvisor(req, res);
+        }
+    });
+};
+
+/**
+ * creates a new student on the database, does not require a username
+ * @param req
+ * @param res
+ */
+function createStudentAdvisor(req, res) {
+    //TODO: change this, query the user, ask xiaoming for how is it that the user is gonna be assigned the ufId
+    // req.body.username = "yoyis";
+    var form = new Form(req.body);
+    form.save(function (err) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            return res.status(200).send({message: "successfully added a student"});
+        }
+    });
+}
+
+
+//TODO: check if ufid is in the user table (user table)

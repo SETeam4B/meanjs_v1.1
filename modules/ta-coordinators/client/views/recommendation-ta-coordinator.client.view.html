@@ -9,6 +9,14 @@
     Course Title :
     {{courseTitle}}
   </h1>
+
+    <ul class="nav nav-pills">
+      <li><a ui-sref="ta-coordinators.status" ng-if="authentication.user.roles[0] === 'tacoordinator'">Status</a></li>
+      <li><a ui-sref="advisorhomepages.list" ng-if="authentication.user.roles[0] === 'tacoordinator'">TA Candidates</a></li>
+      <li><a ui-sref="ta-coordinators.courselist" ng-if="authentication.user.roles[0] === 'tacoordinator'">Course List</a></li>
+      <li><a ui-sref="ta-coordinators.facultyCourseList">TA Recommendations</a></li>
+      <li><a ui-sref="ta-coordinators.tacoordinatorCourseList"  class="bg-info text-white" ng-if="authentication.user.roles[0] === 'tacoordinator'">Assignments</a></li>
+    </ul>
   <div class="row headings">
 
     <div class="col-md-6 pull-left">

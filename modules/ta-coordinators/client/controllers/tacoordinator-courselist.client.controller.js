@@ -11,7 +11,7 @@
         var vm = this;
 
         $scope.courses = CoursesService.query();
-
+        $scope.authentication = Authentication;
 
         $scope.assign =function (courseTitle,courseId)
         {

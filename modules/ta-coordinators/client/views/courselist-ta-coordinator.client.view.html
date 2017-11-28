@@ -11,11 +11,11 @@
     <div class="row headings">
       <!-- Add a ui-sref property to the anchor tags to allow navigation between different states -->
       <ul class="nav nav-pills">
-        <li><a ui-sref="ta-coordinators.status">Status</a></li>
-        <li><a ui-sref="ta-coordinators.tacandidates">TA Candidates</a></li>
+        <li><a ui-sref="ta-coordinators.status" ng-if="authentication.user.roles[0] === 'tacoordinator'">Status</a></li>
+        <li><a ui-sref="advisorhomepages.list">TA Candidates</a></li>
         <li><a ui-sref="ta-coordinators.courselist" class="bg-info text-white">Course List</a></li>
-        <li><a ui-sref="ta-coordinators.facultyCourseList">TA Recommendations</a></li>
-        <li><a ui-sref="ta-coordinators.tacoordinatorCourseList">Assignments</a></li>
+        <li><a ui-sref="ta-coordinators.facultyCourseList" ng-if="authentication.user.roles[0] === 'tacoordinator'">TA Recommendations</a></li>
+        <li><a ui-sref="ta-coordinators.tacoordinatorCourseList" ng-if="authentication.user.roles[0] === 'tacoordinator'">Assignments</a></li>
       </ul>
     </div>
   <br>

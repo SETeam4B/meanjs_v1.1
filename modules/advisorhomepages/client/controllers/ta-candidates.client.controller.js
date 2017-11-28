@@ -6,12 +6,12 @@
         .module('forms')
         .controller('TACandidatesController', TACandidates);
 
-    TACandidates.inject = ['$scope', '$modal', '$state', 'FormsService'];
+    TACandidates.inject = ['$scope', '$modal', '$state', 'FormsService', 'Authentication'];
 
-    function TACandidates($scope, $modal, $state, FormsService) {
+    function TACandidates($scope, $modal, $state, FormsService, Authentication) {
 
         $scope.yolo = "hello World";
-
+        $scope.authentication = Authentication;
         $state.isAdvisorForm = true;
         $scope.TACandidateForms = [];
         var fs = new FormsService();

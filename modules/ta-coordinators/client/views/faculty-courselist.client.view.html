@@ -1,20 +1,24 @@
-<section>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet" type="text/css"></link>
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css"></link>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"></link>
+</head>
 
-    <ul class="nav nav-pills" ng-if="authentication.user.roles[0] === 'tacoordinator'">
-      <li><a ui-sref="ta-coordinators.status">Status</a></li>
-      <li><a ui-sref="advisorhomepages.list">TA Candidates</a></li>
-      <li><a ui-sref="ta-coordinators.courselist">Course List</a></li>
-      <li><a ui-sref="ta-coordinators.facultyCourseList">TA Recommendations</a></li>
-      <li><a ui-sref="ta-coordinators.tacoordinatorCourseList"  class="bg-info text-white">Assignments</a></li>
-    </ul>
+<section>
+  <div class="page-header" style="font-family:'ubuntu'">
+    <h1>Course List</h1>
+  </div>
+
+<div class="row headings">
+    <div class="col-md-2">Course Number</div>
+    <div class="col-md-4">Course Name</div>
+    <div class="col-md-2">Number of Sections</div>
+  </div>
 
   <button ng-repeat="course in courses " class ="btn btn-default btn-block" ng-click="recommend(course.courseTitle,course._id)">
-
-      {{course.courseId}}
-
-      {{course.courseTitle}}
-
-      {{course.numberOfSection}}
+  	<div class="col-md-2">{{course.courseId}}</div>
+    <div class="col-md-4">{{course.courseTitle}}</div>
+    <div class="col-md-2">{{course.numberOfSection}}</div>
 
     </button>
 

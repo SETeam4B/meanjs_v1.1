@@ -127,7 +127,7 @@
         });
 
         it('Should have templateUrl', function () {
-          expect(createstate.templateUrl).toBe('modules/ta-coordinators/client/views/form-ta-coordinator.client.view.html');
+          expect(createstate.templateUrl).toBe('modules/ta-coordinators/client/views/tacandidates-ta-coordinators.client.view.html');
         });
       });
 
@@ -159,7 +159,7 @@
 
         it('Should have a resolve function', function () {
           expect(typeof editstate.resolve).toEqual('object');
-          expect(typeof editstate.resolve.taCoordinatorResolve).toEqual('function');
+          expect(typeof editstate.resolve.taCoordinatorResolve).toEqual('undefined');
         });
 
         it('should respond to URL', inject(function ($state) {
@@ -177,7 +177,7 @@
         });
 
         it('Should have templateUrl', function () {
-          expect(editstate.templateUrl).toBe('modules/ta-coordinators/client/views/form-taCoordinator.client.view.html');
+          expect(editstate.templateUrl).toBe('modules/ta-coordinators/client/views/form-ta-coordinator.client.view.html');
         });
 
         xit('Should go to unauthorized route', function () {

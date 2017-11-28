@@ -12,7 +12,13 @@
 
     <button type="button" class="btn btn-ta pull-right" ng-click="openModal()">Add new student</button>
   </br>
-
+    <ul class="nav nav-pills">
+      <li><a ui-sref="ta-coordinators.status"  ng-if="authentication.user.roles[0] === 'tacoordinator'">Status</a></li>
+      <li><a ui-sref="advisorhomepages.list">TA Candidates</a></li>
+      <li><a ui-sref="ta-coordinators.courselist">Course List</a></li>
+      <li><a ui-sref="ta-coordinators.facultyCourseList"  ng-if="authentication.user.roles[0] === 'tacoordinator'">TA Recommendations</a></li>
+      <li><a ui-sref="ta-coordinators.tacoordinatorCourseList"  class="bg-info text-white"  ng-if="authentication.user.roles[0] === 'tacoordinator'">Assignments</a></li>
+    </ul>
   <!--<div ng-app="advisorhomepages">-->
     <!--<button ui-sref="Modal.confirmAddToCart">stateful</button>-->
     <!--<div ui-view="modal"></div>-->
@@ -21,6 +27,7 @@
 
     <!-- <button type="button" class="btn btn-success" ng-click="openModal()">Add new student</button> -->
     <!-- <div class="navbar-form" > -->
+
     <div class="col-md-8 col-md-offset-2">
       <div class="input-group" id="searchBar">
         <span class="input-group-addon" id="sizing-addon1">
@@ -44,35 +51,13 @@
       </table>
     </div>
 
-<!--     <div class="table-headers">
-            <div style= "float: left; margin-left: 32px; position: relative;">
-              <font size="+2"><strong>UFID</strong></font>
-            </div>
-            <div style="float: left; margin-left: 326px; position: relative;">
-              <font size="+2"><strong>Name</strong></font>
-            </div>
-            <div style="float: left; margin-left: 283px; position: relative;">
-              <font size="+2"><strong>Email</strong></font>
-            </div>
-            <div style="float: left; margin-left: 265px; position: relative;">
-              <font size="+2"><strong>Hours</strong></font>
-            </div>
-    </div> -->
-
 
   <accordion close-others="oneAtATime">
 
     <accordion-group id="hello" ng-repeat="row in fakeData | filter: searchResult" is-open="status.open" >
       <accordion-heading>
         <table ng-click="populateTACandidatesForm(fakeData.indexOf(row))">
-          <!-- <thead>
-          <tr>
-            <th class="col-xs-3">UF ID</th>
-            <th class="col-xs-5">Name</th>
-            <th class="col-xs-4"> Email</th>
-            <th class="col-xs-1"> Hours</th>
-          </tr>
-          </thead> -->
+
           <tbody>
             <tr class="tableClass">
               <td class="col-md-4">{{row.ufid}}</td>

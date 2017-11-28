@@ -11,19 +11,19 @@
     <div class="row headings">
       <!-- Add a ui-sref property to the anchor tags to allow navigation between different states -->
       <ul class="nav nav-pills">
-        <li><a ui-sref="ta-coordinators.status">Status</a></li>
-        <li><a ui-sref="ta-coordinators.tacandidates">TA Candidates</a></li>
+        <li><a ui-sref="ta-coordinators.status" ng-if="authentication.user.roles[0] === 'tacoordinator'">Status</a></li>
+        <li><a ui-sref="advisorhomepages.list">TA Candidates</a></li>
         <li><a ui-sref="ta-coordinators.courselist" class="bg-info text-white">Course List</a></li>
-        <li><a ui-sref="ta-coordinators.facultyCourseList">TA Recommendations</a></li>
-        <li><a ui-sref="ta-coordinators.tacoordinatorCourseList">Assignments</a></li>
+        <li><a ui-sref="ta-coordinators.facultyCourseList" ng-if="authentication.user.roles[0] === 'tacoordinator'">TA Recommendations</a></li>
+        <li><a ui-sref="ta-coordinators.tacoordinatorCourseList" ng-if="authentication.user.roles[0] === 'tacoordinator'">Assignments</a></li>
       </ul>
     </div>
   <br>
   <div class="row headings">
-    <div class="col-md-2">Course Number</div>
-    <div class="col-md-4">Course Name</div>
-    <div class="col-md-4">Instructor</div>
-    <div class="col-md-2">Number of Sections</div>
+    <div class="col-md-2"><font size="+1"><strong>Course Number</strong></font></div>
+    <div class="col-md-4"><font size="+1"><strong>Course Name</strong></font></div>
+    <div class="col-md-4"><font size="+1"><strong>Instructor</strong></font></div>
+    <div class="col-md-2"><font size="+1"><strong>Number of Sections</strong></font></div>
   </div>
 
   <accordion close-others="oneAtATime" class="tableClass">
@@ -82,4 +82,3 @@
 
 
 </section>
-

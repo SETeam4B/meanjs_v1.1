@@ -8,7 +8,7 @@
         .controller('NewStudentModalController', NewStudentModalController);
 
     NewStudentModalController.inject = ['$scope', '$state','$modal', 'ui.router'];
-
+// retrieve the application form from forms module and linked them to advisor page.
     function NewStudentModalController($scope,$state) {
         $scope.modalForms = [
             {

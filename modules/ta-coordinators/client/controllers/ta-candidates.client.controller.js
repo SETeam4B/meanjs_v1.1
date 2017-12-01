@@ -6,7 +6,7 @@
         .controller('CoordinatorTACandidatesController', TACandidates);
 
     TACandidates.inject = ['$scope'];
-
+//testing purpose controller
     function TACandidates($scope) {
 
         $scope.yolo = "hello World";

@@ -23,6 +23,7 @@
     }
 
 
+    // status page, dynamically generate the semester options.
     function semesterOptions(){
         var term = ['Spring', 'Summer', 'Fall'];
         var semesters = [];

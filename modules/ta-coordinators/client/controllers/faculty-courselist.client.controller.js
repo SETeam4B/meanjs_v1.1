@@ -7,6 +7,7 @@
 
     facultyCourseListController.inject = ['$scope','CoursesService','Authentication','$state','$rootScope'];
 
+    //
     function facultyCourseListController($scope, CoursesService,Authentication, $state,$rootScope) {
         var vm = this;
         $scope.authentication = Authentication;

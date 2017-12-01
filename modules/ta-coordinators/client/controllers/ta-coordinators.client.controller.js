@@ -21,8 +21,9 @@
 
 vm.semester = currentSemester();
      $scope.coursesData = CoursesService.query();
-    // Remove existing Ta coordinator
 
+
+      //getting the current semester
       function currentSemester(){
           var currentDate = new Date();
           var year = currentDate.getFullYear();

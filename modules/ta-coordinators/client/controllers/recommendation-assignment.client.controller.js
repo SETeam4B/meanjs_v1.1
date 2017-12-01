@@ -7,6 +7,7 @@
 
     RecommendationAssignmentController.inject =  ['$scope','CoursesService','Authentication','$state','$rootScope','$stateParams','AssignmentrecommendationsService',"Users"];
 
+    //controller for handling the recomendation page
     function RecommendationAssignmentController($scope, CoursesService,Authentication, $state,$rootScope, $stateParams,AssignmentrecommendationsService,Users) {
 
      $scope.courseId = $stateParams.courseId;
@@ -21,8 +22,10 @@
      //fetched from database
      $scope.recommendedList=[];
 
+     //the recommendation list from faculty
      $scope.FacultyRecommendationList = []
 
+        //adding the Ta into the faculty recommendation list
      $scope.recommendTA =function (form)
         {
             var recommendationObj = {course: $scope.courseId, user:form.user, form:form, assigned: 'false'};
@@ -30,7 +33,7 @@
 
         };
 
-
+//remove the student from the database
         $scope.removeFromDatabase = function(form){
             AssignmentrecommendationsService.removeStudent({user: form.user, course:$stateParams.courseId},successCallback8, errorCallback8);
             AssignmentrecommendationsService.getProfessorRecommended({courseId:$stateParams.courseId},successCallback6, errorCallback6);
@@ -44,12 +47,15 @@
         function errorCallback8() {
             console.log("failed");
         }
+
+        //remove the student from the faculty recommendation list which has not been stored into database yet.
      $scope.removeFromRecommendation= function(form)
      {
          var index = $scope.FacultyRecommendationList.indexOf(form);
             $scope.FacultyRecommendationList.splice(index,1);
      }
 
+     //store the recommendation list into database.
      $scope.submitMyRecommendation = function()
      {
          //passing FacultyRecommendationList to backend services
@@ -141,6 +147,7 @@
             console.log("failed");
         }
 
+        // check the unique of the array, make sure the no duplicated students in the list.
         Array.prototype.unique = function() {
             var a = this.concat();
             for(var i=0; i<a.length; ++i) {

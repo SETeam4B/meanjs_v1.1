@@ -149,6 +149,7 @@ exports.updateStudent = function (req, res) {
     })
 }
 
+// retrieve all the student applications
 exports.findAllConsideredApplicants = function(req, res){
     console.log("ping all considered applicants");
     StudentInfoSchema.find({},function (err, data) {

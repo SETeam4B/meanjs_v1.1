@@ -7,7 +7,7 @@
         .controller('DummyControllerRecommendations', DummyControllerRecommendations);
 
     DummyControllerRecommendations.inject = ['$scope', '$state', 'AssignmentrecommendationsService','CoursesService'];
-
+//testing purpose controller.
     function DummyControllerRecommendations($scope,$state, AssignmentrecommendationsService, CoursesService) {
         $scope.testDummyController = function () {
             // debugger;

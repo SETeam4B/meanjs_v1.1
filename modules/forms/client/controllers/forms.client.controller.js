@@ -26,6 +26,7 @@
         vm.save = save;
         vm.updateWithAdvisor = updateWithAdvisor;
 
+        // generate the options for applications status
         function statusOptions() {
             var status = [];
             status.push("N/A");
@@ -35,6 +36,7 @@
             return status;
         }
 
+        // generate the options for offer type in phd form
         function offerTypeOptions() {
             var offerTypes = [];
             offerTypes.push("TA");
@@ -42,6 +44,7 @@
             return offerTypes;
         }
 
+        // generate the options for TA category
         function categoryOptions() {
             var category = [];
             category.push("N/A");
@@ -51,6 +54,7 @@
             return category;
         }
 
+        // generate the options for teaching TA
         function teachingTAOptions() {
             var teachingTA = [];
             teachingTA.push("Yes");
@@ -58,6 +62,7 @@
             return teachingTA;
         }
 
+        // formate the phd exam date to yyyy-mm-dd format.
         function formatDate() {
             var examDate = new Date(vm.form.phdExamDate);
             var year = examDate.getFullYear();
@@ -80,6 +85,7 @@
             return year + '-' + monthstr + '-' + daystr;
         }
 
+        // generate the options for semesters
         function semesterOptions() {
             var term = ['Spring', 'Summer', 'Fall'];
             var semesters = [];
@@ -100,6 +106,7 @@
             }
         }
 
+        // save form with user name
         function saveWithUsername() {
             if(vm.authentication.user.roles[0] == "advisor"){
                 saveWithAdvisor();
@@ -141,6 +148,7 @@
 
         }
 
+        // save form from advisor page.
         function saveWithAdvisor() {
             vm.form.$addFromAdvisor(successCallback, errorCallback);
 
@@ -156,6 +164,7 @@
 
         }
 
+        // update form from advisor page.
         function updateWithAdvisor(index, tempForm,callback) {
             vm.form.$updateFromAdvisor(successCallback, errorCallback);
 

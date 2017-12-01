@@ -87,7 +87,7 @@
             })
         }
 
-
+// updating the student form
         $scope.updateStudent = function (body) {
             vm.advisorhomepage.form = body;
             return new Promise(function (resolve, reject) {
@@ -98,7 +98,7 @@
                 });
             })
         }
-
+//retrieve all the student application form
         $scope.pullAllStudents = function () {
             return new Promise(function (resolve, reject) {
                 vm.advisorhomepage.$getAll().then(function (res) {

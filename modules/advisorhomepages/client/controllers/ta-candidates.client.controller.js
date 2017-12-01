@@ -51,6 +51,10 @@
         ];
         $scope.hoursArray = [];
 
+        /**
+         * When the page is loaded, the hourTA are retrieved from fakeData and placed on the hours input label
+         * located in the right side of the accordion
+         */
         $scope.updateHours = function(){
             for (var i = 0; i < $scope.fakeData.length; i++){
                 var temp= Object.assign({}, $scope.fakeData[i]);
@@ -60,6 +64,11 @@
 
         };
 
+        /**
+         *  When the hours are updated on the accordion header this function is triggered
+         *  It is used so that the TACandidateForms and the fakeDAta fields are properly updated with this
+         * @param index
+         */
         $scope.clickUpdateHour = function (index) {
             var form = Object.assign({}, $scope.fakeData[index]);
             form.hourTA = $scope.hoursArray[index];
@@ -82,6 +91,10 @@
             // FormsService.update()
         }
 
+        /**
+         * Takes care of requesting to the database the students info
+         * places the students info on the accordions
+         */
         function updateAccordionInformation () {
             fs.$getAll().then(function (res) {
                 $scope.fakeData = res.data;
@@ -91,6 +104,12 @@
 
         updateAccordionInformation();
 
+        /**
+         * Places the information in the body of the accordion
+         * Takes care of only placing information in TACandidateForms only if the accordion is opened
+         * so that memory is not wasted
+         * @param index
+         */
         $scope.populateTACandidatesForm = function (index) {
             if ($scope.TACandidateForms[index] == undefined) {
                 $scope.updateTemporaryForm(index);
@@ -98,7 +117,9 @@
             }
         }
 
-
+        /**
+         * Opens the modal
+         */
         $scope.openModal = function () {
             $modal.open({
                 // template: '<div ng-show="$state.includes(forms.master)"/>'
@@ -114,6 +135,13 @@
             });
         };
 
+        /**
+         * takes care of submitting the form
+         * accesses the FormsService and saves the form to the database
+         * @param form
+         * @param vm
+         * @param index
+         */
         $scope.submitModifiedForm = function (form, vm, index) {
             form.username = $scope.fakeData[index].username;
             var tempForm = form;
@@ -122,6 +150,13 @@
             vm.updateWithAdvisor(index, tempForm,assignValues);
         };
 
+        /**
+         * does a shallow copy of the form that is been received and updates the fakeData object
+         * and the hoursArray object
+         * @param index
+         * @param form
+         * @param isValid
+         */
         function assignValues(index, form, isValid) {
             if(isValid){
                 $scope.fakeData[index] = Object.assign({}, form);
@@ -129,8 +164,10 @@
             }
         }
 
-
-
+        /**
+         * updates fakeData whenever the update is successful
+         * @param index
+         */
         $scope.updateTemporaryForm = function (index) {
             $scope.TACandidateForms[index] = Object.assign({}, $scope.fakeData[index]);
 
@@ -139,11 +176,20 @@
 
         }
 
+        /**
+         * hides and shows the form
+         * @param index
+         */
         $scope.toggleForm = function (index) {
             // debugger;
             $scope.formBooleans[index] = !$scope.formBooleans[index];
         }
 
+        /**
+         * from here on out all the functions below were used to learn how the
+         * MEAN.js app worked
+         * @param index
+         */
         $scope.tryingNew3 = function (index) {
             // update(index);
             debugger;

@@ -23,7 +23,7 @@ Heroku deployment available here: https://cisetasystem.herokuapp.com/
 ## How to Run Locally
 If you do not have the pre-requisites for MEAN.js installed, follow these instructions: https://github.com/meanjs/mean#prerequisites
 
-Clone our repository, then run `npm install` and `bower install` inside of it to install all the packages necessary to run the app.
+Clone our repository, then run `npm install`, `bower install`, `npm install -g grunt-cli`, and `npm install -g grunt` inside of it to install all the packages necessary to run the app.
 
 You can run the application using:
 ```
@@ -32,8 +32,6 @@ npm start
 or 
 
 ```
-npm install -g grunt-cli
-npm install -g grunt
 grunt --force
 ```
 ## Updating Database Connections

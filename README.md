@@ -37,3 +37,9 @@ grunt --force
 ## Updating Database Connections
 
 ## Credits
+Made using:
+* http://meanjs.org/
+* https://nodejs.org/en/
+* https://angularjs.org/
+* https://expressjs.com/
+* https://www.mongodb.com/

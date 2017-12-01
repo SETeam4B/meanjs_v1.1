@@ -29,6 +29,11 @@ You can run the application using:
 ```
 npm start
 ```
+or 
+
+```
+grunt --force
+```
 ## Updating Database Connections
-ff
+
 ## Credits

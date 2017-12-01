@@ -35,6 +35,17 @@ or
 grunt --force
 ```
 ## Updating Database Connections
+The database we used is Mongo Database.
+https://mlab.com/welcome/  the username and password can be found inside the folder config/env
+
+The data sturcture stored in the database can be updated by changing the attributes in the server.model.js file which is located inside server/models folder for each modules.
+
+The database connection is set in the config/env folder.
+local.js is used for local testing.
+development.js is used for developing purpose.
+production.js is used for deployment.
+
+If you want to connect to other Mongo database, you need to access above files respectively and change uri attributes inside the module.exports db attribute to your Mongo database link.
 
 ## Credits
 Made using:

@@ -32,6 +32,8 @@ npm start
 or 
 
 ```
+npm install -g grunt-cli
+Npm install -g grunt
 grunt --force
 ```
 ## Updating Database Connections

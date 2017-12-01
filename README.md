@@ -23,11 +23,12 @@ Heroku deployment available here: https://cisetasystem.herokuapp.com/
 ## How to Run Locally
 If you do not have the pre-requisites for MEAN.js installed, follow these instructions: https://github.com/meanjs/mean#prerequisites
 
-Run `npm install` and `bower install` to install all the packages necessary to run the app.
+Clone our repository, then run `npm install` and `bower install` inside of it to install all the packages necessary to run the app.
 
 You can run the application using:
 ```
 npm start
 ```
 ## Updating Database Connections
+
 ## Credits
